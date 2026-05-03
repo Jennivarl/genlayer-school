@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { findCourseQuiz, findWeeklyQuiz, getCertificateEligibility, gradeQuiz, summarizeProgress } from "@/lib/backend/learning";
 import { recordQuizAttempt } from "@/lib/backend/progress-store";
+import { isAuthError, resolveLearnerAuth } from "@/lib/backend/auth";
 
 type QuizPayload = {
   learnerId?: string;
@@ -11,6 +12,9 @@ type QuizPayload = {
 
 export async function POST(request: NextRequest) {
   const payload = (await request.json()) as QuizPayload;
+  const auth = await resolveLearnerAuth(request, payload.learnerId);
+  if (isAuthError(auth)) return auth;
+
   if (!payload.quizSlug || !payload.answers) {
     return NextResponse.json({ error: "quizSlug and answers are required." }, { status: 400 });
   }
@@ -25,7 +29,7 @@ export async function POST(request: NextRequest) {
 
   const graded = gradeQuiz(match.quiz, payload.answers);
   const progress = await recordQuizAttempt({
-    learnerId: payload.learnerId,
+    learnerId: auth.learnerId,
     attempt: {
       ...graded,
       quizKind: weeklyMatch?.quiz.slug === match.quiz.slug ? "weekly" : "course",
@@ -33,6 +37,7 @@ export async function POST(request: NextRequest) {
   });
 
   return NextResponse.json({
+    auth,
     attempt: progress.quizAttempts[0],
     progress,
     summary: summarizeProgress(progress),

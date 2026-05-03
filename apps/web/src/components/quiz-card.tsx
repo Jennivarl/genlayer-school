@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { Quiz } from "@genlayer-school/content";
+import { useAuth } from "./app-providers";
 
 type QuizCardProps = {
   quiz: Quiz;
@@ -9,13 +10,14 @@ type QuizCardProps = {
 };
 
 export function QuizCard({ quiz, quizKind }: QuizCardProps) {
+  const auth = useAuth();
   const [answers, setAnswers] = useState<Record<string, number>>({});
   const [result, setResult] = useState<{ score: number; total: number; percent: number; passed: boolean } | null>(null);
   const [saving, setSaving] = useState(false);
 
   async function submitQuiz() {
     setSaving(true);
-    const response = await fetch("/api/quizzes/submit", {
+    const response = await auth.authFetch("/api/quizzes/submit", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ quizSlug: quiz.slug, quizKind, answers }),
@@ -55,7 +57,7 @@ export function QuizCard({ quiz, quizKind }: QuizCardProps) {
         </button>
         {result && (
           <span className="pill">
-            {result.score}/{result.total} · {result.percent}% · {result.passed ? "Passed" : "Try again"}
+            {result.score}/{result.total} - {result.percent}% - {result.passed ? "Passed" : "Try again"}
           </span>
         )}
       </div>

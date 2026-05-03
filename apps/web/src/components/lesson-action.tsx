@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useAuth } from "./app-providers";
 
 type LessonActionProps = {
   courseSlug: string;
@@ -9,13 +10,14 @@ type LessonActionProps = {
 };
 
 export function LessonAction({ courseSlug, lessonSlug, initiallyCompleted }: LessonActionProps) {
+  const auth = useAuth();
   const [completed, setCompleted] = useState(initiallyCompleted);
   const [saving, setSaving] = useState(false);
 
   async function toggleLesson() {
     setSaving(true);
     const nextCompleted = !completed;
-    const response = await fetch("/api/progress/lesson", {
+    const response = await auth.authFetch("/api/progress/lesson", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ courseSlug, lessonSlug, completed: nextCompleted }),

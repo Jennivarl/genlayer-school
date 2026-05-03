@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { AppProviders } from "@/components/app-providers";
+import { AuthStatus } from "@/components/auth-status";
 import "./globals.css";
 
 const navItems = [
@@ -20,6 +22,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="en">
       <body>
+        <AppProviders>
         <header className="site-header">
           <Link href="/" className="brand" aria-label="GenLayer School home">
             <span className="brand-mark">GL</span>
@@ -30,9 +33,12 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               <Link key={item.href} href={item.href}>{item.label}</Link>
             ))}
           </nav>
+          <AuthStatus />
         </header>
         <main>{children}</main>
+        </AppProviders>
       </body>
     </html>
   );
 }
+

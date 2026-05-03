@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { courses } from "@genlayer-school/content";
 import { getCertificateEligibility, summarizeProgress } from "@/lib/backend/learning";
 import { setLessonCompletion } from "@/lib/backend/progress-store";
+import { isAuthError, resolveLearnerAuth } from "@/lib/backend/auth";
 
 type LessonPayload = {
   learnerId?: string;
@@ -12,6 +13,9 @@ type LessonPayload = {
 
 export async function POST(request: NextRequest) {
   const payload = (await request.json()) as LessonPayload;
+  const auth = await resolveLearnerAuth(request, payload.learnerId);
+  if (isAuthError(auth)) return auth;
+
   const course = courses.find((item) => item.slug === payload.courseSlug);
   const lesson = course?.lessons.find((item) => item.slug === payload.lessonSlug);
 
@@ -20,13 +24,14 @@ export async function POST(request: NextRequest) {
   }
 
   const progress = await setLessonCompletion({
-    learnerId: payload.learnerId,
+    learnerId: auth.learnerId,
     courseSlug: course.slug,
     lessonSlug: lesson.slug,
     completed: payload.completed ?? true,
   });
 
   return NextResponse.json({
+    auth,
     progress,
     summary: summarizeProgress(progress),
     certificates: getCertificateEligibility(progress),

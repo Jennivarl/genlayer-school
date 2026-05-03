@@ -24,3 +24,8 @@ docs                  Product, architecture, and operating notes
 ## First Step
 
 This repo starts with a production-minded monorepo foundation so the project can grow into a real community platform.
+
+## Auth
+
+Privy is the planned auth provider for wallet-first learner identity. See docs/privy-auth.md.
+
