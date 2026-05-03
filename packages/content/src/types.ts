@@ -67,6 +67,15 @@ export type QuizAttempt = {
   submittedAt: string;
 };
 
+export type LearnerProfile = {
+  learnerId: string;
+  username: string | null;
+  displayName: string | null;
+  walletAddress: string | null;
+  email: string | null;
+  updatedAt: string;
+};
+
 export type LearnerProgress = {
   learnerId: string;
   completedLessons: string[];

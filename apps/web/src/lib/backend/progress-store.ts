@@ -27,6 +27,8 @@ function createStore(): ProgressStore {
 
   return {
     driver: "local",
+    getProfile: localStore.getProfile,
+    updateProfile: localStore.updateProfile,
     getProgress: localStore.getProgress,
     setLessonCompletion: localStore.setLessonCompletion,
     recordQuizAttempt: localStore.recordQuizAttempt,
@@ -36,6 +38,8 @@ function createStore(): ProgressStore {
 const store = createStore();
 
 export const storageDriver = store.driver;
+export const getProfile = store.getProfile;
+export const updateProfile = store.updateProfile;
 export const getProgress = store.getProgress;
 export const setLessonCompletion = store.setLessonCompletion;
 export const recordQuizAttempt = store.recordQuizAttempt;

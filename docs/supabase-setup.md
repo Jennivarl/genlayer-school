@@ -2,14 +2,16 @@
 
 GenLayer School currently supports two backend storage modes:
 
-- `local`: stores progress in `.local-data/progress.json` for development.
-- `supabase`: stores learners, lesson progress, quiz attempts, and certificates in Supabase Postgres.
+- `local`: stores profiles and progress in `.local-data/progress.json` for development.
+- `supabase`: stores learners, usernames, lesson progress, quiz attempts, and certificates in Supabase Postgres.
 - `auto`: uses Supabase when `NEXT_PUBLIC_SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` exist, otherwise falls back to local.
 
 ## Setup
 
 1. Create a Supabase project.
-2. Run `supabase/migrations/0001_initial_learning_schema.sql` in the Supabase SQL editor.
+2. Run migrations in order:
+   - `supabase/migrations/0001_initial_learning_schema.sql`
+   - `supabase/migrations/0002_add_usernames.sql`
 3. Copy `.env.example` to `.env.local`.
 4. Fill:
 
@@ -23,11 +25,11 @@ The service role key must stay server-side only. Do not expose it to client comp
 
 ## Current Tables
 
-- `learner_profiles`
+- `learner_profiles` with `username`, `display_name`, wallet, and email fields
 - `lesson_progress`
 - `quiz_attempts`
 - `certificates`
 
-## Next Auth Step
+## Auth
 
-The next step is wallet signature verification and Supabase Auth identity linking. For now, API routes use `demo-learner` unless a `learnerId` is provided.
+Privy-authenticated learner records use `privy:<privy-user-id>` as the stable learner ID. Demo mode uses `demo-learner`.

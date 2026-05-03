@@ -35,3 +35,8 @@ privy:<privy-user-id>
 ```
 
 That means the same storage layer works with local JSON today and Supabase later.
+
+## Profile and username
+
+After login, learners can choose a username from the dashboard. Profile APIs use the verified Privy user ID when an access token is present, so usernames attach to privy:<privy-user-id> records.
+

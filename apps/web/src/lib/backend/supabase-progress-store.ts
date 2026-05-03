@@ -1,11 +1,20 @@
 import { createClient } from "@supabase/supabase-js";
-import type { LearnerProgress, QuizAttempt } from "@genlayer-school/content";
-import type { LessonCompletionInput, ProgressStore, QuizAttemptInput } from "./progress-store-types";
-import { normalizeLearnerId } from "./local-progress-store";
+import type { LearnerProfile, LearnerProgress, QuizAttempt } from "@genlayer-school/content";
+import type { LessonCompletionInput, ProfileUpdateInput, ProgressStore, QuizAttemptInput } from "./progress-store-types";
+import { normalizeLearnerId, validateUsername } from "./local-progress-store";
 
 type SupabaseConfig = {
   url: string;
   serviceRoleKey: string;
+};
+
+type ProfileRow = {
+  learner_id: string;
+  username: string | null;
+  display_name: string | null;
+  wallet_address: string | null;
+  email: string | null;
+  updated_at: string;
 };
 
 type LessonProgressRow = {
@@ -43,6 +52,17 @@ function createEmptyProgress(learnerId: string): LearnerProgress {
   };
 }
 
+function toProfile(row: ProfileRow): LearnerProfile {
+  return {
+    learnerId: row.learner_id,
+    username: row.username,
+    displayName: row.display_name,
+    walletAddress: row.wallet_address,
+    email: row.email,
+    updatedAt: row.updated_at,
+  };
+}
+
 function toAttempt(row: QuizAttemptRow): QuizAttempt {
   return {
     id: row.id,
@@ -68,6 +88,43 @@ export function createSupabaseProgressStore(config: SupabaseConfig): ProgressSto
       .upsert({ learner_id: learnerId, updated_at: nowIso() }, { onConflict: "learner_id" });
 
     if (error) throw new Error(`Supabase learner upsert failed: ${error.message}`);
+  }
+
+  async function getProfile(learnerId?: string | null): Promise<LearnerProfile> {
+    const id = normalizeLearnerId(learnerId);
+    await ensureLearner(id);
+
+    const { data, error } = await supabase
+      .from("learner_profiles")
+      .select("learner_id, username, display_name, wallet_address, email, updated_at")
+      .eq("learner_id", id)
+      .single();
+
+    if (error) throw new Error(`Supabase profile read failed: ${error.message}`);
+    return toProfile(data as ProfileRow);
+  }
+
+  async function updateProfile(input: ProfileUpdateInput): Promise<LearnerProfile> {
+    const id = normalizeLearnerId(input.learnerId);
+    await ensureLearner(id);
+    const update: Record<string, string | null> = { updated_at: nowIso() };
+
+    if (input.username !== undefined) update.username = validateUsername(input.username);
+    if (input.displayName !== undefined) update.display_name = input.displayName?.trim() || null;
+    if (input.walletAddress !== undefined) update.wallet_address = input.walletAddress?.trim() || null;
+    if (input.email !== undefined) update.email = input.email?.trim() || null;
+
+    const { error } = await supabase
+      .from("learner_profiles")
+      .update(update)
+      .eq("learner_id", id);
+
+    if (error) {
+      if (error.code === "23505") throw new Error("Username is already taken.");
+      throw new Error(`Supabase profile update failed: ${error.message}`);
+    }
+
+    return getProfile(id);
   }
 
   async function getProgress(learnerId?: string | null): Promise<LearnerProgress> {
@@ -160,6 +217,8 @@ export function createSupabaseProgressStore(config: SupabaseConfig): ProgressSto
 
   return {
     driver: "supabase",
+    getProfile,
+    updateProfile,
     getProgress,
     setLessonCompletion,
     recordQuizAttempt,

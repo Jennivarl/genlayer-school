@@ -3,6 +3,7 @@ export const dynamic = "force-dynamic";
 import { courses, weeklySummaries } from "@genlayer-school/content";
 import { getCertificateEligibility, summarizeProgress } from "@/lib/backend/learning";
 import { getProgress } from "@/lib/backend/progress-store";
+import { UsernameForm } from "@/components/username-form";
 
 export default async function DashboardPage() {
   const progress = await getProgress();
@@ -15,6 +16,10 @@ export default async function DashboardPage() {
       <p className="eyebrow">Learner dashboard</p>
       <h1>Your GenLayer path</h1>
       <p className="lede">This dashboard is backed by the local progress API/store. It is shaped so Supabase can replace the storage layer later without changing product behavior.</p>
+
+      <section className="section">
+        <UsernameForm />
+      </section>
 
       <section className="section grid">
         <article className="card"><p className="meta">Lessons</p><h2>{summary.completedLessonCount}/{lessons}</h2><p>{summary.lessonPercent}% complete.</p></article>
@@ -41,4 +46,5 @@ export default async function DashboardPage() {
     </div>
   );
 }
+
 
