@@ -288,3 +288,51 @@ button:disabled {
 @media (max-width: 700px) {
   .form-grid { grid-template-columns: 1fr; }
 }
+
+.readable {
+  width: min(860px, calc(100% - 40px));
+}
+
+.content-flow {
+  display: grid;
+  gap: 18px;
+}
+
+.content-flow h2 {
+  margin-top: 22px;
+}
+
+.content-flow p,
+.content-flow li {
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+.content-flow ul,
+.card ul {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.callout {
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  background: var(--surface);
+  padding: 18px;
+}
+
+.callout p {
+  margin-bottom: 0;
+}
+
+.code-block {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #050a09;
+  color: #d7ffe2;
+  padding: 18px;
+  line-height: 1.6;
+}

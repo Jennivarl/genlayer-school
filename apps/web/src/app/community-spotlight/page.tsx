@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { communitySpotlights } from "@genlayer-school/content";
 
 export default function CommunitySpotlightPage() {
@@ -9,20 +10,12 @@ export default function CommunitySpotlightPage() {
 
       <section className="section list">
         {communitySpotlights.map((spotlight) => (
-          <article className="card" key={spotlight.slug}>
+          <Link className="card" href={`/community-spotlight/${spotlight.slug}`} key={spotlight.slug}>
             <p className="meta">{spotlight.month}</p>
             <h2>{spotlight.title}</h2>
             <p><strong>Featured builder:</strong> {spotlight.featuredBuilder}</p>
             <p><strong>Featured project:</strong> {spotlight.featuredProject}</p>
-            <div className="grid">
-              {spotlight.highlights.map((item) => (
-                <div className="card" key={item.title}>
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </article>
+          </Link>
         ))}
       </section>
     </div>

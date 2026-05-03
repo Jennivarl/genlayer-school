@@ -1,8 +1,17 @@
+export type ContentBlock =
+  | { type: "heading"; text: string }
+  | { type: "paragraph"; text: string }
+  | { type: "list"; items: string[] }
+  | { type: "callout"; title: string; text: string }
+  | { type: "code"; language: string; code: string };
+
 export type Lesson = {
   slug: string;
   title: string;
   durationMinutes: number;
   summary: string;
+  objectives: string[];
+  content: ContentBlock[];
 };
 
 export type QuizQuestion = {
@@ -43,6 +52,7 @@ export type CommunitySpotlight = {
   featuredBuilder: string;
   featuredProject: string;
   highlights: SpotlightItem[];
+  content: ContentBlock[];
 };
 
 export type WeeklySummary = {
@@ -52,6 +62,7 @@ export type WeeklySummary = {
   summary: string;
   keyConcepts: string[];
   links: SpotlightItem[];
+  content: ContentBlock[];
   quiz: Quiz;
 };
 

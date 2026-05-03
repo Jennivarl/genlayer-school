@@ -1,15 +1,7 @@
-export const dynamic = "force-dynamic";
-
 import Link from "next/link";
 import { courses } from "@genlayer-school/content";
-import { getProgress } from "@/lib/backend/progress-store";
-import { LessonAction } from "@/components/lesson-action";
-import { QuizCard } from "@/components/quiz-card";
 
-export default async function LearnPage() {
-  const progress = await getProgress();
-  const completedLessons = new Set(progress.completedLessons);
-
+export default function LearnPage() {
   return (
     <div className="page">
       <p className="eyebrow">Academy</p>
@@ -26,31 +18,24 @@ export default async function LearnPage() {
               {course.outcomes.map((outcome) => <span className="pill" key={outcome}>{outcome}</span>)}
             </div>
             <div className="section list">
-              {course.lessons.map((lesson) => {
-                const completed = completedLessons.has(`${course.slug}/${lesson.slug}`);
-                return (
-                  <div className="list-item" key={lesson.slug}>
-                    <div>
-                      <h3>{lesson.title}</h3>
-                      <p>{lesson.summary}</p>
-                      <span className="meta">{lesson.durationMinutes} min</span>
-                    </div>
-                    <LessonAction courseSlug={course.slug} lessonSlug={lesson.slug} initiallyCompleted={completed} />
+              {course.lessons.map((lesson) => (
+                <Link className="list-item" href={`/learn/${course.slug}/${lesson.slug}`} key={lesson.slug}>
+                  <div>
+                    <h3>{lesson.title}</h3>
+                    <p>{lesson.summary}</p>
+                    <span className="meta">{lesson.durationMinutes} min</span>
                   </div>
-                );
-              })}
+                  <span className="pill">Open</span>
+                </Link>
+              ))}
             </div>
-            <div className="section">
-              <QuizCard quiz={course.quiz} quizKind="course" />
+            <div className="cta-row">
+              <Link className="button" href={`/learn/${course.slug}`}>View course</Link>
+              <Link className="button secondary" href={`/learn/${course.slug}/quiz`}>Take quiz</Link>
             </div>
           </article>
         ))}
       </section>
-
-      <div className="cta-row">
-        <Link className="button secondary" href="/certificates">View certificate pathway</Link>
-      </div>
     </div>
   );
 }
-
