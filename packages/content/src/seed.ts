@@ -31,6 +31,34 @@ export const courses: Course[] = [
         summary: "A beginner-friendly look at how GenLayer reaches consensus over subjective outputs.",
       },
     ],
+    quiz: {
+      slug: "genlayer-foundations-checkpoint",
+      title: "GenLayer Foundations Checkpoint",
+      passPercent: 70,
+      questions: [
+        {
+          id: "foundations-q1",
+          prompt: "What is the main developer language for GenLayer Intelligent Contracts?",
+          options: ["Python", "Solidity", "Cairo", "Move"],
+          correctOption: 0,
+          explanation: "GenLayer Intelligent Contracts are authored in Python using the GenLayer contract model.",
+        },
+        {
+          id: "foundations-q2",
+          prompt: "Why is GenLayer useful for education credentials and grading?",
+          options: ["It only stores static files", "It can support subjective, context-aware verification", "It replaces all databases", "It requires no validation"],
+          correctOption: 1,
+          explanation: "GenLayer's AI-native validation model is a strong fit for subjective evaluation and credential logic.",
+        },
+        {
+          id: "foundations-q3",
+          prompt: "What should GenLayer School keep off-chain first?",
+          options: ["Sensitive learner data", "Public certificate hashes only", "Contract source code only", "Explorer links only"],
+          correctOption: 0,
+          explanation: "Sensitive learner data belongs off-chain, with certificates and achievements selectively mirrored on-chain.",
+        },
+      ],
+    },
   },
   {
     slug: "builder-track",
@@ -56,6 +84,27 @@ export const courses: Course[] = [
         summary: "Map user actions to contract reads, writes, and transaction states.",
       },
     ],
+    quiz: {
+      slug: "builder-track-checkpoint",
+      title: "Builder Track Checkpoint",
+      passPercent: 70,
+      questions: [
+        {
+          id: "builder-q1",
+          prompt: "Why should the frontend use a shared GenLayer SDK wrapper?",
+          options: ["To avoid any contracts", "To centralize wallet, contract, and transaction behavior", "To remove TypeScript", "To store passwords"],
+          correctOption: 1,
+          explanation: "A wrapper keeps GenLayer interaction consistent and easier to test across the app.",
+        },
+        {
+          id: "builder-q2",
+          prompt: "What is the safest first certificate implementation path?",
+          options: ["Mint everything immediately", "Model eligibility first, then connect minting", "Ignore completion state", "Store private data on-chain"],
+          correctOption: 1,
+          explanation: "Eligibility should be modeled and tested before connecting on-chain minting.",
+        },
+      ],
+    },
   },
 ];
 
@@ -106,21 +155,26 @@ export const weeklySummaries: WeeklySummary[] = [
         url: "https://studio.genlayer.com/contracts",
       },
     ],
-    quiz: [
-      {
-        id: "q1",
-        prompt: "What language are GenLayer Intelligent Contracts written in?",
-        options: ["Solidity", "Python", "Rust", "Move"],
-        correctOption: 1,
-        explanation: "GenLayer Intelligent Contracts are Python classes that use the GenLayer contract model.",
-      },
-      {
-        id: "q2",
-        prompt: "What kind of decisions is GenLayer especially designed to support?",
-        options: ["Only deterministic arithmetic", "Subjective and context-aware decisions", "Static token transfers only", "Database migrations"],
-        correctOption: 1,
-        explanation: "GenLayer brings AI-powered validation to subjective, context-rich contract execution.",
-      },
-    ],
+    quiz: {
+      slug: "week-1-gen-fren-prep-quiz",
+      title: "Week 1 Gen-Fren Prep Quiz",
+      passPercent: 70,
+      questions: [
+        {
+          id: "q1",
+          prompt: "What language are GenLayer Intelligent Contracts written in?",
+          options: ["Solidity", "Python", "Rust", "Move"],
+          correctOption: 1,
+          explanation: "GenLayer Intelligent Contracts are Python classes that use the GenLayer contract model.",
+        },
+        {
+          id: "q2",
+          prompt: "What kind of decisions is GenLayer especially designed to support?",
+          options: ["Only deterministic arithmetic", "Subjective and context-aware decisions", "Static token transfers only", "Database migrations"],
+          correctOption: 1,
+          explanation: "GenLayer brings AI-powered validation to subjective, context-rich contract execution.",
+        },
+      ],
+    },
   },
 ];

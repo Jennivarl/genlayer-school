@@ -5,6 +5,21 @@ export type Lesson = {
   summary: string;
 };
 
+export type QuizQuestion = {
+  id: string;
+  prompt: string;
+  options: string[];
+  correctOption: number;
+  explanation: string;
+};
+
+export type Quiz = {
+  slug: string;
+  title: string;
+  passPercent: number;
+  questions: QuizQuestion[];
+};
+
 export type Course = {
   slug: string;
   title: string;
@@ -12,6 +27,7 @@ export type Course = {
   description: string;
   outcomes: string[];
   lessons: Lesson[];
+  quiz: Quiz;
 };
 
 export type SpotlightItem = {
@@ -29,14 +45,6 @@ export type CommunitySpotlight = {
   highlights: SpotlightItem[];
 };
 
-export type QuizQuestion = {
-  id: string;
-  prompt: string;
-  options: string[];
-  correctOption: number;
-  explanation: string;
-};
-
 export type WeeklySummary = {
   slug: string;
   weekOf: string;
@@ -44,5 +52,37 @@ export type WeeklySummary = {
   summary: string;
   keyConcepts: string[];
   links: SpotlightItem[];
-  quiz: QuizQuestion[];
+  quiz: Quiz;
+};
+
+export type QuizAttempt = {
+  id: string;
+  quizKind: "course" | "weekly";
+  quizSlug: string;
+  score: number;
+  total: number;
+  percent: number;
+  passed: boolean;
+  answers: Record<string, number>;
+  submittedAt: string;
+};
+
+export type LearnerProgress = {
+  learnerId: string;
+  completedLessons: string[];
+  quizAttempts: QuizAttempt[];
+  issuedCertificates: string[];
+  updatedAt: string;
+};
+
+export type CertificateRequirement = {
+  label: string;
+  complete: boolean;
+};
+
+export type CertificateEligibility = {
+  certificateSlug: string;
+  title: string;
+  eligible: boolean;
+  requirements: CertificateRequirement[];
 };

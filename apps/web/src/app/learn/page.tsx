@@ -1,7 +1,15 @@
+export const dynamic = "force-dynamic";
+
 import Link from "next/link";
 import { courses } from "@genlayer-school/content";
+import { getProgress } from "@/lib/backend/progress-store";
+import { LessonAction } from "@/components/lesson-action";
+import { QuizCard } from "@/components/quiz-card";
 
-export default function LearnPage() {
+export default async function LearnPage() {
+  const progress = await getProgress();
+  const completedLessons = new Set(progress.completedLessons);
+
   return (
     <div className="page">
       <p className="eyebrow">Academy</p>
@@ -18,15 +26,22 @@ export default function LearnPage() {
               {course.outcomes.map((outcome) => <span className="pill" key={outcome}>{outcome}</span>)}
             </div>
             <div className="section list">
-              {course.lessons.map((lesson) => (
-                <div className="list-item" key={lesson.slug}>
-                  <div>
-                    <h3>{lesson.title}</h3>
-                    <p>{lesson.summary}</p>
+              {course.lessons.map((lesson) => {
+                const completed = completedLessons.has(`${course.slug}/${lesson.slug}`);
+                return (
+                  <div className="list-item" key={lesson.slug}>
+                    <div>
+                      <h3>{lesson.title}</h3>
+                      <p>{lesson.summary}</p>
+                      <span className="meta">{lesson.durationMinutes} min</span>
+                    </div>
+                    <LessonAction courseSlug={course.slug} lessonSlug={lesson.slug} initiallyCompleted={completed} />
                   </div>
-                  <span className="meta">{lesson.durationMinutes} min</span>
-                </div>
-              ))}
+                );
+              })}
+            </div>
+            <div className="section">
+              <QuizCard quiz={course.quiz} quizKind="course" />
             </div>
           </article>
         ))}
@@ -38,3 +53,4 @@ export default function LearnPage() {
     </div>
   );
 }
+

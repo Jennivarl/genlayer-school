@@ -1,4 +1,5 @@
 import { weeklySummaries } from "@genlayer-school/content";
+import { QuizCard } from "@/components/quiz-card";
 
 export default function GenFrenWeeklyPage() {
   return (
@@ -17,16 +18,15 @@ export default function GenFrenWeeklyPage() {
               {issue.keyConcepts.map((concept) => <span className="pill" key={concept}>{concept}</span>)}
             </div>
             <section className="section grid two">
-              {issue.quiz.map((question) => (
-                <div className="card" key={question.id}>
-                  <h3>{question.prompt}</h3>
-                  <ol>
-                    {question.options.map((option) => <li key={option}>{option}</li>)}
-                  </ol>
-                  <p className="meta">Answer: {question.options[question.correctOption]}</p>
-                  <p>{question.explanation}</p>
-                </div>
+              {issue.links.map((link) => (
+                <a className="card" href={link.url} key={link.title}>
+                  <h3>{link.title}</h3>
+                  <p>{link.description}</p>
+                </a>
               ))}
+            </section>
+            <section className="section">
+              <QuizCard quiz={issue.quiz} quizKind="weekly" />
             </section>
           </article>
         ))}

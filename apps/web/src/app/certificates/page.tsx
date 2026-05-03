@@ -1,22 +1,35 @@
-export default function CertificatesPage() {
+export const dynamic = "force-dynamic";
+
+import { getCertificateEligibility } from "@/lib/backend/learning";
+import { getProgress } from "@/lib/backend/progress-store";
+
+export default async function CertificatesPage() {
+  const progress = await getProgress();
+  const certificates = getCertificateEligibility(progress);
+
   return (
     <div className="page">
       <p className="eyebrow">Certification</p>
       <h1>Certificate pathways</h1>
-      <p className="lede">GenLayer School will support certificate eligibility off-chain first, then on-chain minting through GenLayer Intelligent Contracts.</p>
+      <p className="lede">GenLayer School models certificate eligibility off-chain first, then connects eligible certificates to GenLayer Intelligent Contract minting.</p>
 
       <section className="section grid two">
-        <article className="card">
-          <h2>Foundations Certificate</h2>
-          <p>Unlock by completing the GenLayer Foundations track and passing its prep quiz.</p>
-          <div className="pill-row"><span className="pill">Planned</span><span className="pill">Contract-ready</span></div>
-        </article>
-        <article className="card">
-          <h2>Builder Certificate</h2>
-          <p>Unlock by completing contract labs and demonstrating a basic GenLayerJS integration.</p>
-          <div className="pill-row"><span className="pill">Planned</span><span className="pill">Python IC</span></div>
-        </article>
+        {certificates.map((certificate) => (
+          <article className="card" key={certificate.certificateSlug}>
+            <p className="meta">{certificate.eligible ? "Ready for mint flow" : "Requirements pending"}</p>
+            <h2>{certificate.title}</h2>
+            <div className="list">
+              {certificate.requirements.map((requirement) => (
+                <div className="list-item" key={requirement.label}>
+                  <span>{requirement.label}</span>
+                  <span className="pill">{requirement.complete ? "Done" : "Pending"}</span>
+                </div>
+              ))}
+            </div>
+          </article>
+        ))}
       </section>
     </div>
   );
 }
+
