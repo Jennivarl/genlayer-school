@@ -1,0 +1,19 @@
+{
+  "name": "genlayer-school",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Community education platform for GenLayer.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @genlayer-school/web",
+    "build": "npm run build -w @genlayer-school/web",
+    "lint": "npm run lint -w @genlayer-school/web",
+    "typecheck": "npm run typecheck -w @genlayer-school/web"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

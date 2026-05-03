@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "plugins": [{ "name": "next" }],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@genlayer-school/content": ["../../packages/content/src"],
+      "@genlayer-school/content/*": ["../../packages/content/src/*"],
+      "@genlayer-school/sdk": ["../../packages/sdk/src"],
+      "@genlayer-school/sdk/*": ["../../packages/sdk/src/*"],
+      "@genlayer-school/ui": ["../../packages/ui/src"],
+      "@genlayer-school/ui/*": ["../../packages/ui/src/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
+}

@@ -1,11 +1,16 @@
-﻿.env
+.env
 .env.*
 !.env.example
 node_modules/
+.turbo/
+.vercel/
 .next/
 dist/
 build/
+coverage/
 __pycache__/
 *.pyc
 .DS_Store
 Thumbs.db
+*.tsbuildinfo
+.dev-server*.log
