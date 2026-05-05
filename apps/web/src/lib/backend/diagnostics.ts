@@ -41,6 +41,7 @@ export function getBackendDiagnostics(): BackendDiagnostics {
   const privyAppId = hasEnv("PRIVY_APP_ID") || privyPublicAppId;
   const privyVerificationKey = hasEnv("PRIVY_VERIFICATION_KEY");
   const authRequired = process.env.PRIVY_AUTH_REQUIRED === "true";
+  const adminAccessToken = hasEnv("ADMIN_ACCESS_TOKEN");
 
   const checks: BackendDiagnosticCheck[] = [
     check(
@@ -83,6 +84,14 @@ export function getBackendDiagnostics(): BackendDiagnostics {
         ? "Progress APIs require valid Privy access tokens."
         : "Unauthenticated requests fall back to the demo learner. Keep this off only for local development.",
     ),
+    check(
+      adminAccessToken ? "ready" : environment === "production" ? "missing" : "warning",
+      "admin-access",
+      "Admin access token",
+      adminAccessToken
+        ? "Admin content APIs require the configured access token."
+        : "Set ADMIN_ACCESS_TOKEN before using admin content operations in production.",
+    ),
   ];
 
   const missingRequiredKeys: string[] = [];
@@ -96,6 +105,7 @@ export function getBackendDiagnostics(): BackendDiagnostics {
     if (!privyVerificationKey) missingRequiredKeys.push("PRIVY_VERIFICATION_KEY");
   }
   if (environment === "production" && !authRequired) missingRequiredKeys.push("PRIVY_AUTH_REQUIRED=true");
+  if (environment === "production" && !adminAccessToken) missingRequiredKeys.push("ADMIN_ACCESS_TOKEN");
 
   return {
     environment,

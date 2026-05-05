@@ -310,7 +310,8 @@ button:disabled {
   font-size: 13px;
 }
 
-.form-grid input {
+.form-grid input,
+.form-grid select {
   min-height: 42px;
   width: 100%;
   border: 1px solid var(--line);
@@ -321,9 +322,28 @@ button:disabled {
   padding: 0 12px;
 }
 
-.form-grid input:focus {
+.form-grid input:focus,
+.form-grid select:focus,
+.editor-card textarea:focus {
   border-color: var(--accent);
   outline: none;
+}
+
+.editor-card {
+  display: grid;
+  gap: 14px;
+}
+
+.editor-card textarea {
+  min-height: 420px;
+  width: 100%;
+  resize: vertical;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #050a09;
+  color: #d7ffe2;
+  font: 13px/1.6 "Courier New", monospace;
+  padding: 14px;
 }
 
 @media (max-width: 700px) {

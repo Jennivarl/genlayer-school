@@ -13,6 +13,8 @@ The first backend slice uses Next.js route handlers and a local JSON store for d
 - `GET /api/certificates/eligibility` returns certificate requirements and eligibility.
 - `GET /api/certificates` returns eligibility merged with stored certificate lifecycle records.
 - `POST /api/certificates/request` moves an eligible certificate record into `mint_pending`.
+- `GET /api/admin/content` lists editable weekly summaries and spotlights.
+- `POST /api/admin/content` creates or updates admin content as `draft` or `published`.
 
 ## Usernames
 
@@ -39,3 +41,7 @@ eligible -> mint_pending -> minted
 ```
 
 Records can also be marked `revoked` for moderation or contract correction flows.
+
+## Admin Content
+
+Admin content is intentionally off-chain. It stores weekly Gen-Fren summaries, prep quiz payloads, and monthly community spotlights in local JSON or Supabase. Production deployments should set `ADMIN_ACCESS_TOKEN`; requests must provide that token as `x-admin-token` or a bearer token.

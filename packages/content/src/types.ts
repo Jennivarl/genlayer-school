@@ -119,3 +119,21 @@ export type CertificateRecord = {
   issuedAt: string;
   updatedAt: string;
 };
+
+export type AdminContentKind = "weekly" | "spotlight";
+
+export type AdminContentStatus = "draft" | "published";
+
+export type AdminContentPayload = WeeklySummary | CommunitySpotlight;
+
+export type AdminContentEntry = {
+  id: string;
+  kind: AdminContentKind;
+  slug: string;
+  title: string;
+  status: AdminContentStatus;
+  payload: AdminContentPayload;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string | null;
+};

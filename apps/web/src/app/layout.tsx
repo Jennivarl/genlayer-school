@@ -12,6 +12,7 @@ const navItems = [
   { href: "/gen-fren-weekly", label: "Gen-Fren Weekly" },
   { href: "/resources", label: "Resources" },
   { href: "/backend", label: "Backend" },
+  { href: "/admin", label: "Admin" },
 ];
 
 export const metadata: Metadata = {
