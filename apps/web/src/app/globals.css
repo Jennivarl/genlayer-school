@@ -164,6 +164,23 @@ h3 { font-size: 18px; margin-bottom: 8px; }
   color: var(--accent);
 }
 
+.status-eligible {
+  border-color: rgba(126, 231, 135, 0.42);
+  color: var(--accent);
+}
+
+.status-mint-pending {
+  border-color: rgba(93, 173, 226, 0.48);
+  color: #8fd0ff;
+  background: rgba(93, 173, 226, 0.1);
+}
+
+.status-minted {
+  border-color: rgba(255, 200, 87, 0.52);
+  color: #ffc857;
+  background: rgba(255, 200, 87, 0.1);
+}
+
 .status-warning {
   border-color: rgba(255, 200, 87, 0.48);
   color: #ffc857;

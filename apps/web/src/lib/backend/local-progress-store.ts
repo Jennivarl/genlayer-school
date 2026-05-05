@@ -1,6 +1,6 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
-import type { LearnerProfile, LearnerProgress, QuizAttempt } from "@genlayer-school/content";
+import type { CertificateRecord, LearnerProfile, LearnerProgress, QuizAttempt } from "@genlayer-school/content";
 import type { ProfileUpdateInput } from "./progress-store-types";
 
 const DEFAULT_LEARNER_ID = "demo-learner";
@@ -12,6 +12,7 @@ let mutationQueue: Promise<unknown> = Promise.resolve();
 type ProgressDatabase = {
   learners: Record<string, LearnerProgress>;
   profiles?: Record<string, LearnerProfile>;
+  certificates?: Record<string, CertificateRecord[]>;
 };
 
 function nowIso(): string {
@@ -50,7 +51,7 @@ async function readDatabase(): Promise<ProgressDatabase> {
     const raw = await readFile(DATA_FILE, "utf8");
     return JSON.parse(raw) as ProgressDatabase;
   } catch {
-    return { learners: {}, profiles: {} };
+    return { learners: {}, profiles: {}, certificates: {} };
   }
 }
 
@@ -170,5 +171,81 @@ export async function recordQuizAttempt(input: {
     database.learners[id] = updated;
     await writeDatabase(database);
     return updated;
+  });
+}
+
+function createCertificateRecord(learnerId: string, certificateSlug: string): CertificateRecord {
+  const now = nowIso();
+  return {
+    id: `${learnerId}:${certificateSlug}`,
+    learnerId,
+    certificateSlug,
+    status: "eligible",
+    contractAddress: null,
+    txHash: null,
+    issuedAt: now,
+    updatedAt: now,
+  };
+}
+
+export async function getCertificateRecords(learnerId?: string | null): Promise<CertificateRecord[]> {
+  const id = normalizeLearnerId(learnerId);
+  const database = await readDatabase();
+  return [...(database.certificates?.[id] ?? [])].sort((a, b) => a.certificateSlug.localeCompare(b.certificateSlug));
+}
+
+export async function syncEligibleCertificates(input: {
+  learnerId?: string | null;
+  certificateSlugs: string[];
+}): Promise<CertificateRecord[]> {
+  return enqueueMutation(async () => {
+    const id = normalizeLearnerId(input.learnerId);
+    const database = await readDatabase();
+    const certificates = database.certificates ?? {};
+    const currentRecords = certificates[id] ?? [];
+    const recordsBySlug = new Map(currentRecords.map((record) => [record.certificateSlug, record]));
+
+    for (const certificateSlug of input.certificateSlugs) {
+      const existing = recordsBySlug.get(certificateSlug);
+      if (!existing) {
+        recordsBySlug.set(certificateSlug, createCertificateRecord(id, certificateSlug));
+      } else if (existing.status === "revoked") {
+        recordsBySlug.set(certificateSlug, { ...existing, status: "eligible", updatedAt: nowIso() });
+      }
+    }
+
+    const updated = [...recordsBySlug.values()].sort((a, b) => a.certificateSlug.localeCompare(b.certificateSlug));
+    database.certificates = { ...certificates, [id]: updated };
+    await writeDatabase(database);
+    return updated;
+  });
+}
+
+export async function requestCertificateMint(input: {
+  learnerId?: string | null;
+  certificateSlug: string;
+}): Promise<CertificateRecord> {
+  return enqueueMutation(async () => {
+    const id = normalizeLearnerId(input.learnerId);
+    const database = await readDatabase();
+    const certificates = database.certificates ?? {};
+    const currentRecords = certificates[id] ?? [];
+    const existing = currentRecords.find((record) => record.certificateSlug === input.certificateSlug);
+
+    if (!existing || existing.status === "revoked") {
+      throw new Error("Certificate is not eligible for minting yet.");
+    }
+
+    const updatedRecord: CertificateRecord = existing.status === "minted"
+      ? existing
+      : { ...existing, status: "mint_pending", updatedAt: nowIso() };
+
+    const updatedRecords = currentRecords
+      .map((record) => record.certificateSlug === input.certificateSlug ? updatedRecord : record)
+      .sort((a, b) => a.certificateSlug.localeCompare(b.certificateSlug));
+
+    database.certificates = { ...certificates, [id]: updatedRecords };
+    await writeDatabase(database);
+    return updatedRecord;
   });
 }

@@ -1,6 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
-import type { LearnerProfile, LearnerProgress, QuizAttempt } from "@genlayer-school/content";
-import type { LessonCompletionInput, ProfileUpdateInput, ProgressStore, QuizAttemptInput } from "./progress-store-types";
+import type { CertificateRecord, CertificateStatus, LearnerProfile, LearnerProgress, QuizAttempt } from "@genlayer-school/content";
+import type { CertificateEligibilitySyncInput, CertificateMintRequestInput, LessonCompletionInput, ProfileUpdateInput, ProgressStore, QuizAttemptInput } from "./progress-store-types";
 import { normalizeLearnerId, validateUsername } from "./local-progress-store";
 
 type SupabaseConfig = {
@@ -35,7 +35,14 @@ type QuizAttemptRow = {
 };
 
 type CertificateRow = {
+  id: string;
+  learner_id: string;
   certificate_slug: string;
+  status: CertificateStatus;
+  contract_address: string | null;
+  tx_hash: string | null;
+  issued_at: string;
+  updated_at: string | null;
 };
 
 function nowIso(): string {
@@ -74,6 +81,19 @@ function toAttempt(row: QuizAttemptRow): QuizAttempt {
     passed: row.passed,
     answers: row.answers,
     submittedAt: row.submitted_at,
+  };
+}
+
+function toCertificateRecord(row: CertificateRow): CertificateRecord {
+  return {
+    id: row.id,
+    learnerId: row.learner_id,
+    certificateSlug: row.certificate_slug,
+    status: row.status,
+    contractAddress: row.contract_address,
+    txHash: row.tx_hash,
+    issuedAt: row.issued_at,
+    updatedAt: row.updated_at ?? row.issued_at,
   };
 }
 
@@ -145,7 +165,7 @@ export function createSupabaseProgressStore(config: SupabaseConfig): ProgressSto
         .from("certificates")
         .select("certificate_slug")
         .eq("learner_id", id)
-        .neq("status", "revoked"),
+        .eq("status", "minted"),
     ]);
 
     if (lessonsResult.error) throw new Error(`Supabase lesson read failed: ${lessonsResult.error.message}`);
@@ -215,6 +235,72 @@ export function createSupabaseProgressStore(config: SupabaseConfig): ProgressSto
     return getProgress(id);
   }
 
+  async function getCertificateRecords(learnerId?: string | null): Promise<CertificateRecord[]> {
+    const id = normalizeLearnerId(learnerId);
+    await ensureLearner(id);
+
+    const { data, error } = await supabase
+      .from("certificates")
+      .select("id, learner_id, certificate_slug, status, contract_address, tx_hash, issued_at, updated_at")
+      .eq("learner_id", id)
+      .order("certificate_slug", { ascending: true });
+
+    if (error) throw new Error(`Supabase certificate record read failed: ${error.message}`);
+    return ((data ?? []) as CertificateRow[]).map(toCertificateRecord);
+  }
+
+  async function syncEligibleCertificates(input: CertificateEligibilitySyncInput): Promise<CertificateRecord[]> {
+    const id = normalizeLearnerId(input.learnerId);
+    await ensureLearner(id);
+    const currentRecords = await getCertificateRecords(id);
+    const recordsBySlug = new Map(currentRecords.map((record) => [record.certificateSlug, record]));
+    const now = nowIso();
+    const rowsToUpsert = input.certificateSlugs
+      .filter((certificateSlug) => {
+        const existing = recordsBySlug.get(certificateSlug);
+        return !existing || existing.status === "revoked";
+      })
+      .map((certificateSlug) => ({
+        learner_id: id,
+        certificate_slug: certificateSlug,
+        status: "eligible",
+        updated_at: now,
+      }));
+
+    if (rowsToUpsert.length > 0) {
+      const { error } = await supabase
+        .from("certificates")
+        .upsert(rowsToUpsert, { onConflict: "learner_id,certificate_slug" });
+
+      if (error) throw new Error(`Supabase eligible certificate sync failed: ${error.message}`);
+    }
+
+    return getCertificateRecords(id);
+  }
+
+  async function requestCertificateMint(input: CertificateMintRequestInput): Promise<CertificateRecord> {
+    const id = normalizeLearnerId(input.learnerId);
+    await ensureLearner(id);
+
+    const currentRecords = await getCertificateRecords(id);
+    const existing = currentRecords.find((record) => record.certificateSlug === input.certificateSlug);
+    if (!existing || existing.status === "revoked") {
+      throw new Error("Certificate is not eligible for minting yet.");
+    }
+    if (existing.status === "minted") return existing;
+
+    const { data, error } = await supabase
+      .from("certificates")
+      .update({ status: "mint_pending", updated_at: nowIso() })
+      .eq("learner_id", id)
+      .eq("certificate_slug", input.certificateSlug)
+      .select("id, learner_id, certificate_slug, status, contract_address, tx_hash, issued_at, updated_at")
+      .single();
+
+    if (error) throw new Error(`Supabase certificate mint request failed: ${error.message}`);
+    return toCertificateRecord(data as CertificateRow);
+  }
+
   return {
     driver: "supabase",
     getProfile,
@@ -222,5 +308,8 @@ export function createSupabaseProgressStore(config: SupabaseConfig): ProgressSto
     getProgress,
     setLessonCompletion,
     recordQuizAttempt,
+    getCertificateRecords,
+    syncEligibleCertificates,
+    requestCertificateMint,
   };
 }

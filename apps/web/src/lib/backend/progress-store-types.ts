@@ -1,4 +1,4 @@
-import type { LearnerProfile, LearnerProgress, QuizAttempt } from "@genlayer-school/content";
+import type { CertificateRecord, LearnerProfile, LearnerProgress, QuizAttempt } from "@genlayer-school/content";
 
 export type LessonCompletionInput = {
   learnerId?: string | null;
@@ -10,6 +10,16 @@ export type LessonCompletionInput = {
 export type QuizAttemptInput = {
   learnerId?: string | null;
   attempt: Omit<QuizAttempt, "id" | "submittedAt">;
+};
+
+export type CertificateEligibilitySyncInput = {
+  learnerId?: string | null;
+  certificateSlugs: string[];
+};
+
+export type CertificateMintRequestInput = {
+  learnerId?: string | null;
+  certificateSlug: string;
 };
 
 export type ProfileUpdateInput = {
@@ -27,4 +37,7 @@ export type ProgressStore = {
   getProgress(learnerId?: string | null): Promise<LearnerProgress>;
   setLessonCompletion(input: LessonCompletionInput): Promise<LearnerProgress>;
   recordQuizAttempt(input: QuizAttemptInput): Promise<LearnerProgress>;
+  getCertificateRecords(learnerId?: string | null): Promise<CertificateRecord[]>;
+  syncEligibleCertificates(input: CertificateEligibilitySyncInput): Promise<CertificateRecord[]>;
+  requestCertificateMint(input: CertificateMintRequestInput): Promise<CertificateRecord>;
 };

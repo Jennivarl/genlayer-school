@@ -12,6 +12,7 @@ GenLayer School currently supports two backend storage modes:
 2. Run migrations in order:
    - `supabase/migrations/0001_initial_learning_schema.sql`
    - `supabase/migrations/0002_add_usernames.sql`
+   - `supabase/migrations/0003_certificate_record_updates.sql`
 3. Copy `.env.example` to `.env.local`.
 4. Fill:
 
@@ -29,6 +30,8 @@ The service role key must stay server-side only. Do not expose it to client comp
 - `lesson_progress`
 - `quiz_attempts`
 - `certificates`
+
+Certificate rows track lifecycle status: `eligible`, `mint_pending`, `minted`, or `revoked`.
 
 ## Auth
 

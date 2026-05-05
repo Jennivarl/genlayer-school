@@ -11,6 +11,8 @@ The first backend slice uses Next.js route handlers and a local JSON store for d
 - `POST /api/progress/lesson` marks a lesson complete or incomplete.
 - `POST /api/quizzes/submit` grades course or Gen-Fren weekly quizzes and records attempts.
 - `GET /api/certificates/eligibility` returns certificate requirements and eligibility.
+- `GET /api/certificates` returns eligibility merged with stored certificate lifecycle records.
+- `POST /api/certificates/request` moves an eligible certificate record into `mint_pending`.
 
 ## Usernames
 
@@ -27,3 +29,13 @@ Development progress and profiles are stored in `.local-data/progress.json`, whi
 ## Supabase Path
 
 When ready, replace local mode with Supabase by setting `GENLAYER_SCHOOL_STORAGE_DRIVER=supabase` and applying the migrations in `supabase/migrations`.
+
+## Certificate Lifecycle
+
+Certificate records are stored separately from computed eligibility so the minting flow can survive refreshes, deployments, and future GenLayer contract calls.
+
+```text
+eligible -> mint_pending -> minted
+```
+
+Records can also be marked `revoked` for moderation or contract correction flows.

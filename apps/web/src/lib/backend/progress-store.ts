@@ -32,6 +32,9 @@ function createStore(): ProgressStore {
     getProgress: localStore.getProgress,
     setLessonCompletion: localStore.setLessonCompletion,
     recordQuizAttempt: localStore.recordQuizAttempt,
+    getCertificateRecords: localStore.getCertificateRecords,
+    syncEligibleCertificates: localStore.syncEligibleCertificates,
+    requestCertificateMint: localStore.requestCertificateMint,
   };
 }
 
@@ -43,4 +46,7 @@ export const updateProfile = store.updateProfile;
 export const getProgress = store.getProgress;
 export const setLessonCompletion = store.setLessonCompletion;
 export const recordQuizAttempt = store.recordQuizAttempt;
+export const getCertificateRecords = store.getCertificateRecords;
+export const syncEligibleCertificates = store.syncEligibleCertificates;
+export const requestCertificateMint = store.requestCertificateMint;
 export { normalizeLearnerId } from "./local-progress-store";

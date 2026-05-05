@@ -106,3 +106,16 @@ export type CertificateEligibility = {
   eligible: boolean;
   requirements: CertificateRequirement[];
 };
+
+export type CertificateStatus = "eligible" | "mint_pending" | "minted" | "revoked";
+
+export type CertificateRecord = {
+  id: string;
+  learnerId: string;
+  certificateSlug: string;
+  status: CertificateStatus;
+  contractAddress: string | null;
+  txHash: string | null;
+  issuedAt: string;
+  updatedAt: string;
+};
