@@ -152,6 +152,30 @@ h3 { font-size: 18px; margin-bottom: 8px; }
   font-size: 12px;
 }
 
+.status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.status-ready {
+  border-color: rgba(126, 231, 135, 0.42);
+  color: var(--accent);
+}
+
+.status-warning {
+  border-color: rgba(255, 200, 87, 0.48);
+  color: #ffc857;
+  background: rgba(255, 200, 87, 0.09);
+}
+
+.status-missing {
+  border-color: rgba(255, 107, 107, 0.5);
+  color: #ff8b8b;
+  background: rgba(255, 107, 107, 0.1);
+}
+
 .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 
 .button {

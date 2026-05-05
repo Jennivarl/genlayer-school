@@ -29,3 +29,7 @@ This repo starts with a production-minded monorepo foundation so the project can
 
 Privy is the planned auth provider for wallet-first learner identity. See docs/privy-auth.md.
 
+## Backend Diagnostics
+
+Use `/backend` while setting up deployments. It reports the active storage driver, Supabase readiness, Privy readiness, and production-required environment keys without exposing secret values.
+

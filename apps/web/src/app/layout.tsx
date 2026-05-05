@@ -11,6 +11,7 @@ const navItems = [
   { href: "/community-spotlight", label: "Community Spotlight" },
   { href: "/gen-fren-weekly", label: "Gen-Fren Weekly" },
   { href: "/resources", label: "Resources" },
+  { href: "/backend", label: "Backend" },
 ];
 
 export const metadata: Metadata = {
