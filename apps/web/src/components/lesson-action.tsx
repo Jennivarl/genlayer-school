@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import type { LearnerProgress } from "@genlayer-school/content";
 import { useAuth } from "./app-providers";
 
 type LessonActionProps = {
@@ -13,6 +14,26 @@ export function LessonAction({ courseSlug, lessonSlug, initiallyCompleted }: Les
   const auth = useAuth();
   const [completed, setCompleted] = useState(initiallyCompleted);
   const [saving, setSaving] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadCompletion() {
+      const response = await auth.authFetch("/api/progress");
+      if (!response.ok) return;
+      const payload = await response.json() as { progress?: LearnerProgress };
+      const key = `${courseSlug}/${lessonSlug}`;
+      if (!cancelled && payload.progress) {
+        setCompleted(payload.progress.completedLessons.includes(key));
+      }
+    }
+
+    if (auth.ready) void loadCompletion();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [auth, courseSlug, lessonSlug]);
 
   async function toggleLesson() {
     setSaving(true);
