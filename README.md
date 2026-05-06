@@ -51,3 +51,5 @@ Use `/backend` while setting up deployments. It reports the active storage drive
 
 See docs/deployment.md for the Vercel, Supabase, Privy, admin token, and production checklist flow.
 
+The repo includes `vercel.json` for root-based Vercel deployments. Use docs/release-checklist.md before sharing a deployment publicly.
+

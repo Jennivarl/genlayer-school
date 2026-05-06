@@ -64,18 +64,13 @@ Recommended settings:
 
 ```text
 Framework preset: Next.js
-Root directory: apps/web
-Build command: cd ../.. && npm.cmd run build
-Install command: cd ../.. && npm ci
+Root directory: repository root
+Build command: npm run build
+Install command: npm ci
 Output directory: apps/web/.next
 ```
 
-If Vercel runs from the repository root instead, use:
-
-```text
-Build command: npm run build
-Install command: npm ci
-```
+The repository includes `vercel.json` with these defaults.
 
 Set all production environment variables in Vercel before the first production deployment.
 
@@ -100,3 +95,5 @@ npm.cmd run typecheck
 npm.cmd run lint
 npm.cmd run build
 ```
+
+For the launch flow, use docs/release-checklist.md.
