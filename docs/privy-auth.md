@@ -40,3 +40,5 @@ That means the same storage layer works with local JSON today and Supabase later
 
 After login, learners can choose a username from the dashboard. Profile APIs use the verified Privy user ID when an access token is present, so usernames attach to privy:<privy-user-id> records.
 
+The dashboard also syncs Privy email and wallet address into the learner profile after sign-in. Usernames remain learner-controlled and are not inferred from Privy identity.
+

@@ -9,6 +9,8 @@ type AuthContextValue = {
   authenticated: boolean;
   learnerId: string;
   label: string;
+  email: string | null;
+  walletAddress: string | null;
   login: () => void;
   logout: () => void;
   authFetch: (input: RequestInfo | URL, init?: RequestInit) => Promise<Response>;
@@ -24,6 +26,8 @@ const DevAuthContext: AuthContextValue = {
   authenticated: false,
   learnerId: DEFAULT_LEARNER_ID,
   label: "Demo learner",
+  email: null,
+  walletAddress: null,
   login: () => undefined,
   logout: () => undefined,
   authFetch: (input, init) => fetch(input, init),
@@ -38,6 +42,8 @@ function getUserLabel(user: ReturnType<typeof usePrivy>["user"]): string {
 function PrivyAuthBridge({ children }: { children: ReactNode }) {
   const { ready, authenticated, user, login, logout, getAccessToken } = usePrivy();
   const learnerId = user?.id ? `privy:${user.id}` : DEFAULT_LEARNER_ID;
+  const email = user?.email?.address ?? null;
+  const walletAddress = user?.wallet?.address ?? null;
 
   const value: AuthContextValue = {
     configured: true,
@@ -45,6 +51,8 @@ function PrivyAuthBridge({ children }: { children: ReactNode }) {
     authenticated,
     learnerId,
     label: authenticated ? getUserLabel(user) : "Sign in",
+    email,
+    walletAddress,
     login: () => { void login(); },
     logout: () => { void logout(); },
     authFetch: async (input, init) => {

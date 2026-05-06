@@ -16,6 +16,7 @@ export function UsernameForm() {
   const [displayName, setDisplayName] = useState("");
   const [status, setStatus] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
+  const [syncingIdentity, setSyncingIdentity] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -30,6 +31,30 @@ export function UsernameForm() {
     }
 
     if (auth.ready) void loadProfile();
+
+    return () => { cancelled = true; };
+  }, [auth]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function syncPrivyIdentity() {
+      if (!auth.authenticated || (!auth.email && !auth.walletAddress)) return;
+      setSyncingIdentity(true);
+      const response = await auth.authFetch("/api/profile", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: auth.email,
+          walletAddress: auth.walletAddress,
+        }),
+      });
+      const data = await response.json() as ProfileResponse;
+      if (!cancelled && response.ok && data.profile) setProfile(data.profile);
+      if (!cancelled) setSyncingIdentity(false);
+    }
+
+    if (auth.ready) void syncPrivyIdentity();
 
     return () => { cancelled = true; };
   }, [auth]);
@@ -87,7 +112,10 @@ export function UsernameForm() {
           {saving ? "Saving" : "Save profile"}
         </button>
         <span className="pill">{profile?.username ? `@${profile.username}` : "No username yet"}</span>
+        {profile?.walletAddress && <span className="pill">{profile.walletAddress.slice(0, 6)}...{profile.walletAddress.slice(-4)}</span>}
+        {profile?.email && <span className="pill">{profile.email}</span>}
       </div>
+      {syncingIdentity && <p className="meta">Syncing Privy identity.</p>}
       {status && <p className="meta">{status}</p>}
     </article>
   );
