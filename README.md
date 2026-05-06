@@ -40,6 +40,8 @@ npm.cmd run build
 npm.cmd run smoke -- --base-url=http://localhost:3100
 ```
 
+GitHub Actions runs typecheck, lint, Vercel config validation, and production build on pushes to `main` and pull requests.
+
 ## Auth
 
 Privy is the planned auth provider for wallet-first learner identity. See docs/privy-auth.md.

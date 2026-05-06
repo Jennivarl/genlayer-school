@@ -5,6 +5,7 @@ Use this before promoting a deployment to the community.
 ## Code
 
 - `main` is pushed to GitHub.
+- GitHub Actions CI is passing on `main`.
 - `npm.cmd run typecheck` passes.
 - `npm.cmd run lint` passes.
 - `npm.cmd run build` passes.
