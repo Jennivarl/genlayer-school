@@ -1,14 +1,12 @@
 import { notFound } from "next/navigation";
-import { communitySpotlights, getCommunitySpotlight } from "@genlayer-school/content";
 import { ContentRenderer } from "@/components/content-renderer";
+import { getPublishedCommunitySpotlight } from "@/lib/backend/public-content";
 
-export function generateStaticParams() {
-  return communitySpotlights.map((spotlight) => ({ slug: spotlight.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export default async function SpotlightDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const spotlight = getCommunitySpotlight(slug);
+  const spotlight = await getPublishedCommunitySpotlight(slug);
   if (!spotlight) notFound();
 
   return (

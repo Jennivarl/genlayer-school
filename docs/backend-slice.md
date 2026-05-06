@@ -45,3 +45,5 @@ Records can also be marked `revoked` for moderation or contract correction flows
 ## Admin Content
 
 Admin content is intentionally off-chain. It stores weekly Gen-Fren summaries, prep quiz payloads, and monthly community spotlights in local JSON or Supabase. Production deployments should set `ADMIN_ACCESS_TOKEN`; requests must provide that token as `x-admin-token` or a bearer token.
+
+Published admin entries are merged into the public weekly and spotlight pages. Seed content remains the default fallback, while published entries with matching slugs override seed entries.

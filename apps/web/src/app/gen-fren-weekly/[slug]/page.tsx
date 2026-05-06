@@ -1,15 +1,13 @@
 import { notFound } from "next/navigation";
-import { getWeeklySummary, weeklySummaries } from "@genlayer-school/content";
 import { ContentRenderer } from "@/components/content-renderer";
 import { QuizCard } from "@/components/quiz-card";
+import { getPublishedWeeklySummary } from "@/lib/backend/public-content";
 
-export function generateStaticParams() {
-  return weeklySummaries.map((summary) => ({ slug: summary.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export default async function WeeklyDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const issue = getWeeklySummary(slug);
+  const issue = await getPublishedWeeklySummary(slug);
   if (!issue) notFound();
 
   return (

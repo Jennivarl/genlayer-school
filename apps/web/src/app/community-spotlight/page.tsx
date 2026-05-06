@@ -1,7 +1,11 @@
 import Link from "next/link";
-import { communitySpotlights } from "@genlayer-school/content";
+import { getPublishedCommunitySpotlights } from "@/lib/backend/public-content";
 
-export default function CommunitySpotlightPage() {
+export const dynamic = "force-dynamic";
+
+export default async function CommunitySpotlightPage() {
+  const spotlights = await getPublishedCommunitySpotlights();
+
   return (
     <div className="page">
       <p className="eyebrow">Monthly community spotlight</p>
@@ -9,7 +13,7 @@ export default function CommunitySpotlightPage() {
       <p className="lede">A monthly home for ecosystem stories, builder wins, tutorials, project updates, and community momentum.</p>
 
       <section className="section list">
-        {communitySpotlights.map((spotlight) => (
+        {spotlights.map((spotlight) => (
           <Link className="card" href={`/community-spotlight/${spotlight.slug}`} key={spotlight.slug}>
             <p className="meta">{spotlight.month}</p>
             <h2>{spotlight.title}</h2>
