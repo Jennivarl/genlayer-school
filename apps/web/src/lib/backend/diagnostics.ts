@@ -16,6 +16,11 @@ export type BackendDiagnostics = {
   productionReady: boolean;
   checks: BackendDiagnosticCheck[];
   missingRequiredKeys: string[];
+  deploymentChecklist: Array<{
+    label: string;
+    complete: boolean;
+    detail: string;
+  }>;
 };
 
 function hasEnv(name: string): boolean {
@@ -107,6 +112,34 @@ export function getBackendDiagnostics(): BackendDiagnostics {
   if (environment === "production" && !authRequired) missingRequiredKeys.push("PRIVY_AUTH_REQUIRED=true");
   if (environment === "production" && !adminAccessToken) missingRequiredKeys.push("ADMIN_ACCESS_TOKEN");
 
+  const deploymentChecklist = [
+    {
+      label: "Supabase migrations applied",
+      complete: storageDriver === "supabase",
+      detail: "Run all migrations in supabase/migrations and set the Supabase env vars.",
+    },
+    {
+      label: "Privy client configured",
+      complete: privyPublicAppId,
+      detail: "Set NEXT_PUBLIC_PRIVY_APP_ID for learner sign-in.",
+    },
+    {
+      label: "Privy server verification configured",
+      complete: privyAppId && privyVerificationKey,
+      detail: "Set PRIVY_APP_ID and PRIVY_VERIFICATION_KEY for protected API routes.",
+    },
+    {
+      label: "Production auth enforced",
+      complete: authRequired,
+      detail: "Set PRIVY_AUTH_REQUIRED=true before public launch.",
+    },
+    {
+      label: "Admin token configured",
+      complete: adminAccessToken,
+      detail: "Set ADMIN_ACCESS_TOKEN to protect admin and analytics operations.",
+    },
+  ];
+
   return {
     environment,
     storageDriver,
@@ -114,5 +147,6 @@ export function getBackendDiagnostics(): BackendDiagnostics {
     productionReady: missingRequiredKeys.length === 0 && checks.every((item) => item.status !== "missing"),
     checks,
     missingRequiredKeys,
+    deploymentChecklist,
   };
 }

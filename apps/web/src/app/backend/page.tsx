@@ -57,6 +57,21 @@ export default function BackendPage() {
           </div>
         </section>
       )}
+
+      <section className="section">
+        <h2>Deployment checklist</h2>
+        <div className="list">
+          {diagnostics.deploymentChecklist.map((item) => (
+            <article className="list-item" key={item.label}>
+              <div>
+                <strong>{item.label}</strong>
+                <p>{item.detail}</p>
+              </div>
+              <span className={`pill status-${item.complete ? "ready" : "warning"}`}>{item.complete ? "Done" : "Todo"}</span>
+            </article>
+          ))}
+        </div>
+      </section>
     </div>
   );
 }

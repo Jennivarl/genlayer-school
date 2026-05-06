@@ -21,9 +21,23 @@ packages/ui           Shared UI primitives
 docs                  Product, architecture, and operating notes
 ```
 
-## First Step
+## Quickstart
 
-This repo starts with a production-minded monorepo foundation so the project can grow into a real community platform.
+```powershell
+npm install
+Copy-Item .env.example .env.local
+npm.cmd run dev
+```
+
+The web app runs at `http://localhost:3100` when started with the existing local workflow.
+
+## Checks
+
+```powershell
+npm.cmd run typecheck
+npm.cmd run lint
+npm.cmd run build
+```
 
 ## Auth
 
@@ -32,4 +46,8 @@ Privy is the planned auth provider for wallet-first learner identity. See docs/p
 ## Backend Diagnostics
 
 Use `/backend` while setting up deployments. It reports the active storage driver, Supabase readiness, Privy readiness, and production-required environment keys without exposing secret values.
+
+## Deployment
+
+See docs/deployment.md for the Vercel, Supabase, Privy, admin token, and production checklist flow.
 
