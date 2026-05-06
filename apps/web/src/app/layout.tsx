@@ -13,6 +13,7 @@ const navItems = [
   { href: "/resources", label: "Resources" },
   { href: "/backend", label: "Backend" },
   { href: "/admin", label: "Admin" },
+  { href: "/analytics", label: "Analytics" },
 ];
 
 export const metadata: Metadata = {

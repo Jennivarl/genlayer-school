@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import type { CertificateRecord, LearnerProfile, LearnerProgress, QuizAttempt } from "@genlayer-school/content";
-import type { ProfileUpdateInput } from "./progress-store-types";
+import type { LearningAnalytics, ProfileUpdateInput } from "./progress-store-types";
 
 const DEFAULT_LEARNER_ID = "demo-learner";
 const DATA_DIR = path.resolve(process.cwd(), "..", "..", ".local-data");
@@ -248,4 +248,43 @@ export async function requestCertificateMint(input: {
     await writeDatabase(database);
     return updatedRecord;
   });
+}
+
+export async function getLearningAnalytics(): Promise<LearningAnalytics> {
+  const database = await readDatabase();
+  const progressRows = Object.values(database.learners);
+  const profiles = Object.values(database.profiles ?? {});
+  const certificateRows = Object.values(database.certificates ?? {}).flat();
+  const quizAttempts = progressRows.flatMap((progress) => (
+    progress.quizAttempts.map((attempt) => ({ learnerId: progress.learnerId, attempt }))
+  ));
+  const averageQuizPercent = quizAttempts.length === 0
+    ? 0
+    : Math.round(quizAttempts.reduce((total, item) => total + item.attempt.percent, 0) / quizAttempts.length);
+
+  return {
+    learnerCount: progressRows.length,
+    profileCount: profiles.length,
+    completedLessonCount: progressRows.reduce((total, progress) => total + progress.completedLessons.length, 0),
+    quizAttemptCount: quizAttempts.length,
+    passedQuizAttemptCount: quizAttempts.filter((item) => item.attempt.passed).length,
+    averageQuizPercent,
+    certificateStatusCounts: {
+      eligible: certificateRows.filter((record) => record.status === "eligible").length,
+      mint_pending: certificateRows.filter((record) => record.status === "mint_pending").length,
+      minted: certificateRows.filter((record) => record.status === "minted").length,
+      revoked: certificateRows.filter((record) => record.status === "revoked").length,
+    },
+    recentQuizAttempts: quizAttempts
+      .sort((a, b) => b.attempt.submittedAt.localeCompare(a.attempt.submittedAt))
+      .slice(0, 10)
+      .map(({ learnerId, attempt }) => ({
+        learnerId,
+        quizSlug: attempt.quizSlug,
+        quizKind: attempt.quizKind,
+        percent: attempt.percent,
+        passed: attempt.passed,
+        submittedAt: attempt.submittedAt,
+      })),
+  };
 }

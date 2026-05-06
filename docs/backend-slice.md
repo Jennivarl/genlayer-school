@@ -15,6 +15,7 @@ The first backend slice uses Next.js route handlers and a local JSON store for d
 - `POST /api/certificates/request` moves an eligible certificate record into `mint_pending`.
 - `GET /api/admin/content` lists editable weekly summaries and spotlights.
 - `POST /api/admin/content` creates or updates admin content as `draft` or `published`.
+- `GET /api/admin/analytics` returns protected learner, quiz, certificate, and content operations metrics.
 
 ## Usernames
 

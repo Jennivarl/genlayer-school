@@ -1,6 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 import type { CertificateRecord, CertificateStatus, LearnerProfile, LearnerProgress, QuizAttempt } from "@genlayer-school/content";
-import type { CertificateEligibilitySyncInput, CertificateMintRequestInput, LessonCompletionInput, ProfileUpdateInput, ProgressStore, QuizAttemptInput } from "./progress-store-types";
+import type { CertificateEligibilitySyncInput, CertificateMintRequestInput, LearningAnalytics, LessonCompletionInput, ProfileUpdateInput, ProgressStore, QuizAttemptInput } from "./progress-store-types";
 import { normalizeLearnerId, validateUsername } from "./local-progress-store";
 
 type SupabaseConfig = {
@@ -43,6 +43,19 @@ type CertificateRow = {
   tx_hash: string | null;
   issued_at: string;
   updated_at: string | null;
+};
+
+type AnalyticsLessonRow = {
+  learner_id: string;
+};
+
+type AnalyticsQuizRow = {
+  learner_id: string;
+  quiz_kind: "course" | "weekly";
+  quiz_slug: string;
+  percent: number;
+  passed: boolean;
+  submitted_at: string;
 };
 
 function nowIso(): string {
@@ -301,6 +314,66 @@ export function createSupabaseProgressStore(config: SupabaseConfig): ProgressSto
     return toCertificateRecord(data as CertificateRow);
   }
 
+  async function getLearningAnalytics(): Promise<LearningAnalytics> {
+    const [profilesResult, lessonsResult, attemptsResult, certificatesResult] = await Promise.all([
+      supabase
+        .from("learner_profiles")
+        .select("learner_id"),
+      supabase
+        .from("lesson_progress")
+        .select("learner_id"),
+      supabase
+        .from("quiz_attempts")
+        .select("learner_id, quiz_kind, quiz_slug, percent, passed, submitted_at")
+        .order("submitted_at", { ascending: false }),
+      supabase
+        .from("certificates")
+        .select("id, learner_id, certificate_slug, status, contract_address, tx_hash, issued_at, updated_at"),
+    ]);
+
+    if (profilesResult.error) throw new Error(`Supabase analytics profile read failed: ${profilesResult.error.message}`);
+    if (lessonsResult.error) throw new Error(`Supabase analytics lesson read failed: ${lessonsResult.error.message}`);
+    if (attemptsResult.error) throw new Error(`Supabase analytics quiz read failed: ${attemptsResult.error.message}`);
+    if (certificatesResult.error) throw new Error(`Supabase analytics certificate read failed: ${certificatesResult.error.message}`);
+
+    const profileRows = (profilesResult.data ?? []) as Array<{ learner_id: string }>;
+    const lessonRows = (lessonsResult.data ?? []) as AnalyticsLessonRow[];
+    const attemptRows = (attemptsResult.data ?? []) as AnalyticsQuizRow[];
+    const certificateRows = (certificatesResult.data ?? []) as CertificateRow[];
+    const learnerIds = new Set([
+      ...profileRows.map((row) => row.learner_id),
+      ...lessonRows.map((row) => row.learner_id),
+      ...attemptRows.map((row) => row.learner_id),
+      ...certificateRows.map((row) => row.learner_id),
+    ]);
+    const averageQuizPercent = attemptRows.length === 0
+      ? 0
+      : Math.round(attemptRows.reduce((total, row) => total + row.percent, 0) / attemptRows.length);
+
+    return {
+      learnerCount: learnerIds.size,
+      profileCount: profileRows.length,
+      completedLessonCount: lessonRows.length,
+      quizAttemptCount: attemptRows.length,
+      passedQuizAttemptCount: attemptRows.filter((row) => row.passed).length,
+      averageQuizPercent,
+      certificateStatusCounts: {
+        eligible: certificateRows.filter((row) => row.status === "eligible").length,
+        mint_pending: certificateRows.filter((row) => row.status === "mint_pending").length,
+        minted: certificateRows.filter((row) => row.status === "minted").length,
+        revoked: certificateRows.filter((row) => row.status === "revoked").length,
+      },
+      recentQuizAttempts: attemptRows.slice(0, 10).map((row) => ({
+        learnerId: row.learner_id,
+        quizSlug: row.quiz_slug,
+        quizKind: row.quiz_kind,
+        percent: row.percent,
+        passed: row.passed,
+        submittedAt: row.submitted_at,
+      })),
+    };
+  }
+
   return {
     driver: "supabase",
     getProfile,
@@ -311,5 +384,6 @@ export function createSupabaseProgressStore(config: SupabaseConfig): ProgressSto
     getCertificateRecords,
     syncEligibleCertificates,
     requestCertificateMint,
+    getLearningAnalytics,
   };
 }

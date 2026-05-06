@@ -1,4 +1,4 @@
-import type { CertificateRecord, LearnerProfile, LearnerProgress, QuizAttempt } from "@genlayer-school/content";
+import type { CertificateRecord, CertificateStatus, LearnerProfile, LearnerProgress, QuizAttempt } from "@genlayer-school/content";
 
 export type LessonCompletionInput = {
   learnerId?: string | null;
@@ -30,6 +30,24 @@ export type ProfileUpdateInput = {
   email?: string | null;
 };
 
+export type LearningAnalytics = {
+  learnerCount: number;
+  profileCount: number;
+  completedLessonCount: number;
+  quizAttemptCount: number;
+  passedQuizAttemptCount: number;
+  averageQuizPercent: number;
+  certificateStatusCounts: Record<CertificateStatus, number>;
+  recentQuizAttempts: Array<{
+    learnerId: string;
+    quizSlug: string;
+    quizKind: "course" | "weekly";
+    percent: number;
+    passed: boolean;
+    submittedAt: string;
+  }>;
+};
+
 export type ProgressStore = {
   driver: "local" | "supabase";
   getProfile(learnerId?: string | null): Promise<LearnerProfile>;
@@ -40,4 +58,5 @@ export type ProgressStore = {
   getCertificateRecords(learnerId?: string | null): Promise<CertificateRecord[]>;
   syncEligibleCertificates(input: CertificateEligibilitySyncInput): Promise<CertificateRecord[]>;
   requestCertificateMint(input: CertificateMintRequestInput): Promise<CertificateRecord>;
+  getLearningAnalytics(): Promise<LearningAnalytics>;
 };
