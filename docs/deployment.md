@@ -40,11 +40,12 @@ Required values:
 NEXT_PUBLIC_PRIVY_APP_ID=...
 NEXT_PUBLIC_PRIVY_CLIENT_ID=...
 PRIVY_APP_ID=...
-PRIVY_VERIFICATION_KEY=...
+PRIVY_APP_SECRET=...
 PRIVY_AUTH_REQUIRED=true
 ```
 
 `NEXT_PUBLIC_PRIVY_CLIENT_ID` can be left empty if Privy does not require a separate client ID for the app setup.
+`PRIVY_VERIFICATION_KEY` is optional and can be set as a fallback or JWT verification override.
 
 ## 3. Admin Access
 
@@ -78,7 +79,7 @@ Set all production environment variables in Vercel before the first production d
 
 - Supabase migrations are applied.
 - `GENLAYER_SCHOOL_STORAGE_DRIVER=supabase`.
-- Privy client and server verification are configured.
+- Privy client and server verification are configured with `PRIVY_APP_SECRET`.
 - `PRIVY_AUTH_REQUIRED=true`.
 - `ADMIN_ACCESS_TOKEN` is set.
 - `/backend` shows no missing production keys.

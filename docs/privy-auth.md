@@ -21,6 +21,14 @@ Set:
 
 ```text
 PRIVY_APP_ID=...
+PRIVY_APP_SECRET=...
+```
+
+`PRIVY_APP_SECRET` is the preferred server-side credential for the Privy Node SDK. Keep it out of Git and set it only in `.env.local` or your deployment provider's secret environment variables.
+
+You can also provide a JWT verification key as a fallback or override:
+
+```text
 PRIVY_VERIFICATION_KEY=...
 ```
 

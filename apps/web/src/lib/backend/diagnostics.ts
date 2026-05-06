@@ -44,7 +44,9 @@ export function getBackendDiagnostics(): BackendDiagnostics {
   const supabaseServiceRole = hasEnv("SUPABASE_SERVICE_ROLE_KEY");
   const privyPublicAppId = hasEnv("NEXT_PUBLIC_PRIVY_APP_ID");
   const privyAppId = hasEnv("PRIVY_APP_ID") || privyPublicAppId;
+  const privyAppSecret = hasEnv("PRIVY_APP_SECRET");
   const privyVerificationKey = hasEnv("PRIVY_VERIFICATION_KEY");
+  const privyServerConfigured = privyAppId && (privyAppSecret || privyVerificationKey);
   const authRequired = process.env.PRIVY_AUTH_REQUIRED === "true";
   const adminAccessToken = hasEnv("ADMIN_ACCESS_TOKEN");
 
@@ -74,12 +76,12 @@ export function getBackendDiagnostics(): BackendDiagnostics {
         : "Set NEXT_PUBLIC_PRIVY_APP_ID so learners can sign in with Privy.",
     ),
     check(
-      privyAppId && privyVerificationKey ? "ready" : authRequired || environment === "production" ? "missing" : "warning",
+      privyServerConfigured ? "ready" : authRequired || environment === "production" ? "missing" : "warning",
       "privy-server",
       "Privy server verification",
-      privyAppId && privyVerificationKey
+      privyServerConfigured
         ? "Privy access token verification is configured for protected API routes."
-        : "Set PRIVY_APP_ID and PRIVY_VERIFICATION_KEY before requiring authenticated progress writes.",
+        : "Set PRIVY_APP_ID and either PRIVY_APP_SECRET or PRIVY_VERIFICATION_KEY before requiring authenticated progress writes.",
     ),
     check(
       authRequired ? "ready" : environment === "production" ? "warning" : "ready",
@@ -107,7 +109,7 @@ export function getBackendDiagnostics(): BackendDiagnostics {
   if (environment === "production" || authRequired) {
     if (!privyPublicAppId) missingRequiredKeys.push("NEXT_PUBLIC_PRIVY_APP_ID");
     if (!privyAppId) missingRequiredKeys.push("PRIVY_APP_ID");
-    if (!privyVerificationKey) missingRequiredKeys.push("PRIVY_VERIFICATION_KEY");
+    if (!privyAppSecret && !privyVerificationKey) missingRequiredKeys.push("PRIVY_APP_SECRET or PRIVY_VERIFICATION_KEY");
   }
   if (environment === "production" && !authRequired) missingRequiredKeys.push("PRIVY_AUTH_REQUIRED=true");
   if (environment === "production" && !adminAccessToken) missingRequiredKeys.push("ADMIN_ACCESS_TOKEN");
@@ -125,8 +127,8 @@ export function getBackendDiagnostics(): BackendDiagnostics {
     },
     {
       label: "Privy server verification configured",
-      complete: privyAppId && privyVerificationKey,
-      detail: "Set PRIVY_APP_ID and PRIVY_VERIFICATION_KEY for protected API routes.",
+      complete: privyServerConfigured,
+      detail: "Set PRIVY_APP_ID and either PRIVY_APP_SECRET or PRIVY_VERIFICATION_KEY for protected API routes.",
     },
     {
       label: "Production auth enforced",
