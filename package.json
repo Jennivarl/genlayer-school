@@ -11,7 +11,8 @@
     "dev": "npm run dev -w @genlayer-school/web",
     "build": "npm run build -w @genlayer-school/web",
     "lint": "npm run lint -w @genlayer-school/web",
-    "typecheck": "npm run typecheck -w @genlayer-school/web"
+    "typecheck": "npm run typecheck -w @genlayer-school/web",
+    "smoke": "node scripts/smoke-test.mjs"
   },
   "engines": {
     "node": ">=20"

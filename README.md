@@ -37,6 +37,7 @@ The web app runs at `http://localhost:3100` when started with the existing local
 npm.cmd run typecheck
 npm.cmd run lint
 npm.cmd run build
+npm.cmd run smoke -- --base-url=http://localhost:3100
 ```
 
 ## Auth

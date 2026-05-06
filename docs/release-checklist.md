@@ -8,6 +8,7 @@ Use this before promoting a deployment to the community.
 - `npm.cmd run typecheck` passes.
 - `npm.cmd run lint` passes.
 - `npm.cmd run build` passes.
+- `npm.cmd run smoke -- --base-url=<deployment-url>` passes.
 - `/backend` has no missing production keys.
 
 ## Supabase
