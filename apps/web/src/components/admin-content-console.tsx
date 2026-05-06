@@ -18,6 +18,11 @@ type AdminContentResponse = {
   storageDriver?: string;
   entries?: AdminContentEntry[];
   entry?: AdminContentEntry;
+  bootstrapped?: {
+    weekly: number;
+    spotlight: number;
+    total: number;
+  };
   error?: string;
 };
 
@@ -180,6 +185,7 @@ export function AdminContentConsole() {
   const [storageDriver, setStorageDriver] = useState("unknown");
   const [message, setMessage] = useState<string | null>(null);
   const [savingKind, setSavingKind] = useState<AdminContentKind | null>(null);
+  const [bootstrappingStatus, setBootstrappingStatus] = useState<AdminContentStatus | null>(null);
 
   const counts = useMemo(() => ({
     weekly: entries.filter((entry) => entry.kind === "weekly").length,
@@ -287,6 +293,32 @@ export function AdminContentConsole() {
     setSavingKind(null);
   }
 
+  async function bootstrapSeedContent(status: AdminContentStatus) {
+    if (locked) {
+      setMessage("Unlock admin before bootstrapping content.");
+      return;
+    }
+
+    setBootstrappingStatus(status);
+    setMessage(null);
+
+    const response = await fetch("/api/admin/content/bootstrap", {
+      method: "POST",
+      headers: getHeaders(token),
+      body: JSON.stringify({ status }),
+    });
+    const payload = await response.json() as AdminContentResponse;
+
+    if (!response.ok) {
+      setMessage(payload.error ?? "Could not bootstrap content.");
+    } else {
+      setMessage(`Bootstrapped ${payload.bootstrapped?.total ?? 0} seed entries as ${status}.`);
+      await loadEntries();
+    }
+
+    setBootstrappingStatus(null);
+  }
+
   function loadEntry(entry: AdminContentEntry) {
     if (locked) {
       setMessage("Unlock admin before editing content.");
@@ -384,6 +416,22 @@ export function AdminContentConsole() {
           <p className="meta">Content tools paused</p>
           <h2>Unlock admin to edit</h2>
           <p>Drafting and publishing controls stay hidden until this browser session is unlocked.</p>
+        </section>
+      )}
+
+      {!locked && (
+        <section className="section card">
+          <p className="meta">Bootstrap</p>
+          <h2>Seed admin content</h2>
+          <p>Copy the built-in weekly summary and community spotlight content into the editable admin store.</p>
+          <div className="cta-row">
+            <button className="button compact" disabled={bootstrappingStatus !== null} type="button" onClick={() => bootstrapSeedContent("draft")}>
+              {bootstrappingStatus === "draft" ? "Bootstrapping" : "Seed as drafts"}
+            </button>
+            <button className="button secondary compact" disabled={bootstrappingStatus !== null} type="button" onClick={() => bootstrapSeedContent("published")}>
+              {bootstrappingStatus === "published" ? "Publishing" : "Seed as published"}
+            </button>
+          </div>
         </section>
       )}
 

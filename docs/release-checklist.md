@@ -30,6 +30,7 @@ Use this before promoting a deployment to the community.
 - `ADMIN_ACCESS_TOKEN` is set.
 - `/admin` unlocks with the token.
 - `/analytics` loads with the token.
+- Seed content is bootstrapped into admin content if this is a fresh environment.
 - A weekly summary can be saved as draft.
 - A test spotlight can be published and appears publicly.
 
