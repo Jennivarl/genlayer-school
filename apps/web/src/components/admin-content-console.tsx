@@ -21,6 +21,8 @@ type AdminContentResponse = {
   error?: string;
 };
 
+const ADMIN_TOKEN_SESSION_KEY = "genlayer-school-admin-token";
+
 type WeeklyForm = {
   slug: string;
   weekOf: string;
@@ -169,7 +171,9 @@ function validateSpotlight(payload: CommunitySpotlight): string | null {
 }
 
 export function AdminContentConsole() {
+  const [draftToken, setDraftToken] = useState("");
   const [token, setToken] = useState("");
+  const [locked, setLocked] = useState(true);
   const [weekly, setWeekly] = useState<WeeklyForm>(() => toWeeklyForm(weeklySummaries[0]));
   const [spotlight, setSpotlight] = useState<SpotlightForm>(() => toSpotlightForm(communitySpotlights[0]));
   const [entries, setEntries] = useState<AdminContentEntry[]>([]);
@@ -210,18 +214,50 @@ export function AdminContentConsole() {
     let cancelled = false;
 
     async function loadInitialEntries() {
-      const { response, payload } = await fetchEntries("");
+      const savedToken = window.sessionStorage.getItem(ADMIN_TOKEN_SESSION_KEY) ?? "";
+      const { response, payload } = await fetchEntries(savedToken);
       if (!cancelled) applyEntriesResponse(response, payload);
+      if (!cancelled && savedToken) {
+        setToken(savedToken);
+        setDraftToken(savedToken);
+        setLocked(false);
+      }
     }
 
-    void loadInitialEntries();
+    window.setTimeout(() => {
+      void loadInitialEntries();
+    }, 0);
 
     return () => {
       cancelled = true;
     };
   }, [applyEntriesResponse, fetchEntries]);
 
+  async function unlockAdmin() {
+    const nextToken = draftToken.trim();
+    window.sessionStorage.setItem(ADMIN_TOKEN_SESSION_KEY, nextToken);
+    setToken(nextToken);
+    setLocked(false);
+    setMessage(nextToken ? "Admin unlocked for this browser session." : "Admin unlocked in local mode.");
+    await loadEntries(nextToken);
+  }
+
+  function lockAdmin() {
+    window.sessionStorage.removeItem(ADMIN_TOKEN_SESSION_KEY);
+    setToken("");
+    setDraftToken("");
+    setLocked(true);
+    setEntries([]);
+    setStorageDriver("locked");
+    setMessage("Admin locked.");
+  }
+
   async function save(kind: AdminContentKind, status: AdminContentStatus) {
+    if (locked) {
+      setMessage("Unlock admin before saving content.");
+      return;
+    }
+
     setSavingKind(kind);
     setMessage(null);
 
@@ -252,6 +288,11 @@ export function AdminContentConsole() {
   }
 
   function loadEntry(entry: AdminContentEntry) {
+    if (locked) {
+      setMessage("Unlock admin before editing content.");
+      return;
+    }
+
     if (entry.kind === "weekly") setWeekly(toWeeklyForm(entry.payload as WeeklySummary));
     else setSpotlight(toSpotlightForm(entry.payload as CommunitySpotlight));
     setMessage(`Loaded ${entry.title}.`);
@@ -315,25 +356,38 @@ export function AdminContentConsole() {
 
       <section className="section card">
         <p className="meta">Admin access</p>
-        <h2>Token</h2>
+        <div className="status-row">
+          <h2>{locked ? "Locked" : "Unlocked"}</h2>
+          <span className={`pill status-${locked ? "warning" : "ready"}`}>{locked ? "locked" : "session active"}</span>
+        </div>
         <div className="form-grid">
           <label>
             <span>Admin token</span>
             <input
-              onChange={(event) => setToken(event.target.value)}
+              onChange={(event) => setDraftToken(event.target.value)}
               placeholder="Only required when ADMIN_ACCESS_TOKEN is set"
               type="password"
-              value={token}
+              value={draftToken}
             />
           </label>
         </div>
         <div className="cta-row">
-          <button className="button secondary compact" type="button" onClick={() => loadEntries()}>Refresh</button>
+          <button className="button compact" type="button" onClick={unlockAdmin}>Unlock admin</button>
+          <button className="button secondary compact" disabled={locked} type="button" onClick={lockAdmin}>Lock admin</button>
+          <button className="button secondary compact" disabled={locked} type="button" onClick={() => loadEntries()}>Refresh</button>
           {message && <span className="pill">{message}</span>}
         </div>
       </section>
 
-      <section className="section grid two">
+      {locked && (
+        <section className="section card">
+          <p className="meta">Content tools paused</p>
+          <h2>Unlock admin to edit</h2>
+          <p>Drafting and publishing controls stay hidden until this browser session is unlocked.</p>
+        </section>
+      )}
+
+      {!locked && <section className="section grid two">
         <article className="card admin-form">
           <p className="meta">Gen-Fren weekly</p>
           <h2>Summary and prep quiz</h2>
@@ -428,9 +482,9 @@ export function AdminContentConsole() {
             <button className="button secondary compact" disabled={savingKind === "spotlight"} type="button" onClick={() => save("spotlight", "published")}>Publish</button>
           </div>
         </article>
-      </section>
+      </section>}
 
-      <section className="section">
+      {!locked && <section className="section">
         <h2>Content queue</h2>
         <div className="list">
           {entries.map((entry) => (
@@ -444,7 +498,7 @@ export function AdminContentConsole() {
           ))}
           {entries.length === 0 && <article className="card"><p>No admin content entries yet.</p></article>}
         </div>
-      </section>
+      </section>}
     </>
   );
 }
