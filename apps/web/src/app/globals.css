@@ -322,9 +322,77 @@ button:disabled {
   padding: 0 12px;
 }
 
+.field-block,
+.admin-form {
+  display: grid;
+  gap: 14px;
+}
+
+.field-block {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.field-block textarea,
+.stack-editor input,
+.stack-editor select,
+.inline-editor input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-2);
+  color: var(--text);
+  font: inherit;
+  padding: 10px 12px;
+}
+
+.field-block textarea {
+  min-height: 160px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.sub-editor {
+  display: grid;
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.inline-editor {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.stack-editor {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.preview-panel {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-2);
+}
+
+.inline-actions {
+  margin-top: 0;
+  justify-content: flex-end;
+}
+
 .form-grid input:focus,
 .form-grid select:focus,
-.editor-card textarea:focus {
+.editor-card textarea:focus,
+.field-block textarea:focus,
+.stack-editor input:focus,
+.stack-editor select:focus,
+.inline-editor input:focus {
   border-color: var(--accent);
   outline: none;
 }
