@@ -25,7 +25,7 @@ docs                  Product, architecture, and operating notes
 
 ```powershell
 npm install
-Copy-Item .env.example .env.local
+Copy-Item .env.example apps/web/.env.local
 npm.cmd run dev
 ```
 

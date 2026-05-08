@@ -14,7 +14,7 @@ GenLayer School currently supports two backend storage modes:
    - `supabase/migrations/0002_add_usernames.sql`
    - `supabase/migrations/0003_certificate_record_updates.sql`
    - `supabase/migrations/0004_admin_content_entries.sql`
-3. Copy `.env.example` to `.env.local`.
+3. Copy `.env.example` to `apps/web/.env.local` for local development.
 4. Fill:
 
 ```text

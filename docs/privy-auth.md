@@ -11,6 +11,8 @@ NEXT_PUBLIC_PRIVY_APP_ID=...
 NEXT_PUBLIC_PRIVY_CLIENT_ID=...
 ```
 
+For local development, put these values in `apps/web/.env.local`. Deployment providers such as Vercel should receive them through their environment variable settings.
+
 `NEXT_PUBLIC_PRIVY_CLIENT_ID` is optional for web app clients, but useful when you configure separate app clients for staging/production.
 
 ## Server verification

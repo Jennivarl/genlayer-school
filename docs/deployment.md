@@ -89,6 +89,12 @@ Set all production environment variables in Vercel before the first production d
 
 ## 6. Local Verification
 
+For local development, copy the root env template into the web app workspace:
+
+```powershell
+Copy-Item .env.example apps/web/.env.local
+```
+
 Run before deploying:
 
 ```powershell
