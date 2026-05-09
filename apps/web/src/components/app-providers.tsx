@@ -3,6 +3,8 @@
 import { createContext, useContext, type ReactNode } from "react";
 import { PrivyProvider, usePrivy } from "@privy-io/react-auth";
 
+type PrivyLoginMethod = "email" | "wallet" | "google" | "github";
+
 type AuthContextValue = {
   configured: boolean;
   ready: boolean;
@@ -19,6 +21,17 @@ type AuthContextValue = {
 const DEFAULT_LEARNER_ID = "demo-learner";
 const privyAppId = process.env.NEXT_PUBLIC_PRIVY_APP_ID;
 const privyClientId = process.env.NEXT_PUBLIC_PRIVY_CLIENT_ID;
+const supportedLoginMethods = new Set<PrivyLoginMethod>(["email", "wallet", "google", "github"]);
+
+function getPrivyLoginMethods(): PrivyLoginMethod[] {
+  const raw = process.env.NEXT_PUBLIC_PRIVY_LOGIN_METHODS;
+  const methods = raw
+    ?.split(",")
+    .map((method) => method.trim().toLowerCase())
+    .filter((method): method is PrivyLoginMethod => supportedLoginMethods.has(method as PrivyLoginMethod));
+
+  return methods?.length ? methods : ["email", "wallet"];
+}
 
 const DevAuthContext: AuthContextValue = {
   configured: false,
@@ -76,7 +89,7 @@ export function AppProviders({ children }: { children: ReactNode }) {
       appId={privyAppId}
       clientId={privyClientId}
       config={{
-        loginMethods: ["wallet", "email", "google", "github"],
+        loginMethods: getPrivyLoginMethods(),
         appearance: {
           theme: "dark",
           accentColor: "#7ee787",

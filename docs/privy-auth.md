@@ -9,11 +9,14 @@ Create a Privy app in the dashboard, then set:
 ```text
 NEXT_PUBLIC_PRIVY_APP_ID=...
 NEXT_PUBLIC_PRIVY_CLIENT_ID=...
+NEXT_PUBLIC_PRIVY_LOGIN_METHODS=email,wallet
 ```
 
 For local development, put these values in `apps/web/.env.local`. Deployment providers such as Vercel should receive them through their environment variable settings.
 
 `NEXT_PUBLIC_PRIVY_CLIENT_ID` is optional for web app clients, but useful when you configure separate app clients for staging/production.
+
+`NEXT_PUBLIC_PRIVY_LOGIN_METHODS` should only list methods enabled in the Privy dashboard. The app defaults to `email,wallet`; add `google` or `github` after enabling those providers in Privy.
 
 ## Server verification
 
