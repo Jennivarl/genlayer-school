@@ -17,6 +17,7 @@ const publicChecks = [
   { path: "/regions", expectJson: false },
   { path: "/regions/india", expectJson: false },
   { path: "/regions/latam/quiz", expectJson: false },
+  { path: "/regions/nigeria/certificate", expectJson: false },
   { path: "/backend", expectJson: false },
   { path: "/gen-fren-weekly", expectJson: false },
   { path: "/community-spotlight", expectJson: false },

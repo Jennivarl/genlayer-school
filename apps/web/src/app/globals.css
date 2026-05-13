@@ -490,3 +490,16 @@ button:disabled {
   padding: 18px;
   line-height: 1.6;
 }
+
+.certificate-preview-card {
+  min-height: auto;
+  padding: 12px;
+}
+
+.certificate-canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  border-radius: 6px;
+  background: #f8f4ea;
+}

@@ -30,7 +30,10 @@ export default async function RegionPage({ params }: { params: Promise<{ regionS
           <h2>{track.quiz.title}</h2>
           <p className="meta">Pass mark: {track.quiz.passPercent}%</p>
           <p>Complete the regional basics, then pass the quiz to move toward the regional certificate.</p>
-          <Link className="button" href={`/regions/${track.slug}/quiz`}>Take regional quiz</Link>
+          <div className="cta-row">
+            <Link className="button" href={`/regions/${track.slug}/quiz`}>Take regional quiz</Link>
+            <Link className="button secondary" href={`/regions/${track.slug}/certificate`}>Preview certificate</Link>
+          </div>
         </article>
       </section>
 
