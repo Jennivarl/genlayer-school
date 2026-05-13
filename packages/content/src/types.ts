@@ -29,12 +29,41 @@ export type Quiz = {
   questions: QuizQuestion[];
 };
 
+export type QuizKind = "course" | "weekly" | "regional";
+
 export type Course = {
   slug: string;
   title: string;
   level: "Beginner" | "Intermediate" | "Advanced";
   description: string;
   outcomes: string[];
+  lessons: Lesson[];
+  quiz: Quiz;
+};
+
+export type RegionSlug =
+  | "china"
+  | "india"
+  | "indonesia"
+  | "latam"
+  | "nigeria"
+  | "russia"
+  | "korea"
+  | "turkey"
+  | "ukraine"
+  | "vietnam";
+
+export type RegionalTrack = {
+  slug: RegionSlug;
+  regionName: string;
+  nativeRegionName: string;
+  languageName: string;
+  nativeLanguageName: string;
+  locale: string;
+  title: string;
+  description: string;
+  unityMessage: string;
+  certificateTitle: string;
   lessons: Lesson[];
   quiz: Quiz;
 };
@@ -68,7 +97,7 @@ export type WeeklySummary = {
 
 export type QuizAttempt = {
   id: string;
-  quizKind: "course" | "weekly";
+  quizKind: QuizKind;
   quizSlug: string;
   score: number;
   total: number;

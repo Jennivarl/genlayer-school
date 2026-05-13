@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { courses } from "@genlayer-school/content";
+import { courses, regionalTracks } from "@genlayer-school/content";
 
 export default function LearnPage() {
   return (
@@ -7,6 +7,15 @@ export default function LearnPage() {
       <p className="eyebrow">Academy</p>
       <h1>Learning tracks</h1>
       <p className="lede">Start with GenLayer fundamentals, then move toward practical Intelligent Contract and frontend integration work.</p>
+
+      <section className="section card">
+        <p className="eyebrow">Regional school</p>
+        <h2>Learn GenLayer in native languages</h2>
+        <p>
+          The regional school now includes {regionalTracks.length} native-language tracks for community members across China, India, Indonesia, LATAM, Nigeria, Russia, Korea, Turkey, Ukraine, and Vietnam.
+        </p>
+        <Link className="button" href="/regions">Open regional school</Link>
+      </section>
 
       <section className="section grid two">
         {courses.map((course) => (

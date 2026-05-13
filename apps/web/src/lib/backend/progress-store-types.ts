@@ -1,4 +1,4 @@
-import type { CertificateRecord, CertificateStatus, LearnerProfile, LearnerProgress, QuizAttempt } from "@genlayer-school/content";
+import type { CertificateRecord, CertificateStatus, LearnerProfile, LearnerProgress, QuizAttempt, QuizKind } from "@genlayer-school/content";
 
 export type LessonCompletionInput = {
   learnerId?: string | null;
@@ -41,7 +41,7 @@ export type LearningAnalytics = {
   recentQuizAttempts: Array<{
     learnerId: string;
     quizSlug: string;
-    quizKind: "course" | "weekly";
+    quizKind: QuizKind;
     percent: number;
     passed: boolean;
     submittedAt: string;

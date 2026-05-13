@@ -1,5 +1,5 @@
 import type { CertificateEligibility, LearnerProgress, Quiz, QuizAttempt } from "@genlayer-school/content";
-import { courses, weeklySummaries } from "@genlayer-school/content";
+import { courses, regionalTracks, weeklySummaries } from "@genlayer-school/content";
 
 export function findCourseQuiz(quizSlug: string): { quiz: Quiz; courseSlug: string } | null {
   for (const course of courses) {
@@ -11,6 +11,13 @@ export function findCourseQuiz(quizSlug: string): { quiz: Quiz; courseSlug: stri
 export function findWeeklyQuiz(quizSlug: string): { quiz: Quiz; weeklySlug: string } | null {
   for (const issue of weeklySummaries) {
     if (issue.quiz.slug === quizSlug) return { quiz: issue.quiz, weeklySlug: issue.slug };
+  }
+  return null;
+}
+
+export function findRegionalQuiz(quizSlug: string): { quiz: Quiz; regionSlug: string } | null {
+  for (const track of regionalTracks) {
+    if (track.quiz.slug === quizSlug) return { quiz: track.quiz, regionSlug: track.slug };
   }
   return null;
 }
@@ -34,7 +41,9 @@ export function gradeQuiz(quiz: Quiz, answers: Record<string, number>): Omit<Qui
 }
 
 export function summarizeProgress(progress: LearnerProgress) {
-  const lessonTotal = courses.reduce((total, course) => total + course.lessons.length, 0);
+  const courseLessonTotal = courses.reduce((total, course) => total + course.lessons.length, 0);
+  const regionalLessonTotal = regionalTracks.reduce((total, track) => total + track.lessons.length, 0);
+  const lessonTotal = courseLessonTotal + regionalLessonTotal;
   const completedLessonCount = progress.completedLessons.length;
   const passedQuizSlugs = new Set(progress.quizAttempts.filter((attempt) => attempt.passed).map((attempt) => attempt.quizSlug));
 
@@ -50,7 +59,7 @@ export function summarizeProgress(progress: LearnerProgress) {
 }
 
 export function getCertificateEligibility(progress: LearnerProgress): CertificateEligibility[] {
-  return courses.map((course) => {
+  const courseCertificates = courses.map((course) => {
     const lessonRequirements = course.lessons.map((lesson) => ({
       label: `Complete ${lesson.title}`,
       complete: progress.completedLessons.includes(`${course.slug}/${lesson.slug}`),
@@ -68,4 +77,25 @@ export function getCertificateEligibility(progress: LearnerProgress): Certificat
       requirements,
     };
   });
+
+  const regionalCertificates = regionalTracks.map((track) => {
+    const lessonRequirements = track.lessons.map((lesson) => ({
+      label: `Complete ${lesson.title}`,
+      complete: progress.completedLessons.includes(`${track.slug}/${lesson.slug}`),
+    }));
+    const quizPassed = progress.quizAttempts.some((attempt) => attempt.quizSlug === track.quiz.slug && attempt.passed);
+    const requirements = [
+      ...lessonRequirements,
+      { label: `Pass ${track.quiz.title}`, complete: quizPassed },
+    ];
+
+    return {
+      certificateSlug: `${track.slug}-regional-certificate`,
+      title: track.certificateTitle,
+      eligible: requirements.every((requirement) => requirement.complete),
+      requirements,
+    };
+  });
+
+  return [...courseCertificates, ...regionalCertificates];
 }

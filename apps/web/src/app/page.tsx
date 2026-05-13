@@ -1,42 +1,56 @@
 import Link from "next/link";
-import { communitySpotlights, courses, weeklySummaries } from "@genlayer-school/content";
+import { communitySpotlights, courses, regionalTracks, weeklySummaries } from "@genlayer-school/content";
 
 export default function HomePage() {
   const courseCount = courses.length;
   const lessonCount = courses.reduce((total, course) => total + course.lessons.length, 0);
+  const regionalLessonCount = regionalTracks.reduce((total, track) => total + track.lessons.length, 0);
 
   return (
     <div className="page">
       <section className="hero">
         <div>
-          <p className="eyebrow">Community academy for GenLayer</p>
-          <h1>Learn. Build. Certify. Stay ready.</h1>
+          <p className="eyebrow">Regional GenLayer School</p>
+          <h1>Learn GenLayer in your native language.</h1>
           <p className="lede">
-            GenLayer School is a long-term learning hub for GenLayer builders, Gen-Fren quiz prep, community spotlights, and practical Intelligent Contract education.
+            GenLayer School helps community members understand the GenLayer ecosystem in the languages they think, build, and teach in. Each region learns the same AI-native foundation, then comes together as one global GenLayer community.
           </p>
           <div className="cta-row">
-            <Link className="button" href="/learn">Start learning</Link>
+            <Link className="button" href="/regions">Choose your region</Link>
             <Link className="button secondary" href="/gen-fren-weekly">Prep for Gen-Fren</Link>
           </div>
         </div>
         <aside className="card highlight">
-          <p className="eyebrow">Foundation status</p>
-          <h2>{courseCount} tracks, {lessonCount} lessons</h2>
+          <p className="eyebrow">Global classroom</p>
+          <h2>{regionalTracks.length} regions, {regionalLessonCount} regional lessons</h2>
           <p>
-            The first content model is live: courses, weekly summaries, community spotlights, and certificate pathways are all represented as typed data.
+            Regional GenLayer School starts with China, India, Indonesia, LATAM, Nigeria, Russia, Korea, Turkey, Ukraine, and Vietnam. Each track includes native-language basics, a quiz, and a certificate path.
           </p>
           <div className="pill-row">
-            <span className="pill">Python contracts</span>
-            <span className="pill">GenLayerJS-ready</span>
-            <span className="pill">Community-first</span>
+            <span className="pill">Native-language learning</span>
+            <span className="pill">Regional certificates</span>
+            <span className="pill">One GenLayer community</span>
           </div>
         </aside>
+      </section>
+
+      <section className="section">
+        <p className="eyebrow">Choose a regional classroom</p>
+        <div className="region-grid">
+          {regionalTracks.map((track) => (
+            <Link className="card region-card" href={`/regions/${track.slug}`} key={track.slug} lang={track.locale}>
+              <span className="meta">{track.regionName} - {track.languageName}</span>
+              <h3>{track.nativeRegionName}</h3>
+              <p>{track.description}</p>
+            </Link>
+          ))}
+        </div>
       </section>
 
       <section className="section grid">
         <Link className="card" href="/learn">
           <h3>Academy</h3>
-          <p>Structured courses for GenLayer concepts, Intelligent Contracts, and practical builder workflows.</p>
+          <p>{courseCount} classic tracks and {lessonCount} lessons remain available for deeper GenLayer concepts and builder workflows.</p>
         </Link>
         <Link className="card" href="/community-spotlight">
           <h3>Monthly Spotlight</h3>

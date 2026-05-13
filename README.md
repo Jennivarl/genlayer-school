@@ -5,6 +5,7 @@ GenLayer School is a community education platform for learning GenLayer, Intelli
 The product is designed as a durable community resource, not a hackathon prototype:
 
 - Learn GenLayer through courses, lessons, labs, and quizzes.
+- Learn GenLayer basics through regional tracks in native languages.
 - Follow monthly GenLayer community spotlights.
 - Read weekly Gen-Fren summaries and prep for community quizzes.
 - Track progress and prepare for on-chain certifications.
@@ -20,6 +21,8 @@ packages/sdk          GenLayer client wrappers
 packages/ui           Shared UI primitives
 docs                  Product, architecture, and operating notes
 ```
+
+Regional GenLayer School currently includes China (Chinese), India (Hindi), Indonesia (Indonesian), LATAM (Spanish), Nigeria (Pidgin), Russia (Russian), Korea (Korean), Turkey (Turkish), Ukraine (Ukrainian), and Vietnam (Vietnamese).
 
 ## Quickstart
 

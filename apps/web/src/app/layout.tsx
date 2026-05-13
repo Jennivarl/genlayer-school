@@ -5,6 +5,7 @@ import { AuthStatus } from "@/components/auth-status";
 import "./globals.css";
 
 const navItems = [
+  { href: "/regions", label: "Regions" },
   { href: "/learn", label: "Learn" },
   { href: "/dashboard", label: "Dashboard" },
   { href: "/certificates", label: "Certificates" },

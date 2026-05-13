@@ -1,5 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
-import type { CertificateRecord, CertificateStatus, LearnerProfile, LearnerProgress, QuizAttempt } from "@genlayer-school/content";
+import type { CertificateRecord, CertificateStatus, LearnerProfile, LearnerProgress, QuizAttempt, QuizKind } from "@genlayer-school/content";
 import type { CertificateEligibilitySyncInput, CertificateMintRequestInput, LearningAnalytics, LessonCompletionInput, ProfileUpdateInput, ProgressStore, QuizAttemptInput } from "./progress-store-types";
 import { normalizeLearnerId, validateUsername } from "./local-progress-store";
 
@@ -24,7 +24,7 @@ type LessonProgressRow = {
 
 type QuizAttemptRow = {
   id: string;
-  quiz_kind: "course" | "weekly";
+  quiz_kind: QuizKind;
   quiz_slug: string;
   score: number;
   total: number;
@@ -51,7 +51,7 @@ type AnalyticsLessonRow = {
 
 type AnalyticsQuizRow = {
   learner_id: string;
-  quiz_kind: "course" | "weekly";
+  quiz_kind: QuizKind;
   quiz_slug: string;
   percent: number;
   passed: boolean;

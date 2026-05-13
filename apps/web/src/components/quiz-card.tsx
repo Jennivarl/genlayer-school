@@ -1,12 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import type { Quiz } from "@genlayer-school/content";
+import type { Quiz, QuizKind } from "@genlayer-school/content";
 import { useAuth } from "./app-providers";
 
 type QuizCardProps = {
   quiz: Quiz;
-  quizKind: "course" | "weekly";
+  quizKind: QuizKind;
 };
 
 export function QuizCard({ quiz, quizKind }: QuizCardProps) {

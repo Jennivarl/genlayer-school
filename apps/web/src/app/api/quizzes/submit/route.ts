@@ -1,12 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import { findCourseQuiz, findWeeklyQuiz, getCertificateEligibility, gradeQuiz, summarizeProgress } from "@/lib/backend/learning";
+import { findCourseQuiz, findRegionalQuiz, findWeeklyQuiz, getCertificateEligibility, gradeQuiz, summarizeProgress } from "@/lib/backend/learning";
 import { recordQuizAttempt } from "@/lib/backend/progress-store";
 import { isAuthError, resolveLearnerAuth } from "@/lib/backend/auth";
 
 type QuizPayload = {
   learnerId?: string;
   quizSlug?: string;
-  quizKind?: "course" | "weekly";
+  quizKind?: "course" | "weekly" | "regional";
   answers?: Record<string, number>;
 };
 
@@ -21,7 +21,12 @@ export async function POST(request: NextRequest) {
 
   const courseMatch = findCourseQuiz(payload.quizSlug);
   const weeklyMatch = findWeeklyQuiz(payload.quizSlug);
-  const match = payload.quizKind === "weekly" ? weeklyMatch : courseMatch ?? weeklyMatch;
+  const regionalMatch = findRegionalQuiz(payload.quizSlug);
+  const match = payload.quizKind === "weekly"
+    ? weeklyMatch
+    : payload.quizKind === "regional"
+      ? regionalMatch
+      : courseMatch ?? weeklyMatch ?? regionalMatch;
 
   if (!match) {
     return NextResponse.json({ error: "Unknown quiz." }, { status: 400 });
@@ -32,7 +37,11 @@ export async function POST(request: NextRequest) {
     learnerId: auth.learnerId,
     attempt: {
       ...graded,
-      quizKind: weeklyMatch?.quiz.slug === match.quiz.slug ? "weekly" : "course",
+      quizKind: regionalMatch?.quiz.slug === match.quiz.slug
+        ? "regional"
+        : weeklyMatch?.quiz.slug === match.quiz.slug
+          ? "weekly"
+          : "course",
     },
   });
 

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { courses } from "@genlayer-school/content";
+import { courses, regionalTracks } from "@genlayer-school/content";
 import { getPublishedCommunitySpotlights, getPublishedWeeklySummaries } from "@/lib/backend/public-content";
 
 export const dynamic = "force-dynamic";
@@ -10,5 +10,5 @@ export async function GET() {
     getPublishedWeeklySummaries(),
   ]);
 
-  return NextResponse.json({ courses, communitySpotlights, weeklySummaries });
+  return NextResponse.json({ courses, regionalTracks, communitySpotlights, weeklySummaries });
 }

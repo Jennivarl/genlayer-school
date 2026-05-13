@@ -14,6 +14,9 @@ const adminToken = readArg("admin-token") ?? process.env.ADMIN_ACCESS_TOKEN ?? "
 const publicChecks = [
   { path: "/", expectJson: false },
   { path: "/learn", expectJson: false },
+  { path: "/regions", expectJson: false },
+  { path: "/regions/india", expectJson: false },
+  { path: "/regions/latam/quiz", expectJson: false },
   { path: "/backend", expectJson: false },
   { path: "/gen-fren-weekly", expectJson: false },
   { path: "/community-spotlight", expectJson: false },
