@@ -24,7 +24,7 @@ export default function HomePage() {
           <p className="eyebrow">Global classroom</p>
           <h2>{regionalTracks.length} regions, {regionalLessonCount} regional lessons</h2>
           <p>
-            Regional GenLayer School starts with China, India, Indonesia, LATAM, Nigeria, Russia, Korea, Turkey, Ukraine, and Vietnam. Each track includes native-language basics, a quiz, and a certificate path.
+            Regional GenLayer School starts with China, India, Indonesia, LATAM, Nigeria, Russia, Korea, Turkey, Ukraine, and Vietnam. LATAM supports Spanish and Portuguese. Each track includes native-language basics, a quiz, and a certificate path.
           </p>
           <div className="pill-row">
             <span className="pill">Native-language learning</span>

@@ -22,7 +22,7 @@ packages/ui           Shared UI primitives
 docs                  Product, architecture, and operating notes
 ```
 
-Regional GenLayer School currently includes China (Chinese), India (Hindi), Indonesia (Indonesian), LATAM (Spanish), Nigeria (Pidgin), Russia (Russian), Korea (Korean), Turkey (Turkish), Ukraine (Ukrainian), and Vietnam (Vietnamese).
+Regional GenLayer School currently includes China (Chinese), India (Hindi), Indonesia (Indonesian), LATAM (Spanish + Portuguese), Nigeria (Pidgin), Russia (Russian), Korea (Korean), Turkey (Turkish), Ukraine (Ukrainian), and Vietnam (Vietnamese).
 
 ## Quickstart
 

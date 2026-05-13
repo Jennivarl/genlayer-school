@@ -4,17 +4,33 @@ import { courses, regionalTracks } from "@genlayer-school/content";
 export default function LearnPage() {
   return (
     <div className="page">
-      <p className="eyebrow">Academy</p>
-      <h1>Learning tracks</h1>
-      <p className="lede">Start with GenLayer fundamentals, then move toward practical Intelligent Contract and frontend integration work.</p>
+      <p className="eyebrow">Regional GenLayer School</p>
+      <h1>Choose your native-language track.</h1>
+      <p className="lede">
+        Start with the regional classroom that matches how your community speaks, learns, and teaches. Each track gives members basic GenLayer knowledge, a short quiz, and a path toward a regional certificate.
+      </p>
 
-      <section className="section card">
-        <p className="eyebrow">Regional school</p>
-        <h2>Learn GenLayer in native languages</h2>
-        <p>
-          The regional school now includes {regionalTracks.length} native-language tracks for community members across China, India, Indonesia, LATAM, Nigeria, Russia, Korea, Turkey, Ukraine, and Vietnam.
-        </p>
-        <Link className="button" href="/regions">Open regional school</Link>
+      <section className="section region-grid">
+        {regionalTracks.map((track) => (
+          <article className="card region-card" key={track.slug} lang={track.locale}>
+            <p className="meta">{track.regionName} - {track.languageName}</p>
+            <h2>{track.nativeRegionName}</h2>
+            <p>{track.description}</p>
+            <div className="pill-row">
+              <span className="pill">{track.nativeLanguageName}</span>
+              <span className="pill">{track.quiz.questions.length} quiz questions</span>
+            </div>
+            <div className="cta-row">
+              <Link className="button" href={`/regions/${track.slug}`}>Start track</Link>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <section className="section">
+        <p className="eyebrow">Deep-dive academy</p>
+        <h2>Classic builder courses</h2>
+        <p className="lede">After the regional basics, use these tracks for deeper GenLayer concepts, Intelligent Contracts, and frontend integration work.</p>
       </section>
 
       <section className="section grid two">
