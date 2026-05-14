@@ -13,6 +13,23 @@ type RegionalCertificateProps = {
   track: RegionalTrack;
 };
 
+type OverlayText = {
+  x: number;
+  y: number;
+  fontSize: number;
+  color: string;
+  fontFamily?: string;
+  fontWeight?: string;
+  align?: CanvasTextAlign;
+};
+
+type CertificateOverlayConfig = {
+  name: OverlayText;
+  date?: OverlayText;
+  title?: OverlayText;
+  region?: OverlayText;
+};
+
 const templateColors: Record<string, { primary: string; secondary: string; accent: string }> = {
   china: { primary: "#7a1f1f", secondary: "#f6d365", accent: "#ffe9a8" },
   india: { primary: "#1f6f50", secondary: "#f5a623", accent: "#dbeafe" },
@@ -26,6 +43,39 @@ const templateColors: Record<string, { primary: string; secondary: string; accen
   vietnam: { primary: "#9d1b1b", secondary: "#f7c948", accent: "#ffe9a8" },
 };
 
+const overlayConfig: Record<string, CertificateOverlayConfig> = {
+  china: {
+    name: { x: 800, y: 510, fontSize: 76, color: "#7a1f1f", fontFamily: "Georgia", fontWeight: "700" },
+  },
+  india: {
+    name: { x: 800, y: 510, fontSize: 76, color: "#1f6f50", fontFamily: "Georgia", fontWeight: "700" },
+  },
+  indonesia: {
+    name: { x: 800, y: 510, fontSize: 76, color: "#a82020", fontFamily: "Georgia", fontWeight: "700" },
+  },
+  latam: {
+    name: { x: 800, y: 510, fontSize: 76, color: "#245c9c", fontFamily: "Georgia", fontWeight: "700" },
+  },
+  nigeria: {
+    name: { x: 800, y: 510, fontSize: 76, color: "#0b6b3a", fontFamily: "Georgia", fontWeight: "700" },
+  },
+  russia: {
+    name: { x: 800, y: 510, fontSize: 76, color: "#253b80", fontFamily: "Georgia", fontWeight: "700" },
+  },
+  korea: {
+    name: { x: 800, y: 510, fontSize: 76, color: "#243b6b", fontFamily: "Georgia", fontWeight: "700" },
+  },
+  turkey: {
+    name: { x: 800, y: 510, fontSize: 76, color: "#8a1d2c", fontFamily: "Georgia", fontWeight: "700" },
+  },
+  ukraine: {
+    name: { x: 800, y: 510, fontSize: 76, color: "#1d4f91", fontFamily: "Georgia", fontWeight: "700" },
+  },
+  vietnam: {
+    name: { x: 800, y: 510, fontSize: 76, color: "#9d1b1b", fontFamily: "Georgia", fontWeight: "700" },
+  },
+};
+
 function certificateSlug(track: RegionalTrack): string {
   return `${track.slug}-regional-certificate`;
 }
@@ -34,8 +84,52 @@ function getDisplayName(profile: LearnerProfile | null): string {
   return profile?.username ?? profile?.displayName ?? "GenLayer Learner";
 }
 
-function drawCertificate(canvas: HTMLCanvasElement, track: RegionalTrack, name: string) {
+function fitText(ctx: CanvasRenderingContext2D, text: string, field: OverlayText, maxWidth: number) {
+  let fontSize = field.fontSize;
+  const fontWeight = field.fontWeight ?? "700";
+  const fontFamily = field.fontFamily ?? "Arial";
+
+  do {
+    ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`;
+    if (ctx.measureText(text).width <= maxWidth || fontSize <= 24) break;
+    fontSize -= 2;
+  } while (fontSize > 24);
+}
+
+function drawOverlayText(ctx: CanvasRenderingContext2D, text: string, field: OverlayText, maxWidth = 980) {
+  ctx.fillStyle = field.color;
+  ctx.textAlign = field.align ?? "center";
+  ctx.textBaseline = "alphabetic";
+  fitText(ctx, text, field, maxWidth);
+  ctx.fillText(text, field.x, field.y);
+}
+
+function issueDate() {
+  return new Date().toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+}
+
+function getOverlayConfig(track: RegionalTrack): CertificateOverlayConfig {
+  return overlayConfig[track.slug] ?? overlayConfig.latam;
+}
+
+function drawTemplateOverlay(ctx: CanvasRenderingContext2D, track: RegionalTrack, name: string, scaleX: number, scaleY: number) {
+  const config = getOverlayConfig(track);
+  const scaleField = (field: OverlayText): OverlayText => ({
+    ...field,
+    x: field.x * scaleX,
+    y: field.y * scaleY,
+    fontSize: field.fontSize * Math.min(scaleX, scaleY),
+  });
+
+  drawOverlayText(ctx, name, scaleField(config.name), 980 * scaleX);
+  if (config.title) drawOverlayText(ctx, track.certificateTitle, scaleField(config.title), 980 * scaleX);
+  if (config.region) drawOverlayText(ctx, `${track.regionName} - ${track.languageName}`, scaleField(config.region), 980 * scaleX);
+  if (config.date) drawOverlayText(ctx, issueDate(), scaleField(config.date), 520 * scaleX);
+}
+
+function drawPlaceholderCertificate(canvas: HTMLCanvasElement, track: RegionalTrack, name: string) {
   const palette = templateColors[track.slug] ?? templateColors.latam;
+  const config = getOverlayConfig(track);
   const ctx = canvas.getContext("2d");
   if (!ctx) return;
 
@@ -72,9 +166,7 @@ function drawCertificate(canvas: HTMLCanvasElement, track: RegionalTrack, name: 
   ctx.font = "32px Arial";
   ctx.fillText("This certifies that", width / 2, 405);
 
-  ctx.fillStyle = palette.primary;
-  ctx.font = "700 76px Georgia";
-  ctx.fillText(name, width / 2, 510);
+  drawOverlayText(ctx, name, config.name);
 
   ctx.fillStyle = "#51615a";
   ctx.font = "32px Arial";
@@ -87,7 +179,7 @@ function drawCertificate(canvas: HTMLCanvasElement, track: RegionalTrack, name: 
   ctx.fillStyle = "#51615a";
   ctx.font = "28px Arial";
   ctx.fillText(`${track.regionName} - ${track.languageName}`, width / 2, 720);
-  ctx.fillText(new Date().toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" }), width / 2, 770);
+  ctx.fillText(issueDate(), width / 2, 770);
 
   ctx.fillStyle = palette.primary;
   ctx.font = "700 28px Arial";
@@ -107,6 +199,29 @@ function drawCertificate(canvas: HTMLCanvasElement, track: RegionalTrack, name: 
   ctx.fillText("GL", 800, 861);
 }
 
+function drawCertificate(canvas: HTMLCanvasElement, track: RegionalTrack, name: string, onTemplateState?: (hasTemplate: boolean) => void) {
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+
+  const template = new Image();
+  template.crossOrigin = "anonymous";
+  template.onload = () => {
+    const width = template.naturalWidth || 1600;
+    const height = template.naturalHeight || 1000;
+    canvas.width = width;
+    canvas.height = height;
+    ctx.clearRect(0, 0, width, height);
+    ctx.drawImage(template, 0, 0, width, height);
+    drawTemplateOverlay(ctx, track, name, width / 1600, height / 1000);
+    onTemplateState?.(true);
+  };
+  template.onerror = () => {
+    drawPlaceholderCertificate(canvas, track, name);
+    onTemplateState?.(false);
+  };
+  template.src = `/certificates/${track.slug}.png`;
+}
+
 export function RegionalCertificate({ track }: RegionalCertificateProps) {
   const auth = useAuth();
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -114,12 +229,13 @@ export function RegionalCertificate({ track }: RegionalCertificateProps) {
   const [certificate, setCertificate] = useState<CertificatePathway | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [hasTemplate, setHasTemplate] = useState(false);
   const name = getDisplayName(profile);
   const hasUsername = Boolean(profile?.username);
   const eligible = Boolean(certificate?.eligible);
 
   const redraw = useCallback(() => {
-    if (canvasRef.current) drawCertificate(canvasRef.current, track, name);
+    if (canvasRef.current) drawCertificate(canvasRef.current, track, name, setHasTemplate);
   }, [name, track]);
 
   useEffect(() => {
@@ -191,7 +307,10 @@ export function RegionalCertificate({ track }: RegionalCertificateProps) {
         <p className="eyebrow">Regional certificate</p>
         <h2>{track.certificateTitle}</h2>
         <p>
-          This placeholder template will be replaced by your final regional certificate design later. The username overlay and download flow will stay the same.
+          Drop the final design at <code>{`apps/web/public/certificates/${track.slug}.png`}</code>. The username overlay and download flow will stay the same.
+        </p>
+        <p className="meta">
+          Template status: {hasTemplate ? "custom regional design loaded" : "using generated placeholder"}
         </p>
         {loading && <p className="meta">Checking profile and eligibility.</p>}
         {error && <p className="meta">{error}</p>}
