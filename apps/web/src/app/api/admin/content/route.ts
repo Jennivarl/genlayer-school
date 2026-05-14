@@ -5,7 +5,7 @@ import { contentStorageDriver, listAdminContentEntries, saveAdminContentEntry } 
 import type { AdminContentInput } from "@/lib/backend/content-store-types";
 
 function isContentKind(value: unknown): value is AdminContentKind {
-  return value === "weekly" || value === "spotlight";
+  return value === "weekly" || value === "spotlight" || value === "regional";
 }
 
 function isContentStatus(value: unknown): value is AdminContentStatus {
@@ -18,6 +18,7 @@ function validatePayload(input: AdminContentInput): string | null {
   if (!("title" in input.payload) || typeof input.payload.title !== "string" || !input.payload.title.trim()) return "payload.title is required.";
   if (input.kind === "weekly" && (!("quiz" in input.payload) || !input.payload.quiz)) return "weekly payload.quiz is required.";
   if (input.kind === "spotlight" && (!("featuredBuilder" in input.payload) || !input.payload.featuredBuilder)) return "spotlight payload.featuredBuilder is required.";
+  if (input.kind === "regional" && (!("lessons" in input.payload) || !("quiz" in input.payload))) return "regional payload.lessons and payload.quiz are required.";
   return null;
 }
 
@@ -35,7 +36,7 @@ export async function POST(request: NextRequest) {
 
   const body = await request.json() as Partial<AdminContentInput>;
   if (!isContentKind(body.kind)) {
-    return NextResponse.json({ error: "kind must be weekly or spotlight." }, { status: 400 });
+    return NextResponse.json({ error: "kind must be weekly, spotlight, or regional." }, { status: 400 });
   }
   if (!isContentStatus(body.status)) {
     return NextResponse.json({ error: "status must be draft or published." }, { status: 400 });

@@ -1,7 +1,9 @@
 import Link from "next/link";
-import { regionalTracks } from "@genlayer-school/content";
+import { getPublishedRegionalTracks } from "@/lib/backend/public-content";
 
-export default function RegionsPage() {
+export default async function RegionsPage() {
+  const regionalTracks = await getPublishedRegionalTracks();
+
   return (
     <div className="page">
       <p className="eyebrow">Regional GenLayer School</p>

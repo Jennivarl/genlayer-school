@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getCertificateEligibility } from "@/lib/backend/learning";
 import { getProgress, requestCertificateMint, syncEligibleCertificates } from "@/lib/backend/progress-store";
 import { isAuthError, resolveLearnerAuth } from "@/lib/backend/auth";
+import { getPublishedRegionalTracks } from "@/lib/backend/public-content";
 
 type CertificateRequestPayload = {
   learnerId?: string;
@@ -18,7 +19,8 @@ export async function POST(request: NextRequest) {
   }
 
   const progress = await getProgress(auth.learnerId);
-  const certificates = getCertificateEligibility(progress);
+  const regionalTracks = await getPublishedRegionalTracks();
+  const certificates = getCertificateEligibility(progress, regionalTracks);
   const certificate = certificates.find((item) => item.certificateSlug === payload.certificateSlug);
 
   if (!certificate) {

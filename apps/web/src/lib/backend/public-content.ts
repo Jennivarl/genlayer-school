@@ -1,5 +1,5 @@
-import type { CommunitySpotlight, WeeklySummary } from "@genlayer-school/content";
-import { communitySpotlights, weeklySummaries } from "@genlayer-school/content";
+import type { CommunitySpotlight, RegionalTrack, WeeklySummary } from "@genlayer-school/content";
+import { communitySpotlights, regionalTracks, weeklySummaries } from "@genlayer-school/content";
 import { listAdminContentEntries } from "./content-store";
 
 function mergeBySlug<T extends { slug: string }>(seedItems: T[], publishedItems: T[]): T[] {
@@ -42,4 +42,18 @@ export async function getPublishedCommunitySpotlights(): Promise<CommunitySpotli
 export async function getPublishedCommunitySpotlight(slug: string): Promise<CommunitySpotlight | null> {
   const spotlights = await getPublishedCommunitySpotlights();
   return spotlights.find((spotlight) => spotlight.slug === slug) ?? null;
+}
+
+export async function getPublishedRegionalTracks(): Promise<RegionalTrack[]> {
+  const entries = await listAdminContentEntries();
+  const published = entries
+    .filter((entry) => entry.kind === "regional" && entry.status === "published")
+    .map((entry) => entry.payload as RegionalTrack);
+
+  return mergeBySlug(regionalTracks, published);
+}
+
+export async function getPublishedRegionalTrack(slug: string): Promise<RegionalTrack | null> {
+  const tracks = await getPublishedRegionalTracks();
+  return tracks.find((track) => track.slug === slug) ?? null;
 }

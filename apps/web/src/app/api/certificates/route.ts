@@ -3,6 +3,7 @@ import type { CertificateEligibility, CertificateRecord } from "@genlayer-school
 import { getCertificateEligibility } from "@/lib/backend/learning";
 import { getProgress, syncEligibleCertificates } from "@/lib/backend/progress-store";
 import { isAuthError, resolveLearnerAuth } from "@/lib/backend/auth";
+import { getPublishedRegionalTracks } from "@/lib/backend/public-content";
 
 export type CertificatePathway = CertificateEligibility & {
   record: CertificateRecord | null;
@@ -22,7 +23,8 @@ export async function GET(request: NextRequest) {
   if (isAuthError(auth)) return auth;
 
   const progress = await getProgress(auth.learnerId);
-  const certificates = getCertificateEligibility(progress);
+  const regionalTracks = await getPublishedRegionalTracks();
+  const certificates = getCertificateEligibility(progress, regionalTracks);
   const eligibleSlugs = certificates
     .filter((certificate) => certificate.eligible)
     .map((certificate) => certificate.certificateSlug);

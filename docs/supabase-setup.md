@@ -15,6 +15,7 @@ GenLayer School currently supports two backend storage modes:
    - `supabase/migrations/0003_certificate_record_updates.sql`
    - `supabase/migrations/0004_admin_content_entries.sql`
    - `supabase/migrations/0005_add_regional_quiz_kind.sql`
+   - `supabase/migrations/0006_add_regional_admin_content.sql`
 3. Copy `.env.example` to `apps/web/.env.local` for local development.
 4. Fill:
 
@@ -36,7 +37,7 @@ The service role key must stay server-side only. Do not expose it to client comp
 
 Certificate rows track lifecycle status: `eligible`, `mint_pending`, `minted`, or `revoked`.
 
-Admin content rows store editable JSON payloads for weekly Gen-Fren summaries and monthly community spotlights.
+Admin content rows store editable JSON payloads for weekly Gen-Fren summaries, monthly community spotlights, and regional learning tracks.
 
 ## Auth
 

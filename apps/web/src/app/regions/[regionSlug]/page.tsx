@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getRegionalTrack, regionalTracks } from "@genlayer-school/content";
+import { regionalTracks } from "@genlayer-school/content";
+import { getPublishedRegionalTrack } from "@/lib/backend/public-content";
 
 export function generateStaticParams() {
   return regionalTracks.map((track) => ({ regionSlug: track.slug }));
@@ -8,7 +9,7 @@ export function generateStaticParams() {
 
 export default async function RegionPage({ params }: { params: Promise<{ regionSlug: string }> }) {
   const { regionSlug } = await params;
-  const track = getRegionalTrack(regionSlug);
+  const track = await getPublishedRegionalTrack(regionSlug);
   if (!track) notFound();
 
   return (

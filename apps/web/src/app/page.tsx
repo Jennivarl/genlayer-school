@@ -1,7 +1,9 @@
 import Link from "next/link";
-import { communitySpotlights, courses, regionalTracks, weeklySummaries } from "@genlayer-school/content";
+import { communitySpotlights, courses, weeklySummaries } from "@genlayer-school/content";
+import { getPublishedRegionalTracks } from "@/lib/backend/public-content";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const regionalTracks = await getPublishedRegionalTracks();
   const courseCount = courses.length;
   const lessonCount = courses.reduce((total, course) => total + course.lessons.length, 0);
   const regionalLessonCount = regionalTracks.reduce((total, track) => total + track.lessons.length, 0);

@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
-import { courses, regionalTracks } from "@genlayer-school/content";
+import { courses } from "@genlayer-school/content";
 import { getCertificateEligibility, summarizeProgress } from "@/lib/backend/learning";
 import { setLessonCompletion } from "@/lib/backend/progress-store";
 import { isAuthError, resolveLearnerAuth } from "@/lib/backend/auth";
+import { getPublishedRegionalTracks } from "@/lib/backend/public-content";
 
 type LessonPayload = {
   learnerId?: string;
@@ -16,6 +17,7 @@ export async function POST(request: NextRequest) {
   const auth = await resolveLearnerAuth(request, payload.learnerId);
   if (isAuthError(auth)) return auth;
 
+  const regionalTracks = await getPublishedRegionalTracks();
   const course = courses.find((item) => item.slug === payload.courseSlug);
   const regionalTrack = regionalTracks.find((item) => item.slug === payload.courseSlug);
   const track = course ?? regionalTrack;
@@ -35,7 +37,7 @@ export async function POST(request: NextRequest) {
   return NextResponse.json({
     auth,
     progress,
-    summary: summarizeProgress(progress),
-    certificates: getCertificateEligibility(progress),
+    summary: summarizeProgress(progress, regionalTracks),
+    certificates: getCertificateEligibility(progress, regionalTracks),
   });
 }

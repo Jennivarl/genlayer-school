@@ -9,10 +9,11 @@ import type {
   CommunitySpotlight,
   Quiz,
   QuizQuestion,
+  RegionalTrack,
   SpotlightItem,
   WeeklySummary,
 } from "@genlayer-school/content";
-import { communitySpotlights, weeklySummaries } from "@genlayer-school/content";
+import { communitySpotlights, regionalTracks, weeklySummaries } from "@genlayer-school/content";
 
 type AdminContentResponse = {
   storageDriver?: string;
@@ -21,6 +22,7 @@ type AdminContentResponse = {
   bootstrapped?: {
     weekly: number;
     spotlight: number;
+    regional: number;
     total: number;
   };
   error?: string;
@@ -175,12 +177,29 @@ function validateSpotlight(payload: CommunitySpotlight): string | null {
   return null;
 }
 
+function regionalPayload(text: string): RegionalTrack {
+  return JSON.parse(text) as RegionalTrack;
+}
+
+function validateRegional(payload: RegionalTrack): string | null {
+  if (!payload.slug || !payload.title || !payload.regionName) return "Regional slug, title, and region name are required.";
+  if (!payload.languageName || !payload.nativeLanguageName) return "Regional language labels are required.";
+  if (!Array.isArray(payload.lessons) || payload.lessons.length === 0) return "Regional lessons are required.";
+  if (!payload.quiz?.slug || !payload.quiz?.title || !Array.isArray(payload.quiz.questions)) return "Regional quiz is required.";
+  if (payload.quiz.questions.some((question) => !question.prompt || question.options.some((option) => !option))) {
+    return "Every regional quiz question needs a prompt and options.";
+  }
+  return null;
+}
+
 export function AdminContentConsole() {
   const [draftToken, setDraftToken] = useState("");
   const [token, setToken] = useState("");
   const [locked, setLocked] = useState(true);
   const [weekly, setWeekly] = useState<WeeklyForm>(() => toWeeklyForm(weeklySummaries[0]));
   const [spotlight, setSpotlight] = useState<SpotlightForm>(() => toSpotlightForm(communitySpotlights[0]));
+  const [selectedRegionSlug, setSelectedRegionSlug] = useState(regionalTracks[0].slug);
+  const [regionalJson, setRegionalJson] = useState(() => JSON.stringify(regionalTracks[0], null, 2));
   const [entries, setEntries] = useState<AdminContentEntry[]>([]);
   const [storageDriver, setStorageDriver] = useState("unknown");
   const [message, setMessage] = useState<string | null>(null);
@@ -190,6 +209,7 @@ export function AdminContentConsole() {
   const counts = useMemo(() => ({
     weekly: entries.filter((entry) => entry.kind === "weekly").length,
     spotlight: entries.filter((entry) => entry.kind === "spotlight").length,
+    regional: entries.filter((entry) => entry.kind === "regional").length,
     published: entries.filter((entry) => entry.status === "published").length,
   }), [entries]);
 
@@ -267,8 +287,25 @@ export function AdminContentConsole() {
     setSavingKind(kind);
     setMessage(null);
 
-    const payload: AdminContentPayload = kind === "weekly" ? weeklyPayload(weekly) : spotlightPayload(spotlight);
-    const validationError = kind === "weekly" ? validateWeekly(payload as WeeklySummary) : validateSpotlight(payload as CommunitySpotlight);
+    let payload: AdminContentPayload;
+    let validationError: string | null;
+
+    try {
+      payload = kind === "weekly"
+        ? weeklyPayload(weekly)
+        : kind === "spotlight"
+          ? spotlightPayload(spotlight)
+          : regionalPayload(regionalJson);
+      validationError = kind === "weekly"
+        ? validateWeekly(payload as WeeklySummary)
+        : kind === "spotlight"
+          ? validateSpotlight(payload as CommunitySpotlight)
+          : validateRegional(payload as RegionalTrack);
+    } catch {
+      setMessage("Regional payload must be valid JSON.");
+      setSavingKind(null);
+      return;
+    }
 
     if (validationError) {
       setMessage(validationError);
@@ -286,7 +323,7 @@ export function AdminContentConsole() {
     if (!response.ok) {
       setMessage(data.error ?? "Could not save content.");
     } else {
-      setMessage(`${kind === "weekly" ? "Weekly summary" : "Spotlight"} saved as ${status}.`);
+      setMessage(`${kind === "weekly" ? "Weekly summary" : kind === "spotlight" ? "Spotlight" : "Regional track"} saved as ${status}.`);
       await loadEntries();
     }
 
@@ -326,8 +363,19 @@ export function AdminContentConsole() {
     }
 
     if (entry.kind === "weekly") setWeekly(toWeeklyForm(entry.payload as WeeklySummary));
-    else setSpotlight(toSpotlightForm(entry.payload as CommunitySpotlight));
+    else if (entry.kind === "spotlight") setSpotlight(toSpotlightForm(entry.payload as CommunitySpotlight));
+    else {
+      const track = entry.payload as RegionalTrack;
+      setSelectedRegionSlug(track.slug);
+      setRegionalJson(JSON.stringify(track, null, 2));
+    }
     setMessage(`Loaded ${entry.title}.`);
+  }
+
+  function loadSeedRegion(slug: string) {
+    const track = regionalTracks.find((item) => item.slug === slug) ?? regionalTracks[0];
+    setSelectedRegionSlug(track.slug);
+    setRegionalJson(JSON.stringify(track, null, 2));
   }
 
   function updateWeeklyLink(index: number, patch: Partial<SpotlightItem>) {
@@ -377,12 +425,12 @@ export function AdminContentConsole() {
         <article className="card">
           <p className="meta">Drafts and posts</p>
           <h2>{entries.length}</h2>
-          <p>{counts.weekly} weekly entries and {counts.spotlight} spotlights.</p>
+          <p>{counts.weekly} weekly entries, {counts.spotlight} spotlights, and {counts.regional} regional tracks.</p>
         </article>
         <article className="card">
           <p className="meta">Published</p>
           <h2>{counts.published}</h2>
-          <p>Published entries appear on public weekly and spotlight pages.</p>
+          <p>Published entries appear on public weekly, spotlight, and regional pages.</p>
         </article>
       </section>
 
@@ -423,7 +471,7 @@ export function AdminContentConsole() {
         <section className="section card">
           <p className="meta">Bootstrap</p>
           <h2>Seed admin content</h2>
-          <p>Copy the built-in weekly summary and community spotlight content into the editable admin store.</p>
+          <p>Copy built-in weekly summaries, community spotlights, and regional tracks into the editable admin store.</p>
           <div className="cta-row">
             <button className="button compact" disabled={bootstrappingStatus !== null} type="button" onClick={() => bootstrapSeedContent("draft")}>
               {bootstrappingStatus === "draft" ? "Bootstrapping" : "Seed as drafts"}
@@ -528,6 +576,34 @@ export function AdminContentConsole() {
           <div className="cta-row">
             <button className="button compact" disabled={savingKind === "spotlight"} type="button" onClick={() => save("spotlight", "draft")}>Save draft</button>
             <button className="button secondary compact" disabled={savingKind === "spotlight"} type="button" onClick={() => save("spotlight", "published")}>Publish</button>
+          </div>
+        </article>
+
+        <article className="card admin-form">
+          <p className="meta">Regional track</p>
+          <h2>Native-language classroom JSON</h2>
+          <p>Edit a full regional track payload. Published regional entries override the built-in region content on public region pages, quizzes, certificates, and catalog responses.</p>
+          <div className="form-grid">
+            <label>
+              <span>Load seed region</span>
+              <select value={selectedRegionSlug} onChange={(event) => loadSeedRegion(event.target.value)}>
+                {regionalTracks.map((track) => (
+                  <option key={track.slug} value={track.slug}>{track.regionName} - {track.languageName}</option>
+                ))}
+              </select>
+            </label>
+          </div>
+          <label className="field-block">
+            <span>Regional JSON payload</span>
+            <textarea value={regionalJson} onChange={(event) => setRegionalJson(event.target.value)} />
+          </label>
+          <section className="preview-panel">
+            <p className="meta">Required fields</p>
+            <p>slug, title, regionName, languageName, nativeLanguageName, lessons, quiz, and certificateTitle.</p>
+          </section>
+          <div className="cta-row">
+            <button className="button compact" disabled={savingKind === "regional"} type="button" onClick={() => save("regional", "draft")}>Save draft</button>
+            <button className="button secondary compact" disabled={savingKind === "regional"} type="button" onClick={() => save("regional", "published")}>Publish</button>
           </div>
         </article>
       </section>}

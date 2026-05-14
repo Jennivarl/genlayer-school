@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import type { AdminContentStatus } from "@genlayer-school/content";
-import { communitySpotlights, weeklySummaries } from "@genlayer-school/content";
+import { communitySpotlights, regionalTracks, weeklySummaries } from "@genlayer-school/content";
 import { requireAdminAuth } from "@/lib/backend/admin-auth";
 import { contentStorageDriver, saveAdminContentEntry } from "@/lib/backend/content-store";
 
@@ -25,6 +25,9 @@ export async function POST(request: NextRequest) {
   const spotlightEntries = await Promise.all(communitySpotlights.map((spotlight) => (
     saveAdminContentEntry({ kind: "spotlight", status, payload: spotlight })
   )));
+  const regionalEntries = await Promise.all(regionalTracks.map((track) => (
+    saveAdminContentEntry({ kind: "regional", status, payload: track })
+  )));
 
   return NextResponse.json({
     storageDriver: contentStorageDriver,
@@ -32,7 +35,8 @@ export async function POST(request: NextRequest) {
     bootstrapped: {
       weekly: weeklyEntries.length,
       spotlight: spotlightEntries.length,
-      total: weeklyEntries.length + spotlightEntries.length,
+      regional: regionalEntries.length,
+      total: weeklyEntries.length + spotlightEntries.length + regionalEntries.length,
     },
   });
 }

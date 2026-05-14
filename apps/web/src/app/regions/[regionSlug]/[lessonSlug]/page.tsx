@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getRegionalTrack, regionalTracks } from "@genlayer-school/content";
+import { regionalTracks } from "@genlayer-school/content";
 import { ContentRenderer } from "@/components/content-renderer";
 import { LessonAction } from "@/components/lesson-action";
+import { getPublishedRegionalTrack } from "@/lib/backend/public-content";
 
 export function generateStaticParams() {
   return regionalTracks.flatMap((track) => track.lessons.map((lesson) => ({
@@ -13,7 +14,7 @@ export function generateStaticParams() {
 
 export default async function RegionalLessonPage({ params }: { params: Promise<{ regionSlug: string; lessonSlug: string }> }) {
   const { regionSlug, lessonSlug } = await params;
-  const track = getRegionalTrack(regionSlug);
+  const track = await getPublishedRegionalTrack(regionSlug);
   const lesson = track?.lessons.find((item) => item.slug === lessonSlug) ?? null;
   if (!track || !lesson) notFound();
 

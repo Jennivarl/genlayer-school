@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { findCourseQuiz, findRegionalQuiz, findWeeklyQuiz, getCertificateEligibility, gradeQuiz, summarizeProgress } from "@/lib/backend/learning";
 import { recordQuizAttempt } from "@/lib/backend/progress-store";
 import { isAuthError, resolveLearnerAuth } from "@/lib/backend/auth";
+import { getPublishedRegionalTracks } from "@/lib/backend/public-content";
 
 type QuizPayload = {
   learnerId?: string;
@@ -21,7 +22,8 @@ export async function POST(request: NextRequest) {
 
   const courseMatch = findCourseQuiz(payload.quizSlug);
   const weeklyMatch = findWeeklyQuiz(payload.quizSlug);
-  const regionalMatch = findRegionalQuiz(payload.quizSlug);
+  const regionalTracks = await getPublishedRegionalTracks();
+  const regionalMatch = findRegionalQuiz(payload.quizSlug, regionalTracks);
   const match = payload.quizKind === "weekly"
     ? weeklyMatch
     : payload.quizKind === "regional"
@@ -49,7 +51,7 @@ export async function POST(request: NextRequest) {
     auth,
     attempt: progress.quizAttempts[0],
     progress,
-    summary: summarizeProgress(progress),
-    certificates: getCertificateEligibility(progress),
+    summary: summarizeProgress(progress, regionalTracks),
+    certificates: getCertificateEligibility(progress, regionalTracks),
   });
 }

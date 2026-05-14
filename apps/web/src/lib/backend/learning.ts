@@ -1,4 +1,4 @@
-import type { CertificateEligibility, LearnerProgress, Quiz, QuizAttempt } from "@genlayer-school/content";
+import type { CertificateEligibility, LearnerProgress, Quiz, QuizAttempt, RegionalTrack } from "@genlayer-school/content";
 import { courses, regionalTracks, weeklySummaries } from "@genlayer-school/content";
 
 export function findCourseQuiz(quizSlug: string): { quiz: Quiz; courseSlug: string } | null {
@@ -15,8 +15,8 @@ export function findWeeklyQuiz(quizSlug: string): { quiz: Quiz; weeklySlug: stri
   return null;
 }
 
-export function findRegionalQuiz(quizSlug: string): { quiz: Quiz; regionSlug: string } | null {
-  for (const track of regionalTracks) {
+export function findRegionalQuiz(quizSlug: string, tracks: RegionalTrack[] = regionalTracks): { quiz: Quiz; regionSlug: string } | null {
+  for (const track of tracks) {
     if (track.quiz.slug === quizSlug) return { quiz: track.quiz, regionSlug: track.slug };
   }
   return null;
@@ -40,9 +40,9 @@ export function gradeQuiz(quiz: Quiz, answers: Record<string, number>): Omit<Qui
   };
 }
 
-export function summarizeProgress(progress: LearnerProgress) {
+export function summarizeProgress(progress: LearnerProgress, tracks: RegionalTrack[] = regionalTracks) {
   const courseLessonTotal = courses.reduce((total, course) => total + course.lessons.length, 0);
-  const regionalLessonTotal = regionalTracks.reduce((total, track) => total + track.lessons.length, 0);
+  const regionalLessonTotal = tracks.reduce((total, track) => total + track.lessons.length, 0);
   const lessonTotal = courseLessonTotal + regionalLessonTotal;
   const completedLessonCount = progress.completedLessons.length;
   const passedQuizSlugs = new Set(progress.quizAttempts.filter((attempt) => attempt.passed).map((attempt) => attempt.quizSlug));
@@ -58,7 +58,7 @@ export function summarizeProgress(progress: LearnerProgress) {
   };
 }
 
-export function getCertificateEligibility(progress: LearnerProgress): CertificateEligibility[] {
+export function getCertificateEligibility(progress: LearnerProgress, tracks: RegionalTrack[] = regionalTracks): CertificateEligibility[] {
   const courseCertificates = courses.map((course) => {
     const lessonRequirements = course.lessons.map((lesson) => ({
       label: `Complete ${lesson.title}`,
@@ -78,7 +78,7 @@ export function getCertificateEligibility(progress: LearnerProgress): Certificat
     };
   });
 
-  const regionalCertificates = regionalTracks.map((track) => {
+  const regionalCertificates = tracks.map((track) => {
     const lessonRequirements = track.lessons.map((lesson) => ({
       label: `Complete ${lesson.title}`,
       complete: progress.completedLessons.includes(`${track.slug}/${lesson.slug}`),

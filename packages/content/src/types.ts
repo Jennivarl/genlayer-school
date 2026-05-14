@@ -149,11 +149,11 @@ export type CertificateRecord = {
   updatedAt: string;
 };
 
-export type AdminContentKind = "weekly" | "spotlight";
+export type AdminContentKind = "weekly" | "spotlight" | "regional";
 
 export type AdminContentStatus = "draft" | "published";
 
-export type AdminContentPayload = WeeklySummary | CommunitySpotlight;
+export type AdminContentPayload = WeeklySummary | CommunitySpotlight | RegionalTrack;
 
 export type AdminContentEntry = {
   id: string;
