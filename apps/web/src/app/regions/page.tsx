@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { RegionalProgressCards } from "@/components/regional-progress-cards";
 import { getPublishedRegionalTracks } from "@/lib/backend/public-content";
 
 export default async function RegionsPage() {
@@ -11,6 +12,8 @@ export default async function RegionsPage() {
       <p className="lede">
         Choose a regional classroom to learn GenLayer basics in a familiar language, take a short quiz, and work toward a certificate designed for that region.
       </p>
+
+      <RegionalProgressCards tracks={regionalTracks} />
 
       <section className="section region-grid">
         {regionalTracks.map((track) => (

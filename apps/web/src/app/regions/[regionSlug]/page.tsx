@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { regionalTracks } from "@genlayer-school/content";
+import { RegionalProgressCards } from "@/components/regional-progress-cards";
 import { getPublishedRegionalTrack } from "@/lib/backend/public-content";
 
 export function generateStaticParams() {
@@ -17,6 +18,8 @@ export default async function RegionPage({ params }: { params: Promise<{ regionS
       <p className="eyebrow">{track.regionName} - {track.languageName}</p>
       <h1>{track.title}</h1>
       <p className="lede">{track.description}</p>
+
+      <RegionalProgressCards tracks={[track]} compact />
 
       <section className="section grid two">
         <article className="card">
