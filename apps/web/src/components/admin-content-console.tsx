@@ -19,6 +19,7 @@ type AdminContentResponse = {
   storageDriver?: string;
   entries?: AdminContentEntry[];
   entry?: AdminContentEntry;
+  scope?: AdminContentKind | "all";
   bootstrapped?: {
     weekly: number;
     spotlight: number;
@@ -50,6 +51,12 @@ type CertificateTemplateResponse = {
     total: number;
   };
   error?: string;
+};
+
+type BootstrapScope = AdminContentKind | "all";
+type BootstrapRun = {
+  scope: BootstrapScope;
+  status: AdminContentStatus;
 };
 
 const ADMIN_TOKEN_SESSION_KEY = "genlayer-school-admin-token";
@@ -298,6 +305,13 @@ function formatBytes(bytes: number | null) {
   return `${Math.round(bytes / 1024)} KB`;
 }
 
+function bootstrapScopeLabel(scope: BootstrapScope) {
+  if (scope === "all") return "all seed content";
+  if (scope === "weekly") return "weekly summaries";
+  if (scope === "spotlight") return "community spotlights";
+  return "regional tracks";
+}
+
 export function AdminContentConsole() {
   const [draftToken, setDraftToken] = useState("");
   const [token, setToken] = useState("");
@@ -314,7 +328,7 @@ export function AdminContentConsole() {
   const [storageDriver, setStorageDriver] = useState("unknown");
   const [message, setMessage] = useState<string | null>(null);
   const [savingKind, setSavingKind] = useState<AdminContentKind | null>(null);
-  const [bootstrappingStatus, setBootstrappingStatus] = useState<AdminContentStatus | null>(null);
+  const [bootstrappingRun, setBootstrappingRun] = useState<BootstrapRun | null>(null);
 
   const counts = useMemo(() => ({
     weekly: entries.filter((entry) => entry.kind === "weekly").length,
@@ -476,30 +490,30 @@ export function AdminContentConsole() {
     setSavingKind(null);
   }
 
-  async function bootstrapSeedContent(status: AdminContentStatus) {
+  async function bootstrapSeedContent(scope: BootstrapScope, status: AdminContentStatus) {
     if (locked) {
       setMessage("Unlock admin before bootstrapping content.");
       return;
     }
 
-    setBootstrappingStatus(status);
+    setBootstrappingRun({ scope, status });
     setMessage(null);
 
     const response = await fetch("/api/admin/content/bootstrap", {
       method: "POST",
       headers: getHeaders(token),
-      body: JSON.stringify({ status }),
+      body: JSON.stringify({ scope, status }),
     });
     const payload = await response.json() as AdminContentResponse;
 
     if (!response.ok) {
       setMessage(payload.error ?? "Could not bootstrap content.");
     } else {
-      setMessage(`Bootstrapped ${payload.bootstrapped?.total ?? 0} seed entries as ${status}.`);
+      setMessage(`Bootstrapped ${payload.bootstrapped?.total ?? 0} ${bootstrapScopeLabel(payload.scope ?? scope)} entries as ${status}.`);
       await loadEntries();
     }
 
-    setBootstrappingStatus(null);
+    setBootstrappingRun(null);
   }
 
   function loadEntry(entry: AdminContentEntry) {
@@ -659,15 +673,27 @@ export function AdminContentConsole() {
         <section className="section card">
           <p className="meta">Bootstrap</p>
           <h2>Seed admin content</h2>
-          <p>Copy built-in weekly summaries, community spotlights, and regional tracks into the editable admin store.</p>
+          <p>Copy built-in seed content into the editable admin store. Existing entries with the same kind and slug are overwritten, so use the regional-only controls when refreshing improved regional lessons.</p>
           <div className="cta-row">
-            <button className="button compact" disabled={bootstrappingStatus !== null} type="button" onClick={() => bootstrapSeedContent("draft")}>
-              {bootstrappingStatus === "draft" ? "Bootstrapping" : "Seed as drafts"}
+            <button className="button compact" disabled={bootstrappingRun !== null} type="button" onClick={() => bootstrapSeedContent("regional", "draft")}>
+              {bootstrappingRun?.scope === "regional" && bootstrappingRun.status === "draft" ? "Refreshing" : "Refresh regions as drafts"}
             </button>
-            <button className="button secondary compact" disabled={bootstrappingStatus !== null} type="button" onClick={() => bootstrapSeedContent("published")}>
-              {bootstrappingStatus === "published" ? "Publishing" : "Seed as published"}
+            <button className="button secondary compact" disabled={bootstrappingRun !== null} type="button" onClick={() => bootstrapSeedContent("regional", "published")}>
+              {bootstrappingRun?.scope === "regional" && bootstrappingRun.status === "published" ? "Publishing" : "Refresh regions as published"}
             </button>
           </div>
+          <div className="cta-row">
+            <button className="button secondary compact" disabled={bootstrappingRun !== null} type="button" onClick={() => bootstrapSeedContent("weekly", "draft")}>
+              {bootstrappingRun?.scope === "weekly" ? "Seeding" : "Seed weekly drafts"}
+            </button>
+            <button className="button secondary compact" disabled={bootstrappingRun !== null} type="button" onClick={() => bootstrapSeedContent("spotlight", "draft")}>
+              {bootstrappingRun?.scope === "spotlight" ? "Seeding" : "Seed spotlight drafts"}
+            </button>
+            <button className="button secondary compact" disabled={bootstrappingRun !== null} type="button" onClick={() => bootstrapSeedContent("all", "draft")}>
+              {bootstrappingRun?.scope === "all" ? "Seeding" : "Seed all drafts"}
+            </button>
+          </div>
+          <p className="meta">Regional refresh copies the latest code seed for all 10 regions into admin. Use published when you want those seeds to immediately override public regional pages.</p>
         </section>
       )}
 
