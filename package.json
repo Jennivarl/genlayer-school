@@ -13,7 +13,8 @@
     "lint": "npm run lint -w @genlayer-school/web",
     "typecheck": "npm run typecheck -w @genlayer-school/web",
     "smoke": "node scripts/smoke-test.mjs",
-    "verify:supabase": "node scripts/verify-supabase.mjs"
+    "verify:supabase": "node scripts/verify-supabase.mjs",
+    "verify:auth": "node scripts/verify-auth.mjs"
   },
   "engines": {
     "node": ">=20"

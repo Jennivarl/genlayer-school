@@ -10,6 +10,7 @@ Use this before promoting a deployment to the community.
 - `npm.cmd run lint` passes.
 - `npm.cmd run build` passes.
 - `npm.cmd run smoke -- --base-url=<deployment-url>` passes.
+- `npm.cmd run verify:auth -- --production` passes.
 - `/backend` has no missing production keys.
 
 ## Supabase
@@ -29,8 +30,10 @@ Use this before promoting a deployment to the community.
 - `PRIVY_APP_ID` is set.
 - `PRIVY_APP_SECRET` or `PRIVY_VERIFICATION_KEY` is set.
 - `PRIVY_AUTH_REQUIRED=true` is set for production.
+- GitHub secrets include the Privy production variables so CI can run the optional auth config check.
 - A test learner can sign in and update their username.
 - Google sign-in is tested before adding `google` to `NEXT_PUBLIC_PRIVY_LOGIN_METHODS`.
+- If Google is enabled, the Privy dashboard includes the local and production app origins.
 
 ## Admin
 

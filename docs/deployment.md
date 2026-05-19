@@ -62,6 +62,21 @@ PRIVY_AUTH_REQUIRED=true
 
 Keep Google disabled unless the Privy dashboard is fully configured for Google OAuth. The default login methods are email and wallet.
 
+Before turning on Google, confirm these Privy dashboard settings:
+
+```text
+Google provider: enabled
+Allowed local origin: http://localhost:3100
+Allowed production origin: https://your-production-domain
+Allowed production redirect: https://your-production-domain
+```
+
+Then set:
+
+```text
+NEXT_PUBLIC_PRIVY_LOGIN_METHODS=email,wallet,google
+```
+
 ## 3. Admin Access
 
 Set a strong admin token:
@@ -108,6 +123,23 @@ ADMIN_ACCESS_TOKEN=...
 ```
 
 Do not set secrets in `NEXT_PUBLIC_*` variables. Only `NEXT_PUBLIC_*` values are safe for the browser.
+
+Set these GitHub repository secrets so CI can run the optional production checks:
+
+```text
+NEXT_PUBLIC_APP_URL
+NEXT_PUBLIC_SUPABASE_URL
+SUPABASE_SERVICE_ROLE_KEY
+NEXT_PUBLIC_PRIVY_APP_ID
+NEXT_PUBLIC_PRIVY_CLIENT_ID
+NEXT_PUBLIC_PRIVY_LOGIN_METHODS
+PRIVY_APP_ID
+PRIVY_APP_SECRET
+PRIVY_VERIFICATION_KEY
+PRIVY_AUTH_REQUIRED
+```
+
+`PRIVY_VERIFICATION_KEY` is optional if `PRIVY_APP_SECRET` is set. CI skips Supabase or Privy verification when the matching secrets are not configured.
 
 ## 5. Regional Certificate Templates
 
@@ -167,6 +199,7 @@ npm.cmd run typecheck
 npm.cmd run lint
 npm.cmd run build
 npm.cmd run smoke -- --base-url=http://localhost:3100
+npm.cmd run verify:auth -- --production
 npm.cmd run verify:supabase
 ```
 

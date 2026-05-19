@@ -18,6 +18,14 @@ For local development, put these values in `apps/web/.env.local`. Deployment pro
 
 `NEXT_PUBLIC_PRIVY_LOGIN_METHODS` should only list methods enabled in the Privy dashboard. The app defaults to `email,wallet`; add `google` or `github` after enabling those providers in Privy.
 
+For Google sign-in, enable Google in the Privy dashboard before adding it here:
+
+```text
+NEXT_PUBLIC_PRIVY_LOGIN_METHODS=email,wallet,google
+```
+
+Also add the app domain to Privy's allowed origins/redirect settings. For local testing, include `http://localhost:3100`. For production, include the final Vercel or custom domain. If Google is listed in `NEXT_PUBLIC_PRIVY_LOGIN_METHODS` but disabled in the Privy dashboard, email login can still work while Google fails.
+
 ## Server verification
 
 Progress APIs accept Privy access tokens in the `Authorization: Bearer <token>` header. Server routes verify tokens with `@privy-io/node` before using the learner ID.
@@ -38,6 +46,16 @@ PRIVY_VERIFICATION_KEY=...
 ```
 
 If `PRIVY_AUTH_REQUIRED=false`, unauthenticated local development falls back to `demo-learner`. If `PRIVY_AUTH_REQUIRED=true`, progress, quiz, and certificate APIs return `401` unless a valid Privy access token is provided.
+
+## Verification
+
+Run this before deploying:
+
+```powershell
+npm.cmd run verify:auth -- --production
+```
+
+The command checks required Privy environment variables without printing secret values. It cannot verify dashboard-only provider settings, so Google must still be checked manually in the Privy dashboard.
 
 ## Learner IDs
 
