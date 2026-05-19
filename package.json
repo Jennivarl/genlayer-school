@@ -12,7 +12,8 @@
     "build": "npm run build -w @genlayer-school/web",
     "lint": "npm run lint -w @genlayer-school/web",
     "typecheck": "npm run typecheck -w @genlayer-school/web",
-    "smoke": "node scripts/smoke-test.mjs"
+    "smoke": "node scripts/smoke-test.mjs",
+    "verify:supabase": "node scripts/verify-supabase.mjs"
   },
   "engines": {
     "node": ">=20"

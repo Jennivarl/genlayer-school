@@ -18,6 +18,7 @@ Use this before promoting a deployment to the community.
 - The database includes regional quiz support from `0005_add_regional_quiz_kind.sql`.
 - The database includes regional admin content support from `0006_add_regional_admin_content.sql`.
 - `GENLAYER_SCHOOL_STORAGE_DRIVER=supabase` is set.
+- `npm.cmd run verify:supabase` passes without printing secret values.
 - Admin content can be saved and published.
 - Analytics loads without database errors.
 

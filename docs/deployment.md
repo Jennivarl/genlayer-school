@@ -167,6 +167,7 @@ npm.cmd run typecheck
 npm.cmd run lint
 npm.cmd run build
 npm.cmd run smoke -- --base-url=http://localhost:3100
+npm.cmd run verify:supabase
 ```
 
 For the launch flow, use docs/release-checklist.md.
