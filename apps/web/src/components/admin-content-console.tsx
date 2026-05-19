@@ -28,6 +28,30 @@ type AdminContentResponse = {
   error?: string;
 };
 
+type CertificateTemplate = {
+  regionSlug: string;
+  regionName: string;
+  languageName: string;
+  nativeLanguageName: string;
+  certificateTitle: string;
+  fileName: string;
+  repositoryPath: string;
+  publicUrl: string;
+  available: boolean;
+  sizeBytes: number | null;
+  updatedAt: string | null;
+};
+
+type CertificateTemplateResponse = {
+  templates?: CertificateTemplate[];
+  summary?: {
+    available: number;
+    missing: number;
+    total: number;
+  };
+  error?: string;
+};
+
 const ADMIN_TOKEN_SESSION_KEY = "genlayer-school-admin-token";
 
 type WeeklyForm = {
@@ -268,6 +292,12 @@ function validateRegional(payload: RegionalTrack): string | null {
   return null;
 }
 
+function formatBytes(bytes: number | null) {
+  if (!bytes) return "Missing";
+  if (bytes < 1024) return `${bytes} B`;
+  return `${Math.round(bytes / 1024)} KB`;
+}
+
 export function AdminContentConsole() {
   const [draftToken, setDraftToken] = useState("");
   const [token, setToken] = useState("");
@@ -277,6 +307,10 @@ export function AdminContentConsole() {
   const [selectedRegionSlug, setSelectedRegionSlug] = useState(regionalTracks[0].slug);
   const [regional, setRegional] = useState<RegionalTrack>(() => toRegionalForm(regionalTracks[0]));
   const [entries, setEntries] = useState<AdminContentEntry[]>([]);
+  const [certificateTemplates, setCertificateTemplates] = useState<CertificateTemplate[]>([]);
+  const [certificateTemplateSummary, setCertificateTemplateSummary] = useState<CertificateTemplateResponse["summary"] | null>(null);
+  const [certificateTemplateError, setCertificateTemplateError] = useState<string | null>(null);
+  const [loadingCertificateTemplates, setLoadingCertificateTemplates] = useState(false);
   const [storageDriver, setStorageDriver] = useState("unknown");
   const [message, setMessage] = useState<string | null>(null);
   const [savingKind, setSavingKind] = useState<AdminContentKind | null>(null);
@@ -312,6 +346,30 @@ export function AdminContentConsole() {
     applyEntriesResponse(response, payload);
   }
 
+  const fetchCertificateTemplates = useCallback(async (nextToken: string) => {
+    const response = await fetch("/api/admin/certificate-templates", {
+      headers: getHeaders(nextToken),
+    });
+    const payload = await response.json() as CertificateTemplateResponse;
+    return { response, payload };
+  }, []);
+
+  async function loadCertificateTemplates(nextToken = token) {
+    setLoadingCertificateTemplates(true);
+    setCertificateTemplateError(null);
+    const { response, payload } = await fetchCertificateTemplates(nextToken);
+
+    if (!response.ok) {
+      setCertificateTemplateError(payload.error ?? "Could not load certificate template status.");
+      setCertificateTemplates([]);
+      setCertificateTemplateSummary(null);
+    } else {
+      setCertificateTemplates(payload.templates ?? []);
+      setCertificateTemplateSummary(payload.summary ?? null);
+    }
+    setLoadingCertificateTemplates(false);
+  }
+
   useEffect(() => {
     let cancelled = false;
 
@@ -323,6 +381,14 @@ export function AdminContentConsole() {
         setToken(savedToken);
         setDraftToken(savedToken);
         setLocked(false);
+        const templates = await fetchCertificateTemplates(savedToken);
+        if (!cancelled && templates.response.ok) {
+          setCertificateTemplates(templates.payload.templates ?? []);
+          setCertificateTemplateSummary(templates.payload.summary ?? null);
+          setCertificateTemplateError(null);
+        } else if (!cancelled) {
+          setCertificateTemplateError(templates.payload.error ?? "Could not load certificate template status.");
+        }
       }
     }
 
@@ -333,7 +399,7 @@ export function AdminContentConsole() {
     return () => {
       cancelled = true;
     };
-  }, [applyEntriesResponse, fetchEntries]);
+  }, [applyEntriesResponse, fetchCertificateTemplates, fetchEntries]);
 
   async function unlockAdmin() {
     const nextToken = draftToken.trim();
@@ -342,6 +408,7 @@ export function AdminContentConsole() {
     setLocked(false);
     setMessage(nextToken ? "Admin unlocked for this browser session." : "Admin unlocked in local mode.");
     await loadEntries(nextToken);
+    await loadCertificateTemplates(nextToken);
   }
 
   function lockAdmin() {
@@ -350,6 +417,9 @@ export function AdminContentConsole() {
     setDraftToken("");
     setLocked(true);
     setEntries([]);
+    setCertificateTemplates([]);
+    setCertificateTemplateSummary(null);
+    setCertificateTemplateError(null);
     setStorageDriver("locked");
     setMessage("Admin locked.");
   }
@@ -597,6 +667,50 @@ export function AdminContentConsole() {
             <button className="button secondary compact" disabled={bootstrappingStatus !== null} type="button" onClick={() => bootstrapSeedContent("published")}>
               {bootstrappingStatus === "published" ? "Publishing" : "Seed as published"}
             </button>
+          </div>
+        </section>
+      )}
+
+      {!locked && (
+        <section className="section card">
+          <div className="status-row">
+            <div>
+              <p className="meta">Certificate templates</p>
+              <h2>Regional PNG status</h2>
+            </div>
+            <span className={`pill status-${certificateTemplateSummary?.missing ? "warning" : "ready"}`}>
+              {certificateTemplateSummary ? `${certificateTemplateSummary.available}/${certificateTemplateSummary.total} ready` : "not checked"}
+            </span>
+          </div>
+          <p>Place final 1600x1000 PNG designs in <code>apps/web/public/certificates</code>. Each certificate page loads the matching file and writes the signed-in username on top.</p>
+          <div className="cta-row">
+            <button className="button compact" disabled={loadingCertificateTemplates} type="button" onClick={() => loadCertificateTemplates()}>
+              {loadingCertificateTemplates ? "Checking" : "Refresh status"}
+            </button>
+            {certificateTemplateError && <span className="pill status-missing">{certificateTemplateError}</span>}
+          </div>
+          <div className="list">
+            {certificateTemplates.map((template) => (
+              <article className="list-item" key={template.regionSlug}>
+                <div>
+                  <h3>{template.regionName} - {template.languageName}</h3>
+                  <p className="meta">{template.repositoryPath}</p>
+                  <p>{template.certificateTitle}</p>
+                </div>
+                <div className="cta-row inline-actions">
+                  <span className={`pill status-${template.available ? "ready" : "missing"}`}>{template.available ? "Ready" : "Missing"}</span>
+                  <span className="pill">{formatBytes(template.sizeBytes)}</span>
+                  {template.available && <a className="button secondary compact" href={template.publicUrl} target="_blank" rel="noreferrer">Open PNG</a>}
+                  <a className="button secondary compact" href={`/regions/${template.regionSlug}/certificate`} target="_blank" rel="noreferrer">Certificate</a>
+                </div>
+              </article>
+            ))}
+            {!loadingCertificateTemplates && certificateTemplates.length === 0 && (
+              <article className="list-item">
+                <span>Certificate template status has not loaded yet.</span>
+                <button className="button secondary compact" type="button" onClick={() => loadCertificateTemplates()}>Check now</button>
+              </article>
+            )}
           </div>
         </section>
       )}
