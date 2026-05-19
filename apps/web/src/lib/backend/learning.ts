@@ -40,6 +40,16 @@ export function gradeQuiz(quiz: Quiz, answers: Record<string, number>): Omit<Qui
   };
 }
 
+export function validateQuizAnswers(quiz: Quiz, answers: unknown): answers is Record<string, number> {
+  if (!answers || typeof answers !== "object" || Array.isArray(answers)) return false;
+  const submitted = answers as Record<string, unknown>;
+
+  return quiz.questions.every((question) => {
+    const answer = submitted[question.id];
+    return typeof answer === "number" && Number.isInteger(answer) && answer >= 0 && answer < question.options.length;
+  });
+}
+
 export function summarizeProgress(progress: LearnerProgress, tracks: RegionalTrack[] = regionalTracks) {
   const courseLessonTotal = courses.reduce((total, course) => total + course.lessons.length, 0);
   const regionalLessonTotal = tracks.reduce((total, track) => total + track.lessons.length, 0);

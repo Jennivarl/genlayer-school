@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { findCourseQuiz, findRegionalQuiz, findWeeklyQuiz, getCertificateEligibility, gradeQuiz, summarizeProgress } from "@/lib/backend/learning";
+import { findCourseQuiz, findRegionalQuiz, findWeeklyQuiz, getCertificateEligibility, gradeQuiz, summarizeProgress, validateQuizAnswers } from "@/lib/backend/learning";
 import { recordQuizAttempt } from "@/lib/backend/progress-store";
 import { isAuthError, resolveLearnerAuth } from "@/lib/backend/auth";
 import { getPublishedRegionalTracks } from "@/lib/backend/public-content";
@@ -32,6 +32,9 @@ export async function POST(request: NextRequest) {
 
   if (!match) {
     return NextResponse.json({ error: "Unknown quiz." }, { status: 400 });
+  }
+  if (!validateQuizAnswers(match.quiz, payload.answers)) {
+    return NextResponse.json({ error: "Answers must include one valid option index for every quiz question." }, { status: 400 });
   }
 
   const graded = gradeQuiz(match.quiz, payload.answers);
