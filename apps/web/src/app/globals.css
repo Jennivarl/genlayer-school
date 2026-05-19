@@ -359,6 +359,8 @@ button:disabled {
 }
 
 .field-block textarea,
+.field-block input,
+.field-block select,
 .stack-editor input,
 .stack-editor select,
 .inline-editor input {

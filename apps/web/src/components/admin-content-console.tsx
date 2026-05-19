@@ -51,6 +51,8 @@ type SpotlightForm = {
   contentText: string;
 };
 
+type RegionalLesson = RegionalTrack["lessons"][number];
+
 function getHeaders(token: string) {
   const headers = new Headers({ "Content-Type": "application/json" });
   if (token.trim()) headers.set("x-admin-token", token.trim());
@@ -86,6 +88,17 @@ function createQuestion(index: number): QuizQuestion {
   };
 }
 
+function createRegionalLesson(index: number): RegionalLesson {
+  return {
+    slug: `lesson-${index}`,
+    title: "",
+    durationMinutes: 5,
+    summary: "",
+    objectives: [""],
+    content: [],
+  };
+}
+
 function toWeeklyForm(summary: WeeklySummary): WeeklyForm {
   return {
     slug: summary.slug,
@@ -114,6 +127,24 @@ function toSpotlightForm(spotlight: CommunitySpotlight): SpotlightForm {
     featuredProject: spotlight.featuredProject,
     highlights: spotlight.highlights.map((item) => ({ ...item })),
     contentText: contentToText(spotlight),
+  };
+}
+
+function toRegionalForm(track: RegionalTrack): RegionalTrack {
+  return {
+    ...track,
+    lessons: track.lessons.map((lesson) => ({
+      ...lesson,
+      objectives: [...lesson.objectives],
+      content: lesson.content.map((block) => ({ ...block })),
+    })),
+    quiz: {
+      ...track.quiz,
+      questions: track.quiz.questions.map((question) => ({
+        ...question,
+        options: [...question.options],
+      })),
+    },
   };
 }
 
@@ -177,17 +208,62 @@ function validateSpotlight(payload: CommunitySpotlight): string | null {
   return null;
 }
 
-function regionalPayload(text: string): RegionalTrack {
-  return JSON.parse(text) as RegionalTrack;
+function regionalPayload(form: RegionalTrack): RegionalTrack {
+  return {
+    ...form,
+    slug: form.slug.trim() as RegionalTrack["slug"],
+    regionName: form.regionName.trim(),
+    nativeRegionName: form.nativeRegionName.trim(),
+    languageName: form.languageName.trim(),
+    nativeLanguageName: form.nativeLanguageName.trim(),
+    locale: form.locale.trim(),
+    title: form.title.trim(),
+    description: form.description.trim(),
+    unityMessage: form.unityMessage.trim(),
+    certificateTitle: form.certificateTitle.trim(),
+    lessons: form.lessons.map((lesson, index) => ({
+      ...lesson,
+      slug: lesson.slug.trim() || `lesson-${index + 1}`,
+      title: lesson.title.trim(),
+      durationMinutes: Number(lesson.durationMinutes) || 5,
+      summary: lesson.summary.trim(),
+      objectives: lesson.objectives.map((objective) => objective.trim()).filter(Boolean),
+    })),
+    quiz: {
+      ...form.quiz,
+      slug: form.quiz.slug.trim(),
+      title: form.quiz.title.trim(),
+      passPercent: Number(form.quiz.passPercent),
+      questions: form.quiz.questions.map((question, index) => ({
+        ...question,
+        id: question.id.trim() || `q${index + 1}`,
+        prompt: question.prompt.trim(),
+        options: question.options.map((option) => option.trim()),
+        explanation: question.explanation.trim(),
+      })),
+    },
+  };
 }
 
 function validateRegional(payload: RegionalTrack): string | null {
-  if (!payload.slug || !payload.title || !payload.regionName) return "Regional slug, title, and region name are required.";
-  if (!payload.languageName || !payload.nativeLanguageName) return "Regional language labels are required.";
+  if (!payload.slug || !payload.title || !payload.regionName || !payload.nativeRegionName) return "Regional slug, title, and region names are required.";
+  if (!payload.languageName || !payload.nativeLanguageName || !payload.locale) return "Regional language labels and locale are required.";
+  if (!payload.description || !payload.unityMessage || !payload.certificateTitle) return "Regional description, unity message, and certificate title are required.";
   if (!Array.isArray(payload.lessons) || payload.lessons.length === 0) return "Regional lessons are required.";
+  if (payload.lessons.some((lesson) => !lesson.slug || !lesson.title || !lesson.summary || lesson.objectives.length === 0 || lesson.content.length === 0)) {
+    return "Every regional lesson needs a slug, title, summary, objective, and body content.";
+  }
   if (!payload.quiz?.slug || !payload.quiz?.title || !Array.isArray(payload.quiz.questions)) return "Regional quiz is required.";
-  if (payload.quiz.questions.some((question) => !question.prompt || question.options.some((option) => !option))) {
-    return "Every regional quiz question needs a prompt and options.";
+  if (payload.quiz.passPercent < 0 || payload.quiz.passPercent > 100) return "Regional quiz pass percent must be between 0 and 100.";
+  if (payload.quiz.questions.length === 0) return "Regional quiz needs at least one question.";
+  if (payload.quiz.questions.some((question) => !question.prompt || question.options.length < 2 || question.options.some((option) => !option))) {
+    return "Every regional quiz question needs a prompt and at least two options.";
+  }
+  if (payload.quiz.questions.some((question) => question.correctOption < 0 || question.correctOption >= question.options.length)) {
+    return "Every regional quiz question needs a valid correct option.";
+  }
+  if (payload.quiz.questions.some((question) => !question.explanation)) {
+    return "Every regional quiz question needs an explanation.";
   }
   return null;
 }
@@ -199,7 +275,7 @@ export function AdminContentConsole() {
   const [weekly, setWeekly] = useState<WeeklyForm>(() => toWeeklyForm(weeklySummaries[0]));
   const [spotlight, setSpotlight] = useState<SpotlightForm>(() => toSpotlightForm(communitySpotlights[0]));
   const [selectedRegionSlug, setSelectedRegionSlug] = useState(regionalTracks[0].slug);
-  const [regionalJson, setRegionalJson] = useState(() => JSON.stringify(regionalTracks[0], null, 2));
+  const [regional, setRegional] = useState<RegionalTrack>(() => toRegionalForm(regionalTracks[0]));
   const [entries, setEntries] = useState<AdminContentEntry[]>([]);
   const [storageDriver, setStorageDriver] = useState("unknown");
   const [message, setMessage] = useState<string | null>(null);
@@ -295,14 +371,14 @@ export function AdminContentConsole() {
         ? weeklyPayload(weekly)
         : kind === "spotlight"
           ? spotlightPayload(spotlight)
-          : regionalPayload(regionalJson);
+          : regionalPayload(regional);
       validationError = kind === "weekly"
         ? validateWeekly(payload as WeeklySummary)
         : kind === "spotlight"
           ? validateSpotlight(payload as CommunitySpotlight)
           : validateRegional(payload as RegionalTrack);
     } catch {
-      setMessage("Regional payload must be valid JSON.");
+      setMessage("Could not prepare content payload.");
       setSavingKind(null);
       return;
     }
@@ -367,7 +443,7 @@ export function AdminContentConsole() {
     else {
       const track = entry.payload as RegionalTrack;
       setSelectedRegionSlug(track.slug);
-      setRegionalJson(JSON.stringify(track, null, 2));
+      setRegional(toRegionalForm(track));
     }
     setMessage(`Loaded ${entry.title}.`);
   }
@@ -375,7 +451,7 @@ export function AdminContentConsole() {
   function loadSeedRegion(slug: string) {
     const track = regionalTracks.find((item) => item.slug === slug) ?? regionalTracks[0];
     setSelectedRegionSlug(track.slug);
-    setRegionalJson(JSON.stringify(track, null, 2));
+    setRegional(toRegionalForm(track));
   }
 
   function updateWeeklyLink(index: number, patch: Partial<SpotlightItem>) {
@@ -404,6 +480,48 @@ export function AdminContentConsole() {
 
   function updateQuestionOption(questionIndex: number, optionIndex: number, value: string) {
     setWeekly((current) => ({
+      ...current,
+      quiz: {
+        ...current.quiz,
+        questions: current.quiz.questions.map((question, itemIndex) => itemIndex === questionIndex
+          ? { ...question, options: question.options.map((option, index) => index === optionIndex ? value : option) }
+          : question),
+      },
+    }));
+  }
+
+  function updateRegionalLesson(index: number, patch: Partial<RegionalLesson>) {
+    setRegional((current) => ({
+      ...current,
+      lessons: current.lessons.map((lesson, itemIndex) => itemIndex === index ? { ...lesson, ...patch } : lesson),
+    }));
+  }
+
+  function updateRegionalLessonObjective(lessonIndex: number, objectiveIndex: number, value: string) {
+    setRegional((current) => ({
+      ...current,
+      lessons: current.lessons.map((lesson, itemIndex) => itemIndex === lessonIndex
+        ? { ...lesson, objectives: lesson.objectives.map((objective, index) => index === objectiveIndex ? value : objective) }
+        : lesson),
+    }));
+  }
+
+  function updateRegionalLessonContent(lessonIndex: number, value: string) {
+    updateRegionalLesson(lessonIndex, { content: textToContent(value) });
+  }
+
+  function updateRegionalQuestion(index: number, patch: Partial<QuizQuestion>) {
+    setRegional((current) => ({
+      ...current,
+      quiz: {
+        ...current.quiz,
+        questions: current.quiz.questions.map((question, itemIndex) => itemIndex === index ? { ...question, ...patch } : question),
+      },
+    }));
+  }
+
+  function updateRegionalQuestionOption(questionIndex: number, optionIndex: number, value: string) {
+    setRegional((current) => ({
       ...current,
       quiz: {
         ...current.quiz,
@@ -581,8 +699,8 @@ export function AdminContentConsole() {
 
         <article className="card admin-form">
           <p className="meta">Regional track</p>
-          <h2>Native-language classroom JSON</h2>
-          <p>Edit a full regional track payload. Published regional entries override the built-in region content on public region pages, quizzes, certificates, and catalog responses.</p>
+          <h2>Native-language classroom</h2>
+          <p>Published regional entries override the built-in region content on public region pages, quizzes, certificates, and catalog responses.</p>
           <div className="form-grid">
             <label>
               <span>Load seed region</span>
@@ -592,14 +710,81 @@ export function AdminContentConsole() {
                 ))}
               </select>
             </label>
+            <label><span>Slug</span><input value={regional.slug} onChange={(event) => setRegional({ ...regional, slug: event.target.value as RegionalTrack["slug"] })} /></label>
+            <label><span>Region name</span><input value={regional.regionName} onChange={(event) => setRegional({ ...regional, regionName: event.target.value })} /></label>
+            <label><span>Native region name</span><input value={regional.nativeRegionName} onChange={(event) => setRegional({ ...regional, nativeRegionName: event.target.value })} /></label>
+            <label><span>Language</span><input value={regional.languageName} onChange={(event) => setRegional({ ...regional, languageName: event.target.value })} /></label>
+            <label><span>Native language</span><input value={regional.nativeLanguageName} onChange={(event) => setRegional({ ...regional, nativeLanguageName: event.target.value })} /></label>
+            <label><span>Locale</span><input value={regional.locale} onChange={(event) => setRegional({ ...regional, locale: event.target.value })} /></label>
+            <label><span>Certificate title</span><input value={regional.certificateTitle} onChange={(event) => setRegional({ ...regional, certificateTitle: event.target.value })} /></label>
           </div>
-          <label className="field-block">
-            <span>Regional JSON payload</span>
-            <textarea value={regionalJson} onChange={(event) => setRegionalJson(event.target.value)} />
-          </label>
+          <label className="field-block"><span>Classroom title</span><input value={regional.title} onChange={(event) => setRegional({ ...regional, title: event.target.value })} /></label>
+          <label className="field-block"><span>Description</span><textarea value={regional.description} onChange={(event) => setRegional({ ...regional, description: event.target.value })} /></label>
+          <label className="field-block"><span>Unity message</span><textarea value={regional.unityMessage} onChange={(event) => setRegional({ ...regional, unityMessage: event.target.value })} /></label>
+
+          <div className="sub-editor">
+            <div className="status-row">
+              <h3>Lessons</h3>
+              <button className="button secondary compact" type="button" onClick={() => setRegional({ ...regional, lessons: [...regional.lessons, createRegionalLesson(regional.lessons.length + 1)] })}>Add lesson</button>
+            </div>
+            {regional.lessons.map((lesson, lessonIndex) => (
+              <div className="stack-editor" key={`regional-lesson-${lessonIndex}`}>
+                <div className="form-grid">
+                  <label><span>Lesson title</span><input value={lesson.title} onChange={(event) => updateRegionalLesson(lessonIndex, { title: event.target.value })} /></label>
+                  <label><span>Lesson slug</span><input value={lesson.slug} onChange={(event) => updateRegionalLesson(lessonIndex, { slug: event.target.value })} /></label>
+                  <label><span>Duration minutes</span><input type="number" min={1} value={lesson.durationMinutes} onChange={(event) => updateRegionalLesson(lessonIndex, { durationMinutes: Number(event.target.value) })} /></label>
+                </div>
+                <label><span>Summary</span><input value={lesson.summary} onChange={(event) => updateRegionalLesson(lessonIndex, { summary: event.target.value })} /></label>
+                <label className="field-block"><span>Body</span><textarea value={contentToText(lesson)} onChange={(event) => updateRegionalLessonContent(lessonIndex, event.target.value)} /></label>
+                <div className="sub-editor">
+                  <div className="status-row">
+                    <h3>Objectives</h3>
+                    <button className="button secondary compact" type="button" onClick={() => updateRegionalLesson(lessonIndex, { objectives: [...lesson.objectives, ""] })}>Add</button>
+                  </div>
+                  {lesson.objectives.map((objective, objectiveIndex) => (
+                    <div className="inline-editor" key={`regional-lesson-${lessonIndex}-objective-${objectiveIndex}`}>
+                      <input value={objective} onChange={(event) => updateRegionalLessonObjective(lessonIndex, objectiveIndex, event.target.value)} />
+                      <button className="button secondary compact" type="button" onClick={() => updateRegionalLesson(lessonIndex, { objectives: lesson.objectives.filter((_, itemIndex) => itemIndex !== objectiveIndex) })}>Remove</button>
+                    </div>
+                  ))}
+                </div>
+                <button className="button secondary compact" type="button" onClick={() => setRegional({ ...regional, lessons: regional.lessons.filter((_, itemIndex) => itemIndex !== lessonIndex) })}>Remove lesson</button>
+              </div>
+            ))}
+          </div>
+
+          <div className="sub-editor">
+            <div className="status-row">
+              <h3>Quiz</h3>
+              <button className="button secondary compact" type="button" onClick={() => setRegional({ ...regional, quiz: { ...regional.quiz, questions: [...regional.quiz.questions, createQuestion(regional.quiz.questions.length + 1)] } })}>Add question</button>
+            </div>
+            <div className="form-grid">
+              <label><span>Quiz title</span><input value={regional.quiz.title} onChange={(event) => setRegional({ ...regional, quiz: { ...regional.quiz, title: event.target.value } })} /></label>
+              <label><span>Quiz slug</span><input value={regional.quiz.slug} onChange={(event) => setRegional({ ...regional, quiz: { ...regional.quiz, slug: event.target.value } })} /></label>
+              <label><span>Pass percent</span><input type="number" min={0} max={100} value={regional.quiz.passPercent} onChange={(event) => setRegional({ ...regional, quiz: { ...regional.quiz, passPercent: Number(event.target.value) } })} /></label>
+            </div>
+            {regional.quiz.questions.map((question, questionIndex) => (
+              <div className="stack-editor" key={`regional-question-${questionIndex}`}>
+                <input placeholder="Question prompt" value={question.prompt} onChange={(event) => updateRegionalQuestion(questionIndex, { prompt: event.target.value })} />
+                {question.options.map((option, optionIndex) => (
+                  <input key={`regional-question-${questionIndex}-option-${optionIndex}`} placeholder={`Option ${optionIndex + 1}`} value={option} onChange={(event) => updateRegionalQuestionOption(questionIndex, optionIndex, event.target.value)} />
+                ))}
+                <label><span>Correct option</span><select value={question.correctOption} onChange={(event) => updateRegionalQuestion(questionIndex, { correctOption: Number(event.target.value) })}>{question.options.map((_, index) => <option key={index} value={index}>Option {index + 1}</option>)}</select></label>
+                <input placeholder="Explanation" value={question.explanation} onChange={(event) => updateRegionalQuestion(questionIndex, { explanation: event.target.value })} />
+                <button className="button secondary compact" type="button" onClick={() => setRegional({ ...regional, quiz: { ...regional.quiz, questions: regional.quiz.questions.filter((_, itemIndex) => itemIndex !== questionIndex) } })}>Remove question</button>
+              </div>
+            ))}
+          </div>
+
           <section className="preview-panel">
-            <p className="meta">Required fields</p>
-            <p>slug, title, regionName, languageName, nativeLanguageName, lessons, quiz, and certificateTitle.</p>
+            <p className="meta">Preview links</p>
+            <h3>{regional.title || "Regional classroom"}</h3>
+            <p>{regional.regionName || "Region"} - {regional.languageName || "Language"} - {regional.certificateTitle || "Certificate"}</p>
+            <div className="cta-row">
+              <a className="button secondary compact" href={`/regions/${regional.slug}`} target="_blank" rel="noreferrer">Classroom</a>
+              <a className="button secondary compact" href={`/regions/${regional.slug}/quiz`} target="_blank" rel="noreferrer">Quiz</a>
+              <a className="button secondary compact" href={`/regions/${regional.slug}/certificate`} target="_blank" rel="noreferrer">Certificate</a>
+            </div>
           </section>
           <div className="cta-row">
             <button className="button compact" disabled={savingKind === "regional"} type="button" onClick={() => save("regional", "draft")}>Save draft</button>
@@ -616,6 +801,13 @@ export function AdminContentConsole() {
               <span>{entry.title}</span>
               <div className="cta-row inline-actions">
                 <button className="button secondary compact" type="button" onClick={() => loadEntry(entry)}>Edit</button>
+                {entry.kind === "regional" && (
+                  <>
+                    <a className="button secondary compact" href={`/regions/${entry.slug}`} target="_blank" rel="noreferrer">Classroom</a>
+                    <a className="button secondary compact" href={`/regions/${entry.slug}/quiz`} target="_blank" rel="noreferrer">Quiz</a>
+                    <a className="button secondary compact" href={`/regions/${entry.slug}/certificate`} target="_blank" rel="noreferrer">Certificate</a>
+                  </>
+                )}
                 <span className={`pill status-${entry.status === "published" ? "ready" : "warning"}`}>{entry.kind} - {entry.status}</span>
               </div>
             </article>
