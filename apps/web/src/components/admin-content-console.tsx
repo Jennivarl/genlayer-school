@@ -53,6 +53,27 @@ type CertificateTemplateResponse = {
   error?: string;
 };
 
+type ContentQaCheck = {
+  severity: "error" | "warning";
+  label: string;
+  detail: string;
+  regionSlug?: string;
+};
+
+type ContentQaResponse = {
+  ready?: boolean;
+  summary?: {
+    regions: number;
+    expectedRegions: number;
+    publishedRegionalOverrides: number;
+    errors: number;
+    warnings: number;
+  };
+  routes?: string[];
+  checks?: ContentQaCheck[];
+  error?: string;
+};
+
 type BootstrapScope = AdminContentKind | "all";
 type BootstrapRun = {
   scope: BootstrapScope;
@@ -325,6 +346,9 @@ export function AdminContentConsole() {
   const [certificateTemplateSummary, setCertificateTemplateSummary] = useState<CertificateTemplateResponse["summary"] | null>(null);
   const [certificateTemplateError, setCertificateTemplateError] = useState<string | null>(null);
   const [loadingCertificateTemplates, setLoadingCertificateTemplates] = useState(false);
+  const [contentQa, setContentQa] = useState<ContentQaResponse | null>(null);
+  const [contentQaError, setContentQaError] = useState<string | null>(null);
+  const [loadingContentQa, setLoadingContentQa] = useState(false);
   const [storageDriver, setStorageDriver] = useState("unknown");
   const [message, setMessage] = useState<string | null>(null);
   const [savingKind, setSavingKind] = useState<AdminContentKind | null>(null);
@@ -384,6 +408,28 @@ export function AdminContentConsole() {
     setLoadingCertificateTemplates(false);
   }
 
+  const fetchContentQa = useCallback(async (nextToken: string) => {
+    const response = await fetch("/api/admin/content/qa", {
+      headers: getHeaders(nextToken),
+    });
+    const payload = await response.json() as ContentQaResponse;
+    return { response, payload };
+  }, []);
+
+  async function loadContentQa(nextToken = token) {
+    setLoadingContentQa(true);
+    setContentQaError(null);
+    const { response, payload } = await fetchContentQa(nextToken);
+
+    if (!response.ok) {
+      setContentQaError(payload.error ?? "Could not run content QA.");
+      setContentQa(null);
+    } else {
+      setContentQa(payload);
+    }
+    setLoadingContentQa(false);
+  }
+
   useEffect(() => {
     let cancelled = false;
 
@@ -403,6 +449,13 @@ export function AdminContentConsole() {
         } else if (!cancelled) {
           setCertificateTemplateError(templates.payload.error ?? "Could not load certificate template status.");
         }
+        const qa = await fetchContentQa(savedToken);
+        if (!cancelled && qa.response.ok) {
+          setContentQa(qa.payload);
+          setContentQaError(null);
+        } else if (!cancelled) {
+          setContentQaError(qa.payload.error ?? "Could not run content QA.");
+        }
       }
     }
 
@@ -413,7 +466,7 @@ export function AdminContentConsole() {
     return () => {
       cancelled = true;
     };
-  }, [applyEntriesResponse, fetchCertificateTemplates, fetchEntries]);
+  }, [applyEntriesResponse, fetchCertificateTemplates, fetchContentQa, fetchEntries]);
 
   async function unlockAdmin() {
     const nextToken = draftToken.trim();
@@ -423,6 +476,7 @@ export function AdminContentConsole() {
     setMessage(nextToken ? "Admin unlocked for this browser session." : "Admin unlocked in local mode.");
     await loadEntries(nextToken);
     await loadCertificateTemplates(nextToken);
+    await loadContentQa(nextToken);
   }
 
   function lockAdmin() {
@@ -434,6 +488,8 @@ export function AdminContentConsole() {
     setCertificateTemplates([]);
     setCertificateTemplateSummary(null);
     setCertificateTemplateError(null);
+    setContentQa(null);
+    setContentQaError(null);
     setStorageDriver("locked");
     setMessage("Admin locked.");
   }
@@ -485,6 +541,7 @@ export function AdminContentConsole() {
     } else {
       setMessage(`${kind === "weekly" ? "Weekly summary" : kind === "spotlight" ? "Spotlight" : "Regional track"} saved as ${status}.`);
       await loadEntries();
+      if (kind === "regional") await loadContentQa();
     }
 
     setSavingKind(null);
@@ -511,6 +568,7 @@ export function AdminContentConsole() {
     } else {
       setMessage(`Bootstrapped ${payload.bootstrapped?.total ?? 0} ${bootstrapScopeLabel(payload.scope ?? scope)} entries as ${status}.`);
       await loadEntries();
+      if (scope === "all" || scope === "regional") await loadContentQa();
     }
 
     setBootstrappingRun(null);
@@ -735,6 +793,63 @@ export function AdminContentConsole() {
               <article className="list-item">
                 <span>Certificate template status has not loaded yet.</span>
                 <button className="button secondary compact" type="button" onClick={() => loadCertificateTemplates()}>Check now</button>
+              </article>
+            )}
+          </div>
+        </section>
+      )}
+
+      {!locked && (
+        <section className="section card">
+          <div className="status-row">
+            <div>
+              <p className="meta">Content QA</p>
+              <h2>Regional launch checks</h2>
+            </div>
+            <span className={`pill status-${contentQa?.ready ? "ready" : contentQa?.summary?.errors ? "missing" : "warning"}`}>
+              {contentQa?.ready ? "Ready" : contentQa?.summary ? `${contentQa.summary.errors} errors` : "not checked"}
+            </span>
+          </div>
+          <p>Validate the public regional tracks currently being served, including published admin overrides, route assumptions, quiz answer indexes, and certificate template filenames.</p>
+          <div className="cta-row">
+            <button className="button compact" disabled={loadingContentQa} type="button" onClick={() => loadContentQa()}>
+              {loadingContentQa ? "Running" : "Run content QA"}
+            </button>
+            {contentQaError && <span className="pill status-missing">{contentQaError}</span>}
+            {contentQa?.summary && (
+              <>
+                <span className="pill">{contentQa.summary.regions}/{contentQa.summary.expectedRegions} regions</span>
+                <span className="pill">{contentQa.summary.publishedRegionalOverrides} published overrides</span>
+                <span className={`pill status-${contentQa.summary.warnings ? "warning" : "ready"}`}>{contentQa.summary.warnings} warnings</span>
+              </>
+            )}
+          </div>
+          <div className="list">
+            {(contentQa?.checks ?? []).slice(0, 12).map((check, index) => (
+              <article className="list-item" key={`${check.label}-${index}`}>
+                <div>
+                  <h3>{check.label}</h3>
+                  <p>{check.detail}</p>
+                </div>
+                <span className={`pill status-${check.severity === "error" ? "missing" : "warning"}`}>{check.severity}</span>
+              </article>
+            ))}
+            {contentQa?.checks && contentQa.checks.length > 12 && (
+              <article className="list-item">
+                <span>{contentQa.checks.length - 12} more QA findings hidden from this panel.</span>
+                <span className="pill">Review API JSON</span>
+              </article>
+            )}
+            {contentQa && contentQa.checks?.length === 0 && (
+              <article className="list-item">
+                <span>All regional content QA checks passed.</span>
+                <span className="pill status-ready">Ready</span>
+              </article>
+            )}
+            {!loadingContentQa && !contentQa && !contentQaError && (
+              <article className="list-item">
+                <span>Content QA has not run yet.</span>
+                <button className="button secondary compact" type="button" onClick={() => loadContentQa()}>Run now</button>
               </article>
             )}
           </div>
