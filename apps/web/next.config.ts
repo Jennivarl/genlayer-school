@@ -5,6 +5,7 @@ const nextConfig: NextConfig = {
     "@genlayer-school/content",
     "@genlayer-school/sdk",
     "@genlayer-school/ui",
+    "motion",
   ],
 };
 
