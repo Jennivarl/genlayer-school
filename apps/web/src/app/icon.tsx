@@ -12,12 +12,10 @@ export default async function Icon() {
 
   return new ImageResponse(
     (
-      <img
-        src={dataUrl}
-        width={32}
-        height={32}
-        style={{ objectFit: "contain" }}
-      />
+      <div style={{ width: 32, height: 32, position: "relative", display: "flex" }}>
+        <div style={{ position: "absolute", top: 0, left: 0, width: 32, height: 32, background: "#7c3aed", borderRadius: 6 }} />
+        <img src={dataUrl} width={32} height={32} style={{ position: "absolute", top: 0, left: 0, objectFit: "contain", mixBlendMode: "screen" }} />
+      </div>
     ),
     { ...size }
   );
