@@ -1,48 +1,45 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Syne } from "next/font/google";
 import { AppProviders } from "@/components/app-providers";
-import { AuthStatus } from "@/components/auth-status";
+import { Navigation } from "@/components/navigation";
 import "./globals.css";
 
-const navItems = [
-  { href: "/regions", label: "Regions" },
-  { href: "/learn", label: "Learn" },
-  { href: "/dashboard", label: "Dashboard" },
-  { href: "/certificates", label: "Certificates" },
-  { href: "/community-spotlight", label: "Community Spotlight" },
-  { href: "/gen-fren-weekly", label: "Gen-Fren Weekly" },
-  { href: "/resources", label: "Resources" },
-  { href: "/backend", label: "Backend" },
-  { href: "/admin", label: "Admin" },
-  { href: "/analytics", label: "Analytics" },
-];
+const syne = Syne({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-syne",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: "GenLayer School",
-  description: "Community education platform for GenLayer learners and builders.",
+  title: "GenLayer Regional School",
+  description: "Learn GenLayer in your language. Earn certificates. Join the global ecosystem.",
+  metadataBase: new URL("https://gen-school.fun"),
+  openGraph: {
+    title: "GenLayer Regional School",
+    description: "Learn GenLayer in your language. Earn certificates. Join the global ecosystem.",
+    url: "https://gen-school.fun",
+    siteName: "GenLayer Regional School",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "GenLayer Regional School",
+    description: "Learn GenLayer in your language. Earn certificates. Join the global ecosystem.",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en" className={syne.variable}>
+      <body className={syne.className}>
         <AppProviders>
-        <header className="site-header">
-          <Link href="/" className="brand" aria-label="GenLayer School home">
-            <span className="brand-mark">GL</span>
-            <span>GenLayer School</span>
-          </Link>
-          <nav className="nav" aria-label="Primary navigation">
-            {navItems.map((item) => (
-              <Link key={item.href} href={item.href}>{item.label}</Link>
-            ))}
-          </nav>
-          <AuthStatus />
-        </header>
-        <main>{children}</main>
+          <div className="min-h-screen bg-background">
+            <Navigation />
+            <main>{children}</main>
+          </div>
         </AppProviders>
       </body>
     </html>
   );
 }
-
