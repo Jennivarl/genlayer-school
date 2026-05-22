@@ -156,7 +156,7 @@ function drawPlaceholderCertificate(canvas: HTMLCanvasElement, track: RegionalTr
   ctx.fillStyle = palette.primary;
   ctx.font = "700 54px Arial";
   ctx.textAlign = "center";
-  ctx.fillText("GenLayer School", width / 2, 210);
+  ctx.fillText("GenLayer Regional School", width / 2, 210);
 
   ctx.fillStyle = "#25312d";
   ctx.font = "700 72px Arial";
@@ -193,10 +193,15 @@ function drawPlaceholderCertificate(canvas: HTMLCanvasElement, track: RegionalTr
   ctx.beginPath();
   ctx.arc(800, 850, 52, 0, Math.PI * 2);
   ctx.fill();
-  ctx.fillStyle = palette.primary;
-  ctx.font = "700 30px Arial";
-  ctx.textAlign = "center";
-  ctx.fillText("GL", 800, 861);
+
+  const logoImg = new Image();
+  logoImg.src = "/genlayer.jpg";
+  logoImg.onload = () => {
+    ctx.save();
+    ctx.globalCompositeOperation = "multiply";
+    ctx.drawImage(logoImg, 758, 810, 84, 84);
+    ctx.restore();
+  };
 }
 
 function drawCertificate(canvas: HTMLCanvasElement, track: RegionalTrack, name: string, onTemplateState?: (hasTemplate: boolean) => void) {
@@ -295,7 +300,7 @@ export function RegionalCertificate({ track }: RegionalCertificateProps) {
       <section className="section card">
         <p className="eyebrow">Certificate locked</p>
         <h2>Sign in to download your regional certificate</h2>
-        <p>Your certificate uses your GenLayer School username, so you need to sign in first.</p>
+        <p>Your certificate uses your GenLayer Regional School username, so you need to sign in first.</p>
         <button className="button" type="button" onClick={auth.login}>Sign in</button>
       </section>
     );

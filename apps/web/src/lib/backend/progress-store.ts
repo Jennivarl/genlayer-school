@@ -36,6 +36,7 @@ function createStore(): ProgressStore {
     syncEligibleCertificates: localStore.syncEligibleCertificates,
     requestCertificateMint: localStore.requestCertificateMint,
     getLearningAnalytics: localStore.getLearningAnalytics,
+    getCommunityMembers: localStore.getCommunityMembers,
   };
 }
 
@@ -51,4 +52,5 @@ export const getCertificateRecords = store.getCertificateRecords;
 export const syncEligibleCertificates = store.syncEligibleCertificates;
 export const requestCertificateMint = store.requestCertificateMint;
 export const getLearningAnalytics = store.getLearningAnalytics;
+export const getCommunityMembers = store.getCommunityMembers;
 export { normalizeLearnerId } from "./local-progress-store";

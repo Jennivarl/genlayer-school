@@ -1,6 +1,6 @@
 import { createClient } from "@supabase/supabase-js";
 import type { CertificateRecord, CertificateStatus, LearnerProfile, LearnerProgress, QuizAttempt, QuizKind } from "@genlayer-school/content";
-import type { CertificateEligibilitySyncInput, CertificateMintRequestInput, LearningAnalytics, LessonCompletionInput, ProfileUpdateInput, ProgressStore, QuizAttemptInput } from "./progress-store-types";
+import type { CommunityMember, CertificateEligibilitySyncInput, CertificateMintRequestInput, LearningAnalytics, LessonCompletionInput, ProfileUpdateInput, ProgressStore, QuizAttemptInput } from "./progress-store-types";
 import { normalizeLearnerId, validateUsername } from "./local-progress-store";
 
 type SupabaseConfig = {
@@ -374,6 +374,52 @@ export function createSupabaseProgressStore(config: SupabaseConfig): ProgressSto
     };
   }
 
+  const REGIONAL_SLUGS = new Set([
+    "china", "india", "indonesia", "latam", "latam-es", "latam-pt",
+    "nigeria", "russia", "korea", "turkey", "ukraine", "vietnam",
+  ]);
+
+  async function getCommunityMembers(): Promise<CommunityMember[]> {
+    const [lessonsResult, profilesResult, attemptsResult] = await Promise.all([
+      supabase.from("lesson_progress").select("learner_id, course_slug"),
+      supabase.from("learner_profiles").select("learner_id, display_name"),
+      supabase.from("quiz_attempts").select("learner_id, passed"),
+    ]);
+
+    const lessons = (lessonsResult.data ?? []) as Array<{ learner_id: string; course_slug: string }>;
+    const profiles = (profilesResult.data ?? []) as Array<{ learner_id: string; display_name: string | null }>;
+    const attempts = (attemptsResult.data ?? []) as Array<{ learner_id: string; passed: boolean }>;
+
+    const profileMap = new Map(profiles.map((p) => [p.learner_id, p.display_name]));
+
+    const byLearner = new Map<string, { regions: Set<string>; lessonCount: number; quizzesPassed: number }>();
+    for (const lesson of lessons) {
+      const region = lesson.course_slug;
+      if (!region || !REGIONAL_SLUGS.has(region)) continue;
+      if (!byLearner.has(lesson.learner_id)) {
+        byLearner.set(lesson.learner_id, { regions: new Set(), lessonCount: 0, quizzesPassed: 0 });
+      }
+      const entry = byLearner.get(lesson.learner_id)!;
+      entry.regions.add(region);
+      entry.lessonCount += 1;
+    }
+    for (const attempt of attempts) {
+      if (!attempt.passed) continue;
+      if (!byLearner.has(attempt.learner_id)) continue;
+      byLearner.get(attempt.learner_id)!.quizzesPassed += 1;
+    }
+
+    return [...byLearner.entries()]
+      .map(([learnerId, entry]) => ({
+        displayName: profileMap.get(learnerId) ?? null,
+        regions: [...entry.regions],
+        lessonCount: entry.lessonCount,
+        quizzesPassed: entry.quizzesPassed,
+      }))
+      .filter((m) => m.lessonCount > 0 && m.displayName)
+      .sort((a, b) => b.regions.length - a.regions.length || b.lessonCount - a.lessonCount);
+  }
+
   return {
     driver: "supabase",
     getProfile,
@@ -385,5 +431,6 @@ export function createSupabaseProgressStore(config: SupabaseConfig): ProgressSto
     syncEligibleCertificates,
     requestCertificateMint,
     getLearningAnalytics,
+    getCommunityMembers,
   };
 }

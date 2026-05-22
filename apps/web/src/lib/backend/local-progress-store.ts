@@ -1,7 +1,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import type { CertificateRecord, LearnerProfile, LearnerProgress, QuizAttempt } from "@genlayer-school/content";
-import type { LearningAnalytics, ProfileUpdateInput } from "./progress-store-types";
+import type { CommunityMember, LearningAnalytics, ProfileUpdateInput } from "./progress-store-types";
 
 const DEFAULT_LEARNER_ID = "demo-learner";
 const DATA_DIR = path.resolve(process.cwd(), "..", "..", ".local-data");
@@ -248,6 +248,35 @@ export async function requestCertificateMint(input: {
     await writeDatabase(database);
     return updatedRecord;
   });
+}
+
+const REGIONAL_SLUGS = new Set([
+  "china", "india", "indonesia", "latam", "latam-es", "latam-pt",
+  "nigeria", "russia", "korea", "turkey", "ukraine", "vietnam",
+]);
+
+export async function getCommunityMembers(): Promise<CommunityMember[]> {
+  const database = await readDatabase();
+  const progressRows = Object.values(database.learners);
+  const profiles = database.profiles ?? {};
+
+  return progressRows
+    .map((progress) => {
+      const regionalLessons = progress.completedLessons.filter(
+        (l) => REGIONAL_SLUGS.has(l.split("/")[0])
+      );
+      const regions = [...new Set(regionalLessons.map((l) => l.split("/")[0]))];
+      const quizzesPassed = progress.quizAttempts.filter((a) => a.passed).length;
+      const profile = profiles[progress.learnerId];
+      return {
+        displayName: profile?.displayName ?? null,
+        regions,
+        lessonCount: regionalLessons.length,
+        quizzesPassed,
+      };
+    })
+    .filter((m) => m.lessonCount > 0 && m.displayName)
+    .sort((a, b) => b.regions.length - a.regions.length || b.lessonCount - a.lessonCount);
 }
 
 export async function getLearningAnalytics(): Promise<LearningAnalytics> {

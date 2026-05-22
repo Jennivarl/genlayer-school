@@ -46,6 +46,8 @@ export type RegionSlug =
   | "india"
   | "indonesia"
   | "latam"
+  | "latam-es"
+  | "latam-pt"
   | "nigeria"
   | "russia"
   | "korea"

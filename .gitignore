@@ -16,3 +16,4 @@ Thumbs.db
 .dev-server*.log
 .local-data/
 apps/web/next-env.d.ts
+.vercel

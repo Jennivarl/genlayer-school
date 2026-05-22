@@ -5,7 +5,7 @@ export default function CertificatesPage() {
     <div className="page">
       <p className="eyebrow">Certification</p>
       <h1>Certificate pathways</h1>
-      <p className="lede">GenLayer School models certificate eligibility off-chain first, then connects eligible certificates to GenLayer Intelligent Contract minting.</p>
+      <p className="lede">GenLayer Regional School models certificate eligibility off-chain first, then connects eligible certificates to GenLayer Intelligent Contract minting.</p>
 
       <CertificatePathways />
     </div>

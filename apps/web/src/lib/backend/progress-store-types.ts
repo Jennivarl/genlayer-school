@@ -48,6 +48,13 @@ export type LearningAnalytics = {
   }>;
 };
 
+export type CommunityMember = {
+  displayName: string | null;
+  regions: string[];
+  lessonCount: number;
+  quizzesPassed: number;
+};
+
 export type ProgressStore = {
   driver: "local" | "supabase";
   getProfile(learnerId?: string | null): Promise<LearnerProfile>;
@@ -59,4 +66,5 @@ export type ProgressStore = {
   syncEligibleCertificates(input: CertificateEligibilitySyncInput): Promise<CertificateRecord[]>;
   requestCertificateMint(input: CertificateMintRequestInput): Promise<CertificateRecord>;
   getLearningAnalytics(): Promise<LearningAnalytics>;
+  getCommunityMembers(): Promise<CommunityMember[]>;
 };
