@@ -74,7 +74,7 @@ export const regionalTracks: RegionalTrack[] = [
         { type: "callout", title: "类比", text: "传统合约是计算器，Intelligent Contracts 是带推理能力的助手。" },
       ] },
       { slug: "blockchain-stack", title: "GenLayer 在区块链架构中的位置", durationMinutes: 5, summary: "了解 GenLayer 是 Layer 1，以及它如何与以太坊协同工作。", objectives: ["理解区块链分层", "知道 GenLayer 属于哪一层"], content: [
-        { type: "paragraph", text: "GenLayer 是 Layer 1 区块链，通过 ZKSync 等 rollup 技术与以太坊集成，同时自己负责 AI 原生共识。它不是以太坊的竞争者，而是专注于 AI 仲裁的新层级。" },
+        { type: "paragraph", text: "GenLayer 是 Layer 1 区块链，将通过 ZKSync 等 rollup 技术与以太坊集成，同时自己负责 AI 原生共识。它不是以太坊的竞争者，而是专注于 AI 仲裁的新层级。" },
         { type: "list", items: ["比特币：共识交易顺序", "以太坊：共识代码执行", "GenLayer：共识决策含义"] },
         { type: "callout", title: "定位", text: "GenLayer 与以太坊互补，而非竞争。" },
       ] },
@@ -195,7 +195,7 @@ export const regionalTracks: RegionalTrack[] = [
         { type: "callout", title: "Analogy", text: "Traditional contract calculator hai, Intelligent Contract reasoning ability waala assistant hai." },
       ] },
       { slug: "blockchain-stack", title: "Blockchain Stack mein GenLayer ki jagah", durationMinutes: 5, summary: "GenLayer Layer 1 hai aur Ethereum ke saath kaise kaam karta hai.", objectives: ["Blockchain layers samajhna", "GenLayer kis layer par hai"], content: [
-        { type: "paragraph", text: "GenLayer Layer 1 blockchain hai jo ZKSync jaise rollups ke through Ethereum se integrate hota hai. Yeh Ethereum ka competitor nahi balki AI adjudication ka ek naya layer hai." },
+        { type: "paragraph", text: "GenLayer Layer 1 blockchain hai jo ZKSync jaise rollups ke through Ethereum se integrate hoga. Yeh Ethereum ka competitor nahi balki AI adjudication ka ek naya layer hai." },
         { type: "list", items: ["Bitcoin: transaction order par consensus", "Ethereum: code execution par consensus", "GenLayer: decision meaning par consensus"] },
         { type: "callout", title: "Position", text: "GenLayer Ethereum ko compete nahi karta, complement karta hai." },
       ] },
@@ -316,7 +316,7 @@ export const regionalTracks: RegionalTrack[] = [
         { type: "callout", title: "Analogi", text: "Smart contract biasa itu kalkulator, Intelligent Contract itu asisten dengan kemampuan berpikir." },
       ] },
       { slug: "blockchain-stack", title: "Posisi GenLayer di Ekosistem Blockchain", durationMinutes: 5, summary: "GenLayer adalah Layer 1 dan cara kerjanya bersama Ethereum.", objectives: ["Memahami lapisan blockchain", "Layer mana GenLayer"], content: [
-        { type: "paragraph", text: "GenLayer adalah blockchain Layer 1 yang berintegrasi dengan Ethereum melalui rollup seperti ZKSync, sambil menangani konsensus AI-native sendiri. Bukan pesaing Ethereum, tapi lapisan baru untuk adjudikasi AI." },
+        { type: "paragraph", text: "GenLayer adalah blockchain Layer 1 yang akan berintegrasi dengan Ethereum melalui rollup seperti ZKSync, sambil menangani konsensus AI-native sendiri. Bukan pesaing Ethereum, tapi lapisan baru untuk adjudikasi AI." },
         { type: "list", items: ["Bitcoin: konsensus urutan transaksi", "Ethereum: konsensus eksekusi kode", "GenLayer: konsensus makna keputusan"] },
         { type: "callout", title: "Posisi", text: "GenLayer melengkapi Ethereum, bukan bersaing dengannya." },
       ] },
@@ -456,7 +456,7 @@ export const regionalTracks: RegionalTrack[] = [
         summary: "Entiende que GenLayer es Layer 1 y cómo trabaja junto a Ethereum.",
         objectives: ["Comprender las capas del blockchain", "Saber en qué capa está GenLayer"],
         content: [
-          { type: "paragraph", text: "GenLayer es un blockchain Layer 1 que se integra con Ethereum a través de rollups como ZKSync, mientras gestiona su propio consenso AI-native. No compite con Ethereum — es una nueva capa especializada en adjudicación AI." },
+          { type: "paragraph", text: "GenLayer es un blockchain Layer 1 que se integrará con Ethereum a través de rollups como ZKSync, mientras gestiona su propio consenso AI-native. No compite con Ethereum — es una nueva capa especializada en adjudicación AI." },
           { type: "list", items: ["Bitcoin: consenso sobre el orden de transacciones", "Ethereum: consenso sobre la ejecución de código", "GenLayer: consenso sobre el significado de decisiones"] },
           { type: "callout", title: "Posición", text: "GenLayer complementa a Ethereum, no compite con él." },
         ],
@@ -662,7 +662,7 @@ export const regionalTracks: RegionalTrack[] = [
         summary: "Entenda que o GenLayer é Layer 1 e como ele trabalha junto ao Ethereum.",
         objectives: ["Compreender as camadas do blockchain", "Saber em qual camada o GenLayer está"],
         content: [
-          { type: "paragraph", text: "GenLayer é um blockchain Layer 1 que se integra ao Ethereum por meio de rollups como ZKSync, enquanto gerencia seu próprio consenso AI-native. Não compete com o Ethereum — é uma nova camada especializada em adjudicação de IA." },
+          { type: "paragraph", text: "GenLayer é um blockchain Layer 1 que se integrará ao Ethereum por meio de rollups como ZKSync, enquanto gerencia seu próprio consenso AI-native. Não compete com o Ethereum — é uma nova camada especializada em adjudicação de IA." },
           { type: "list", items: ["Bitcoin: consenso sobre a ordem das transações", "Ethereum: consenso sobre a execução do código", "GenLayer: consenso sobre o significado das decisões"] },
           { type: "callout", title: "Posição", text: "O GenLayer complementa o Ethereum, não compete com ele." },
         ],
@@ -1074,7 +1074,7 @@ export const regionalTracks: RegionalTrack[] = [
         summary: "GenLayer — это Layer 1, и вот как он работает вместе с Ethereum.",
         objectives: ["Понять слои блокчейна", "Знать, на каком уровне находится GenLayer"],
         content: [
-          { type: "paragraph", text: "GenLayer — это блокчейн Layer 1, который интегрируется с Ethereum через роллапы типа ZKSync, управляя собственным AI-нативным консенсусом. Он не конкурирует с Ethereum — это новый уровень, специализирующийся на AI-арбитраже." },
+          { type: "paragraph", text: "GenLayer — это блокчейн Layer 1, который будет интегрироваться с Ethereum через роллапы типа ZKSync, управляя собственным AI-нативным консенсусом. Он не конкурирует с Ethereum — это новый уровень, специализирующийся на AI-арбитраже." },
           { type: "list", items: ["Bitcoin: консенсус по порядку транзакций", "Ethereum: консенсус по выполнению кода", "GenLayer: консенсус по смыслу решений"] },
           { type: "callout", title: "Позиция", text: "GenLayer дополняет Ethereum, а не конкурирует с ним." },
         ],
@@ -1280,7 +1280,7 @@ export const regionalTracks: RegionalTrack[] = [
         summary: "GenLayer가 Layer 1이며 Ethereum과 어떻게 협력하는지 이해합니다.",
         objectives: ["블록체인 레이어 이해", "GenLayer가 어느 레이어인지 알기"],
         content: [
-          { type: "paragraph", text: "GenLayer는 ZKSync 같은 롤업을 통해 Ethereum과 통합되는 Layer 1 블록체인으로, 자체적인 AI 네이티브 합의를 관리합니다. Ethereum의 경쟁자가 아니라 AI 중재에 특화된 새로운 레이어입니다." },
+          { type: "paragraph", text: "GenLayer는 ZKSync 같은 롤업을 통해 Ethereum과 통합될 Layer 1 블록체인으로, 자체적인 AI 네이티브 합의를 관리합니다. Ethereum의 경쟁자가 아니라 AI 중재에 특화된 새로운 레이어입니다." },
           { type: "list", items: ["Bitcoin: 트랜잭션 순서에 대한 합의", "Ethereum: 코드 실행에 대한 합의", "GenLayer: 결정의 의미에 대한 합의"] },
           { type: "callout", title: "포지션", text: "GenLayer는 Ethereum을 보완하지, 경쟁하지 않습니다." },
         ],
@@ -1486,7 +1486,7 @@ export const regionalTracks: RegionalTrack[] = [
         summary: "GenLayer'in Layer 1 olduğunu ve Ethereum ile nasıl çalıştığını anla.",
         objectives: ["Blockchain katmanlarını anlamak", "GenLayer'in hangi katmanda olduğunu bilmek"],
         content: [
-          { type: "paragraph", text: "GenLayer, ZKSync gibi rollup'lar aracılığıyla Ethereum ile entegre olan ve kendi AI-native konsensüsünü yöneten bir Layer 1 blockchain'dir. Ethereum'un rakibi değil, AI tahkimine odaklanan yeni bir katmandır." },
+          { type: "paragraph", text: "GenLayer, ZKSync gibi rollup'lar aracılığıyla Ethereum ile entegre olacak olan ve kendi AI-native konsensüsünü yöneten bir Layer 1 blockchain'dir. Ethereum'un rakibi değil, AI tahkimine odaklanan yeni bir katmandır." },
           { type: "list", items: ["Bitcoin: işlem sırası üzerinde konsensüs", "Ethereum: kod yürütme üzerinde konsensüs", "GenLayer: karar anlamı üzerinde konsensüs"] },
           { type: "callout", title: "Konum", text: "GenLayer, Ethereum ile rekabet etmez; onu tamamlar." },
         ],
@@ -1692,7 +1692,7 @@ export const regionalTracks: RegionalTrack[] = [
         summary: "GenLayer — це Layer 1, і ось як він працює разом з Ethereum.",
         objectives: ["Розуміти рівні блокчейну", "Знати, на якому рівні знаходиться GenLayer"],
         content: [
-          { type: "paragraph", text: "GenLayer — це блокчейн Layer 1, який інтегрується з Ethereum через ролапи на кшталт ZKSync, керуючи власним AI-нативним консенсусом. Він не конкурує з Ethereum — це новий рівень, що спеціалізується на AI-арбітражі." },
+          { type: "paragraph", text: "GenLayer — це блокчейн Layer 1, який буде інтегруватися з Ethereum через ролапи на кшталт ZKSync, керуючи власним AI-нативним консенсусом. Він не конкурує з Ethereum — це новий рівень, що спеціалізується на AI-арбітражі." },
           { type: "list", items: ["Bitcoin: консенсус щодо порядку транзакцій", "Ethereum: консенсус щодо виконання коду", "GenLayer: консенсус щодо сенсу рішень"] },
           { type: "callout", title: "Позиція", text: "GenLayer доповнює Ethereum, а не конкурує з ним." },
         ],
@@ -1898,7 +1898,7 @@ export const regionalTracks: RegionalTrack[] = [
         summary: "GenLayer là Layer 1 và cách nó hoạt động cùng Ethereum.",
         objectives: ["Hiểu các lớp blockchain", "Biết GenLayer thuộc lớp nào"],
         content: [
-          { type: "paragraph", text: "GenLayer là blockchain Layer 1 tích hợp với Ethereum qua các rollup như ZKSync, đồng thời tự quản lý cơ chế đồng thuận AI-native. Nó không cạnh tranh với Ethereum mà là một lớp mới chuyên về phân xử AI." },
+          { type: "paragraph", text: "GenLayer là blockchain Layer 1 sẽ tích hợp với Ethereum qua các rollup như ZKSync, đồng thời tự quản lý cơ chế đồng thuận AI-native. Nó không cạnh tranh với Ethereum mà là một lớp mới chuyên về phân xử AI." },
           { type: "list", items: ["Bitcoin: đồng thuận về thứ tự giao dịch", "Ethereum: đồng thuận về thực thi code", "GenLayer: đồng thuận về ý nghĩa quyết định"] },
           { type: "callout", title: "Vị thế", text: "GenLayer bổ sung cho Ethereum, không cạnh tranh với nó." },
         ],
