@@ -11,6 +11,7 @@ const navLinks = [
   { href: "/", label: "Home" },
   { href: "/dashboard", label: "Dashboard" },
   { href: "/regions", label: "Regions" },
+  { href: "/certificates", label: "Certificates" },
   { href: "/community-spotlight", label: "Spotlight" },
 ];
 
