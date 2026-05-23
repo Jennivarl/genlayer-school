@@ -124,7 +124,7 @@ export default function CertificatePage() {
             <div className="relative z-10 h-full flex flex-col items-center justify-center text-center space-y-6">
               <div className="flex items-center gap-3">
                 <div className="w-16 h-16 bg-gradient-to-br from-purple-600 to-purple-400 rounded-full flex items-center justify-center p-2">
-                  <GenLayerLogo size={48} color="#ffffff" />
+                  <GenLayerLogo size={48} />
                 </div>
                 <div className="text-left">
                   <div className="font-bold text-xl">GenLayer Regional School</div>

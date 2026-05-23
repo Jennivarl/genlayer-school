@@ -1171,6 +1171,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Posição: camada de adjudicação para a economia agêntica", "Verificação confiável on-chain de questões subjetivas", "Validadores de IA chegam a consenso"] },
           { type: "callout", title: "Em poucas palavras", text: "Quando a resposta não é só sim ou não, mas exige critério, o GenLayer entra em ação." },
         ],
+        questions: [
+          { id: "latam-pt-L01-q1", prompt: "Como o GenLayer é melhor descrito?", options: ["Sistema de armazenamento descentralizado", "Camada de adjudicação AI-native para a economia agêntica", "Solução Layer 2 para o Ethereum", "Rede de pagamentos centralizada"], correctOption: 1, explanation: "GenLayer é a camada de adjudicação AI-native projetada para a economia agêntica, lidando com decisões que exigem julgamento." },
+          { id: "latam-pt-L01-q2", prompt: "Qual é a diferença fundamental entre Bitcoin, Ethereum e GenLayer?", options: ["Os três fazem a mesma coisa", "Bitcoin cuida de transações, Ethereum executa código, GenLayer entende o significado das decisões", "GenLayer só serve para pagamentos", "Ethereum e GenLayer são idênticos"], correctOption: 1, explanation: "Bitcoin lida com transações, Ethereum executa código e GenLayer entende o significado das decisões." },
+          { id: "latam-pt-L01-q3", prompt: "Quando o GenLayer é necessário?", options: ["Apenas para transferir números", "Apenas para executar código", "Quando a resposta exige critério e julgamento, não só sim ou não", "Apenas para armazenar arquivos"], correctOption: 2, explanation: "O GenLayer é necessário quando a resposta não é simplesmente sim ou não, mas exige critério e raciocínio." },
+        ],
       },
       {
         slug: "problem-genlayer-solves", title: "Que problema o GenLayer resolve?", durationMinutes: 5,
@@ -1180,6 +1185,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "Bitcoin e Ethereum são bons em tarefas deterministas, mas não conseguem lidar com problemas que exigem julgamento ou raciocínio de IA. Avaliação de conteúdo, disputas, verificação de marcos — para isso existe o GenLayer." },
           { type: "list", items: ["Contratos tradicionais: apenas lógica fixa", "GenLayer: lida com resultados subjetivos e ambíguos", "Preenche uma lacuna crítica na tecnologia blockchain"] },
           { type: "callout", title: "Diferença-chave", text: "O Ethereum pergunta 'o código foi executado?' O GenLayer pergunta 'o resultado está correto?'" },
+        ],
+        questions: [
+          { id: "latam-pt-L02-q1", prompt: "O que os blockchains tradicionais como Bitcoin e Ethereum não conseguem fazer?", options: ["Registrar transações financeiras", "Lidar com decisões que exigem julgamento e raciocínio", "Executar código em contratos inteligentes", "Processar dados em rede P2P"], correctOption: 1, explanation: "Bitcoin e Ethereum são determinísticos e não conseguem lidar com decisões subjetivas que exigem raciocínio." },
+          { id: "latam-pt-L02-q2", prompt: "Qual é a principal diferença entre o Ethereum e o GenLayer em relação ao resultado de um contrato?", options: ["O Ethereum é mais rápido que o GenLayer", "O Ethereum pergunta se o código foi executado; o GenLayer pergunta se o resultado está correto", "O GenLayer usa Solidity, o Ethereum usa Python", "Não há diferença entre os dois"], correctOption: 1, explanation: "O Ethereum verifica se o código foi executado corretamente; o GenLayer vai além e verifica se o resultado faz sentido." },
+          { id: "latam-pt-L02-q3", prompt: "Qual dos seguintes casos de uso é ideal para o GenLayer?", options: ["Transferência simples de tokens entre carteiras", "Verificação automática de marcos de freelancers com base em critérios subjetivos", "Armazenamento de arquivos em blockchain", "Mineração de Bitcoin"], correctOption: 1, explanation: "Situações que exigem avaliação subjetiva, como verificar se um trabalho foi bem-feito, são casos ideais para o GenLayer." },
         ],
       },
       {
@@ -1191,6 +1201,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Acesso direto a dados da internet sem Oracle", "Chamadas a LLMs (como GPT-4) para raciocínio de IA", "Escritos em Python — familiar e poderoso"] },
           { type: "callout", title: "Analogia", text: "Um contrato tradicional é uma calculadora. Um Intelligent Contract é um assistente capaz de raciocinar." },
         ],
+        questions: [
+          { id: "latam-pt-L03-q1", prompt: "O que os Intelligent Contracts do GenLayer podem fazer que contratos inteligentes tradicionais não conseguem?", options: ["Executar apenas lógica fixa predefinida", "Acessar dados da web e chamar modelos de IA (LLMs)", "Funcionar apenas no Ethereum", "Processar apenas números inteiros"], correctOption: 1, explanation: "Intelligent Contracts podem acessar a internet em tempo real e chamar LLMs, capacidades ausentes nos contratos tradicionais." },
+          { id: "latam-pt-L03-q2", prompt: "Em qual linguagem de programação os Intelligent Contracts do GenLayer são escritos?", options: ["Solidity", "Rust", "JavaScript", "Python"], correctOption: 3, explanation: "Intelligent Contracts são escritos em Python, uma linguagem mais intuitiva e poderosa." },
+          { id: "latam-pt-L03-q3", prompt: "Qual é a melhor analogia para comparar um contrato inteligente tradicional com um Intelligent Contract?", options: ["Um martelo vs. uma chave de fenda", "Uma calculadora vs. um assistente capaz de raciocinar", "Um carro vs. uma bicicleta", "Uma impressora vs. um scanner"], correctOption: 1, explanation: "A calculadora representa a lógica fixa dos contratos tradicionais; o assistente raciocina e adapta, como os Intelligent Contracts." },
+        ],
       },
       {
         slug: "blockchain-stack", title: "GenLayer na Arquitetura Blockchain", durationMinutes: 5,
@@ -1200,6 +1215,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenLayer é um blockchain Layer 1 que se integrará ao Ethereum por meio de rollups como ZKSync, enquanto gerencia seu próprio consenso AI-native. Não compete com o Ethereum — é uma nova camada especializada em adjudicação de IA." },
           { type: "list", items: ["Bitcoin: consenso sobre a ordem das transações", "Ethereum: consenso sobre a execução do código", "GenLayer: consenso sobre o significado das decisões"] },
           { type: "callout", title: "Posição", text: "O GenLayer complementa o Ethereum, não compete com ele." },
+        ],
+        questions: [
+          { id: "latam-pt-L04-q1", prompt: "Em qual camada da arquitetura blockchain o GenLayer está?", options: ["Layer 0", "Layer 2", "Layer 1", "Layer 3"], correctOption: 2, explanation: "GenLayer é um blockchain Layer 1 com seu próprio mecanismo de consenso AI-native." },
+          { id: "latam-pt-L04-q2", prompt: "Qual a diferença entre o foco do Ethereum e do GenLayer?", options: ["Ethereum cuida de transações financeiras; GenLayer cuida de armazenamento", "Ethereum alcança consenso sobre execução de código; GenLayer alcança consenso sobre o significado das decisões", "Ethereum é Layer 2; GenLayer é Layer 0", "Ambos fazem exatamente a mesma coisa"], correctOption: 1, explanation: "Ethereum se concentra no consenso sobre a execução de código; GenLayer vai além e alcança consenso sobre o significado dos resultados." },
+          { id: "latam-pt-L04-q3", prompt: "Como o GenLayer se relaciona com o Ethereum?", options: ["Substitui completamente o Ethereum", "Complementa o Ethereum por meio de integração com rollups como ZKSync", "Compete diretamente com o Ethereum pelo mesmo mercado", "Não tem relação com o Ethereum"], correctOption: 1, explanation: "O GenLayer complementa o Ethereum integrando-se via rollups e adicionando adjudicação AI-native que o Ethereum não oferece." },
         ],
       },
       {
@@ -1211,6 +1231,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["4 fases: Propor → Confirmar → Revelar → Aceitar", "Qualquer pessoa pode recorrer de um resultado", "O resultado final é irreversível"] },
           { type: "callout", title: "Ideia central", text: "O julgamento coletivo e independente é mais confiável do que um único nó." },
         ],
+        questions: [
+          { id: "latam-pt-L05-q1", prompt: "Qual princípio matemático embasa a Optimistic Democracy?", options: ["Teorema de Pitágoras", "Teorema do Júri de Condorcet", "Lei dos Grandes Números de Bernoulli", "Paradoxo de Arrow"], correctOption: 1, explanation: "O Teorema do Júri de Condorcet mostra que um grupo de juízes independentes tem maior probabilidade de chegar à resposta correta." },
+          { id: "latam-pt-L05-q2", prompt: "Quais são as quatro fases do consenso na Optimistic Democracy?", options: ["Criar → Validar → Publicar → Pagar", "Propor → Confirmar → Revelar → Aceitar", "Enviar → Processar → Aprovar → Finalizar", "Iniciar → Votar → Contar → Distribuir"], correctOption: 1, explanation: "As quatro fases são: Propor, Confirmar, Revelar e Aceitar." },
+          { id: "latam-pt-L05-q3", prompt: "O que acontece com o resultado final no processo de Optimistic Democracy?", options: ["Pode ser alterado a qualquer momento por maioria de votos", "É irreversível após a fase de Aceitar", "Pode ser revertido pelo desenvolvedor do contrato", "Expira após 24 horas"], correctOption: 1, explanation: "Após passar por todas as fases, o resultado final da Optimistic Democracy é irreversível." },
+        ],
       },
       {
         slug: "validators-staking", title: "Validadores e Staking", durationMinutes: 5,
@@ -1220,6 +1245,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "Validadores fazem staking de GEN, executam nós e participam da Optimistic Democracy para ganhar recompensas. Não tem 42.000 GEN? Participe como delegador." },
           { type: "list", items: ["Ser validador: fazer staking de 42.000 GEN", "Delegador: mínimo de 42 GEN para participar", "Validadores recebem 10% de comissão + recompensas de staking"] },
           { type: "callout", title: "Duas formas de participar", text: "Staking grande: seja validador. Staking pequeno: delegue. Ambos geram ganhos." },
+        ],
+        questions: [
+          { id: "latam-pt-L06-q1", prompt: "Quanto GEN é necessário para se tornar validador no GenLayer?", options: ["4.200 GEN", "420 GEN", "42.000 GEN", "420.000 GEN"], correctOption: 2, explanation: "É preciso fazer staking de 42.000 GEN para se tornar um validador completo." },
+          { id: "latam-pt-L06-q2", prompt: "Qual é o mínimo de GEN necessário para participar como delegador?", options: ["42 GEN", "420 GEN", "4.200 GEN", "42.000 GEN"], correctOption: 0, explanation: "Com apenas 42 GEN já é possível participar como delegador e ganhar recompensas proporcionais." },
+          { id: "latam-pt-L06-q3", prompt: "Qual é a comissão que os validadores recebem sobre as recompensas dos delegadores?", options: ["5%", "10%", "20%", "50%"], correctOption: 1, explanation: "Validadores recebem 10% de comissão sobre as recompensas de seus delegadores, além de suas próprias recompensas de staking." },
+          { id: "latam-pt-L06-q4", prompt: "O que um delegador faz no GenLayer?", options: ["Executa um nó validador completo com 42.000 GEN", "Delega seu stake a um validador e recebe recompensas proporcionais", "Apenas armazena tokens sem participar do consenso", "Vota em propostas de governança sem fazer staking"], correctOption: 1, explanation: "Delegadores confiam seu GEN a um validador e ganham recompensas proporcionais sem precisar executar um nó." },
         ],
       },
       {
@@ -1231,6 +1262,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["strict_eq(): todos os validadores devem ter exatamente o mesmo resultado", "prompt_non_comparative(): validadores julgam se o critério foi atendido", "O desenvolvedor define o que significa 'equivalente'"] },
           { type: "callout", title: "Ponto-chave", text: "A IA pode dar respostas ligeiramente diferentes a cada vez — o Princípio de Equivalência torna isso seguro no blockchain." },
         ],
+        questions: [
+          { id: "latam-pt-L07-q1", prompt: "Por que os outputs de IA apresentam um desafio para o consenso blockchain?", options: ["Porque a IA é muito lenta para processar transações", "Porque validadores diferentes podem obter resultados ligeiramente diferentes ao executar a mesma consulta de IA", "Porque modelos de IA exigem hardware especial que a maioria dos validadores não tem", "Porque resultados de IA nunca podem ser verificados"], correctOption: 1, explanation: "Modelos de IA são não determinísticos — a mesma consulta pode gerar respostas ligeiramente diferentes, o que é um problema para o consenso." },
+          { id: "latam-pt-L07-q2", prompt: "O que o método strict_eq() faz no Princípio de Equivalência?", options: ["Permite qualquer resultado, desde que seja razoável", "Exige que todos os validadores tenham exatamente o mesmo resultado", "Usa IA para comparar dois resultados semanticamente", "Aceita resultados com até 10% de diferença"], correctOption: 1, explanation: "strict_eq() exige que todos os validadores obtenham resultados idênticos — ideal para dados estruturados como JSON." },
+          { id: "latam-pt-L07-q3", prompt: "O que o método prompt_non_comparative() faz?", options: ["Exige resultados idênticos entre todos os validadores", "Usa IA para perguntar aos validadores se o critério foi atendido, em vez de comparar textos", "Ignora completamente as diferenças entre validadores", "Compara resultados de forma binária (sim/não)"], correctOption: 1, explanation: "prompt_non_comparative() faz cada validador avaliar independentemente se o resultado atende ao critério, em vez de comparar textos." },
+          { id: "latam-pt-L07-q4", prompt: "Quem define o significado de 'equivalente' em um Intelligent Contract?", options: ["A rede GenLayer automaticamente", "O Consórcio Ethereum", "O desenvolvedor do contrato", "Os validadores por votação"], correctOption: 2, explanation: "O desenvolvedor define o que constitui equivalência para seu contrato específico, escolhendo entre strict_eq() ou prompt_non_comparative()." },
+        ],
       },
       {
         slug: "genvm", title: "GenVM: O Ambiente de Execução", durationMinutes: 5,
@@ -1240,6 +1277,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenVM é o ambiente de execução dos Intelligent Contracts. Construído sobre WebAssembly, executa Python nativamente e interage diretamente com LLMs e dados da web — algo que a EVM não consegue fazer." },
           { type: "list", items: ["Baseado em WebAssembly, execução rápida", "Executa Python nativamente (não Solidity)", "Suporte integrado para chamadas LLM e acesso à internet"] },
           { type: "callout", title: "Diferença fundamental", text: "A EVM foi projetada para código determinístico. O GenVM lida com não determinismo — uma inovação arquitetural profunda." },
+        ],
+        questions: [
+          { id: "latam-pt-L08-q1", prompt: "Em qual tecnologia o GenVM é baseado?", options: ["Docker", "LLVM", "WebAssembly", "JVM"], correctOption: 2, explanation: "GenVM é construído sobre WebAssembly, o que garante execução rápida e portável." },
+          { id: "latam-pt-L08-q2", prompt: "Qual linguagem o GenVM executa nativamente, ao contrário da EVM?", options: ["Solidity", "Rust", "JavaScript", "Python"], correctOption: 3, explanation: "GenVM executa Python nativamente, enquanto a EVM foi projetada para Solidity." },
+          { id: "latam-pt-L08-q3", prompt: "Qual é a principal diferença arquitetural entre a EVM e o GenVM?", options: ["A EVM suporta Python; o GenVM usa Solidity", "A EVM lida com não determinismo; o GenVM é puramente determinístico", "A EVM foi projetada para código determinístico; o GenVM lida com não determinismo", "Ambos são idênticos em design"], correctOption: 2, explanation: "A EVM é determinística e não suporta IA; o GenVM foi projetado desde o início para lidar com outputs não determinísticos de IA." },
+          { id: "latam-pt-L08-q4", prompt: "Quais funcionalidades integradas o GenVM oferece que a EVM não tem?", options: ["Suporte a Solidity e taxas de gas mais baixas", "Chamadas a LLMs e acesso direto à internet", "Compatibilidade com hardware de mineração", "Suporte a NFTs e tokens fungíveis"], correctOption: 1, explanation: "GenVM tem suporte integrado para chamadas a LLMs e acesso à internet, capacidades ausentes na EVM." },
         ],
       },
       {
@@ -1251,6 +1294,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["APY inicial de 15%, cai progressivamente para 4%", "75% das recompensas para todos os stakers", "10% para validadores, 15% para desenvolvedores"] },
           { type: "callout", title: "Mecanismo de apelação", text: "Discorda de um resultado? Faça staking de GEN para recorrer e um grupo maior de validadores irá reavaliar." },
         ],
+        questions: [
+          { id: "latam-pt-L09-q1", prompt: "Qual é o APY inicial de staking de GEN?", options: ["4%", "10%", "15%", "50%"], correctOption: 2, explanation: "O APY inicial é de 15%, caindo gradualmente para 4% ao longo do tempo para garantir sustentabilidade." },
+          { id: "latam-pt-L09-q2", prompt: "Como as recompensas de staking são distribuídas entre os participantes?", options: ["100% para os validadores", "75% para todos os stakers, 10% para validadores, 15% para desenvolvedores", "50% para validadores, 50% para delegadores", "100% distribuído igualmente para todos os holders"], correctOption: 1, explanation: "75% das recompensas vão para todos os stakers, 10% para os validadores e 15% para os desenvolvedores." },
+          { id: "latam-pt-L09-q3", prompt: "Para que serve o mecanismo de apelação do GenLayer?", options: ["Para aumentar as taxas de gas", "Para fazer staking de GEN e solicitar reavaliação por um grupo maior de validadores", "Para criar novos tokens GEN", "Para alterar o código de um contrato após a implantação"], correctOption: 1, explanation: "Qualquer participante que discorde de um resultado pode fazer staking de GEN para recorrer e um grupo maior de validadores reavalia." },
+          { id: "latam-pt-L09-q4", prompt: "Para quais finalidades o token GEN é utilizado?", options: ["Apenas para pagamento de gas", "Staking, gas e governança", "Somente para governança e votação", "Apenas para transferências entre usuários"], correctOption: 1, explanation: "GEN é o token nativo usado para staking (participação no consenso), gas (taxas de transação) e governança." },
+        ],
       },
       {
         slug: "genlayer-studio", title: "GenLayer Studio", durationMinutes: 5,
@@ -1260,6 +1309,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenLayer Studio é um sandbox no navegador sem instalação para testar Intelligent Contracts. Simula uma rede completa de validadores com logs em tempo real e feedback de erros." },
           { type: "list", items: ["Direto no navegador, sem instalação", "Simula consenso com múltiplos validadores", "Logs detalhados e suporte de depuração"] },
           { type: "callout", title: "Comece agora", text: "Acesse studio.genlayer.com ou execute genlayer init para iniciar o Studio localmente." },
+        ],
+        questions: [
+          { id: "latam-pt-L10-q1", prompt: "O que é o GenLayer Studio?", options: ["IDE desktop para desenvolvimento offline", "App móvel para monitoramento de contratos", "Sandbox no navegador sem instalação para testar Intelligent Contracts", "Interface de linha de comando para implantação em mainnet"], correctOption: 2, explanation: "GenLayer Studio é um sandbox no navegador que não requer instalação e simula uma rede completa de validadores." },
+          { id: "latam-pt-L10-q2", prompt: "O que o GenLayer Studio simula para ajudar os desenvolvedores?", options: ["Uma única transação de staking", "Uma rede completa de validadores com consenso real", "Apenas a execução do código sem verificação de consenso", "O comportamento da carteira MetaMask"], correctOption: 1, explanation: "O Studio simula uma rede completa de validadores, incluindo o processo de consenso, para que os desenvolvedores possam testar com fidelidade." },
+          { id: "latam-pt-L10-q3", prompt: "Quais recursos o GenLayer Studio oferece para facilitar o desenvolvimento?", options: ["Apenas editor de código sem ferramentas de debug", "Logs detalhados em tempo real e suporte de depuração", "Somente documentação estática", "Integração exclusiva com hardwallet"], correctOption: 1, explanation: "O Studio fornece logs detalhados e suporte de depuração em tempo real, facilitando a identificação de erros no contrato." },
+          { id: "latam-pt-L10-q4", prompt: "Qual comando permite iniciar o GenLayer Studio localmente?", options: ["genlayer start", "genlayer deploy", "genlayer init", "genlayer studio"], correctOption: 2, explanation: "O comando genlayer init baixa os componentes necessários e inicia o GenLayer Studio no ambiente local." },
         ],
       },
       {
@@ -1271,6 +1326,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["npm install -g genlayer, depois genlayer init", "GenLayerJS: TypeScript, para desenvolvimento frontend", "GenLayerPY: Python 3.12+, para backend"] },
           { type: "callout", title: "Dica para iniciantes", text: "Primeiro execute genlayer init, explore os contratos de exemplo no Studio e depois comece a escrever código." },
         ],
+        questions: [
+          { id: "latam-pt-L11-q1", prompt: "Como instalar o CLI do GenLayer?", options: ["pip install genlayer", "cargo install genlayer", "npm install -g genlayer", "brew install genlayer"], correctOption: 2, explanation: "O CLI do GenLayer é instalado via npm com o comando npm install -g genlayer." },
+          { id: "latam-pt-L11-q2", prompt: "Para qual tipo de desenvolvimento o GenLayerJS é mais indicado?", options: ["Backend em Python", "Scripts de automação em shell", "DApps frontend com TypeScript", "Contratos inteligentes em Solidity"], correctOption: 2, explanation: "GenLayerJS é o SDK TypeScript projetado para desenvolvimento frontend de DApps." },
+          { id: "latam-pt-L11-q3", prompt: "Para qual tipo de desenvolvimento o GenLayerPY é mais indicado?", options: ["Interfaces web com React", "Integração backend em Python 3.12+", "Scripts Bash de automação", "Desenvolvimento mobile"], correctOption: 1, explanation: "GenLayerPY é o SDK Python para integração backend, compatível com Python 3.12 e superior." },
+          { id: "latam-pt-L11-q4", prompt: "Qual é o fluxo recomendado para um desenvolvedor iniciante no GenLayer?", options: ["Implantar direto no Testnet sem testes locais", "Escrever código primeiro, depois ler a documentação", "Executar genlayer init, explorar exemplos no Studio e depois escrever código", "Instalar GenLayerPY antes de qualquer outra coisa"], correctOption: 2, explanation: "O fluxo ideal começa com genlayer init para configurar o ambiente, explorar contratos de exemplo e só então escrever código novo." },
+          { id: "latam-pt-L11-q5", prompt: "Qual dos seguintes pacotes faz parte do conjunto de ferramentas oficiais do GenLayer?", options: ["genlayer-web3", "genlayer-hardhat", "GenLayerJS", "genlayer-solidity"], correctOption: 2, explanation: "GenLayerJS é o SDK oficial TypeScript/JavaScript para desenvolvimento frontend de DApps no GenLayer." },
+        ],
       },
       {
         slug: "first-contract", title: "Seu Primeiro Intelligent Contract", durationMinutes: 5,
@@ -1280,6 +1342,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "Cada Intelligent Contract é uma classe Python que herda de gl.Contract. As variáveis de estado são declaradas no corpo da classe e os métodos recebem permissões de leitura ou escrita por meio de decoradores." },
           { type: "code", language: "python", code: "import gl\n\nclass Counter(gl.Contract):\n    count: gl.u256\n\n    def __init__(self):\n        self.count = 0\n\n    @gl.public.view\n    def get(self) -> int:\n        return self.count\n\n    @gl.public.write\n    def increment(self):\n        self.count += 1" },
           { type: "callout", title: "Lembre-se", text: "Todos os campos persistentes devem ser declarados no corpo da classe com anotação de tipo. Não podem ser criados dinamicamente em tempo de execução." },
+        ],
+        questions: [
+          { id: "latam-pt-L12-q1", prompt: "De qual classe base um Intelligent Contract deve herdar?", options: ["gl.BaseContract", "SmartContract", "gl.Contract", "BlockchainContract"], correctOption: 2, explanation: "Todo Intelligent Contract deve herdar da classe gl.Contract para ter acesso às funcionalidades da rede." },
+          { id: "latam-pt-L12-q2", prompt: "Onde as variáveis de estado de um Intelligent Contract devem ser declaradas?", options: ["Dentro do método __init__", "Dentro de cada método que as utiliza", "No corpo da classe, com anotação de tipo", "Em um arquivo de configuração externo"], correctOption: 2, explanation: "Variáveis de estado devem ser declaradas no corpo da classe com anotações de tipo para que sejam persistidas corretamente." },
+          { id: "latam-pt-L12-q3", prompt: "No exemplo do contrato Counter, o que o decorador @gl.public.view indica?", options: ["O método modifica o estado on-chain", "O método aceita transferências de GEN", "O método é somente leitura e não altera o estado", "O método é privado e não pode ser chamado externamente"], correctOption: 2, explanation: "@gl.public.view marca métodos somente leitura — eles consultam o estado sem alterá-lo, com menor custo de gas." },
+          { id: "latam-pt-L12-q4", prompt: "O que acontece se um campo de estado for criado dinamicamente dentro de um método em vez de no corpo da classe?", options: ["Ele será salvo normalmente na blockchain", "Ele não será persistido entre transações", "Causará um erro de compilação imediato", "Será automaticamente movido para o corpo da classe"], correctOption: 1, explanation: "Campos criados dinamicamente em tempo de execução não são persistidos; apenas os declarados no corpo da classe com anotação de tipo são salvos." },
+          { id: "latam-pt-L12-q5", prompt: "Qual decorador é usado para um método que modifica o estado do contrato?", options: ["@gl.public.view", "@gl.private.write", "@gl.public.write", "@gl.state.modify"], correctOption: 2, explanation: "@gl.public.write marca métodos que modificam o estado on-chain do contrato." },
         ],
       },
       {
@@ -1291,6 +1360,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["dict → TreeMap[K, V]", "list → DynArray[T]", "int → u256, i32 e outros tipos fixos"] },
           { type: "callout", title: "Erro comum", text: "Campos criados dinamicamente em tempo de execução não são salvos. Declare todos os campos persistentes no corpo da classe desde o início." },
         ],
+        questions: [
+          { id: "latam-pt-L13-q1", prompt: "Por que não se pode usar dict do Python diretamente no armazenamento do GenLayer?", options: ["Porque dict é muito lento para blockchain", "Porque dict não é persistido entre transações no GenLayer", "Porque dict não suporta chaves string", "Porque dict ocupa muito espaço"], correctOption: 1, explanation: "O dict nativo do Python não é persistido no GenLayer; é preciso usar TreeMap[K, V] para armazenamento persistente." },
+          { id: "latam-pt-L13-q2", prompt: "Qual é o substituto correto para list do Python no GenLayer?", options: ["ArrayList", "DynArray", "LinkedList", "Vector"], correctOption: 1, explanation: "DynArray[T] é o tipo que substitui list do Python para armazenamento persistente no GenLayer." },
+          { id: "latam-pt-L13-q3", prompt: "Por que o GenLayer usa tipos inteiros de tamanho fixo como u256?", options: ["Por serem mais fáceis de escrever que int", "Para compatibilidade com a EVM do Ethereum", "Para garantir representação determinística e eficiente dos dados on-chain", "Porque Python não suporta inteiros grandes"], correctOption: 2, explanation: "Tipos de tamanho fixo como u256 garantem representação determinística dos dados e eficiência no armazenamento on-chain." },
+          { id: "latam-pt-L13-q4", prompt: "Qual é o substituto correto para dict do Python no GenLayer?", options: ["HashMap[K, V]", "OrderedDict[K, V]", "TreeMap[K, V]", "SortedMap[K, V]"], correctOption: 2, explanation: "TreeMap[K, V] é o tipo que substitui dict do Python para armazenamento persistente no GenLayer." },
+          { id: "latam-pt-L13-q5", prompt: "O que acontece com um campo de estado criado dinamicamente dentro de um método durante a execução?", options: ["É salvo normalmente, igual a um campo declarado na classe", "Não é salvo — campos dinâmicos não persistem entre transações", "Gera um erro de compilação antes da execução", "É convertido automaticamente para TreeMap"], correctOption: 1, explanation: "Apenas campos declarados no corpo da classe com anotação de tipo são persistidos; campos criados dinamicamente se perdem após a execução." },
+        ],
       },
       {
         slug: "read-write-methods", title: "Métodos de Leitura e Escrita", durationMinutes: 5,
@@ -1300,6 +1376,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "@gl.public.view marca métodos somente leitura que não alteram o estado. @gl.public.write modifica o estado. @gl.public.write.payable aceita transferências de GEN." },
           { type: "list", items: ["@gl.public.view: somente leitura, menor custo de gas", "@gl.public.write: modifica o estado on-chain", "@gl.public.write.payable: aceita tokens GEN"] },
           { type: "callout", title: "Boa prática", text: "Teste a lógica com métodos somente leitura primeiro. Adicione a lógica de escrita apenas quando tiver certeza." },
+        ],
+        questions: [
+          { id: "latam-pt-L14-q1", prompt: "Qual decorador marca um método como somente leitura no GenLayer?", options: ["@gl.public.write", "@gl.private.view", "@gl.public.view", "@gl.readonly"], correctOption: 2, explanation: "@gl.public.view marca métodos que apenas leem o estado sem modificá-lo, com menor custo de gas." },
+          { id: "latam-pt-L14-q2", prompt: "Qual é a principal diferença entre @gl.public.view e @gl.public.write?", options: ["view é para contratos privados; write é para contratos públicos", "view lê o estado sem alterá-lo; write modifica o estado on-chain", "view custa mais gas que write", "view suporta pagamentos; write não suporta"], correctOption: 1, explanation: "view é para leitura (sem alterar estado, menor custo); write é para modificação do estado on-chain." },
+          { id: "latam-pt-L14-q3", prompt: "Qual decorador permite que um método aceite transferências de tokens GEN?", options: ["@gl.public.view", "@gl.public.write", "@gl.public.write.payable", "@gl.token.accept"], correctOption: 2, explanation: "@gl.public.write.payable é usado para métodos que modificam o estado E aceitam transferências de tokens GEN." },
+          { id: "latam-pt-L14-q4", prompt: "Por que é recomendado testar a lógica com métodos somente leitura antes de adicionar métodos de escrita?", options: ["Porque métodos de leitura são mais rápidos de executar", "Porque métodos de escrita não podem ser testados no Studio", "Para validar a lógica sem risco de modificar o estado com dados incorretos", "Porque métodos de leitura são gratuitos no testnet"], correctOption: 2, explanation: "Testar com métodos de leitura primeiro permite verificar a lógica sem risco de gravar dados incorretos no estado da blockchain." },
+          { id: "latam-pt-L14-q5", prompt: "Um método que modifica o saldo de um usuário E recebe pagamento em GEN deve usar qual decorador?", options: ["@gl.public.view", "@gl.public.write", "@gl.public.write.payable", "@gl.public.view.payable"], correctOption: 2, explanation: "@gl.public.write.payable combina modificação de estado com recebimento de tokens GEN na mesma chamada." },
         ],
       },
       {
@@ -1311,6 +1394,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Sempre peça resposta em JSON (response_format='json')", "Evite timestamps ou dados dinâmicos", "Compare conclusões derivadas pela IA, não dados brutos"] },
           { type: "callout", title: "Principal causa de falha de consenso", text: "Pedir ao LLM dados instáveis faz com que os validadores obtenham resultados diferentes. Extraia sempre campos estáveis." },
         ],
+        questions: [
+          { id: "latam-pt-L15-q1", prompt: "Qual é o método principal para chamar um LLM em um Intelligent Contract?", options: ["gl.ai.prompt()", "gl.llm.call()", "gl.nondet.exec_prompt()", "gl.contract.ask()"], correctOption: 2, explanation: "gl.nondet.exec_prompt() é o método padrão para executar um prompt de LLM dentro de um Intelligent Contract." },
+          { id: "latam-pt-L15-q2", prompt: "Por que prompts vagos causam falhas de consenso no GenLayer?", options: ["Porque LLMs não entendem perguntas abertas", "Porque prompts vagos podem gerar respostas inconsistentes entre diferentes validadores", "Porque o GenVM bloqueia prompts com mais de 100 palavras", "Porque prompts vagos custam mais gas"], correctOption: 1, explanation: "Prompts vagos geram respostas diferentes entre validadores, impedindo que o consenso seja alcançado." },
+          { id: "latam-pt-L15-q3", prompt: "Qual formato de resposta é recomendado ao chamar um LLM para garantir consistência?", options: ["Texto livre em linguagem natural", "XML com tags customizadas", "JSON com response_format='json'", "CSV separado por vírgulas"], correctOption: 2, explanation: "Solicitar resposta em JSON com response_format='json' torna os outputs estruturados e mais fáceis de comparar entre validadores." },
+          { id: "latam-pt-L15-q4", prompt: "O que NÃO se deve incluir em um prompt de LLM para evitar falhas de consenso?", options: ["Perguntas objetivas com resposta em JSON", "Dados estáticos e bem definidos", "Timestamps, datas atuais ou outros dados dinâmicos", "Critérios claros de avaliação"], correctOption: 2, explanation: "Dados instáveis como timestamps fazem com que validadores obtenham resultados diferentes, quebrando o consenso." },
+          { id: "latam-pt-L15-q5", prompt: "O que é melhor prática ao usar LLMs para comparação de dados no GenLayer?", options: ["Comparar os textos brutos gerados pela IA diretamente", "Extrair campos estáveis e comparar conclusões derivadas pela IA, não dados brutos", "Usar sempre o mesmo modelo de LLM em todos os validadores", "Evitar completamente o uso de LLMs em contratos"], correctOption: 1, explanation: "Compare conclusões derivadas pela IA sobre campos estáveis, não os textos brutos, para garantir consistência entre validadores." },
+        ],
       },
       {
         slug: "web-data", title: "Acesso a Dados da Web", durationMinutes: 5,
@@ -1321,6 +1411,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["gl.nondet.web.get(url): conteúdo de texto bruto", "gl.nondet.web.render(url): páginas renderizadas com JS", "Extraia campos estáveis, evite conteúdo dinâmico"] },
           { type: "callout", title: "Dica de confiabilidade", text: "Sites externos podem ficar fora do ar ou mudar de estrutura. Busque dados apenas de fontes confiáveis e valide antes de salvar." },
         ],
+        questions: [
+          { id: "latam-pt-L16-q1", prompt: "Qual método é usado para buscar conteúdo de texto bruto da web em um Intelligent Contract?", options: ["gl.http.get(url)", "gl.web.fetch(url)", "gl.nondet.web.get(url)", "gl.internet.read(url)"], correctOption: 2, explanation: "gl.nondet.web.get(url) é o método para buscar conteúdo de texto bruto de URLs em um Intelligent Contract." },
+          { id: "latam-pt-L16-q2", prompt: "Quando se deve usar gl.nondet.web.render(url) em vez de gl.nondet.web.get(url)?", options: ["Para APIs REST que retornam JSON", "Para páginas web que dependem de JavaScript para renderizar o conteúdo", "Para arquivos PDF e documentos estáticos", "Para bancos de dados SQL remotos"], correctOption: 1, explanation: "gl.nondet.web.render(url) é usado para páginas que precisam de JavaScript para carregar seu conteúdo dinamicamente." },
+          { id: "latam-pt-L16-q3", prompt: "Por que é importante extrair apenas campos estáveis ao buscar dados da web?", options: ["Porque campos dinâmicos são mais caros de processar", "Para evitar que validadores obtenham resultados inconsistentes devido a conteúdo que muda entre execuções", "Porque o GenVM não consegue processar conteúdo dinâmico", "Para economizar tokens de LLM"], correctOption: 1, explanation: "Conteúdo que muda entre execuções gera inconsistências entre validadores — sempre extraia campos estáveis para garantir o consenso." },
+          { id: "latam-pt-L16-q4", prompt: "O que pode acontecer se um contrato depender de um site externo que muda sua estrutura?", options: ["Nada, o GenLayer se adapta automaticamente", "O contrato pode falhar ao parsear os dados, quebrando a lógica e o consenso", "O GenLayer congela o contrato preventivamente", "O site externo é automaticamente arquivado pelo GenLayer"], correctOption: 1, explanation: "Mudanças na estrutura de sites externos podem quebrar a lógica de parsing do contrato e causar falhas de consenso." },
+          { id: "latam-pt-L16-q5", prompt: "Qual é a boa prática ao salvar dados obtidos da web em um Intelligent Contract?", options: ["Salvar imediatamente sem verificação para economizar gas", "Confiar em qualquer fonte que retorne dados JSON", "Validar os dados antes de salvar e usar apenas fontes confiáveis", "Armazenar sempre o HTML completo da página"], correctOption: 2, explanation: "Validar os dados antes de salvar e usar fontes confiáveis garante a integridade e a confiabilidade do contrato." },
+        ],
       },
       {
         slug: "deploy-dapp", title: "Construir e Implantar uma DApp", durationMinutes: 5,
@@ -1330,6 +1427,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "O desenvolvimento de DApps no GenLayer tem 3 fases: protótipo local no Studio, testes completos com o framework de testes e depois implantação no Testnet (Asimov/Bradbury) com frontend em GenLayerJS." },
           { type: "list", items: ["Fase 1: Protótipo local no GenLayer Studio", "Fase 2: Testes com genlayer-test", "Fase 3: Frontend GenLayerJS + implantação no Testnet"] },
           { type: "callout", title: "Checklist antes de lançar", text: "Antes de implantar no Testnet, conclua os testes em modo direto e modo Studio e trate todas as falhas de consenso." },
+        ],
+        questions: [
+          { id: "latam-pt-L17-q1", prompt: "Quais são as três fases do desenvolvimento de DApps no GenLayer?", options: ["Codificar → Compilar → Implantar", "Protótipo local no Studio → Testes com genlayer-test → Implantação no Testnet com GenLayerJS", "Instalar → Configurar → Publicar", "Desenhar → Programar → Monetizar"], correctOption: 1, explanation: "O fluxo recomendado é: protótipo no Studio, testes automatizados com genlayer-test e implantação no Testnet com frontend GenLayerJS." },
+          { id: "latam-pt-L17-q2", prompt: "Quais são os Testnets disponíveis para implantação no GenLayer?", options: ["Ropsten e Rinkeby", "Goerli e Sepolia", "Asimov e Bradbury", "Alpha e Beta"], correctOption: 2, explanation: "Os Testnets do GenLayer são chamados Asimov e Bradbury, disponíveis para implantação de contratos de teste." },
+          { id: "latam-pt-L17-q3", prompt: "Qual SDK é recomendado para construir o frontend de uma DApp no GenLayer?", options: ["ethers.js", "web3.py", "GenLayerJS", "hardhat"], correctOption: 2, explanation: "GenLayerJS é o SDK TypeScript oficial para conectar o frontend de DApps ao GenLayer." },
+          { id: "latam-pt-L17-q4", prompt: "O que deve ser feito ANTES de implantar um contrato no Testnet?", options: ["Implantar diretamente sem testes para economizar tempo", "Concluir os testes em modo direto e modo Studio e tratar todas as falhas de consenso", "Obter aprovação da Fundação GenLayer", "Comprar tokens GEN na mainnet"], correctOption: 1, explanation: "Testar completamente em modo direto e Studio, resolvendo todas as falhas de consenso, é obrigatório antes de ir para o Testnet." },
+          { id: "latam-pt-L17-q5", prompt: "Para que serve o framework genlayer-test?", options: ["Para criar tokens GEN para testes", "Para executar testes automatizados dos Intelligent Contracts", "Para monitorar contratos em produção na mainnet", "Para gerar documentação automática dos contratos"], correctOption: 1, explanation: "genlayer-test é o framework de testes automatizados para verificar o comportamento dos Intelligent Contracts antes da implantação." },
         ],
       },
     ],
@@ -1377,6 +1481,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Position: judge layer for di agentic economy", "On-chain trusted verification for subjective questions", "AI validators dey reach consensus"] },
           { type: "callout", title: "Simple explanation", text: "When di answer no be just yes or no, but e need real judgment — na there GenLayer dey enter." },
         ],
+        questions: [
+          { id: "nigeria-L01-q1", prompt: "How we fit best describe wetin GenLayer be?", options: ["Decentralized file storage system", "AI-native judge layer for di agentic economy", "Layer 2 solution for Ethereum", "Centralized payment network"], correctOption: 1, explanation: "GenLayer na AI-native judge layer design for di agentic economy, wey dey handle decisions wey need real judgment." },
+          { id: "nigeria-L01-q2", prompt: "Wetin be di key difference between Bitcoin, Ethereum, and GenLayer?", options: ["Di three dey do di same thing", "Bitcoin dey handle transactions, Ethereum dey run code, GenLayer dey understand di meaning of decisions", "GenLayer only dey serve for payments", "Ethereum and GenLayer dey identical"], correctOption: 1, explanation: "Bitcoin na for transactions, Ethereum na for running code, GenLayer na for understanding di meaning of decisions." },
+          { id: "nigeria-L01-q3", prompt: "When e dey necessary to use GenLayer?", options: ["Only to transfer numbers", "Only to run fixed code", "When di answer need real judgment — e no be just yes or no", "Only to store files"], correctOption: 2, explanation: "GenLayer dey necessary when di answer no be simple yes or no, but e need judgment and AI reasoning." },
+        ],
       },
       {
         slug: "problem-genlayer-solves", title: "Di Problem Wey GenLayer Dey Tackle", durationMinutes: 5,
@@ -1386,6 +1495,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "Bitcoin and Ethereum don show say dem dey good for deterministic tasks, but dem no fit handle problems wey need judgment or AI reasoning. Content evaluation, disputes, milestone verification — na GenLayer dem need for those ones." },
           { type: "list", items: ["Traditional contracts: only fixed logic", "GenLayer: handle subjective and ambiguous results", "E dey fill critical gap for blockchain technology"] },
           { type: "callout", title: "Key difference", text: "Ethereum dey ask 'did di code run?' GenLayer dey ask 'is di result correct?'" },
+        ],
+        questions: [
+          { id: "nigeria-L02-q1", prompt: "Wetin traditional blockchains like Bitcoin and Ethereum no fit do?", options: ["Record financial transactions", "Handle decisions wey need judgment and reasoning", "Execute code for smart contracts", "Process data for P2P network"], correctOption: 1, explanation: "Bitcoin and Ethereum dey deterministic — dem no fit handle subjective decisions wey need reasoning." },
+          { id: "nigeria-L02-q2", prompt: "Wetin be di key difference between Ethereum and GenLayer about contract result?", options: ["Ethereum dey faster than GenLayer", "Ethereum dey ask if di code run; GenLayer dey ask if di result correct", "GenLayer dey use Solidity, Ethereum dey use Python", "No difference between di two"], correctOption: 1, explanation: "Ethereum dey verify say di code execute properly; GenLayer dey go further to verify say di result actually make sense." },
+          { id: "nigeria-L02-q3", prompt: "Which of di following use case na best fit for GenLayer?", options: ["Simple token transfer between wallets", "Automatic verification of freelancer milestones based on subjective criteria", "File storage on blockchain", "Bitcoin mining"], correctOption: 1, explanation: "Situations wey need subjective evaluation, like verifying if work don complete well, na ideal use case for GenLayer." },
         ],
       },
       {
@@ -1397,6 +1511,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Direct internet data access without Oracle", "Call LLMs (like GPT-4) for AI reasoning", "Written in Python — familiar and powerful"] },
           { type: "callout", title: "Analogy", text: "Traditional contract na calculator. Intelligent Contract na assistant wey don get sense to reason." },
         ],
+        questions: [
+          { id: "nigeria-L03-q1", prompt: "Wetin Intelligent Contracts of GenLayer fit do wey traditional smart contracts no fit do?", options: ["Execute only fixed logic wey dem set", "Access real-time web data and call AI models (LLMs)", "Function only on Ethereum", "Process only integers"], correctOption: 1, explanation: "Intelligent Contracts fit access internet in real-time and call LLMs — abilities wey traditional contracts no get." },
+          { id: "nigeria-L03-q2", prompt: "Which programming language dem use to write Intelligent Contracts for GenLayer?", options: ["Solidity", "Rust", "JavaScript", "Python"], correctOption: 3, explanation: "Dem dey write Intelligent Contracts in Python — one language wey more intuitive and powerful." },
+          { id: "nigeria-L03-q3", prompt: "Wetin be di best analogy to compare traditional smart contract with Intelligent Contract?", options: ["Hammer vs screwdriver", "Calculator vs assistant wey get sense to reason", "Car vs bicycle", "Printer vs scanner"], correctOption: 1, explanation: "Calculator dey represent di fixed logic of traditional contracts; di assistant wey dey reason and adapt represent Intelligent Contracts." },
+        ],
       },
       {
         slug: "blockchain-stack", title: "Where GenLayer Dey Sit for Blockchain Stack", durationMinutes: 5,
@@ -1406,6 +1525,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenLayer na Layer 1 blockchain wey go integrate with Ethereum through rollups like ZKSync, while e dey handle im own AI-native consensus. E no dey compete with Ethereum — na new layer wey dey specialize for AI judging." },
           { type: "list", items: ["Bitcoin: consensus on transaction order", "Ethereum: consensus on code execution", "GenLayer: consensus on decision meaning"] },
           { type: "callout", title: "Position", text: "GenLayer dey complement Ethereum, e no dey compete with am." },
+        ],
+        questions: [
+          { id: "nigeria-L04-q1", prompt: "Which layer of blockchain architecture GenLayer dey?", options: ["Layer 0", "Layer 2", "Layer 1", "Layer 3"], correctOption: 2, explanation: "GenLayer na Layer 1 blockchain wey get im own AI-native consensus mechanism." },
+          { id: "nigeria-L04-q2", prompt: "Wetin be di difference between di focus of Ethereum and GenLayer?", options: ["Ethereum dey handle financial transactions; GenLayer dey handle storage", "Ethereum dey reach consensus on code execution; GenLayer dey reach consensus on di meaning of decisions", "Ethereum na Layer 2; GenLayer na Layer 0", "Both dey do exactly di same thing"], correctOption: 1, explanation: "Ethereum dey focus on consensus about code execution; GenLayer dey go further to reach consensus on di meaning of results." },
+          { id: "nigeria-L04-q3", prompt: "How GenLayer dey relate with Ethereum?", options: ["E dey completely replace Ethereum", "E dey complement Ethereum through rollup integration like ZKSync", "E dey compete directly with Ethereum for di same market", "E get no relation with Ethereum"], correctOption: 1, explanation: "GenLayer dey complement Ethereum by integrating through rollups, adding AI-native adjudication wey Ethereum no get." },
         ],
       },
       {
@@ -1417,6 +1541,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["4 phases: Propose → Commit → Reveal → Accept", "Anyone fit appeal a result", "Final result no fit change"] },
           { type: "callout", title: "Core idea", text: "Collective independent judgment don prove say e more trustworthy than one single node." },
         ],
+        questions: [
+          { id: "nigeria-L05-q1", prompt: "Which mathematical theorem dey ground Optimistic Democracy?", options: ["Pythagorean theorem", "Condorcet's Jury Theorem", "Bernoulli's Law of Large Numbers", "Arrow's Paradox"], correctOption: 1, explanation: "Condorcet's Jury Theorem dey show say group of independent judges get higher chance to reach di correct answer." },
+          { id: "nigeria-L05-q2", prompt: "Wetin be di four phases of consensus for Optimistic Democracy?", options: ["Create → Validate → Publish → Pay", "Propose → Commit → Reveal → Accept", "Send → Process → Approve → Finalize", "Start → Vote → Count → Distribute"], correctOption: 1, explanation: "Di four phases be: Propose, Commit, Reveal, and Accept." },
+          { id: "nigeria-L05-q3", prompt: "Wetin happen to di final result for Optimistic Democracy process?", options: ["E fit change any time by majority vote", "E no fit change after di Accept phase", "Di contract developer fit reverse am", "E go expire after 24 hours"], correctOption: 1, explanation: "After e pass through all di phases, di final result of Optimistic Democracy no fit change." },
+        ],
       },
       {
         slug: "validators-staking", title: "Validators and Staking", durationMinutes: 5,
@@ -1426,6 +1555,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "Validators go stake GEN, dey run nodes and participate for Optimistic Democracy to earn rewards. You no get 42,000 GEN? You fit participate as delegator." },
           { type: "list", items: ["To be validator: stake 42,000 GEN", "Delegator: minimum 42 GEN to participate", "Validators go collect 10% operational fee plus staking rewards"] },
           { type: "callout", title: "Two ways to participate", text: "Big stake? Be validator. Small stake? Delegate. Both of dem go dey earn." },
+        ],
+        questions: [
+          { id: "nigeria-L06-q1", prompt: "How much GEN you need to stake to become validator for GenLayer?", options: ["4,200 GEN", "420 GEN", "42,000 GEN", "420,000 GEN"], correctOption: 2, explanation: "You need to stake 42,000 GEN to become full validator." },
+          { id: "nigeria-L06-q2", prompt: "Wetin be di minimum GEN you need to participate as delegator?", options: ["42 GEN", "420 GEN", "4,200 GEN", "42,000 GEN"], correctOption: 0, explanation: "With just 42 GEN you fit participate as delegator and earn proportional rewards." },
+          { id: "nigeria-L06-q3", prompt: "Wetin be di operational fee wey validators dey collect from delegator rewards?", options: ["5%", "10%", "20%", "50%"], correctOption: 1, explanation: "Validators dey collect 10% operational fee from their delegators' rewards, plus their own staking rewards." },
+          { id: "nigeria-L06-q4", prompt: "Wetin delegator dey do for GenLayer?", options: ["Run full validator node with 42,000 GEN", "Delegate their stake to validator and earn proportional rewards", "Only store tokens without participating in consensus", "Vote on governance proposals without staking"], correctOption: 1, explanation: "Delegators dey trust their GEN to validator and earn proportional rewards without needing to run a node." },
         ],
       },
       {
@@ -1437,6 +1572,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["strict_eq(): all validators must get exactly di same result", "prompt_non_comparative(): validators judge if di criteria don meet", "Developer define wetin 'equivalent' mean"] },
           { type: "callout", title: "Key insight", text: "AI fit give slightly different answer each time — Equivalence Principle dey make am safe for blockchain." },
         ],
+        questions: [
+          { id: "nigeria-L07-q1", prompt: "Why AI outputs dey present challenge for blockchain consensus?", options: ["Because AI dey too slow to process transactions", "Because different validators fit get slightly different results when dem run di same AI query", "Because AI models need special hardware wey most validators no get", "Because AI results no fit verify ever"], correctOption: 1, explanation: "AI models dey non-deterministic — di same query fit generate slightly different responses, wey be problem for consensus." },
+          { id: "nigeria-L07-q2", prompt: "Wetin strict_eq() method dey do for Equivalence Principle?", options: ["Allow any result as long as e dey reasonable", "Require say all validators get exactly di same result", "Use AI to compare two results semantically", "Accept results with up to 10% difference"], correctOption: 1, explanation: "strict_eq() dey require say all validators get identical results — e dey best for structured data like JSON." },
+          { id: "nigeria-L07-q3", prompt: "Wetin prompt_non_comparative() dey do?", options: ["Require identical results from all validators", "Use AI to ask validators if di criteria don meet, instead of comparing texts", "Ignore differences between validators completely", "Compare results in binary yes/no fashion"], correctOption: 1, explanation: "prompt_non_comparative() dey make each validator independently evaluate if di result meet di criteria, instead of comparing texts." },
+          { id: "nigeria-L07-q4", prompt: "Who dey define wetin 'equivalent' mean inside Intelligent Contract?", options: ["Di GenLayer network automatically", "Di Ethereum Consortium", "Di contract developer", "Di validators by vote"], correctOption: 2, explanation: "Di developer dey define wetin constitute equivalence for their specific contract — dem fit choose strict_eq() or prompt_non_comparative()." },
+        ],
       },
       {
         slug: "genvm", title: "GenVM: Di Execution Environment", durationMinutes: 5,
@@ -1446,6 +1587,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenVM na di execution environment for Intelligent Contracts. E build on WebAssembly, e dey run Python natively, and e fit interact directly with LLMs and web data — something EVM no fit do." },
           { type: "list", items: ["WebAssembly-based, fast execution", "Runs Python natively (not Solidity)", "Built-in support for LLM calls and internet access"] },
           { type: "callout", title: "Fundamental difference", text: "EVM design for deterministic code. GenVM dey handle non-determinism — na fundamental architectural innovation." },
+        ],
+        questions: [
+          { id: "nigeria-L08-q1", prompt: "Wetin technology GenVM dey base on?", options: ["Docker", "LLVM", "WebAssembly", "JVM"], correctOption: 2, explanation: "GenVM dey build on WebAssembly, wey dey ensure fast and portable execution." },
+          { id: "nigeria-L08-q2", prompt: "Which language GenVM dey run natively, different from EVM?", options: ["Solidity", "Rust", "JavaScript", "Python"], correctOption: 3, explanation: "GenVM dey run Python natively, while EVM design for Solidity." },
+          { id: "nigeria-L08-q3", prompt: "Wetin be di main architectural difference between EVM and GenVM?", options: ["EVM dey support Python; GenVM dey use Solidity", "EVM dey handle non-determinism; GenVM na purely deterministic", "EVM design for deterministic code; GenVM dey handle non-determinism", "Both dey identical for design"], correctOption: 2, explanation: "EVM na deterministic and no dey support AI; GenVM design from day one to handle non-deterministic AI outputs." },
+          { id: "nigeria-L08-q4", prompt: "Wetin built-in features GenVM get wey EVM no have?", options: ["Solidity support and lower gas fees", "LLM calls and direct internet access", "Mining hardware compatibility", "NFT and fungible token support"], correctOption: 1, explanation: "GenVM get built-in support for LLM calls and internet access — capabilities wey EVM no have." },
         ],
       },
       {
@@ -1457,6 +1604,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Initial APY 15%, go drop small small to 4%", "75% of rewards go to all stakers", "10% to validators, 15% to developers"] },
           { type: "callout", title: "Appeal mechanism", text: "You no agree with a result? Stake GEN to appeal and a larger set of validators go re-evaluate am." },
         ],
+        questions: [
+          { id: "nigeria-L09-q1", prompt: "Wetin be di starting APY for GEN staking?", options: ["4%", "10%", "15%", "50%"], correctOption: 2, explanation: "Di initial APY na 15%, e go drop small small to 4% over time to ensure sustainability." },
+          { id: "nigeria-L09-q2", prompt: "How dem dey share staking rewards among participants?", options: ["100% go to validators", "75% to all stakers, 10% to validators, 15% to developers", "50% to validators, 50% to delegators", "100% share equally among all holders"], correctOption: 1, explanation: "75% of rewards go to all stakers, 10% to validators, and 15% to developers." },
+          { id: "nigeria-L09-q3", prompt: "Wetin be di purpose of GenLayer appeal mechanism?", options: ["To increase gas fees", "To stake GEN and request re-evaluation by larger group of validators", "To create new GEN tokens", "To change contract code after deployment"], correctOption: 1, explanation: "Any participant wey no agree with a result fit stake GEN to appeal and a larger group of validators go re-evaluate am." },
+          { id: "nigeria-L09-q4", prompt: "For wetin purpose dem dey use GEN token?", options: ["Only for paying gas", "Staking, gas and governance", "Only for governance and voting", "Only for transfers between users"], correctOption: 1, explanation: "GEN na di native token wey dem use for staking (consensus participation), gas (transaction fees) and governance." },
+        ],
       },
       {
         slug: "genlayer-studio", title: "GenLayer Studio", durationMinutes: 5,
@@ -1466,6 +1619,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenLayer Studio na browser-based sandbox with no installation to test Intelligent Contracts. E dey simulate full validator network with real-time logs and error feedback." },
           { type: "list", items: ["Directly for browser, no installation needed", "Simulate multi-validator consensus", "Detailed logs and debugging support"] },
           { type: "callout", title: "Start now", text: "Visit studio.genlayer.com or run genlayer init to start Studio locally." },
+        ],
+        questions: [
+          { id: "nigeria-L10-q1", prompt: "Wetin be GenLayer Studio?", options: ["Desktop IDE for offline development", "Mobile app to monitor contracts", "Browser-based sandbox without installation to test Intelligent Contracts", "Command-line interface for mainnet deployment"], correctOption: 2, explanation: "GenLayer Studio na browser-based sandbox wey no need installation — e dey simulate full validator network." },
+          { id: "nigeria-L10-q2", prompt: "Wetin GenLayer Studio dey simulate to help developers?", options: ["One single staking transaction", "Full validator network with real consensus", "Only code execution without consensus verification", "MetaMask wallet behavior"], correctOption: 1, explanation: "Di Studio dey simulate full validator network including di consensus process, so developers fit test with high fidelity." },
+          { id: "nigeria-L10-q3", prompt: "Wetin features GenLayer Studio get to make development easier?", options: ["Only code editor without debug tools", "Detailed real-time logs and debugging support", "Only static documentation", "Exclusive hardwallet integration"], correctOption: 1, explanation: "Di Studio dey provide detailed real-time logs and debugging support, wey dey make am easy to find errors inside di contract." },
+          { id: "nigeria-L10-q4", prompt: "Which command fit start GenLayer Studio locally?", options: ["genlayer start", "genlayer deploy", "genlayer init", "genlayer studio"], correctOption: 2, explanation: "Di genlayer init command dey download di necessary components and launch GenLayer Studio for your local environment." },
         ],
       },
       {
@@ -1477,6 +1636,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["npm install -g genlayer, then genlayer init", "GenLayerJS: TypeScript, for frontend development", "GenLayerPY: Python 3.12+, for backend"] },
           { type: "callout", title: "Beginner tip", text: "First run genlayer init, explore example contracts for Studio, then start to write code." },
         ],
+        questions: [
+          { id: "nigeria-L11-q1", prompt: "How dem fit install GenLayer CLI?", options: ["pip install genlayer", "cargo install genlayer", "npm install -g genlayer", "brew install genlayer"], correctOption: 2, explanation: "Dem dey install GenLayer CLI through npm with di command npm install -g genlayer." },
+          { id: "nigeria-L11-q2", prompt: "Which type of development GenLayerJS dey best for?", options: ["Python backend", "Shell automation scripts", "Frontend DApps with TypeScript", "Solidity smart contracts"], correctOption: 2, explanation: "GenLayerJS na di TypeScript SDK design for frontend DApp development." },
+          { id: "nigeria-L11-q3", prompt: "Which type of development GenLayerPY dey best for?", options: ["Web interfaces with React", "Python 3.12+ backend integration", "Bash automation scripts", "Mobile development"], correctOption: 1, explanation: "GenLayerPY na di Python SDK for backend integration, compatible with Python 3.12 and above." },
+          { id: "nigeria-L11-q4", prompt: "Wetin be di recommended flow for beginner developer for GenLayer?", options: ["Deploy directly to Testnet without local testing", "Write code first, then read documentation", "Run genlayer init, explore examples for Studio, then write new code", "Install GenLayerPY before anything else"], correctOption: 2, explanation: "Di best flow na start with genlayer init to set up environment, explore example contracts, then write new code." },
+          { id: "nigeria-L11-q5", prompt: "Which of di following packages dey part of GenLayer official toolset?", options: ["genlayer-web3", "genlayer-hardhat", "GenLayerJS", "genlayer-solidity"], correctOption: 2, explanation: "GenLayerJS na di official TypeScript/JavaScript SDK for frontend DApp development on GenLayer." },
+        ],
       },
       {
         slug: "first-contract", title: "Your First Intelligent Contract", durationMinutes: 5,
@@ -1486,6 +1652,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "Every Intelligent Contract na Python class wey inherit from gl.Contract. State variables declare for di class body, and methods tag with decorators for read or write permissions." },
           { type: "code", language: "python", code: "import gl\n\nclass Counter(gl.Contract):\n    count: gl.u256\n\n    def __init__(self):\n        self.count = 0\n\n    @gl.public.view\n    def get(self) -> int:\n        return self.count\n\n    @gl.public.write\n    def increment(self):\n        self.count += 1" },
           { type: "callout", title: "Remember", text: "All persistent fields must declare inside di class body with type annotation. Dem no fit create am dynamically at runtime." },
+        ],
+        questions: [
+          { id: "nigeria-L12-q1", prompt: "Which base class must Intelligent Contract extend?", options: ["gl.BaseContract", "SmartContract", "gl.Contract", "BlockchainContract"], correctOption: 2, explanation: "Every Intelligent Contract must extend gl.Contract class to access network functionalities." },
+          { id: "nigeria-L12-q2", prompt: "Where state variables of Intelligent Contract must declare?", options: ["Inside di __init__ method", "Inside each method wey dey use dem", "For di class body, with type annotation", "For separate external configuration file"], correctOption: 2, explanation: "State variables must declare for di class body with type annotations so dem go persist correctly." },
+          { id: "nigeria-L12-q3", prompt: "For di Counter contract example, wetin @gl.public.view decorator dey indicate?", options: ["Di method dey modify on-chain state", "Di method dey accept GEN transfers", "Di method na read-only and e no dey change state", "Di method na private and e no fit call externally"], correctOption: 2, explanation: "@gl.public.view dey mark read-only methods — dem dey query state without changing am, with lower gas cost." },
+          { id: "nigeria-L12-q4", prompt: "Wetin happen if you create state field dynamically inside method instead of class body?", options: ["E go save normally to blockchain", "E no go persist between transactions", "E go cause immediate compilation error", "E go automatically move to class body"], correctOption: 1, explanation: "Fields wey dem create dynamically at runtime no go persist; only those wey dem declare for di class body with type annotation go save." },
+          { id: "nigeria-L12-q5", prompt: "Which decorator dey use for method wey dey modify contract state?", options: ["@gl.public.view", "@gl.private.write", "@gl.public.write", "@gl.state.modify"], correctOption: 2, explanation: "@gl.public.write dey mark methods wey dey modify di on-chain state of di contract." },
         ],
       },
       {
@@ -1497,6 +1670,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["dict → TreeMap[K, V]", "list → DynArray[T]", "int → u256, i32 and other fixed types"] },
           { type: "callout", title: "Common mistake", text: "Fields wey dem don create dynamically at runtime no go save. Declare all persistent fields inside di class body from di beginning." },
         ],
+        questions: [
+          { id: "nigeria-L13-q1", prompt: "Why you no fit use Python dict directly for GenLayer storage?", options: ["Because dict dey too slow for blockchain", "Because dict no dey persist between transactions for GenLayer", "Because dict no dey support string keys", "Because dict dey take too much space"], correctOption: 1, explanation: "Native Python dict no dey persist for GenLayer; you must use TreeMap[K, V] for persistent storage." },
+          { id: "nigeria-L13-q2", prompt: "Wetin be di correct replacement for Python list for GenLayer?", options: ["ArrayList", "DynArray", "LinkedList", "Vector"], correctOption: 1, explanation: "DynArray[T] na di type wey dey replace Python list for persistent storage for GenLayer." },
+          { id: "nigeria-L13-q3", prompt: "Why GenLayer dey use fixed-size integer types like u256?", options: ["Because dem dey easier to write than int", "For EVM compatibility with Ethereum", "To ensure deterministic and efficient representation of data on-chain", "Because Python no dey support big integers"], correctOption: 2, explanation: "Fixed-size types like u256 dey ensure deterministic data representation and efficiency for on-chain storage." },
+          { id: "nigeria-L13-q4", prompt: "Wetin be di correct replacement for Python dict for GenLayer?", options: ["HashMap[K, V]", "OrderedDict[K, V]", "TreeMap[K, V]", "SortedMap[K, V]"], correctOption: 2, explanation: "TreeMap[K, V] na di type wey dey replace Python dict for persistent storage for GenLayer." },
+          { id: "nigeria-L13-q5", prompt: "Wetin happen to state field wey dem create dynamically inside method during execution?", options: ["E go save normally, like field wey dem declare for class", "E no go save — dynamic fields no dey persist between transactions", "E go generate compilation error before execution", "E go automatically convert to TreeMap"], correctOption: 1, explanation: "Only fields wey dem declare for di class body with type annotation go persist; dynamically created fields go disappear after execution." },
+        ],
       },
       {
         slug: "read-write-methods", title: "Read and Write Methods", durationMinutes: 5,
@@ -1506,6 +1686,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "@gl.public.view dey mark read-only methods wey no dey change state. @gl.public.write dey modify state. @gl.public.write.payable dey accept GEN transfers." },
           { type: "list", items: ["@gl.public.view: read-only, lower gas cost", "@gl.public.write: modify on-chain state", "@gl.public.write.payable: accept GEN tokens"] },
           { type: "callout", title: "Good practice", text: "Test your logic with read-only methods first. Add write logic only when you don confirm am." },
+        ],
+        questions: [
+          { id: "nigeria-L14-q1", prompt: "Which decorator dey mark method as read-only for GenLayer?", options: ["@gl.public.write", "@gl.private.view", "@gl.public.view", "@gl.readonly"], correctOption: 2, explanation: "@gl.public.view dey mark methods wey only dey read state without modifying am, with lower gas cost." },
+          { id: "nigeria-L14-q2", prompt: "Wetin be di main difference between @gl.public.view and @gl.public.write?", options: ["view na for private contracts; write na for public contracts", "view dey read state without changing am; write dey modify on-chain state", "view dey cost more gas than write", "view dey support payments; write no dey support"], correctOption: 1, explanation: "view na for reading (without changing state, lower cost); write na for modifying on-chain state." },
+          { id: "nigeria-L14-q3", prompt: "Which decorator dey allow method to accept GEN token transfers?", options: ["@gl.public.view", "@gl.public.write", "@gl.public.write.payable", "@gl.token.accept"], correctOption: 2, explanation: "@gl.public.write.payable dey use for methods wey dey modify state AND dey accept GEN token transfers." },
+          { id: "nigeria-L14-q4", prompt: "Why dem dey recommend to test logic with read-only methods before adding write methods?", options: ["Because read methods dey run faster", "Because write methods no fit test for Studio", "To validate di logic without risk of modifying state with incorrect data", "Because read methods dey free on testnet"], correctOption: 2, explanation: "Testing with read-only methods first dey allow you verify di logic without risk of writing incorrect data to blockchain state." },
+          { id: "nigeria-L14-q5", prompt: "Method wey dey modify user balance AND dey receive GEN payment must use which decorator?", options: ["@gl.public.view", "@gl.public.write", "@gl.public.write.payable", "@gl.public.view.payable"], correctOption: 2, explanation: "@gl.public.write.payable dey combine state modification with GEN token reception in di same call." },
         ],
       },
       {
@@ -1517,6 +1704,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Always request JSON response (response_format='json')", "Avoid timestamps or dynamic data", "Compare AI-derived conclusions, not raw data"] },
           { type: "callout", title: "Number 1 cause of consensus failure", text: "Asking LLM for unstable data go make validators get different results. Always extract stable fields." },
         ],
+        questions: [
+          { id: "nigeria-L15-q1", prompt: "Wetin be di main method to call LLM inside Intelligent Contract?", options: ["gl.ai.prompt()", "gl.llm.call()", "gl.nondet.exec_prompt()", "gl.contract.ask()"], correctOption: 2, explanation: "gl.nondet.exec_prompt() na di standard method to execute LLM prompt inside Intelligent Contract." },
+          { id: "nigeria-L15-q2", prompt: "Why vague prompts dey cause consensus failures for GenLayer?", options: ["Because LLMs no dey understand open questions", "Because vague prompts fit generate inconsistent responses among different validators", "Because GenVM dey block prompts with more than 100 words", "Because vague prompts dey cost more gas"], correctOption: 1, explanation: "Vague prompts dey generate different responses among validators, wey dey prevent consensus from reaching." },
+          { id: "nigeria-L15-q3", prompt: "Which response format dem dey recommend when calling LLM to ensure consistency?", options: ["Free-form natural language text", "XML with custom tags", "JSON with response_format='json'", "CSV separated by commas"], correctOption: 2, explanation: "Requesting JSON response with response_format='json' dey make outputs structured and easier to compare among validators." },
+          { id: "nigeria-L15-q4", prompt: "Wetin you NO suppose include for LLM prompt to avoid consensus failures?", options: ["Objective questions with JSON answer", "Static and well-defined data", "Timestamps, current dates or other dynamic data", "Clear evaluation criteria"], correctOption: 2, explanation: "Unstable data like timestamps dey make validators get different results, wey dey break consensus." },
+          { id: "nigeria-L15-q5", prompt: "Wetin be best practice when using LLMs for data comparison for GenLayer?", options: ["Compare di raw AI-generated texts directly", "Extract stable fields and compare AI-derived conclusions, not raw data", "Always use di same LLM model for all validators", "Completely avoid using LLMs inside contracts"], correctOption: 1, explanation: "Compare AI-derived conclusions about stable fields, not raw texts, to ensure consistency among validators." },
+        ],
       },
       {
         slug: "web-data", title: "Web Data Access", durationMinutes: 5,
@@ -1527,6 +1721,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["gl.nondet.web.get(url): raw text content", "gl.nondet.web.render(url): JS-rendered pages", "Extract stable fields, avoid dynamic content"] },
           { type: "callout", title: "Reliability tip", text: "External websites fit go down or change structure. Only fetch from trusted sources and validate before saving." },
         ],
+        questions: [
+          { id: "nigeria-L16-q1", prompt: "Which method dey use to fetch raw text content from web inside Intelligent Contract?", options: ["gl.http.get(url)", "gl.web.fetch(url)", "gl.nondet.web.get(url)", "gl.internet.read(url)"], correctOption: 2, explanation: "gl.nondet.web.get(url) na di method to fetch raw text content from URLs inside Intelligent Contract." },
+          { id: "nigeria-L16-q2", prompt: "When you suppose use gl.nondet.web.render(url) instead of gl.nondet.web.get(url)?", options: ["For REST APIs wey dey return JSON", "For web pages wey dey need JavaScript to render content", "For PDF files and static documents", "For remote SQL databases"], correctOption: 1, explanation: "gl.nondet.web.render(url) dey use for pages wey need JavaScript to load their content dynamically." },
+          { id: "nigeria-L16-q3", prompt: "Why e dey important to only extract stable fields when fetching web data?", options: ["Because dynamic fields dey more expensive to process", "To prevent validators from getting inconsistent results due to content wey dey change between executions", "Because GenVM no fit process dynamic content", "To save LLM tokens"], correctOption: 1, explanation: "Content wey dey change between executions dey create inconsistencies among validators — always extract stable fields to ensure consensus." },
+          { id: "nigeria-L16-q4", prompt: "Wetin fit happen if contract dey depend on external website wey change im structure?", options: ["Nothing, GenLayer go automatically adapt", "Di contract fit fail to parse di data, wey go break di logic and consensus", "GenLayer go freeze di contract preventively", "Di external site go automatically archive by GenLayer"], correctOption: 1, explanation: "Changes to external website structure fit break di contract parsing logic and cause consensus failures." },
+          { id: "nigeria-L16-q5", prompt: "Wetin be di best practice when saving web data inside Intelligent Contract?", options: ["Save immediately without verification to save gas", "Trust any source wey dey return JSON data", "Validate di data before saving and only use trusted sources", "Always store di complete HTML of di page"], correctOption: 2, explanation: "Validating data before saving and using trusted sources dey ensure di integrity and reliability of di contract." },
+        ],
       },
       {
         slug: "deploy-dapp", title: "Build and Deploy DApp", durationMinutes: 5,
@@ -1536,6 +1737,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenLayer DApp development dey follow 3 phases: local prototype for Studio, thorough testing with testing framework, then deploy to Testnet (Asimov/Bradbury) and build frontend with GenLayerJS." },
           { type: "list", items: ["Phase 1: Local prototype for GenLayer Studio", "Phase 2: Testing with genlayer-test", "Phase 3: GenLayerJS frontend plus Testnet deployment"] },
           { type: "callout", title: "Launch checklist", text: "Before you deploy to Testnet, finish testing for direct mode and Studio mode, and handle all consensus failures." },
+        ],
+        questions: [
+          { id: "nigeria-L17-q1", prompt: "Wetin be di three phases of DApp development for GenLayer?", options: ["Code → Compile → Deploy", "Local prototype for Studio → Testing with genlayer-test → Testnet deployment with GenLayerJS", "Install → Configure → Publish", "Design → Program → Monetize"], correctOption: 1, explanation: "Di recommended flow na: local prototype for Studio, automated testing with genlayer-test, then Testnet deployment with GenLayerJS frontend." },
+          { id: "nigeria-L17-q2", prompt: "Wetin be di available Testnets for GenLayer deployment?", options: ["Ropsten and Rinkeby", "Goerli and Sepolia", "Asimov and Bradbury", "Alpha and Beta"], correctOption: 2, explanation: "GenLayer Testnets dem dey call Asimov and Bradbury — dem dey available for test contract deployment." },
+          { id: "nigeria-L17-q3", prompt: "Which SDK dem dey recommend to build DApp frontend for GenLayer?", options: ["ethers.js", "web3.py", "GenLayerJS", "hardhat"], correctOption: 2, explanation: "GenLayerJS na di official TypeScript SDK to connect DApp frontends to GenLayer." },
+          { id: "nigeria-L17-q4", prompt: "Wetin you must do BEFORE you deploy contract to Testnet?", options: ["Deploy directly without testing to save time", "Finish testing for direct mode and Studio mode and handle all consensus failures", "Get approval from GenLayer Foundation", "Buy GEN tokens on mainnet"], correctOption: 1, explanation: "Complete testing in direct mode and Studio, resolving all consensus failures, na mandatory before going to Testnet." },
+          { id: "nigeria-L17-q5", prompt: "Wetin genlayer-test framework dey use for?", options: ["To create GEN tokens for testing", "To run automated tests of Intelligent Contracts", "To monitor contracts in production on mainnet", "To generate automatic documentation of contracts"], correctOption: 1, explanation: "genlayer-test na di automated testing framework to verify Intelligent Contract behavior before deployment." },
         ],
       },
     ],
@@ -1583,6 +1791,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Позиция: уровень арбитража для агентной экономики", "Доверенная on-chain верификация субъективных вопросов", "AI-валидаторы достигают консенсуса"] },
           { type: "callout", title: "Простыми словами", text: "Когда ответ — не просто да или нет, а требует суждения, вступает в дело GenLayer." },
         ],
+        questions: [
+          { id: "russia-L01-q1", prompt: "Как лучше всего описать GenLayer?", options: ["Децентрализованная система хранения файлов", "AI-нативный уровень арбитража для агентной экономики", "Решение Layer 2 для Ethereum", "Централизованная платёжная сеть"], correctOption: 1, explanation: "GenLayer — это AI-нативный уровень арбитража, разработанный для агентной экономики, обрабатывающий решения, требующие суждения." },
+          { id: "russia-L01-q2", prompt: "В чём ключевое различие между Bitcoin, Ethereum и GenLayer?", options: ["Все три делают одно и то же", "Bitcoin обрабатывает транзакции, Ethereum выполняет код, GenLayer понимает смысл решений", "GenLayer служит только для платежей", "Ethereum и GenLayer идентичны"], correctOption: 1, explanation: "Bitcoin — для транзакций, Ethereum — для выполнения кода, GenLayer — для понимания смысла решений." },
+          { id: "russia-L01-q3", prompt: "Когда необходим GenLayer?", options: ["Только для перевода чисел", "Только для выполнения фиксированного кода", "Когда ответ требует суждения и рассуждений, а не просто да или нет", "Только для хранения файлов"], correctOption: 2, explanation: "GenLayer необходим, когда ответ не является просто да или нет, а требует суждения и AI-рассуждений." },
+        ],
       },
       {
         slug: "problem-genlayer-solves", title: "Какую проблему решает GenLayer?", durationMinutes: 5,
@@ -1592,6 +1805,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "Bitcoin и Ethereum хороши для детерминированных задач, но не могут справляться с задачами, требующими суждения или AI-рассуждений. Оценка контента, споры, верификация этапов — для этого нужен GenLayer." },
           { type: "list", items: ["Традиционные контракты: только фиксированная логика", "GenLayer: обрабатывает субъективные и неоднозначные результаты", "Закрывает критический пробел в технологии блокчейн"] },
           { type: "callout", title: "Ключевое отличие", text: "Ethereum спрашивает: 'выполнился ли код?' GenLayer спрашивает: 'правильный ли результат?'" },
+        ],
+        questions: [
+          { id: "russia-L02-q1", prompt: "Что не могут делать традиционные блокчейны — Bitcoin и Ethereum?", options: ["Записывать финансовые транзакции", "Обрабатывать решения, требующие суждения и рассуждений", "Выполнять код в смарт-контрактах", "Обрабатывать данные в P2P-сети"], correctOption: 1, explanation: "Bitcoin и Ethereum детерминированы — они не могут обрабатывать субъективные решения, требующие рассуждений." },
+          { id: "russia-L02-q2", prompt: "В чём ключевое различие между Ethereum и GenLayer относительно результата контракта?", options: ["Ethereum быстрее GenLayer", "Ethereum спрашивает, выполнился ли код; GenLayer спрашивает, правильный ли результат", "GenLayer использует Solidity, Ethereum — Python", "Нет разницы между ними"], correctOption: 1, explanation: "Ethereum проверяет корректность выполнения кода; GenLayer идёт дальше и проверяет, правильный ли результат по существу." },
+          { id: "russia-L02-q3", prompt: "Какой из следующих сценариев лучше всего подходит для GenLayer?", options: ["Простой перевод токенов между кошельками", "Автоматическая проверка этапов фриланса на основе субъективных критериев", "Хранение файлов в блокчейне", "Майнинг Bitcoin"], correctOption: 1, explanation: "Ситуации, требующие субъективной оценки, — например, проверка качества выполненной работы — идеальный кейс для GenLayer." },
         ],
       },
       {
@@ -1603,6 +1821,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Прямой доступ к интернет-данным без Oracle", "Вызов LLM (например, GPT-4) для AI-рассуждений", "Написаны на Python — привычно и мощно"] },
           { type: "callout", title: "Аналогия", text: "Традиционный контракт — это калькулятор. Intelligent Contract — помощник, способный рассуждать." },
         ],
+        questions: [
+          { id: "russia-L03-q1", prompt: "Что умеют Intelligent Contracts GenLayer, чего не умеют традиционные смарт-контракты?", options: ["Выполнять только фиксированную заранее заданную логику", "Обращаться к веб-данным в реальном времени и вызывать AI-модели (LLM)", "Работать только в Ethereum", "Обрабатывать только целые числа"], correctOption: 1, explanation: "Intelligent Contracts могут обращаться к интернету в реальном времени и вызывать LLM — возможности, отсутствующие в традиционных контрактах." },
+          { id: "russia-L03-q2", prompt: "На каком языке программирования написаны Intelligent Contracts GenLayer?", options: ["Solidity", "Rust", "JavaScript", "Python"], correctOption: 3, explanation: "Intelligent Contracts пишутся на Python — более интуитивном и мощном языке." },
+          { id: "russia-L03-q3", prompt: "Какая аналогия лучше всего сравнивает традиционный смарт-контракт с Intelligent Contract?", options: ["Молоток против отвёртки", "Калькулятор против помощника, способного рассуждать", "Автомобиль против велосипеда", "Принтер против сканера"], correctOption: 1, explanation: "Калькулятор — фиксированная логика традиционных контрактов; помощник, который рассуждает и адаптируется, — это Intelligent Contracts." },
+        ],
       },
       {
         slug: "blockchain-stack", title: "Место GenLayer в архитектуре блокчейна", durationMinutes: 5,
@@ -1612,6 +1835,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenLayer — это блокчейн Layer 1, который будет интегрироваться с Ethereum через роллапы типа ZKSync, управляя собственным AI-нативным консенсусом. Он не конкурирует с Ethereum — это новый уровень, специализирующийся на AI-арбитраже." },
           { type: "list", items: ["Bitcoin: консенсус по порядку транзакций", "Ethereum: консенсус по выполнению кода", "GenLayer: консенсус по смыслу решений"] },
           { type: "callout", title: "Позиция", text: "GenLayer дополняет Ethereum, а не конкурирует с ним." },
+        ],
+        questions: [
+          { id: "russia-L04-q1", prompt: "На каком уровне архитектуры блокчейна находится GenLayer?", options: ["Layer 0", "Layer 2", "Layer 1", "Layer 3"], correctOption: 2, explanation: "GenLayer — блокчейн Layer 1 с собственным AI-нативным механизмом консенсуса." },
+          { id: "russia-L04-q2", prompt: "В чём различие между фокусом Ethereum и GenLayer?", options: ["Ethereum — для финансовых транзакций; GenLayer — для хранения данных", "Ethereum достигает консенсуса по выполнению кода; GenLayer — по смыслу решений", "Ethereum — Layer 2; GenLayer — Layer 0", "Оба делают одно и то же"], correctOption: 1, explanation: "Ethereum фокусируется на консенсусе по выполнению кода; GenLayer идёт дальше и достигает консенсуса по смыслу результатов." },
+          { id: "russia-L04-q3", prompt: "Как GenLayer соотносится с Ethereum?", options: ["Полностью заменяет Ethereum", "Дополняет Ethereum через интеграцию с роллапами, такими как ZKSync", "Напрямую конкурирует с Ethereum за один рынок", "Не имеет отношения к Ethereum"], correctOption: 1, explanation: "GenLayer дополняет Ethereum, интегрируясь через роллапы и добавляя AI-нативный арбитраж, которого у Ethereum нет." },
         ],
       },
       {
@@ -1623,6 +1851,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["4 фазы: Предложить → Подтвердить → Раскрыть → Принять", "Любой может обжаловать результат", "Финальный результат необратим"] },
           { type: "callout", title: "Ключевая идея", text: "Коллективное независимое суждение надёжнее единственного узла." },
         ],
+        questions: [
+          { id: "russia-L05-q1", prompt: "На какой математической теореме основана Optimistic Democracy?", options: ["Теорема Пифагора", "Теорема жюри Кондорсе", "Закон больших чисел Бернулли", "Парадокс Эрроу"], correctOption: 1, explanation: "Теорема жюри Кондорсе показывает, что группа независимых судей с большей вероятностью придёт к правильному ответу." },
+          { id: "russia-L05-q2", prompt: "Каковы четыре фазы консенсуса в Optimistic Democracy?", options: ["Создать → Проверить → Опубликовать → Оплатить", "Предложить → Подтвердить → Раскрыть → Принять", "Отправить → Обработать → Одобрить → Завершить", "Начать → Голосовать → Подсчитать → Распределить"], correctOption: 1, explanation: "Четыре фазы: Предложить, Подтвердить, Раскрыть и Принять." },
+          { id: "russia-L05-q3", prompt: "Что происходит с финальным результатом в Optimistic Democracy?", options: ["Его можно изменить в любое время большинством голосов", "Он необратим после фазы Принятия", "Разработчик контракта может его отменить", "Он истекает через 24 часа"], correctOption: 1, explanation: "После прохождения всех фаз финальный результат Optimistic Democracy необратим." },
+        ],
       },
       {
         slug: "validators-staking", title: "Валидаторы и стейкинг", durationMinutes: 5,
@@ -1632,6 +1865,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "Валидаторы стейкают GEN, запускают ноды и участвуют в Optimistic Democracy, зарабатывая вознаграждения. Нет 42 000 GEN? Участвуйте как делегатор." },
           { type: "list", items: ["Стать валидатором: стейкнуть 42 000 GEN", "Делегатор: минимум 42 GEN для участия", "Валидаторы получают 10% операционную комиссию + награды за стейкинг"] },
           { type: "callout", title: "Два способа участия", text: "Большой стейк — будьте валидатором. Маленький стейк — делегируйте. Оба приносят доход." },
+        ],
+        questions: [
+          { id: "russia-L06-q1", prompt: "Сколько GEN нужно застейкать, чтобы стать валидатором в GenLayer?", options: ["4 200 GEN", "420 GEN", "42 000 GEN", "420 000 GEN"], correctOption: 2, explanation: "Для полноценного участия в качестве валидатора необходимо застейкать 42 000 GEN." },
+          { id: "russia-L06-q2", prompt: "Каков минимальный стейк для участия в качестве делегатора?", options: ["42 GEN", "420 GEN", "4 200 GEN", "42 000 GEN"], correctOption: 0, explanation: "Всего 42 GEN достаточно для участия в качестве делегатора с получением пропорциональных вознаграждений." },
+          { id: "russia-L06-q3", prompt: "Какую операционную комиссию получают валидаторы от вознаграждений делегаторов?", options: ["5%", "10%", "20%", "50%"], correctOption: 1, explanation: "Валидаторы получают 10% операционную комиссию от вознаграждений своих делегаторов плюс собственные награды за стейкинг." },
+          { id: "russia-L06-q4", prompt: "Что делает делегатор в GenLayer?", options: ["Запускает полный узел валидатора с 42 000 GEN", "Делегирует свой стейк валидатору и получает пропорциональные вознаграждения", "Только хранит токены без участия в консенсусе", "Голосует по управленческим предложениям без стейкинга"], correctOption: 1, explanation: "Делегаторы доверяют свои GEN валидатору и получают пропорциональные вознаграждения без необходимости запускать узел." },
         ],
       },
       {
@@ -1643,6 +1882,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["strict_eq(): все валидаторы должны получить точно одинаковый результат", "prompt_non_comparative(): валидаторы оценивают, выполнен ли критерий", "Разработчик определяет, что означает 'эквивалентно'"] },
           { type: "callout", title: "Ключевой вывод", text: "AI каждый раз может отвечать чуть по-разному — принцип эквивалентности делает это безопасным в блокчейне." },
         ],
+        questions: [
+          { id: "russia-L07-q1", prompt: "Почему выводы AI создают проблему для блокчейн-консенсуса?", options: ["Потому что AI слишком медленный для обработки транзакций", "Потому что разные валидаторы могут получать немного разные результаты при одном и том же запросе", "Потому что AI-модели требуют специального железа, которого нет у большинства валидаторов", "Потому что результаты AI невозможно проверить"], correctOption: 1, explanation: "AI-модели недетерминированы — один и тот же запрос может дать слегка разные ответы, что создаёт проблему для консенсуса." },
+          { id: "russia-L07-q2", prompt: "Что делает метод strict_eq() в принципе эквивалентности?", options: ["Разрешает любой результат, если он разумен", "Требует, чтобы все валидаторы получили точно одинаковый результат", "Использует AI для семантического сравнения двух результатов", "Принимает результаты с расхождением до 10%"], correctOption: 1, explanation: "strict_eq() требует идентичных результатов от всех валидаторов — лучше всего подходит для структурированных данных, например JSON." },
+          { id: "russia-L07-q3", prompt: "Что делает метод prompt_non_comparative()?", options: ["Требует идентичных результатов от всех валидаторов", "Заставляет каждого валидатора независимо оценить, выполнен ли критерий, вместо сравнения текстов", "Полностью игнорирует различия между валидаторами", "Сравнивает результаты в бинарном формате (да/нет)"], correctOption: 1, explanation: "prompt_non_comparative() позволяет каждому валидатору независимо оценить, соответствует ли результат критерию, без сравнения текстов." },
+          { id: "russia-L07-q4", prompt: "Кто определяет, что значит 'эквивалентно' в Intelligent Contract?", options: ["Сеть GenLayer автоматически", "Консорциум Ethereum", "Разработчик контракта", "Валидаторы путём голосования"], correctOption: 2, explanation: "Разработчик определяет, что считается эквивалентным для конкретного контракта, выбирая между strict_eq() и prompt_non_comparative()." },
+        ],
       },
       {
         slug: "genvm", title: "GenVM: среда выполнения", durationMinutes: 5,
@@ -1652,6 +1897,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenVM — это среда выполнения Intelligent Contracts. Построена на WebAssembly, нативно запускает Python и напрямую взаимодействует с LLM и веб-данными — то, чего EVM не умеет." },
           { type: "list", items: ["На основе WebAssembly, быстрое выполнение", "Нативно запускает Python (не Solidity)", "Встроенная поддержка вызовов LLM и доступа в интернет"] },
           { type: "callout", title: "Принципиальное отличие", text: "EVM предназначена для детерминированного кода. GenVM работает с недетерминизмом — фундаментальная архитектурная инновация." },
+        ],
+        questions: [
+          { id: "russia-L08-q1", prompt: "На какой технологии основан GenVM?", options: ["Docker", "LLVM", "WebAssembly", "JVM"], correctOption: 2, explanation: "GenVM построен на WebAssembly, обеспечивающем быстрое и переносимое выполнение." },
+          { id: "russia-L08-q2", prompt: "Какой язык GenVM запускает нативно, в отличие от EVM?", options: ["Solidity", "Rust", "JavaScript", "Python"], correctOption: 3, explanation: "GenVM нативно запускает Python, тогда как EVM рассчитана на Solidity." },
+          { id: "russia-L08-q3", prompt: "В чём принципиальное архитектурное различие между EVM и GenVM?", options: ["EVM поддерживает Python; GenVM использует Solidity", "EVM работает с недетерминизмом; GenVM чисто детерминирована", "EVM предназначена для детерминированного кода; GenVM работает с недетерминизмом", "Обе идентичны по дизайну"], correctOption: 2, explanation: "EVM детерминирована и не поддерживает AI; GenVM с самого начала создана для работы с недетерминированными выводами AI." },
+          { id: "russia-L08-q4", prompt: "Какие встроенные возможности есть в GenVM, которых нет в EVM?", options: ["Поддержка Solidity и более низкая стоимость газа", "Вызовы LLM и прямой доступ в интернет", "Совместимость с майнинговым оборудованием", "Поддержка NFT и взаимозаменяемых токенов"], correctOption: 1, explanation: "GenVM имеет встроенную поддержку вызовов LLM и доступа в интернет — возможности, отсутствующие в EVM." },
         ],
       },
       {
@@ -1663,6 +1914,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Начальный APY 15%, постепенно снижается до 4%", "75% наград — всем стейкерам", "10% — валидаторам, 15% — разработчикам"] },
           { type: "callout", title: "Механизм обжалования", text: "Не согласны с результатом? Застейкайте GEN для обжалования, и более широкий набор валидаторов пересмотрит его." },
         ],
+        questions: [
+          { id: "russia-L09-q1", prompt: "Каков начальный APY стейкинга GEN?", options: ["4%", "10%", "15%", "50%"], correctOption: 2, explanation: "Начальный APY — 15%, постепенно снижается до 4% для обеспечения долгосрочной устойчивости." },
+          { id: "russia-L09-q2", prompt: "Как распределяются награды за стейкинг среди участников?", options: ["100% валидаторам", "75% всем стейкерам, 10% валидаторам, 15% разработчикам", "50% валидаторам, 50% делегаторам", "100% равномерно всем держателям токенов"], correctOption: 1, explanation: "75% наград идут всем стейкерам, 10% — валидаторам и 15% — разработчикам." },
+          { id: "russia-L09-q3", prompt: "Для чего служит механизм обжалования в GenLayer?", options: ["Для увеличения комиссий за газ", "Для стейкинга GEN с целью запросить пересмотр более широким набором валидаторов", "Для создания новых токенов GEN", "Для изменения кода контракта после деплоя"], correctOption: 1, explanation: "Любой участник, не согласный с результатом, может застейкать GEN для обжалования, и более широкий набор валидаторов пересмотрит его." },
+          { id: "russia-L09-q4", prompt: "Для каких целей используется токен GEN?", options: ["Только для оплаты газа", "Стейкинг, газ и управление", "Только для управления и голосования", "Только для переводов между пользователями"], correctOption: 1, explanation: "GEN — нативный токен для стейкинга (участие в консенсусе), газа (транзакционные комиссии) и управления." },
+        ],
       },
       {
         slug: "genlayer-studio", title: "GenLayer Studio", durationMinutes: 5,
@@ -1672,6 +1929,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenLayer Studio — браузерная песочница без установки для тестирования Intelligent Contracts. Симулирует полную сеть валидаторов с логами в реальном времени и обратной связью по ошибкам." },
           { type: "list", items: ["Прямо в браузере, без установки", "Симуляция консенсуса с несколькими валидаторами", "Подробные логи и поддержка отладки"] },
           { type: "callout", title: "Начните сейчас", text: "Откройте studio.genlayer.com или выполните genlayer init, чтобы запустить Studio локально." },
+        ],
+        questions: [
+          { id: "russia-L10-q1", prompt: "Что такое GenLayer Studio?", options: ["Desktop IDE для офлайн-разработки", "Мобильное приложение для мониторинга контрактов", "Браузерная песочница без установки для тестирования Intelligent Contracts", "Интерфейс командной строки для деплоя в мейннет"], correctOption: 2, explanation: "GenLayer Studio — браузерная песочница без установки, симулирующая полную сеть валидаторов." },
+          { id: "russia-L10-q2", prompt: "Что симулирует GenLayer Studio для помощи разработчикам?", options: ["Одну транзакцию стейкинга", "Полную сеть валидаторов с реальным консенсусом", "Только выполнение кода без верификации консенсуса", "Поведение кошелька MetaMask"], correctOption: 1, explanation: "Studio симулирует полную сеть валидаторов включая процесс консенсуса, что позволяет тестировать с высокой точностью." },
+          { id: "russia-L10-q3", prompt: "Какие возможности Studio упрощают разработку?", options: ["Только редактор кода без инструментов отладки", "Подробные логи в реальном времени и поддержка отладки", "Только статическая документация", "Эксклюзивная интеграция с аппаратным кошельком"], correctOption: 1, explanation: "Studio предоставляет подробные логи в реальном времени и поддержку отладки, упрощая поиск ошибок в контракте." },
+          { id: "russia-L10-q4", prompt: "Какая команда запускает GenLayer Studio локально?", options: ["genlayer start", "genlayer deploy", "genlayer init", "genlayer studio"], correctOption: 2, explanation: "Команда genlayer init загружает необходимые компоненты и запускает GenLayer Studio в локальной среде." },
         ],
       },
       {
@@ -1683,6 +1946,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["npm install -g genlayer, затем genlayer init", "GenLayerJS: TypeScript, для фронтенда", "GenLayerPY: Python 3.12+, для бэкенда"] },
           { type: "callout", title: "Совет новичку", text: "Сначала запустите genlayer init, изучите примеры в Studio, затем начинайте писать код." },
         ],
+        questions: [
+          { id: "russia-L11-q1", prompt: "Как установить GenLayer CLI?", options: ["pip install genlayer", "cargo install genlayer", "npm install -g genlayer", "brew install genlayer"], correctOption: 2, explanation: "GenLayer CLI устанавливается через npm командой npm install -g genlayer." },
+          { id: "russia-L11-q2", prompt: "Для какого типа разработки лучше всего подходит GenLayerJS?", options: ["Python-бэкенд", "Shell-скрипты автоматизации", "Фронтенд DApp на TypeScript", "Смарт-контракты на Solidity"], correctOption: 2, explanation: "GenLayerJS — это TypeScript SDK, разработанный для фронтенд-разработки DApp." },
+          { id: "russia-L11-q3", prompt: "Для какого типа разработки лучше всего подходит GenLayerPY?", options: ["Веб-интерфейсы на React", "Python 3.12+ бэкенд-интеграция", "Bash-скрипты автоматизации", "Мобильная разработка"], correctOption: 1, explanation: "GenLayerPY — это Python SDK для бэкенд-интеграции, совместимый с Python 3.12 и выше." },
+          { id: "russia-L11-q4", prompt: "Каков рекомендуемый путь для начинающего разработчика в GenLayer?", options: ["Деплоить сразу в Testnet без локального тестирования", "Сначала писать код, потом читать документацию", "Запустить genlayer init, изучить примеры в Studio, затем писать новый код", "Установить GenLayerPY раньше всего остального"], correctOption: 2, explanation: "Оптимальный путь — начать с genlayer init для настройки окружения, изучить примеры контрактов, затем писать новый код." },
+          { id: "russia-L11-q5", prompt: "Какой из следующих пакетов входит в официальный инструментарий GenLayer?", options: ["genlayer-web3", "genlayer-hardhat", "GenLayerJS", "genlayer-solidity"], correctOption: 2, explanation: "GenLayerJS — официальный TypeScript/JavaScript SDK для фронтенд-разработки DApp на GenLayer." },
+        ],
       },
       {
         slug: "first-contract", title: "Ваш первый Intelligent Contract", durationMinutes: 5,
@@ -1692,6 +1962,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "Каждый Intelligent Contract — это Python-класс, унаследованный от gl.Contract. Переменные состояния объявляются в теле класса, методы помечаются декораторами для прав чтения или записи." },
           { type: "code", language: "python", code: "import gl\n\nclass Counter(gl.Contract):\n    count: gl.u256\n\n    def __init__(self):\n        self.count = 0\n\n    @gl.public.view\n    def get(self) -> int:\n        return self.count\n\n    @gl.public.write\n    def increment(self):\n        self.count += 1" },
           { type: "callout", title: "Запомните", text: "Все постоянные поля должны быть объявлены в теле класса с аннотацией типа. Их нельзя создавать динамически во время выполнения." },
+        ],
+        questions: [
+          { id: "russia-L12-q1", prompt: "От какого базового класса должен наследоваться Intelligent Contract?", options: ["gl.BaseContract", "SmartContract", "gl.Contract", "BlockchainContract"], correctOption: 2, explanation: "Каждый Intelligent Contract должен наследоваться от gl.Contract для доступа к функциям сети." },
+          { id: "russia-L12-q2", prompt: "Где должны объявляться переменные состояния Intelligent Contract?", options: ["Внутри метода __init__", "Внутри каждого метода, который их использует", "В теле класса с аннотацией типа", "В отдельном внешнем конфигурационном файле"], correctOption: 2, explanation: "Переменные состояния должны объявляться в теле класса с аннотациями типа, чтобы корректно сохраняться." },
+          { id: "russia-L12-q3", prompt: "В примере контракта Counter что означает декоратор @gl.public.view?", options: ["Метод изменяет on-chain состояние", "Метод принимает переводы GEN", "Метод только для чтения и не изменяет состояние", "Метод приватный и не может вызываться извне"], correctOption: 2, explanation: "@gl.public.view помечает методы только для чтения — они запрашивают состояние без его изменения при меньших затратах газа." },
+          { id: "russia-L12-q4", prompt: "Что произойдёт, если создать поле состояния динамически внутри метода вместо тела класса?", options: ["Оно сохранится в блокчейне как обычно", "Оно не будет сохраняться между транзакциями", "Это вызовет немедленную ошибку компиляции", "Оно автоматически переместится в тело класса"], correctOption: 1, explanation: "Поля, созданные динамически во время выполнения, не сохраняются; сохраняются только объявленные в теле класса с аннотацией типа." },
+          { id: "russia-L12-q5", prompt: "Какой декоратор используется для метода, изменяющего состояние контракта?", options: ["@gl.public.view", "@gl.private.write", "@gl.public.write", "@gl.state.modify"], correctOption: 2, explanation: "@gl.public.write помечает методы, изменяющие on-chain состояние контракта." },
         ],
       },
       {
@@ -1703,6 +1980,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["dict → TreeMap[K, V]", "list → DynArray[T]", "int → u256, i32 и другие фиксированные типы"] },
           { type: "callout", title: "Частая ошибка", text: "Поля, созданные динамически во время выполнения, не сохраняются. Объявляйте все постоянные поля в теле класса заранее." },
         ],
+        questions: [
+          { id: "russia-L13-q1", prompt: "Почему нельзя использовать Python dict напрямую в хранилище GenLayer?", options: ["Потому что dict слишком медленный для блокчейна", "Потому что dict не сохраняется между транзакциями в GenLayer", "Потому что dict не поддерживает строковые ключи", "Потому что dict занимает слишком много места"], correctOption: 1, explanation: "Нативный Python dict не сохраняется в GenLayer; для постоянного хранения нужно использовать TreeMap[K, V]." },
+          { id: "russia-L13-q2", prompt: "Какой тип заменяет Python list в GenLayer?", options: ["ArrayList", "DynArray", "LinkedList", "Vector"], correctOption: 1, explanation: "DynArray[T] — тип, заменяющий Python list для постоянного хранения в GenLayer." },
+          { id: "russia-L13-q3", prompt: "Почему GenLayer использует целочисленные типы фиксированного размера, такие как u256?", options: ["Потому что их легче писать, чем int", "Для совместимости с EVM Ethereum", "Для детерминированного и эффективного представления данных на блокчейне", "Потому что Python не поддерживает большие целые числа"], correctOption: 2, explanation: "Типы фиксированного размера, такие как u256, обеспечивают детерминированное представление данных и эффективность хранения на блокчейне." },
+          { id: "russia-L13-q4", prompt: "Какой тип заменяет Python dict в GenLayer?", options: ["HashMap[K, V]", "OrderedDict[K, V]", "TreeMap[K, V]", "SortedMap[K, V]"], correctOption: 2, explanation: "TreeMap[K, V] — тип, заменяющий Python dict для постоянного хранения в GenLayer." },
+          { id: "russia-L13-q5", prompt: "Что происходит с полем состояния, созданным динамически внутри метода во время выполнения?", options: ["Оно сохраняется как обычно, как поле в классе", "Оно не сохраняется — динамические поля не сохраняются между транзакциями", "Оно генерирует ошибку компиляции до выполнения", "Оно автоматически конвертируется в TreeMap"], correctOption: 1, explanation: "Сохраняются только поля, объявленные в теле класса с аннотацией типа; динамически созданные поля исчезают после выполнения." },
+        ],
       },
       {
         slug: "read-write-methods", title: "Методы чтения и записи", durationMinutes: 5,
@@ -1712,6 +1996,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "@gl.public.view помечает методы только для чтения, не изменяющие состояние. @gl.public.write изменяет состояние. @gl.public.write.payable принимает переводы GEN." },
           { type: "list", items: ["@gl.public.view: только чтение, меньше газа", "@gl.public.write: изменяет on-chain состояние", "@gl.public.write.payable: принимает токены GEN"] },
           { type: "callout", title: "Хорошая практика", text: "Сначала тестируйте логику с методами только для чтения. Добавляйте логику записи только после подтверждения." },
+        ],
+        questions: [
+          { id: "russia-L14-q1", prompt: "Какой декоратор помечает метод как только для чтения в GenLayer?", options: ["@gl.public.write", "@gl.private.view", "@gl.public.view", "@gl.readonly"], correctOption: 2, explanation: "@gl.public.view помечает методы, которые только читают состояние без его изменения, при меньших затратах газа." },
+          { id: "russia-L14-q2", prompt: "В чём главное различие между @gl.public.view и @gl.public.write?", options: ["view — для приватных контрактов; write — для публичных", "view читает состояние без изменений; write изменяет on-chain состояние", "view обходится дороже по газу, чем write", "view поддерживает платежи; write — нет"], correctOption: 1, explanation: "view — для чтения (без изменения состояния, меньше газа); write — для изменения on-chain состояния." },
+          { id: "russia-L14-q3", prompt: "Какой декоратор позволяет методу принимать переводы токенов GEN?", options: ["@gl.public.view", "@gl.public.write", "@gl.public.write.payable", "@gl.token.accept"], correctOption: 2, explanation: "@gl.public.write.payable используется для методов, которые изменяют состояние И принимают переводы токенов GEN." },
+          { id: "russia-L14-q4", prompt: "Почему рекомендуется тестировать логику с методами только для чтения перед добавлением методов записи?", options: ["Потому что методы чтения работают быстрее", "Потому что методы записи нельзя тестировать в Studio", "Чтобы проверить логику без риска записать некорректные данные в состояние", "Потому что методы чтения бесплатны в тестнете"], correctOption: 2, explanation: "Тестирование с методами чтения сначала позволяет проверить логику без риска записать некорректные данные в блокчейн." },
+          { id: "russia-L14-q5", prompt: "Метод, изменяющий баланс пользователя И принимающий оплату в GEN, должен использовать какой декоратор?", options: ["@gl.public.view", "@gl.public.write", "@gl.public.write.payable", "@gl.public.view.payable"], correctOption: 2, explanation: "@gl.public.write.payable объединяет изменение состояния с получением токенов GEN в одном вызове." },
         ],
       },
       {
@@ -1723,6 +2014,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Всегда запрашивайте ответ в JSON (response_format='json')", "Избегайте временных меток и динамических данных", "Сравнивайте выводы AI, а не сырые данные"] },
           { type: "callout", title: "Главная причина сбоев консенсуса", text: "Запрос нестабильных данных у LLM приводит к разным результатам у валидаторов. Всегда извлекайте стабильные поля." },
         ],
+        questions: [
+          { id: "russia-L15-q1", prompt: "Какой основной метод вызова LLM внутри Intelligent Contract?", options: ["gl.ai.prompt()", "gl.llm.call()", "gl.nondet.exec_prompt()", "gl.contract.ask()"], correctOption: 2, explanation: "gl.nondet.exec_prompt() — стандартный метод выполнения промпта LLM внутри Intelligent Contract." },
+          { id: "russia-L15-q2", prompt: "Почему расплывчатые промпты вызывают сбои консенсуса в GenLayer?", options: ["Потому что LLM не понимают открытые вопросы", "Потому что расплывчатые промпты могут генерировать несогласованные ответы у разных валидаторов", "Потому что GenVM блокирует промпты длиннее 100 слов", "Потому что расплывчатые промпты стоят больше газа"], correctOption: 1, explanation: "Расплывчатые промпты генерируют разные ответы у валидаторов, не позволяя достичь консенсуса." },
+          { id: "russia-L15-q3", prompt: "Какой формат ответа рекомендуется при вызове LLM для обеспечения согласованности?", options: ["Свободный текст на естественном языке", "XML с кастомными тегами", "JSON с response_format='json'", "CSV, разделённый запятыми"], correctOption: 2, explanation: "Запрос ответа в JSON с response_format='json' структурирует выводы и облегчает их сравнение между валидаторами." },
+          { id: "russia-L15-q4", prompt: "Что НЕ следует включать в промпт LLM, чтобы избежать сбоев консенсуса?", options: ["Объективные вопросы с ответом в JSON", "Статические и чётко определённые данные", "Временны́е метки, текущие даты или другие динамические данные", "Чёткие критерии оценки"], correctOption: 2, explanation: "Нестабильные данные, такие как временны́е метки, приводят к разным результатам у валидаторов, нарушая консенсус." },
+          { id: "russia-L15-q5", prompt: "Что является лучшей практикой при использовании LLM для сравнения данных в GenLayer?", options: ["Напрямую сравнивать сырые тексты, сгенерированные AI", "Извлекать стабильные поля и сравнивать выводы AI, а не сырые данные", "Всегда использовать одну и ту же LLM-модель на всех валидаторах", "Полностью избегать использования LLM в контрактах"], correctOption: 1, explanation: "Сравнивайте выводы AI о стабильных полях, а не сырые тексты, чтобы обеспечить согласованность у валидаторов." },
+        ],
       },
       {
         slug: "web-data", title: "Доступ к веб-данным", durationMinutes: 5,
@@ -1733,6 +2031,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["gl.nondet.web.get(url): сырой текстовый контент", "gl.nondet.web.render(url): JS-рендеренные страницы", "Извлекайте стабильные поля, избегайте динамического контента"] },
           { type: "callout", title: "Совет по надёжности", text: "Внешние сайты могут быть недоступны или менять структуру. Получайте данные только из надёжных источников и валидируйте перед сохранением." },
         ],
+        questions: [
+          { id: "russia-L16-q1", prompt: "Какой метод используется для получения сырого текстового контента из веба внутри Intelligent Contract?", options: ["gl.http.get(url)", "gl.web.fetch(url)", "gl.nondet.web.get(url)", "gl.internet.read(url)"], correctOption: 2, explanation: "gl.nondet.web.get(url) — метод для получения сырого текстового контента из URL внутри Intelligent Contract." },
+          { id: "russia-L16-q2", prompt: "Когда следует использовать gl.nondet.web.render(url) вместо gl.nondet.web.get(url)?", options: ["Для REST API, возвращающих JSON", "Для веб-страниц, использующих JavaScript для рендеринга контента", "Для PDF-файлов и статических документов", "Для удалённых SQL-баз данных"], correctOption: 1, explanation: "gl.nondet.web.render(url) используется для страниц, которым нужен JavaScript для динамической загрузки контента." },
+          { id: "russia-L16-q3", prompt: "Почему важно извлекать только стабильные поля при получении веб-данных?", options: ["Потому что динамические поля дороже обрабатывать", "Чтобы предотвратить несогласованные результаты у валидаторов из-за контента, меняющегося между выполнениями", "Потому что GenVM не умеет обрабатывать динамический контент", "Чтобы экономить токены LLM"], correctOption: 1, explanation: "Контент, меняющийся между выполнениями, создаёт несогласованность у валидаторов — всегда извлекайте стабильные поля для обеспечения консенсуса." },
+          { id: "russia-L16-q4", prompt: "Что может произойти, если контракт зависит от внешнего сайта, изменившего структуру?", options: ["Ничего, GenLayer адаптируется автоматически", "Контракт может не смочь разобрать данные, нарушив логику и консенсус", "GenLayer превентивно заморозит контракт", "Внешний сайт автоматически архивируется GenLayer"], correctOption: 1, explanation: "Изменения структуры внешних сайтов могут нарушить логику разбора контракта и вызвать сбои консенсуса." },
+          { id: "russia-L16-q5", prompt: "Какова лучшая практика при сохранении веб-данных в Intelligent Contract?", options: ["Сохранять немедленно без проверки для экономии газа", "Доверять любому источнику, возвращающему JSON", "Валидировать данные перед сохранением и использовать только надёжные источники", "Всегда хранить полный HTML страницы"], correctOption: 2, explanation: "Валидация данных перед сохранением и использование надёжных источников обеспечивают целостность и надёжность контракта." },
+        ],
       },
       {
         slug: "deploy-dapp", title: "Сборка и деплой DApp", durationMinutes: 5,
@@ -1742,6 +2047,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "Разработка DApp в GenLayer проходит в 3 этапа: локальный прототип в Studio, полноценное тестирование с тестовым фреймворком, затем деплой в Testnet (Asimov/Bradbury) и фронтенд на GenLayerJS." },
           { type: "list", items: ["Этап 1: Локальный прототип в GenLayer Studio", "Этап 2: Тестирование с genlayer-test", "Этап 3: Фронтенд GenLayerJS + деплой в Testnet"] },
           { type: "callout", title: "Чеклист перед запуском", text: "Перед деплоем в Testnet завершите тесты в прямом режиме и режиме Studio и устраните все сбои консенсуса." },
+        ],
+        questions: [
+          { id: "russia-L17-q1", prompt: "Каковы три этапа разработки DApp в GenLayer?", options: ["Написать код → Скомпилировать → Задеплоить", "Локальный прототип в Studio → Тестирование с genlayer-test → Деплой в Testnet с GenLayerJS", "Установить → Настроить → Опубликовать", "Разработать дизайн → Написать код → Монетизировать"], correctOption: 1, explanation: "Рекомендуемый путь: локальный прототип в Studio, автотесты с genlayer-test и деплой в Testnet с фронтендом на GenLayerJS." },
+          { id: "russia-L17-q2", prompt: "Какие тестнеты доступны для деплоя в GenLayer?", options: ["Ropsten и Rinkeby", "Goerli и Sepolia", "Asimov и Bradbury", "Alpha и Beta"], correctOption: 2, explanation: "Тестнеты GenLayer называются Asimov и Bradbury — они доступны для деплоя тестовых контрактов." },
+          { id: "russia-L17-q3", prompt: "Какой SDK рекомендуется для построения фронтенда DApp в GenLayer?", options: ["ethers.js", "web3.py", "GenLayerJS", "hardhat"], correctOption: 2, explanation: "GenLayerJS — официальный TypeScript SDK для подключения фронтенда DApp к GenLayer." },
+          { id: "russia-L17-q4", prompt: "Что нужно сделать ДО деплоя контракта в Testnet?", options: ["Деплоить напрямую без тестов ради экономии времени", "Завершить тесты в прямом режиме и режиме Studio, устранив все сбои консенсуса", "Получить одобрение от Фонда GenLayer", "Купить токены GEN в мейннете"], correctOption: 1, explanation: "Полное тестирование в прямом режиме и Studio с устранением всех сбоев консенсуса обязательно перед переходом в Testnet." },
+          { id: "russia-L17-q5", prompt: "Для чего используется фреймворк genlayer-test?", options: ["Для создания тестовых GEN-токенов", "Для запуска автоматических тестов Intelligent Contracts", "Для мониторинга контрактов в продакшене в мейннете", "Для автоматической генерации документации контрактов"], correctOption: 1, explanation: "genlayer-test — фреймворк автоматического тестирования для проверки поведения Intelligent Contracts перед деплоем." },
         ],
       },
     ],
@@ -1789,6 +2101,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["위치: 에이전트 경제를 위한 중재 레이어", "주관적 질문에 대한 온체인 신뢰 검증", "AI 검증자들이 합의에 도달"] },
           { type: "callout", title: "간단히 말하면", text: "답이 단순한 예/아니오가 아니라 판단이 필요할 때 — 바로 그때 GenLayer가 필요합니다." },
         ],
+        questions: [
+          { id: "korea-L01-q1", prompt: "GenLayer를 가장 잘 설명하는 것은?", options: ["분산 파일 저장 시스템", "에이전트 경제를 위한 AI 네이티브 중재 레이어", "Ethereum의 Layer 2 솔루션", "중앙화된 결제 네트워크"], correctOption: 1, explanation: "GenLayer는 에이전트 경제를 위해 설계된 AI 네이티브 중재 레이어로, 판단이 필요한 결정을 처리합니다." },
+          { id: "korea-L01-q2", prompt: "Bitcoin, Ethereum, GenLayer의 핵심 차이점은?", options: ["셋 다 같은 일을 한다", "Bitcoin은 거래를 처리하고, Ethereum은 코드를 실행하며, GenLayer는 결정의 의미를 이해한다", "GenLayer는 결제에만 사용된다", "Ethereum과 GenLayer는 동일하다"], correctOption: 1, explanation: "Bitcoin은 거래, Ethereum은 코드 실행, GenLayer는 결정의 의미를 이해하는 역할을 담당합니다." },
+          { id: "korea-L01-q3", prompt: "GenLayer가 필요한 상황은 언제인가요?", options: ["숫자만 전송할 때", "고정된 코드만 실행할 때", "단순한 예/아니오가 아닌 판단과 추론이 필요할 때", "파일을 저장할 때만"], correctOption: 2, explanation: "GenLayer는 단순한 예/아니오가 아닌 판단과 AI 추론이 필요한 경우에 필요합니다." },
+        ],
       },
       {
         slug: "problem-genlayer-solves", title: "GenLayer는 어떤 문제를 해결하나요?", durationMinutes: 5,
@@ -1798,6 +2115,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "Bitcoin과 Ethereum은 결정론적 작업에 강하지만 판단이나 AI 추론이 필요한 문제는 처리하지 못합니다. 콘텐츠 평가, 분쟁 중재, 마일스톤 검증 — 이런 것들이 GenLayer가 필요한 분야입니다." },
           { type: "list", items: ["전통 컨트랙트: 고정된 로직만 가능", "GenLayer: 주관적이고 모호한 결과도 처리", "블록체인 기술의 중요한 빈자리를 채움"] },
           { type: "callout", title: "핵심 차이", text: "Ethereum은 '코드가 실행됐나?'를 묻고, GenLayer는 '결과가 올바른가?'를 묻습니다." },
+        ],
+        questions: [
+          { id: "korea-L02-q1", prompt: "Bitcoin과 Ethereum 같은 전통 블록체인이 할 수 없는 것은?", options: ["금융 거래 기록", "판단과 추론이 필요한 결정 처리", "스마트 컨트랙트에서 코드 실행", "P2P 네트워크에서 데이터 처리"], correctOption: 1, explanation: "Bitcoin과 Ethereum은 결정론적으로 동작해 추론이 필요한 주관적 결정을 처리하지 못합니다." },
+          { id: "korea-L02-q2", prompt: "컨트랙트 결과에 대한 Ethereum과 GenLayer의 핵심 차이는?", options: ["Ethereum이 GenLayer보다 빠르다", "Ethereum은 코드가 실행됐는지 묻고, GenLayer는 결과가 올바른지 묻는다", "GenLayer는 Solidity를 쓰고 Ethereum은 Python을 쓴다", "두 플랫폼은 차이가 없다"], correctOption: 1, explanation: "Ethereum은 코드의 올바른 실행을 검증하고, GenLayer는 한 단계 더 나아가 결과가 실질적으로 올바른지 검증합니다." },
+          { id: "korea-L02-q3", prompt: "다음 중 GenLayer에 가장 적합한 사용 사례는?", options: ["지갑 간 단순 토큰 전송", "주관적 기준에 따른 프리랜서 마일스톤 자동 검증", "블록체인 파일 저장", "Bitcoin 채굴"], correctOption: 1, explanation: "작업이 잘 완료됐는지 검증하는 것처럼 주관적인 평가가 필요한 상황이 GenLayer의 이상적인 사용 사례입니다." },
         ],
       },
       {
@@ -1809,6 +2131,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Oracle 없이 직접 인터넷 데이터 접근", "LLM(예: GPT-4) 호출로 AI 추론 가능", "Python으로 작성 — 친숙하고 강력함"] },
           { type: "callout", title: "비유", text: "전통 컨트랙트는 계산기, Intelligent Contract는 추론할 수 있는 어시스턴트입니다." },
         ],
+        questions: [
+          { id: "korea-L03-q1", prompt: "GenLayer의 Intelligent Contracts가 전통 스마트 컨트랙트와 달리 할 수 있는 것은?", options: ["미리 정해진 고정 로직만 실행", "실시간 웹 데이터 접근 및 AI 모델(LLM) 호출", "Ethereum에서만 작동", "정수만 처리"], correctOption: 1, explanation: "Intelligent Contracts는 실시간으로 인터넷에 접근하고 LLM을 호출할 수 있습니다 — 전통 컨트랙트에는 없는 능력입니다." },
+          { id: "korea-L03-q2", prompt: "GenLayer의 Intelligent Contracts는 어떤 프로그래밍 언어로 작성되나요?", options: ["Solidity", "Rust", "JavaScript", "Python"], correctOption: 3, explanation: "Intelligent Contracts는 Python으로 작성됩니다 — 더 직관적이고 강력한 언어입니다." },
+          { id: "korea-L03-q3", prompt: "전통 스마트 컨트랙트와 Intelligent Contract를 비교하는 가장 좋은 비유는?", options: ["망치 vs 드라이버", "계산기 vs 추론할 수 있는 어시스턴트", "자동차 vs 자전거", "프린터 vs 스캐너"], correctOption: 1, explanation: "계산기는 고정 로직을 나타내고, 추론하고 적응하는 어시스턴트는 Intelligent Contract를 나타냅니다." },
+        ],
       },
       {
         slug: "blockchain-stack", title: "블록체인 스택에서 GenLayer의 위치", durationMinutes: 5,
@@ -1818,6 +2145,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenLayer는 ZKSync 같은 롤업을 통해 Ethereum과 통합될 Layer 1 블록체인으로, 자체적인 AI 네이티브 합의를 관리합니다. Ethereum의 경쟁자가 아니라 AI 중재에 특화된 새로운 레이어입니다." },
           { type: "list", items: ["Bitcoin: 트랜잭션 순서에 대한 합의", "Ethereum: 코드 실행에 대한 합의", "GenLayer: 결정의 의미에 대한 합의"] },
           { type: "callout", title: "포지션", text: "GenLayer는 Ethereum을 보완하지, 경쟁하지 않습니다." },
+        ],
+        questions: [
+          { id: "korea-L04-q1", prompt: "GenLayer는 블록체인 아키텍처의 어느 레이어에 있나요?", options: ["Layer 0", "Layer 2", "Layer 1", "Layer 3"], correctOption: 2, explanation: "GenLayer는 자체 AI 네이티브 합의 메커니즘을 가진 Layer 1 블록체인입니다." },
+          { id: "korea-L04-q2", prompt: "Ethereum과 GenLayer의 초점 차이는?", options: ["Ethereum은 금융 거래, GenLayer는 데이터 저장에 초점", "Ethereum은 코드 실행에 대한 합의, GenLayer는 결정의 의미에 대한 합의에 초점", "Ethereum은 Layer 2, GenLayer는 Layer 0", "둘 다 완전히 같은 일을 한다"], correctOption: 1, explanation: "Ethereum은 코드 실행에 대한 합의에 초점을 맞추고, GenLayer는 한 단계 더 나아가 결과의 의미에 대한 합의를 달성합니다." },
+          { id: "korea-L04-q3", prompt: "GenLayer는 Ethereum과 어떤 관계인가요?", options: ["Ethereum을 완전히 대체한다", "ZKSync 같은 롤업 통합을 통해 Ethereum을 보완한다", "같은 시장에서 Ethereum과 직접 경쟁한다", "Ethereum과 아무 관계가 없다"], correctOption: 1, explanation: "GenLayer는 롤업을 통해 Ethereum과 통합되며, Ethereum이 제공하지 못하는 AI 네이티브 중재를 추가해 보완합니다." },
         ],
       },
       {
@@ -1829,6 +2161,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["4단계: 제안 → 커밋 → 공개 → 수락", "누구든 결과에 이의 제기 가능", "최종 결과는 돌이킬 수 없음"] },
           { type: "callout", title: "핵심 아이디어", text: "집단적 독립 판단이 단일 노드보다 더 신뢰할 수 있습니다." },
         ],
+        questions: [
+          { id: "korea-L05-q1", prompt: "Optimistic Democracy의 수학적 기반이 되는 정리는?", options: ["피타고라스 정리", "콩도르세 배심원 정리", "베르누이의 대수의 법칙", "애로우의 역설"], correctOption: 1, explanation: "콩도르세 배심원 정리는 독립적인 판단자들의 그룹이 올바른 답에 도달할 확률이 더 높다는 것을 보여줍니다." },
+          { id: "korea-L05-q2", prompt: "Optimistic Democracy 합의의 4단계는?", options: ["생성 → 검증 → 발행 → 지불", "제안 → 커밋 → 공개 → 수락", "전송 → 처리 → 승인 → 완료", "시작 → 투표 → 집계 → 분배"], correctOption: 1, explanation: "4단계는 제안, 커밋, 공개, 수락입니다." },
+          { id: "korea-L05-q3", prompt: "Optimistic Democracy 프로세스에서 최종 결과는?", options: ["다수결로 언제든 변경 가능", "수락 단계 이후 돌이킬 수 없음", "컨트랙트 개발자가 취소 가능", "24시간 후 만료"], correctOption: 1, explanation: "모든 단계를 거친 후 Optimistic Democracy의 최종 결과는 돌이킬 수 없습니다." },
+        ],
       },
       {
         slug: "validators-staking", title: "검증자와 스테이킹", durationMinutes: 5,
@@ -1838,6 +2175,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "검증자들은 GEN을 스테이킹하고 노드를 운영하며 Optimistic Democracy에 참여해 보상을 얻습니다. 42,000 GEN이 없다면? 위임자로 참여할 수 있습니다." },
           { type: "list", items: ["검증자 되기: 42,000 GEN 스테이킹", "위임자: 최소 42 GEN으로 참여 가능", "검증자는 10% 운영 수수료 + 스테이킹 보상 수령"] },
           { type: "callout", title: "두 가지 참여 방법", text: "큰 스테이킹: 검증자 되기. 작은 스테이킹: 위임하기. 둘 다 수익을 냅니다." },
+        ],
+        questions: [
+          { id: "korea-L06-q1", prompt: "GenLayer에서 검증자가 되려면 얼마의 GEN을 스테이킹해야 하나요?", options: ["4,200 GEN", "420 GEN", "42,000 GEN", "420,000 GEN"], correctOption: 2, explanation: "완전한 검증자 참여를 위해서는 42,000 GEN을 스테이킹해야 합니다." },
+          { id: "korea-L06-q2", prompt: "위임자로 참여하기 위한 최소 GEN 스테이킹 수량은?", options: ["42 GEN", "420 GEN", "4,200 GEN", "42,000 GEN"], correctOption: 0, explanation: "42 GEN만으로 위임자로 참여해 비례 보상을 받을 수 있습니다." },
+          { id: "korea-L06-q3", prompt: "검증자가 위임자 보상에서 받는 운영 수수료율은?", options: ["5%", "10%", "20%", "50%"], correctOption: 1, explanation: "검증자는 위임자 보상의 10% 운영 수수료에 더해 자신의 스테이킹 보상도 받습니다." },
+          { id: "korea-L06-q4", prompt: "GenLayer에서 위임자의 역할은 무엇인가요?", options: ["42,000 GEN으로 풀 검증자 노드 운영", "검증자에게 스테이크를 위임하고 비례 보상 수령", "합의 참여 없이 토큰만 보유", "스테이킹 없이 거버넌스 제안에 투표"], correctOption: 1, explanation: "위임자는 자신의 GEN을 검증자에게 위임하고 노드를 직접 운영하지 않아도 비례 보상을 받습니다." },
         ],
       },
       {
@@ -1849,6 +2192,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["strict_eq(): 모든 검증자가 정확히 같은 결과를 가져야 함", "prompt_non_comparative(): 검증자가 기준 충족 여부를 판단", "개발자가 '동등'의 의미를 정의"] },
           { type: "callout", title: "핵심 인사이트", text: "AI는 매번 약간 다른 답을 줄 수 있습니다 — 동등성 원칙이 블록체인에서 이를 안전하게 만듭니다." },
         ],
+        questions: [
+          { id: "korea-L07-q1", prompt: "AI 출력이 블록체인 합의에 문제를 일으키는 이유는?", options: ["AI가 트랜잭션을 처리하기에 너무 느리기 때문", "서로 다른 검증자들이 같은 AI 쿼리에서 약간 다른 결과를 얻을 수 있기 때문", "AI 모델이 대부분의 검증자가 가지지 못한 특수 하드웨어를 필요로 하기 때문", "AI 결과는 검증이 불가능하기 때문"], correctOption: 1, explanation: "AI 모델은 비결정론적이라 같은 쿼리에서 약간 다른 응답이 나올 수 있어 합의에 문제가 됩니다." },
+          { id: "korea-L07-q2", prompt: "동등성 원칙에서 strict_eq() 메서드는 무엇을 하나요?", options: ["합리적이면 어떤 결과든 허용", "모든 검증자가 정확히 같은 결과를 가져야 함을 요구", "두 결과를 의미론적으로 비교하기 위해 AI 사용", "최대 10% 차이가 있는 결과도 수락"], correctOption: 1, explanation: "strict_eq()는 모든 검증자에게 동일한 결과를 요구합니다 — JSON 같은 구조화된 데이터에 가장 적합합니다." },
+          { id: "korea-L07-q3", prompt: "prompt_non_comparative()는 무엇을 하나요?", options: ["모든 검증자에게 동일한 결과 요구", "텍스트 비교 대신 각 검증자가 기준 충족 여부를 독립적으로 평가하게 함", "검증자 간 차이를 완전히 무시", "결과를 이진 방식(예/아니오)으로 비교"], correctOption: 1, explanation: "prompt_non_comparative()는 각 검증자가 텍스트를 비교하는 대신 결과가 기준을 충족하는지 독립적으로 평가하게 합니다." },
+          { id: "korea-L07-q4", prompt: "Intelligent Contract에서 '동등'의 의미를 누가 정의하나요?", options: ["GenLayer 네트워크가 자동으로", "Ethereum 컨소시엄이", "컨트랙트 개발자가", "검증자들의 투표로"], correctOption: 2, explanation: "개발자가 자신의 특정 컨트랙트에 대해 동등성의 의미를 정의하며 strict_eq()나 prompt_non_comparative() 중 선택합니다." },
+        ],
       },
       {
         slug: "genvm", title: "GenVM: 실행 환경", durationMinutes: 5,
@@ -1858,6 +2207,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenVM은 Intelligent Contracts의 실행 환경입니다. WebAssembly 기반으로 Python을 네이티브로 실행하고 LLM 및 웹 데이터와 직접 상호작용합니다 — EVM이 할 수 없는 것들입니다." },
           { type: "list", items: ["WebAssembly 기반, 빠른 실행", "Python 네이티브 실행 (Solidity 아님)", "LLM 호출 및 인터넷 접근 내장 지원"] },
           { type: "callout", title: "근본적인 차이", text: "EVM은 결정론적 코드용으로 설계됐고, GenVM은 비결정론을 처리합니다 — 근본적인 아키텍처 혁신입니다." },
+        ],
+        questions: [
+          { id: "korea-L08-q1", prompt: "GenVM은 어떤 기술 기반으로 만들어졌나요?", options: ["Docker", "LLVM", "WebAssembly", "JVM"], correctOption: 2, explanation: "GenVM은 WebAssembly 기반으로 구축되어 빠르고 이식 가능한 실행을 보장합니다." },
+          { id: "korea-L08-q2", prompt: "EVM과 달리 GenVM이 네이티브로 실행하는 언어는?", options: ["Solidity", "Rust", "JavaScript", "Python"], correctOption: 3, explanation: "GenVM은 Python을 네이티브로 실행하는 반면, EVM은 Solidity를 위해 설계됐습니다." },
+          { id: "korea-L08-q3", prompt: "EVM과 GenVM의 근본적인 아키텍처 차이는?", options: ["EVM은 Python을 지원하고 GenVM은 Solidity를 사용", "EVM은 비결정론을 처리하고 GenVM은 순수 결정론적", "EVM은 결정론적 코드용으로 설계됐고 GenVM은 비결정론을 처리", "둘 다 아키텍처가 동일"], correctOption: 2, explanation: "EVM은 결정론적이고 AI를 지원하지 않으며, GenVM은 처음부터 AI의 비결정론적 출력을 처리하도록 설계됐습니다." },
+          { id: "korea-L08-q4", prompt: "GenVM이 가지고 있지만 EVM에는 없는 내장 기능은?", options: ["Solidity 지원과 더 낮은 가스 비용", "LLM 호출과 직접 인터넷 접근", "마이닝 하드웨어 호환성", "NFT 및 대체 가능 토큰 지원"], correctOption: 1, explanation: "GenVM은 LLM 호출과 인터넷 접근이 내장되어 있습니다 — EVM에는 없는 기능들입니다." },
         ],
       },
       {
@@ -1869,6 +2224,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["초기 APY 15%, 점진적으로 4%까지 감소", "보상의 75%는 모든 스테이커에게", "10%는 검증자에게, 15%는 개발자에게"] },
           { type: "callout", title: "이의 제기 메커니즘", text: "결과에 동의하지 않나요? GEN을 스테이킹해 이의를 제기하면 더 많은 검증자가 재평가합니다." },
         ],
+        questions: [
+          { id: "korea-L09-q1", prompt: "GEN 스테이킹의 초기 APY는?", options: ["4%", "10%", "15%", "50%"], correctOption: 2, explanation: "초기 APY는 15%로 시작하며 장기 지속 가능성을 위해 점진적으로 4%까지 낮아집니다." },
+          { id: "korea-L09-q2", prompt: "스테이킹 보상은 참여자 간에 어떻게 분배되나요?", options: ["100% 검증자에게", "75% 모든 스테이커, 10% 검증자, 15% 개발자", "50% 검증자, 50% 위임자", "모든 토큰 보유자에게 100% 균등 분배"], correctOption: 1, explanation: "보상의 75%는 모든 스테이커에게, 10%는 검증자에게, 15%는 개발자에게 돌아갑니다." },
+          { id: "korea-L09-q3", prompt: "GenLayer의 이의 제기 메커니즘은 어떤 역할을 하나요?", options: ["가스 수수료 인상", "GEN을 스테이킹해 더 많은 검증자들의 재평가를 요청", "새 GEN 토큰 생성", "배포 후 컨트랙트 코드 변경"], correctOption: 1, explanation: "결과에 동의하지 않는 참여자는 GEN을 스테이킹해 이의를 제기하고 더 많은 검증자가 재평가하게 할 수 있습니다." },
+          { id: "korea-L09-q4", prompt: "GEN 토큰은 어떤 목적으로 사용되나요?", options: ["가스 비용 지불만", "스테이킹, 가스, 거버넌스", "거버넌스와 투표만", "사용자 간 전송만"], correctOption: 1, explanation: "GEN은 스테이킹(합의 참여), 가스(트랜잭션 수수료), 거버넌스에 사용되는 네이티브 토큰입니다." },
+        ],
       },
       {
         slug: "genlayer-studio", title: "GenLayer Studio", durationMinutes: 5,
@@ -1878,6 +2239,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenLayer Studio는 설치 없이 Intelligent Contracts를 테스트할 수 있는 브라우저 기반 샌드박스입니다. 실시간 로그와 오류 피드백으로 전체 검증자 네트워크를 시뮬레이션합니다." },
           { type: "list", items: ["브라우저에서 바로, 설치 불필요", "다중 검증자 합의 시뮬레이션", "상세 로그 및 디버깅 지원"] },
           { type: "callout", title: "지금 시작하기", text: "studio.genlayer.com을 방문하거나 genlayer init을 실행해 로컬 Studio를 시작하세요." },
+        ],
+        questions: [
+          { id: "korea-L10-q1", prompt: "GenLayer Studio란 무엇인가요?", options: ["오프라인 개발을 위한 데스크톱 IDE", "컨트랙트 모니터링 모바일 앱", "설치 없이 Intelligent Contracts를 테스트하는 브라우저 기반 샌드박스", "메인넷 배포를 위한 CLI"], correctOption: 2, explanation: "GenLayer Studio는 설치 없이 전체 검증자 네트워크를 시뮬레이션하는 브라우저 기반 샌드박스입니다." },
+          { id: "korea-L10-q2", prompt: "GenLayer Studio는 개발자를 위해 무엇을 시뮬레이션하나요?", options: ["단일 스테이킹 트랜잭션", "실제 합의가 포함된 전체 검증자 네트워크", "합의 검증 없이 코드 실행만", "MetaMask 지갑 동작"], correctOption: 1, explanation: "Studio는 합의 프로세스를 포함한 전체 검증자 네트워크를 시뮬레이션해 높은 충실도로 테스트할 수 있게 합니다." },
+          { id: "korea-L10-q3", prompt: "GenLayer Studio가 개발을 쉽게 만드는 기능은?", options: ["디버그 도구 없이 코드 편집기만", "실시간 상세 로그와 디버깅 지원", "정적 문서만", "하드웨어 지갑 전용 통합"], correctOption: 1, explanation: "Studio는 실시간 상세 로그와 디버깅 지원을 제공해 컨트랙트의 오류를 쉽게 찾을 수 있게 합니다." },
+          { id: "korea-L10-q4", prompt: "로컬에서 GenLayer Studio를 시작하는 명령어는?", options: ["genlayer start", "genlayer deploy", "genlayer init", "genlayer studio"], correctOption: 2, explanation: "genlayer init 명령어는 필요한 구성 요소를 다운로드하고 로컬 환경에서 GenLayer Studio를 실행합니다." },
         ],
       },
       {
@@ -1889,6 +2256,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["npm install -g genlayer, 그 다음 genlayer init", "GenLayerJS: TypeScript, 프론트엔드 개발용", "GenLayerPY: Python 3.12+, 백엔드용"] },
           { type: "callout", title: "초보자 팁", text: "먼저 genlayer init을 실행하고 Studio에서 예제 컨트랙트를 탐색한 다음 코드를 작성하세요." },
         ],
+        questions: [
+          { id: "korea-L11-q1", prompt: "GenLayer CLI를 설치하는 방법은?", options: ["pip install genlayer", "cargo install genlayer", "npm install -g genlayer", "brew install genlayer"], correctOption: 2, explanation: "GenLayer CLI는 npm install -g genlayer 명령어로 설치합니다." },
+          { id: "korea-L11-q2", prompt: "GenLayerJS는 어떤 유형의 개발에 가장 적합한가요?", options: ["Python 백엔드", "쉘 자동화 스크립트", "TypeScript 프론트엔드 DApp", "Solidity 스마트 컨트랙트"], correctOption: 2, explanation: "GenLayerJS는 프론트엔드 DApp 개발을 위해 설계된 TypeScript SDK입니다." },
+          { id: "korea-L11-q3", prompt: "GenLayerPY는 어떤 유형의 개발에 가장 적합한가요?", options: ["React를 사용한 웹 인터페이스", "Python 3.12+ 백엔드 통합", "Bash 자동화 스크립트", "모바일 개발"], correctOption: 1, explanation: "GenLayerPY는 Python 3.12 이상과 호환되는 백엔드 통합을 위한 Python SDK입니다." },
+          { id: "korea-L11-q4", prompt: "GenLayer 초보 개발자에게 권장되는 흐름은?", options: ["로컬 테스트 없이 바로 Testnet에 배포", "코드를 먼저 작성한 후 문서 읽기", "genlayer init 실행 → Studio에서 예제 탐색 → 새 코드 작성", "무엇보다 먼저 GenLayerPY 설치"], correctOption: 2, explanation: "최적의 흐름은 genlayer init으로 환경을 설정하고, 예제 컨트랙트를 탐색한 후 새 코드를 작성하는 것입니다." },
+          { id: "korea-L11-q5", prompt: "다음 중 GenLayer 공식 도구 세트에 포함된 패키지는?", options: ["genlayer-web3", "genlayer-hardhat", "GenLayerJS", "genlayer-solidity"], correctOption: 2, explanation: "GenLayerJS는 GenLayer에서 프론트엔드 DApp을 개발하기 위한 공식 TypeScript/JavaScript SDK입니다." },
+        ],
       },
       {
         slug: "first-contract", title: "첫 번째 Intelligent Contract", durationMinutes: 5,
@@ -1898,6 +2272,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "모든 Intelligent Contract는 gl.Contract를 상속하는 Python 클래스입니다. 상태 변수는 클래스 본문에 선언되고, 메서드는 읽기/쓰기 권한을 나타내는 데코레이터로 표시됩니다." },
           { type: "code", language: "python", code: "import gl\n\nclass Counter(gl.Contract):\n    count: gl.u256\n\n    def __init__(self):\n        self.count = 0\n\n    @gl.public.view\n    def get(self) -> int:\n        return self.count\n\n    @gl.public.write\n    def increment(self):\n        self.count += 1" },
           { type: "callout", title: "기억하세요", text: "모든 영구 필드는 타입 어노테이션과 함께 클래스 본문에 선언해야 합니다. 런타임에 동적으로 생성할 수 없습니다." },
+        ],
+        questions: [
+          { id: "korea-L12-q1", prompt: "Intelligent Contract가 상속해야 하는 기본 클래스는?", options: ["gl.BaseContract", "SmartContract", "gl.Contract", "BlockchainContract"], correctOption: 2, explanation: "모든 Intelligent Contract는 네트워크 기능에 접근하기 위해 gl.Contract 클래스를 상속해야 합니다." },
+          { id: "korea-L12-q2", prompt: "Intelligent Contract의 상태 변수는 어디에 선언해야 하나요?", options: ["__init__ 메서드 안에", "해당 변수를 사용하는 각 메서드 안에", "타입 어노테이션과 함께 클래스 본문에", "별도의 외부 설정 파일에"], correctOption: 2, explanation: "상태 변수는 올바르게 영구 저장되기 위해 타입 어노테이션과 함께 클래스 본문에 선언해야 합니다." },
+          { id: "korea-L12-q3", prompt: "Counter 컨트랙트 예제에서 @gl.public.view 데코레이터는 무엇을 의미하나요?", options: ["메서드가 온체인 상태를 수정함", "메서드가 GEN 전송을 받음", "메서드가 읽기 전용이며 상태를 변경하지 않음", "메서드가 비공개라 외부에서 호출 불가"], correctOption: 2, explanation: "@gl.public.view는 읽기 전용 메서드를 표시합니다 — 상태를 변경하지 않고 조회하며 가스 비용이 낮습니다." },
+          { id: "korea-L12-q4", prompt: "클래스 본문 대신 메서드 내에서 상태 필드를 동적으로 생성하면 어떻게 되나요?", options: ["블록체인에 정상적으로 저장됨", "트랜잭션 간에 영구 저장되지 않음", "즉시 컴파일 오류 발생", "자동으로 클래스 본문으로 이동됨"], correctOption: 1, explanation: "런타임에 동적으로 생성된 필드는 영구 저장되지 않습니다. 타입 어노테이션과 함께 클래스 본문에 선언된 필드만 저장됩니다." },
+          { id: "korea-L12-q5", prompt: "컨트랙트 상태를 수정하는 메서드에 사용하는 데코레이터는?", options: ["@gl.public.view", "@gl.private.write", "@gl.public.write", "@gl.state.modify"], correctOption: 2, explanation: "@gl.public.write는 컨트랙트의 온체인 상태를 수정하는 메서드를 표시합니다." },
         ],
       },
       {
@@ -1909,6 +2290,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["dict → TreeMap[K, V]", "list → DynArray[T]", "int → u256, i32 등 고정 타입"] },
           { type: "callout", title: "흔한 실수", text: "런타임에 동적으로 생성된 필드는 저장되지 않습니다. 모든 영구 필드는 처음부터 클래스 본문에 선언하세요." },
         ],
+        questions: [
+          { id: "korea-L13-q1", prompt: "GenLayer 스토리지에서 Python dict를 직접 사용할 수 없는 이유는?", options: ["dict가 블록체인에는 너무 느리기 때문", "GenLayer에서 dict는 트랜잭션 간에 영구 저장되지 않기 때문", "dict가 문자열 키를 지원하지 않기 때문", "dict가 너무 많은 공간을 차지하기 때문"], correctOption: 1, explanation: "네이티브 Python dict는 GenLayer에서 영구 저장되지 않습니다. 영구 스토리지에는 TreeMap[K, V]를 사용해야 합니다." },
+          { id: "korea-L13-q2", prompt: "GenLayer에서 Python list의 올바른 대체 타입은?", options: ["ArrayList", "DynArray", "LinkedList", "Vector"], correctOption: 1, explanation: "DynArray[T]는 GenLayer에서 영구 스토리지를 위해 Python list를 대체하는 타입입니다." },
+          { id: "korea-L13-q3", prompt: "GenLayer가 u256 같은 고정 크기 정수 타입을 사용하는 이유는?", options: ["int보다 작성하기 쉽기 때문", "Ethereum EVM과의 호환성을 위해", "온체인 데이터의 결정론적이고 효율적인 표현을 보장하기 위해", "Python이 큰 정수를 지원하지 않기 때문"], correctOption: 2, explanation: "u256 같은 고정 크기 타입은 온체인 스토리지에서 데이터의 결정론적 표현과 효율성을 보장합니다." },
+          { id: "korea-L13-q4", prompt: "GenLayer에서 Python dict의 올바른 대체 타입은?", options: ["HashMap[K, V]", "OrderedDict[K, V]", "TreeMap[K, V]", "SortedMap[K, V]"], correctOption: 2, explanation: "TreeMap[K, V]는 GenLayer에서 영구 스토리지를 위해 Python dict를 대체하는 타입입니다." },
+          { id: "korea-L13-q5", prompt: "실행 중 메서드 내에서 동적으로 생성된 상태 필드는 어떻게 되나요?", options: ["클래스에 선언된 필드처럼 정상적으로 저장됨", "저장되지 않음 — 동적 필드는 트랜잭션 간에 영구 저장되지 않음", "실행 전에 컴파일 오류 발생", "자동으로 TreeMap으로 변환됨"], correctOption: 1, explanation: "타입 어노테이션과 함께 클래스 본문에 선언된 필드만 영구 저장됩니다. 동적으로 생성된 필드는 실행 후 사라집니다." },
+        ],
       },
       {
         slug: "read-write-methods", title: "읽기와 쓰기 메서드", durationMinutes: 5,
@@ -1918,6 +2306,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "@gl.public.view는 상태를 변경하지 않는 읽기 전용 메서드를 표시합니다. @gl.public.write는 상태를 수정합니다. @gl.public.write.payable은 GEN 전송을 받습니다." },
           { type: "list", items: ["@gl.public.view: 읽기 전용, 낮은 가스 비용", "@gl.public.write: 온체인 상태 수정", "@gl.public.write.payable: GEN 토큰 수신"] },
           { type: "callout", title: "좋은 습관", text: "먼저 읽기 전용 메서드로 로직을 테스트하세요. 확인 후에만 쓰기 로직을 추가하세요." },
+        ],
+        questions: [
+          { id: "korea-L14-q1", prompt: "GenLayer에서 메서드를 읽기 전용으로 표시하는 데코레이터는?", options: ["@gl.public.write", "@gl.private.view", "@gl.public.view", "@gl.readonly"], correctOption: 2, explanation: "@gl.public.view는 상태를 변경하지 않고 읽기만 하는 메서드를 표시하며 가스 비용이 낮습니다." },
+          { id: "korea-L14-q2", prompt: "@gl.public.view와 @gl.public.write의 핵심 차이는?", options: ["view는 비공개 컨트랙트용, write는 공개 컨트랙트용", "view는 상태 변경 없이 읽기, write는 온체인 상태 수정", "view가 write보다 가스 비용이 높음", "view는 결제를 지원하고 write는 지원하지 않음"], correctOption: 1, explanation: "view는 읽기용(상태 변경 없음, 낮은 비용), write는 온체인 상태 수정용입니다." },
+          { id: "korea-L14-q3", prompt: "GEN 토큰 전송을 받을 수 있는 메서드에 사용하는 데코레이터는?", options: ["@gl.public.view", "@gl.public.write", "@gl.public.write.payable", "@gl.token.accept"], correctOption: 2, explanation: "@gl.public.write.payable은 상태를 수정하면서 GEN 토큰 전송도 받는 메서드에 사용합니다." },
+          { id: "korea-L14-q4", prompt: "쓰기 메서드를 추가하기 전에 읽기 전용 메서드로 로직을 테스트하는 이유는?", options: ["읽기 메서드가 더 빠르기 때문", "쓰기 메서드는 Studio에서 테스트할 수 없기 때문", "잘못된 데이터를 상태에 기록하는 위험 없이 로직을 검증하기 위해", "읽기 메서드는 테스트넷에서 무료이기 때문"], correctOption: 2, explanation: "읽기 메서드로 먼저 테스트하면 블록체인 상태에 잘못된 데이터를 기록하는 위험 없이 로직을 검증할 수 있습니다." },
+          { id: "korea-L14-q5", prompt: "사용자 잔액을 수정하면서 GEN 결제도 받는 메서드에 필요한 데코레이터는?", options: ["@gl.public.view", "@gl.public.write", "@gl.public.write.payable", "@gl.public.view.payable"], correctOption: 2, explanation: "@gl.public.write.payable은 하나의 호출에서 상태 수정과 GEN 토큰 수신을 결합합니다." },
         ],
       },
       {
@@ -1929,6 +2324,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["항상 JSON 응답 요청 (response_format='json')", "타임스탬프나 동적 데이터 피하기", "원시 데이터가 아닌 AI가 도출한 결론 비교"] },
           { type: "callout", title: "합의 실패의 주요 원인", text: "LLM에 불안정한 데이터를 요청하면 검증자마다 결과가 달라집니다. 항상 안정적인 필드를 추출하세요." },
         ],
+        questions: [
+          { id: "korea-L15-q1", prompt: "Intelligent Contract에서 LLM을 호출하는 주요 메서드는?", options: ["gl.ai.prompt()", "gl.llm.call()", "gl.nondet.exec_prompt()", "gl.contract.ask()"], correctOption: 2, explanation: "gl.nondet.exec_prompt()는 Intelligent Contract에서 LLM 프롬프트를 실행하는 표준 메서드입니다." },
+          { id: "korea-L15-q2", prompt: "모호한 프롬프트가 GenLayer에서 합의 실패를 일으키는 이유는?", options: ["LLM이 개방형 질문을 이해하지 못하기 때문", "모호한 프롬프트는 서로 다른 검증자 간에 일관성 없는 응답을 생성할 수 있기 때문", "GenVM이 100단어 이상의 프롬프트를 차단하기 때문", "모호한 프롬프트는 가스 비용이 더 많이 들기 때문"], correctOption: 1, explanation: "모호한 프롬프트는 검증자 간에 다른 응답을 생성해 합의에 도달하지 못하게 합니다." },
+          { id: "korea-L15-q3", prompt: "LLM 호출 시 일관성을 위해 권장하는 응답 형식은?", options: ["자연어 자유 형식 텍스트", "커스텀 태그가 있는 XML", "response_format='json'을 사용한 JSON", "쉼표로 구분된 CSV"], correctOption: 2, explanation: "response_format='json'으로 JSON 응답을 요청하면 출력이 구조화되어 검증자 간 비교가 쉬워집니다." },
+          { id: "korea-L15-q4", prompt: "합의 실패를 방지하기 위해 LLM 프롬프트에 포함하면 안 되는 것은?", options: ["JSON 응답이 있는 객관적인 질문", "정적이고 잘 정의된 데이터", "타임스탬프, 현재 날짜 또는 기타 동적 데이터", "명확한 평가 기준"], correctOption: 2, explanation: "타임스탬프 같은 불안정한 데이터는 검증자마다 다른 결과를 만들어 합의를 깨뜨립니다." },
+          { id: "korea-L15-q5", prompt: "GenLayer에서 LLM을 데이터 비교에 사용할 때의 모범 사례는?", options: ["AI가 생성한 원시 텍스트를 직접 비교", "안정적인 필드를 추출하고 원시 데이터가 아닌 AI가 도출한 결론을 비교", "모든 검증자에서 항상 같은 LLM 모델 사용", "컨트랙트에서 LLM 사용을 완전히 피하기"], correctOption: 1, explanation: "검증자 간 일관성을 보장하기 위해 원시 텍스트가 아닌 안정적인 필드에 대한 AI 도출 결론을 비교하세요." },
+        ],
       },
       {
         slug: "web-data", title: "웹 데이터 접근", durationMinutes: 5,
@@ -1939,6 +2341,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["gl.nondet.web.get(url): 원시 텍스트 콘텐츠", "gl.nondet.web.render(url): JS 렌더링 페이지", "안정적인 필드 추출, 동적 콘텐츠 피하기"] },
           { type: "callout", title: "신뢰성 팁", text: "외부 웹사이트는 다운되거나 구조가 바뀔 수 있습니다. 신뢰할 수 있는 소스에서만 데이터를 가져오고 저장 전에 검증하세요." },
         ],
+        questions: [
+          { id: "korea-L16-q1", prompt: "Intelligent Contract에서 URL의 원시 텍스트 콘텐츠를 가져오는 메서드는?", options: ["gl.http.get(url)", "gl.web.fetch(url)", "gl.nondet.web.get(url)", "gl.internet.read(url)"], correctOption: 2, explanation: "gl.nondet.web.get(url)은 Intelligent Contract 내에서 URL에서 원시 텍스트 콘텐츠를 가져오는 메서드입니다." },
+          { id: "korea-L16-q2", prompt: "gl.nondet.web.get(url) 대신 gl.nondet.web.render(url)을 사용해야 하는 경우는?", options: ["JSON을 반환하는 REST API", "JavaScript로 콘텐츠를 렌더링하는 웹 페이지", "PDF 파일과 정적 문서", "원격 SQL 데이터베이스"], correctOption: 1, explanation: "gl.nondet.web.render(url)은 JavaScript로 콘텐츠를 동적으로 로드하는 페이지에 사용합니다." },
+          { id: "korea-L16-q3", prompt: "웹 데이터를 가져올 때 안정적인 필드만 추출하는 것이 중요한 이유는?", options: ["동적 필드는 처리 비용이 더 높기 때문", "실행 간에 변하는 콘텐츠로 인한 검증자 간 불일치를 방지하기 위해", "GenVM이 동적 콘텐츠를 처리하지 못하기 때문", "LLM 토큰을 절약하기 위해"], correctOption: 1, explanation: "실행 간에 변하는 콘텐츠는 검증자 간 불일치를 만듭니다 — 합의를 보장하기 위해 항상 안정적인 필드를 추출하세요." },
+          { id: "korea-L16-q4", prompt: "컨트랙트가 구조가 변경된 외부 웹사이트에 의존하면 어떻게 되나요?", options: ["GenLayer가 자동으로 적응하므로 아무 문제 없음", "컨트랙트가 데이터를 파싱하지 못해 로직과 합의가 깨질 수 있음", "GenLayer가 예방적으로 컨트랙트를 동결함", "외부 사이트가 GenLayer에 의해 자동 아카이빙됨"], correctOption: 1, explanation: "외부 웹사이트의 구조 변경은 컨트랙트의 파싱 로직을 깨뜨리고 합의 실패를 유발할 수 있습니다." },
+          { id: "korea-L16-q5", prompt: "Intelligent Contract에서 웹 데이터를 저장할 때의 모범 사례는?", options: ["가스를 절약하기 위해 검증 없이 즉시 저장", "JSON을 반환하는 소스는 무조건 신뢰", "저장 전 데이터 검증, 신뢰할 수 있는 소스만 사용", "페이지의 전체 HTML 항상 저장"], correctOption: 2, explanation: "저장 전 데이터를 검증하고 신뢰할 수 있는 소스를 사용하는 것이 컨트랙트의 무결성과 신뢰성을 보장합니다." },
+        ],
       },
       {
         slug: "deploy-dapp", title: "DApp 빌드와 배포", durationMinutes: 5,
@@ -1948,6 +2357,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenLayer DApp 개발은 3단계로 진행됩니다: Studio에서 로컬 프로토타입, 테스트 프레임워크로 철저한 테스트, 그다음 Testnet(Asimov/Bradbury)에 배포하고 GenLayerJS로 프론트엔드 구축." },
           { type: "list", items: ["1단계: GenLayer Studio에서 로컬 프로토타입", "2단계: genlayer-test 프레임워크로 테스트", "3단계: GenLayerJS 프론트엔드 + Testnet 배포"] },
           { type: "callout", title: "출시 전 체크리스트", text: "Testnet 배포 전, 직접 모드와 Studio 모드에서 테스트를 완료하고 모든 합의 실패를 처리하세요." },
+        ],
+        questions: [
+          { id: "korea-L17-q1", prompt: "GenLayer DApp 개발의 3단계는?", options: ["코드 작성 → 컴파일 → 배포", "Studio에서 로컬 프로토타입 → genlayer-test로 테스트 → GenLayerJS로 Testnet 배포", "설치 → 구성 → 게시", "설계 → 프로그래밍 → 수익화"], correctOption: 1, explanation: "권장 흐름은 Studio에서 로컬 프로토타입, genlayer-test로 자동화 테스트, GenLayerJS 프론트엔드로 Testnet 배포입니다." },
+          { id: "korea-L17-q2", prompt: "GenLayer에서 사용 가능한 Testnet은?", options: ["Ropsten과 Rinkeby", "Goerli와 Sepolia", "Asimov와 Bradbury", "Alpha와 Beta"], correctOption: 2, explanation: "GenLayer의 Testnet은 Asimov와 Bradbury로, 테스트 컨트랙트 배포에 사용할 수 있습니다." },
+          { id: "korea-L17-q3", prompt: "GenLayer DApp 프론트엔드 구축에 권장되는 SDK는?", options: ["ethers.js", "web3.py", "GenLayerJS", "hardhat"], correctOption: 2, explanation: "GenLayerJS는 DApp 프론트엔드를 GenLayer에 연결하기 위한 공식 TypeScript SDK입니다." },
+          { id: "korea-L17-q4", prompt: "Testnet에 컨트랙트를 배포하기 전에 반드시 해야 할 일은?", options: ["시간 절약을 위해 테스트 없이 바로 배포", "직접 모드와 Studio 모드에서 테스트를 완료하고 모든 합의 실패 처리", "GenLayer 재단의 승인 받기", "메인넷에서 GEN 토큰 구매"], correctOption: 1, explanation: "직접 모드와 Studio에서 모든 합의 실패를 해결하며 철저히 테스트하는 것이 Testnet 배포 전 필수 사항입니다." },
+          { id: "korea-L17-q5", prompt: "genlayer-test 프레임워크는 어떤 용도로 사용되나요?", options: ["테스트용 GEN 토큰 생성", "Intelligent Contracts 자동화 테스트 실행", "메인넷 프로덕션 컨트랙트 모니터링", "컨트랙트 자동 문서 생성"], correctOption: 1, explanation: "genlayer-test는 배포 전 Intelligent Contract의 동작을 검증하기 위한 자동화 테스트 프레임워크입니다." },
         ],
       },
     ],
@@ -1995,6 +2411,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Konum: ajansal ekonomi için tahkim katmanı", "Öznel sorular için zincir üstü güvenilir doğrulama", "AI doğrulayıcılar konsensüse ulaşır"] },
           { type: "callout", title: "Kısaca", text: "Cevap sadece evet ya da hayır değil, yargı gerektiriyorsa — GenLayer tam orada devreye girer." },
         ],
+        questions: [
+          { id: "turkey-L01-q1", prompt: "GenLayer'i en iyi hangi tanım açıklar?", options: ["Merkezi olmayan dosya depolama sistemi", "Ajansal ekonomi için AI-native tahkim katmanı", "Ethereum için Layer 2 çözümü", "Merkezi ödeme ağı"], correctOption: 1, explanation: "GenLayer, yargı gerektiren kararları işlemek için tasarlanmış ajansal ekonominin AI-native tahkim katmanıdır." },
+          { id: "turkey-L01-q2", prompt: "Bitcoin, Ethereum ve GenLayer arasındaki temel fark nedir?", options: ["Üçü de aynı şeyi yapar", "Bitcoin işlemleri yönetir, Ethereum kod çalıştırır, GenLayer kararların anlamını kavrar", "GenLayer yalnızca ödemeler için kullanılır", "Ethereum ile GenLayer birbirinin aynısıdır"], correctOption: 1, explanation: "Bitcoin işlemler, Ethereum kod yürütme, GenLayer ise kararların anlamını kavrama konusunda uzmanlaşmıştır." },
+          { id: "turkey-L01-q3", prompt: "GenLayer ne zaman gereklidir?", options: ["Yalnızca sayı transferi için", "Yalnızca sabit kod çalıştırırken", "Cevap evet ya da hayır değil, yargı ve akıl yürütme gerektiriyorsa", "Yalnızca dosya depolamak için"], correctOption: 2, explanation: "GenLayer, basit evet/hayır değil yargı ve AI akıl yürütmesi gerektiren durumlarda gereklidir." },
+        ],
       },
       {
         slug: "problem-genlayer-solves", title: "GenLayer Hangi Sorunu Çözüyor?", durationMinutes: 5,
@@ -2004,6 +2425,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "Bitcoin ve Ethereum deterministik görevlerde iyidir ancak yargı veya AI akıl yürütmesi gerektiren sorunları çözemez. İçerik değerlendirme, anlaşmazlıklar, kilometre taşı doğrulama — bunlar için GenLayer gereklidir." },
           { type: "list", items: ["Geleneksel kontratlar: yalnızca sabit mantık", "GenLayer: öznel ve belirsiz sonuçları yönetir", "Blockchain teknolojisindeki kritik boşluğu doldurur"] },
           { type: "callout", title: "Temel fark", text: "Ethereum 'kod çalıştı mı?' diye sorar. GenLayer 'sonuç doğru mu?' diye sorar." },
+        ],
+        questions: [
+          { id: "turkey-L02-q1", prompt: "Bitcoin ve Ethereum gibi geleneksel blockchain'lerin yapamadığı şey nedir?", options: ["Finansal işlemleri kaydetmek", "Yargı ve akıl yürütme gerektiren kararları işlemek", "Akıllı kontratlarda kod çalıştırmak", "P2P ağında veri işlemek"], correctOption: 1, explanation: "Bitcoin ve Ethereum deterministiktir — öznel ve akıl yürütme gerektiren kararları işleyemezler." },
+          { id: "turkey-L02-q2", prompt: "Kontrat sonucu konusunda Ethereum ile GenLayer arasındaki temel fark nedir?", options: ["Ethereum GenLayer'dan daha hızlıdır", "Ethereum kodun çalışıp çalışmadığını sorar; GenLayer sonucun doğru olup olmadığını sorar", "GenLayer Solidity, Ethereum Python kullanır", "İkisi arasında fark yoktur"], correctOption: 1, explanation: "Ethereum kodun doğru çalışıp çalışmadığını doğrular; GenLayer bir adım ileri giderek sonucun özünde doğru olup olmadığını sorgular." },
+          { id: "turkey-L02-q3", prompt: "GenLayer için en uygun kullanım senaryosu hangisidir?", options: ["Cüzdanlar arasında basit token transferi", "Öznel kriterlere göre serbest çalışan kilometre taşlarının otomatik doğrulanması", "Blockchain'de dosya depolama", "Bitcoin madenciliği"], correctOption: 1, explanation: "Bir işin iyi yapılıp yapılmadığını değerlendirmek gibi öznel değerlendirme gerektiren durumlar GenLayer için ideal kullanım senaryolarıdır." },
         ],
       },
       {
@@ -2015,6 +2441,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Oracle olmadan doğrudan internet verisi erişimi", "AI akıl yürütmesi için LLM (örn. GPT-4) çağırma", "Python ile yazılır — tanıdık ve güçlü"] },
           { type: "callout", title: "Benzetme", text: "Geleneksel kontrat bir hesap makinesidir. Intelligent Contract akıl yürütebilen bir asistandır." },
         ],
+        questions: [
+          { id: "turkey-L03-q1", prompt: "GenLayer'in Intelligent Contracts'ının geleneksel akıllı kontratların yapamadığı şey nedir?", options: ["Yalnızca önceden belirlenmiş sabit mantık çalıştırmak", "Gerçek zamanlı web verilerine erişmek ve AI modellerini (LLM) çağırmak", "Yalnızca Ethereum'da çalışmak", "Yalnızca tam sayıları işlemek"], correctOption: 1, explanation: "Intelligent Contracts internete gerçek zamanlı erişebilir ve LLM çağırabilir — geleneksel kontratların sahip olmadığı özellikler." },
+          { id: "turkey-L03-q2", prompt: "GenLayer'in Intelligent Contracts'ı hangi programlama diliyle yazılır?", options: ["Solidity", "Rust", "JavaScript", "Python"], correctOption: 3, explanation: "Intelligent Contracts, daha sezgisel ve güçlü bir dil olan Python ile yazılır." },
+          { id: "turkey-L03-q3", prompt: "Geleneksel akıllı kontrat ile Intelligent Contract'ı karşılaştıran en iyi benzetme hangisidir?", options: ["Çekiç ile tornavida", "Hesap makinesi ile akıl yürütebilen asistan", "Araba ile bisiklet", "Yazıcı ile tarayıcı"], correctOption: 1, explanation: "Hesap makinesi geleneksel kontratların sabit mantığını; akıl yürüten ve uyum sağlayan asistan ise Intelligent Contracts'ı temsil eder." },
+        ],
       },
       {
         slug: "blockchain-stack", title: "GenLayer'in Blockchain Mimarisindeki Yeri", durationMinutes: 5,
@@ -2024,6 +2455,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenLayer, ZKSync gibi rollup'lar aracılığıyla Ethereum ile entegre olacak olan ve kendi AI-native konsensüsünü yöneten bir Layer 1 blockchain'dir. Ethereum'un rakibi değil, AI tahkimine odaklanan yeni bir katmandır." },
           { type: "list", items: ["Bitcoin: işlem sırası üzerinde konsensüs", "Ethereum: kod yürütme üzerinde konsensüs", "GenLayer: karar anlamı üzerinde konsensüs"] },
           { type: "callout", title: "Konum", text: "GenLayer, Ethereum ile rekabet etmez; onu tamamlar." },
+        ],
+        questions: [
+          { id: "turkey-L04-q1", prompt: "GenLayer blockchain mimarisinin hangi katmanındadır?", options: ["Layer 0", "Layer 2", "Layer 1", "Layer 3"], correctOption: 2, explanation: "GenLayer, kendi AI-native konsensüs mekanizmasına sahip bir Layer 1 blockchain'dir." },
+          { id: "turkey-L04-q2", prompt: "Ethereum ile GenLayer'in odak noktaları arasındaki fark nedir?", options: ["Ethereum finansal işlemlere, GenLayer depolamaya odaklanır", "Ethereum kod yürütme üzerinde konsensüse ulaşır; GenLayer kararların anlamı üzerinde", "Ethereum Layer 2, GenLayer Layer 0'dır", "İkisi de tamamen aynı şeyi yapar"], correctOption: 1, explanation: "Ethereum kod yürütme konsensüsüne odaklanır; GenLayer bir adım ileri giderek sonuçların anlamı üzerinde konsensüse ulaşır." },
+          { id: "turkey-L04-q3", prompt: "GenLayer Ethereum ile nasıl bir ilişkidedir?", options: ["Ethereum'un yerini tamamen alır", "ZKSync gibi rollup entegrasyonuyla Ethereum'u tamamlar", "Aynı pazar için Ethereum ile doğrudan rekabet eder", "Ethereum ile hiçbir ilişkisi yoktur"], correctOption: 1, explanation: "GenLayer, rollup entegrasyonu aracılığıyla Ethereum'u tamamlar ve Ethereum'un sunmadığı AI-native tahkimi ekler." },
         ],
       },
       {
@@ -2035,6 +2471,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["4 aşama: Öner → Onayla → Aç → Kabul Et", "Herkes bir sonuca itiraz edebilir", "Nihai sonuç geri alınamaz"] },
           { type: "callout", title: "Temel fikir", text: "Kolektif bağımsız yargı, tek bir düğümden daha güvenilirdir." },
         ],
+        questions: [
+          { id: "turkey-L05-q1", prompt: "Optimistic Democracy'nin matematiksel temeli olan teorem hangisidir?", options: ["Pisagor teoremi", "Condorcet Jüri Teoremi", "Bernoulli Büyük Sayılar Yasası", "Arrow'un paradoksu"], correctOption: 1, explanation: "Condorcet Jüri Teoremi, bağımsız yargıçlar grubunun doğru cevaba ulaşma olasılığının daha yüksek olduğunu gösterir." },
+          { id: "turkey-L05-q2", prompt: "Optimistic Democracy konsensüsünün dört aşaması nelerdir?", options: ["Oluştur → Doğrula → Yayınla → Öde", "Öner → Onayla → Aç → Kabul Et", "Gönder → İşle → Onayla → Tamamla", "Başlat → Oy Ver → Say → Dağıt"], correctOption: 1, explanation: "Dört aşama: Öner, Onayla, Aç ve Kabul Et." },
+          { id: "turkey-L05-q3", prompt: "Optimistic Democracy sürecinde nihai sonuca ne olur?", options: ["Çoğunluk oyuyla istediği zaman değiştirilebilir", "Kabul Et aşamasından sonra geri alınamaz", "Kontrat geliştiricisi tarafından iptal edilebilir", "24 saat sonra sona erer"], correctOption: 1, explanation: "Tüm aşamalardan geçtikten sonra Optimistic Democracy'nin nihai sonucu geri alınamaz." },
+        ],
       },
       {
         slug: "validators-staking", title: "Doğrulayıcılar ve Staking", durationMinutes: 5,
@@ -2044,6 +2485,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "Doğrulayıcılar GEN stake eder, node çalıştırır ve ödül kazanmak için Optimistic Democracy'e katılır. 42.000 GEN'in yok mu? Delege olarak katılabilirsin." },
           { type: "list", items: ["Doğrulayıcı olmak için: 42.000 GEN stake et", "Delege: katılmak için minimum 42 GEN", "Doğrulayıcılar %10 işletim ücreti + staking ödülleri alır"] },
           { type: "callout", title: "İki katılım yolu", text: "Büyük stake: doğrulayıcı ol. Küçük stake: delege et. İkisi de kazandırır." },
+        ],
+        questions: [
+          { id: "turkey-L06-q1", prompt: "GenLayer'de doğrulayıcı olmak için ne kadar GEN stake edilmelidir?", options: ["4.200 GEN", "420 GEN", "42.000 GEN", "420.000 GEN"], correctOption: 2, explanation: "Tam doğrulayıcı katılımı için 42.000 GEN stake etmek gerekir." },
+          { id: "turkey-L06-q2", prompt: "Delege olarak katılmak için gereken minimum GEN miktarı nedir?", options: ["42 GEN", "420 GEN", "4.200 GEN", "42.000 GEN"], correctOption: 0, explanation: "Yalnızca 42 GEN ile delege olarak katılıp orantılı ödüller kazanmak mümkündür." },
+          { id: "turkey-L06-q3", prompt: "Doğrulayıcıların delege ödüllerinden aldığı işletim ücreti oranı nedir?", options: ["%5", "%10", "%20", "%50"], correctOption: 1, explanation: "Doğrulayıcılar, delegelerinin ödüllerinden %10 işletim ücreti alır, buna ek olarak kendi staking ödüllerini de kazanır." },
+          { id: "turkey-L06-q4", prompt: "GenLayer'de delege ne yapar?", options: ["42.000 GEN ile tam doğrulayıcı node çalıştırır", "Stake'ini doğrulayıcıya devreder ve orantılı ödüller kazanır", "Node çalıştırmadan yalnızca token tutar", "Stake etmeden yönetim önerilerine oy kullanır"], correctOption: 1, explanation: "Delegeler, GEN'lerini bir doğrulayıcıya devreder ve node çalıştırmak zorunda kalmadan orantılı ödüller kazanır." },
         ],
       },
       {
@@ -2055,6 +2502,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["strict_eq(): tüm doğrulayıcılar tam aynı sonucu almalı", "prompt_non_comparative(): doğrulayıcılar kriterin karşılanıp karşılanmadığını değerlendirir", "Geliştirici 'denklik' anlamını tanımlar"] },
           { type: "callout", title: "Temel içgörü", text: "AI her seferinde biraz farklı yanıt verebilir — Denklik İlkesi bunu blockchain'de güvenli kılar." },
         ],
+        questions: [
+          { id: "turkey-L07-q1", prompt: "Denklik İlkesi'nin temel amacı nedir?", options: ["Doğrulayıcıların eşit miktarda GEN kazanmasını sağlamak", "Deterministik olmayan AI çıktılarının farklı doğrulayıcılarda tutarlı doğrulanmasına imkân tanımak", "Tüm doğrulayıcıların tamamen aynı sonucu üretmesini zorunlu kılmak", "Gas ücretlerini azaltmak"], correctOption: 1, explanation: "Denklik İlkesi, AI çıktıları gibi deterministik olmayan sonuçların tüm doğrulayıcılarda güvenle doğrulanabilmesini sağlar." },
+          { id: "turkey-L07-q2", prompt: "strict_eq() ne yapar?", options: ["Tüm doğrulayıcıların birebir aynı sonucu üretmesini gerektirir", "Doğrulayıcıların anlaşıp anlaşmadığını serbest metin olarak değerlendirir", "Yalnızca tam sayıları karşılaştırır", "Konsensüs kontrollerini atlar"], correctOption: 0, explanation: "strict_eq(), tüm doğrulayıcıların kesinlikle aynı sonucu vermesi gerektiğinde kullanılır." },
+          { id: "turkey-L07-q3", prompt: "prompt_non_comparative() ne zaman kullanılır?", options: ["Doğrulayıcılar birbirinin sonuçlarıyla kıyaslamak yerine bir kriterin karşılanıp karşılanmadığını bağımsız olarak değerlendirdiğinde", "Yalnızca sayısal verilerle çalışırken", "İki sonucu birebir eşleştirmek için", "Konsensüs sürecini devre dışı bırakmak için"], correctOption: 0, explanation: "prompt_non_comparative(), her doğrulayıcının kendi kararını bağımsız olarak verdiği öznel değerlendirmelerde tercih edilir." },
+          { id: "turkey-L07-q4", prompt: "Denklik İlkesi olmadan AI çıktıları için ne tür bir sorun ortaya çıkar?", options: ["İşlemler daha hızlı gerçekleşir", "Farklı doğrulayıcılar biraz farklı sonuçlar üretip konsensüsü engelleyebilir", "Gas maliyetleri artar", "Tokenlar kaybolur"], correctOption: 1, explanation: "Denklik İlkesi olmadan doğrulayıcıların farklı AI yanıtları konsensüse ulaşılmasını engelleyebilir." },
+        ],
       },
       {
         slug: "genvm", title: "GenVM: Çalıştırma Ortamı", durationMinutes: 5,
@@ -2064,6 +2517,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenVM, Intelligent Contracts'ın çalıştırma ortamıdır. WebAssembly üzerine kurulu, Python'u yerel olarak çalıştırır ve LLM'ler ile web verileriyle doğrudan etkileşime girebilir — EVM'nin yapamadığı şeyler." },
           { type: "list", items: ["WebAssembly tabanlı, hızlı yürütme", "Python'u yerel olarak çalıştırır (Solidity değil)", "LLM çağrıları ve internet erişimi için yerleşik destek"] },
           { type: "callout", title: "Temel fark", text: "EVM deterministik kod için tasarlanmıştır. GenVM deterministik olmayanı yönetir — köklü bir mimari yenilik." },
+        ],
+        questions: [
+          { id: "turkey-L08-q1", prompt: "GenVM hangi teknoloji üzerine kurulmuştur?", options: ["Java Virtual Machine (JVM)", "WebAssembly (WASM)", "Docker konteynerleri", "LLVM derleyici altyapısı"], correctOption: 1, explanation: "GenVM, WebAssembly üzerine kurularak hızlı ve taşınabilir yürütme sağlar." },
+          { id: "turkey-L08-q2", prompt: "GenVM hangi programlama dilini yerel olarak çalıştırır?", options: ["Solidity", "Rust", "JavaScript", "Python"], correctOption: 3, explanation: "GenVM, Python'u yerel olarak çalıştırır; bu da Intelligent Contract geliştirmeyi daha sezgisel kılar." },
+          { id: "turkey-L08-q3", prompt: "EVM ile GenVM arasındaki temel mimari fark nedir?", options: ["EVM Python kullanır, GenVM Solidity kullanır", "EVM deterministik kod için tasarlanmıştır; GenVM deterministik olmayan AI ve web etkileşimlerini yönetebilir", "EVM daha yeni bir teknolojidir", "GenVM yalnızca test ortamlarında çalışır"], correctOption: 1, explanation: "EVM yalnızca deterministik işlemlere izin verirken GenVM, AI çağrıları ve web erişimi gibi deterministik olmayan operasyonları yönetir." },
+          { id: "turkey-L08-q4", prompt: "GenVM'nin EVM'ye kıyasla sahip olduğu yerleşik özellik nedir?", options: ["Daha düşük işlem ücretleri", "Eski Solidity kontratlarıyla uyumluluk", "LLM çağrıları ve internet erişimi için doğrudan destek", "Daha hızlı blok onay süreleri"], correctOption: 2, explanation: "GenVM, LLM çağrıları ve internet erişimini doğrudan destekler; bu özellikler EVM'de bulunmaz." },
         ],
       },
       {
@@ -2075,6 +2534,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Başlangıç APY %15, kademeli olarak %4'e düşer", "Ödüllerin %75'i tüm staker'lara", "%10 doğrulayıcılara, %15 geliştiricilere"] },
           { type: "callout", title: "İtiraz mekanizması", text: "Bir sonuca katılmıyor musun? GEN stake ederek itiraz et, daha geniş bir doğrulayıcı kümesi yeniden değerlendirir." },
         ],
+        questions: [
+          { id: "turkey-L09-q1", prompt: "GEN token'ın üç temel kullanım alanı nelerdir?", options: ["Madencilik, depolama ve reklamcılık", "Staking, gas ve yönetim", "Yalnızca transfer ve gas", "Yalnızca yönetim oyu"], correctOption: 1, explanation: "GEN token ağda staking, gas ödemeleri ve yönetim olmak üzere üç temel amaçla kullanılır." },
+          { id: "turkey-L09-q2", prompt: "GEN staking için uzun vadeli hedeflenen APY nedir?", options: ["%4", "%15", "%50", "%100"], correctOption: 0, explanation: "APY başlangıçta %15 ile başlar ve uzun vadeli sürdürülebilirlik için kademeli olarak %4'e iner." },
+          { id: "turkey-L09-q3", prompt: "Staking ödüllerinin doğrulayıcılara ayrılan payı ne kadardır?", options: ["%75", "%15", "%10", "%5"], correctOption: 2, explanation: "Ödüllerin %10'u doğrulayıcılara ayrılırken %75'i tüm staker'lara, %15'i ise geliştiricilere gider." },
+          { id: "turkey-L09-q4", prompt: "GenLayer'de bir konsensüs sonucuna nasıl itiraz edilir?", options: ["Projeyi GitHub'da raporlayarak", "GEN stake ederek itiraz başlatmak; daha geniş bir doğrulayıcı kümesi yeniden değerlendirir", "Doğrulayıcılara e-posta göndererek", "Kontratı yeniden dağıtarak"], correctOption: 1, explanation: "İtiraz mekanizması, GEN stake etmeyi gerektirir; bu sayede daha geniş bir doğrulayıcı kümesi sonucu yeniden değerlendirir." },
+        ],
       },
       {
         slug: "genlayer-studio", title: "GenLayer Studio", durationMinutes: 5,
@@ -2084,6 +2549,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenLayer Studio, Intelligent Contracts test etmek için kurulum gerektirmeyen tarayıcı tabanlı bir sandbox'tır. Gerçek zamanlı loglar ve hata geribildirimiyle tam doğrulayıcı ağını simüle eder." },
           { type: "list", items: ["Doğrudan tarayıcıda, kurulum yok", "Çoklu doğrulayıcı konsensüsünü simüle eder", "Ayrıntılı loglar ve hata ayıklama desteği"] },
           { type: "callout", title: "Hemen başla", text: "studio.genlayer.com'u ziyaret et veya yerel Studio'yu başlatmak için genlayer init komutunu çalıştır." },
+        ],
+        questions: [
+          { id: "turkey-L10-q1", prompt: "GenLayer Studio'ya erişmenin iki yolu nelerdir?", options: ["GitHub ve npm üzerinden", "studio.genlayer.com (tarayıcı) veya genlayer init (yerel)", "Yalnızca masaüstü uygulaması indirerek", "Yalnızca VSCode uzantısıyla"], correctOption: 1, explanation: "Studio'ya tarayıcıdan (studio.genlayer.com) veya genlayer init ile yerel olarak erişilebilir." },
+          { id: "turkey-L10-q2", prompt: "GenLayer Studio neye kurulum gerektirmeden izin verir?", options: ["Mainnet'e kontrat dağıtmaya", "Tarayıcıda Intelligent Contracts test etmeye", "Yeni GEN token çıkarmaya", "Gerçek zamanlı staking istatistiklerini görüntülemeye"], correctOption: 1, explanation: "Studio, kurulum gerektirmeyen tarayıcı tabanlı bir sandbox'tır ve Intelligent Contracts testi için tasarlanmıştır." },
+          { id: "turkey-L10-q3", prompt: "GenLayer Studio hangi geliştirme özelliklerini sunar?", options: ["Yalnızca statik kod analizi", "Çoklu doğrulayıcı konsensüsü simülasyonu, gerçek zamanlı loglar ve hata ayıklama", "Yalnızca token bakiyesi takibi", "Yalnızca doküman görüntüleme"], correctOption: 1, explanation: "Studio, gerçek geliştirme iş akışlarına destek olmak amacıyla tam doğrulayıcı ağı simülasyonu, gerçek zamanlı loglar ve hata geribildirimi sağlar." },
+          { id: "turkey-L10-q4", prompt: "GenLayer Studio'nun en temel faydası nedir?", options: ["Testnet'te ücretsiz GEN token kazandırması", "Token stake etmeyi kolaylaştırması", "Gerçek ağda para harcamadan kontratları yerel olarak test etmeye imkân tanıması", "Diğer geliştirici projelerini görüntülemek"], correctOption: 2, explanation: "Studio, geliştiricilerin gerçek ağ ortamını simüle eden sandbox'ta para harcamadan kontrat geliştirmelerine olanak tanır." },
         ],
       },
       {
@@ -2095,6 +2566,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["npm install -g genlayer, ardından genlayer init", "GenLayerJS: TypeScript, frontend geliştirme için", "GenLayerPY: Python 3.12+, backend için"] },
           { type: "callout", title: "Yeni başlayanlara ipucu", text: "Önce genlayer init çalıştır, Studio'daki örnek kontratları keşfet, sonra kod yazmaya başla." },
         ],
+        questions: [
+          { id: "turkey-L11-q1", prompt: "genlayer CLI'ı yüklemek için kullanılan komut nedir?", options: ["pip install genlayer", "cargo install genlayer", "npm install -g genlayer", "brew install genlayer"], correctOption: 2, explanation: "genlayer CLI, npm install -g genlayer komutuyla yüklenir." },
+          { id: "turkey-L11-q2", prompt: "genlayer init komutu ne yapar?", options: ["Yeni bir GEN cüzdanı oluşturur", "GenLayer Studio'yu indirir ve yerel olarak başlatır", "Mainnet'e kontrat dağıtır", "TypeScript'te yeni bir proje oluşturur"], correctOption: 1, explanation: "genlayer init, bileşenleri indirir ve yerel GenLayer Studio'yu çalıştırır." },
+          { id: "turkey-L11-q3", prompt: "Frontend DApp geliştirme için hangi SDK kullanılır?", options: ["GenLayerPY", "GenLayerJS", "GenLayerRust", "GenLayerSolidity"], correctOption: 1, explanation: "TypeScript tabanlı GenLayerJS, frontend DApp geliştirme için tasarlanmıştır." },
+          { id: "turkey-L11-q4", prompt: "GenLayerPY SDK hangi durum için uygundur?", options: ["Tarayıcı tabanlı DApp'ler", "iOS uygulama geliştirme", "Python 3.12+ backend entegrasyonu", "WebAssembly modülleri yazmak"], correctOption: 2, explanation: "GenLayerPY, Python 3.12 veya üstü kullanan backend geliştirme için tasarlanmıştır." },
+          { id: "turkey-L11-q5", prompt: "Yeni başlayanlar için önerilen geliştirme sırası nedir?", options: ["Önce mainnet dağıtımı, ardından test", "Önce genlayer init çalıştır, örnek kontratları keşfet, sonra kodlamaya başla", "Hemen Solidity öğren ve geç", "Sadece dokümanları oku, kod yazma"], correctOption: 1, explanation: "Önerilen sıra: genlayer init ile başla, Studio'daki örnekleri keşfet, ardından kendi kontratlarını yazmaya geç." },
+        ],
       },
       {
         slug: "first-contract", title: "İlk Intelligent Contract'ın", durationMinutes: 5,
@@ -2104,6 +2582,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "Her Intelligent Contract, gl.Contract'tan miras alan bir Python sınıfıdır. Durum değişkenleri sınıf gövdesinde tanımlanır ve metodlar okuma/yazma izinleri için dekoratörlerle işaretlenir." },
           { type: "code", language: "python", code: "import gl\n\nclass Counter(gl.Contract):\n    count: gl.u256\n\n    def __init__(self):\n        self.count = 0\n\n    @gl.public.view\n    def get(self) -> int:\n        return self.count\n\n    @gl.public.write\n    def increment(self):\n        self.count += 1" },
           { type: "callout", title: "Unutma", text: "Tüm kalıcı alanlar sınıf gövdesinde tür ek açıklamasıyla tanımlanmalıdır. Çalışma zamanında dinamik olarak oluşturulamazlar." },
+        ],
+        questions: [
+          { id: "turkey-L12-q1", prompt: "Bir Intelligent Contract hangi sınıftan miras almalıdır?", options: ["gl.SmartContract", "gl.Contract", "gl.BaseApp", "gl.Chain"], correctOption: 1, explanation: "Her Intelligent Contract, gl.Contract sınıfından miras almak zorundadır." },
+          { id: "turkey-L12-q2", prompt: "Intelligent Contract'ta durum değişkenleri nerede tanımlanır?", options: ["__init__ metodunun içinde", "Her metodun içinde ayrı ayrı", "Sınıf gövdesinde tür ek açıklamasıyla", "Ayrı bir yapılandırma dosyasında"], correctOption: 2, explanation: "Durum değişkenleri sınıf gövdesinde tür ek açıklamasıyla tanımlanmalıdır; __init__ içinde dinamik olarak oluşturulamazlar." },
+          { id: "turkey-L12-q3", prompt: "Hangi dekoratör bir metodu salt okunur (okuma işlemi) olarak işaretler?", options: ["@gl.public.write", "@gl.public.view", "@gl.readonly", "@gl.get"], correctOption: 1, explanation: "@gl.public.view, durumu değiştirmeyen salt okunur metodları işaretler." },
+          { id: "turkey-L12-q4", prompt: "Hangi dekoratör bir metodun kontrat durumunu değiştirmesine izin verir?", options: ["@gl.public.view", "@gl.public.write", "@gl.state.modify", "@gl.mutable"], correctOption: 1, explanation: "@gl.public.write, kontrat durumunu değiştiren metodları işaretler." },
+          { id: "turkey-L12-q5", prompt: "Kalıcı durum alanlarını dinamik olarak oluşturmanın neden sakıncası vardır?", options: ["Kodu daha yavaş çalıştırır", "Başka kontratlarla çakışır", "Dinamik oluşturulan alanlar kalıcı depoya kaydedilmez", "Gas maliyetini artırır"], correctOption: 2, explanation: "Yalnızca sınıf gövdesinde bildirilen alanlar kalıcı olarak depolanır; dinamik oluşturulanlar kaybolur." },
         ],
       },
       {
@@ -2115,6 +2600,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["dict → TreeMap[K, V]", "list → DynArray[T]", "int → u256, i32 ve diğer sabit türler"] },
           { type: "callout", title: "Yaygın hata", text: "Çalışma zamanında dinamik oluşturulan alanlar kaydedilmez. Tüm kalıcı alanları baştan sınıf gövdesinde tanımla." },
         ],
+        questions: [
+          { id: "turkey-L13-q1", prompt: "Kalıcı depolama için normal Python dict'in yerini hangi GenLayer türü alır?", options: ["HashMap[K, V]", "TreeMap[K, V]", "OrderedDict[K, V]", "PersistDict[K, V]"], correctOption: 1, explanation: "GenLayer'de kalıcı anahtar-değer depolama için Python dict yerine TreeMap[K, V] kullanılmalıdır." },
+          { id: "turkey-L13-q2", prompt: "Kalıcı depolama için normal Python list'in yerini hangi GenLayer türü alır?", options: ["ArrayList[T]", "PersistList[T]", "DynArray[T]", "VecList[T]"], correctOption: 2, explanation: "DynArray[T], kalıcı sıralı koleksiyonlar için Python list yerine kullanılan GenLayer türüdür." },
+          { id: "turkey-L13-q3", prompt: "Intelligent Contract'ta tam sayı saklamak için tercih edilen yol nedir?", options: ["Standart Python int", "str olarak sakla", "gl.u256, gl.i32 gibi sabit boyutlu tam sayı türleri", "float kullan"], correctOption: 2, explanation: "gl.u256 ve gl.i32 gibi sabit boyutlu tam sayı türleri, GenLayer'in depolama güvenceleriyle tutarlıdır." },
+          { id: "turkey-L13-q4", prompt: "Normal Python dict'i doğrudan durum değişkeni olarak kullananlar hangi sorunla karşılaşır?", options: ["Sözlük doğru çalışır", "Değerler işlemler arasında kalıcı olmaz", "Kontrat derlenmez", "Gas maliyeti artar"], correctOption: 1, explanation: "Normal Python dict kalıcı GenLayer depolamasıyla çalışmaz; değerler işlemler arasında korunmaz." },
+          { id: "turkey-L13-q5", prompt: "Dinamik olarak oluşturulan alanlarda sık yapılan hata nedir?", options: ["Sınıf gövdesinde baştan bildirmek", "__init__ içinde self.new_field = value ile oluşturmak", "Tür ek açıklaması kullanmak", "Sabit boyutlu türler tercih etmek"], correctOption: 1, explanation: "Dinamik olarak oluşturulan alanlar kalıcı depoya kaydedilmez; tüm kalıcı alanlar sınıf gövdesinde tür ek açıklamasıyla bildirilmelidir." },
+        ],
       },
       {
         slug: "read-write-methods", title: "Okuma ve Yazma Metodları", durationMinutes: 5,
@@ -2124,6 +2616,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "@gl.public.view durumu değiştirmeyen salt okunur metodları işaretler. @gl.public.write durumu değiştirir. @gl.public.write.payable GEN transferlerini kabul eder." },
           { type: "list", items: ["@gl.public.view: salt okunur, daha düşük gas maliyeti", "@gl.public.write: zincir üstü durumu değiştirir", "@gl.public.write.payable: GEN token'larını kabul eder"] },
           { type: "callout", title: "İyi uygulama", text: "Önce salt okunur metodlarla mantığı test et. Yalnızca onaylandıktan sonra yazma mantığı ekle." },
+        ],
+        questions: [
+          { id: "turkey-L14-q1", prompt: "@gl.public.view ile @gl.public.write arasındaki temel fark nedir?", options: ["view daha hızlıdır, write yavaştır", "view kontrat durumunu değiştirmez; write değiştirir", "write daha düşük gas maliyetine sahiptir", "Aralarında fark yoktur"], correctOption: 1, explanation: "@gl.public.view salt okunur metodları işaretler; @gl.public.write durum değiştiren metodları işaretler." },
+          { id: "turkey-L14-q2", prompt: "@gl.public.write.payable ne zaman kullanılır?", options: ["Bir metodun sadece veri okuması gerektiğinde", "Bir metodun GEN token transferlerini kabul etmesi gerektiğinde", "Bir metodun salt özel kalması gerektiğinde", "Gas maliyetini düşürmek için"], correctOption: 1, explanation: "@gl.public.write.payable, bir işlem sırasında GEN token alması gereken metodlar için kullanılır." },
+          { id: "turkey-L14-q3", prompt: "Salt okunur metodlar neden daha düşük gas maliyetine sahiptir?", options: ["Daha az kod satırı içerirler", "Blok zincirine yeni bir işlem yazmak zorunda değildirler", "Daha küçük veri türleri kullanırlar", "Yalnızca testlerde çalıştırılırlar"], correctOption: 1, explanation: "Salt okunur metodlar blok zincirine yazma yapmadığından gas maliyetleri daha düşüktür." },
+          { id: "turkey-L14-q4", prompt: "Metodları test ederken neden önce @gl.public.view ile başlanmalıdır?", options: ["Yazma metodları daha sonra silindi", "Durum değişikliklerine gerek kalmadan mantığın doğrulanmasına izin verir", "View metodları sadece test için çalışır", "Yazma metodlarının ayrı bir ortam gerektirmesi"], correctOption: 1, explanation: "Önce view metodlarla test etmek, kalıcı değişiklikler yapmadan mantığın doğrulanmasını sağlar." },
+          { id: "turkey-L14-q5", prompt: "Mevcut dekoratörler arasında hangisi var olmaz?", options: ["@gl.public.view", "@gl.public.write", "@gl.public.write.payable", "@gl.public.delete"], correctOption: 3, explanation: "@gl.public.delete geçerli bir GenLayer dekoratörü değildir; yalnızca view, write ve write.payable kullanılır." },
         ],
       },
       {
@@ -2135,6 +2634,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Her zaman JSON yanıtı iste (response_format='json')", "Zaman damgaları veya dinamik verilerden kaçın", "Ham veriyi değil, AI'ın türettiği sonuçları karşılaştır"] },
           { type: "callout", title: "Konsensüs başarısızlığının temel nedeni", text: "LLM'den kararsız veri istemek doğrulayıcılarda farklı sonuçlara yol açar. Her zaman kararlı alanlar çıkar." },
         ],
+        questions: [
+          { id: "turkey-L15-q1", prompt: "Intelligent Contract'ta LLM çağırmak için kullanılan metod hangisidir?", options: ["gl.ai.call()", "gl.llm.query()", "gl.nondet.exec_prompt()", "gl.contract.ask()"], correctOption: 2, explanation: "gl.nondet.exec_prompt(), Intelligent Contracts'ta LLM çağırmak için standart yoldur." },
+          { id: "turkey-L15-q2", prompt: "LLM çağrılarında JSON yanıtı istemek neden önerilir?", options: ["JSON metin yanıtından daha hızlı ayrıştırılır", "LLM JSON yanıtları üretemez", "Yapılandırılmış çıktılar ayrıştırmayı kolaylaştırır ve doğrulayıcılar arasında tutarlılığı artırır", "JSON anlaşmazlıkları önler"], correctOption: 2, explanation: "JSON yanıtı istemek tutarlı yapılandırılmış çıktı sağlar; bu da ayrıştırmayı ve doğrulayıcı karşılaştırmasını kolaylaştırır." },
+          { id: "turkey-L15-q3", prompt: "LLM promptunda zaman damgaları veya dinamik veriler kullanmanın sorunu nedir?", options: ["Sadece daha fazla gas harcar", "Farklı doğrulayıcılar farklı sonuçlar üretir; konsensüs başarısız olabilir", "LLM zaman damgalarını işleyemez", "İşlemi yavaşlatır"], correctOption: 1, explanation: "Zaman damgası gibi değişken veriler farklı doğrulayıcılarda farklı LLM yanıtlarına neden olur; bu da konsensüsü bozar." },
+          { id: "turkey-L15-q4", prompt: "LLM'den veri istemenin en iyi yöntemi nedir?", options: ["Ham ve değişken verileri doğrudan sakla", "AI'ın ham veriyi yorumlamasını iste, yorumlanmış sonuçları karşılaştır", "AI'ın türettiği kararlı sonuçları çıkart ve karşılaştır", "Birden fazla LLM çağrısından gelen ham metni sakla"], correctOption: 2, explanation: "Doğrulayıcılar arasında tutarlılık için ham veriyi değil, AI'ın türettiği kararlı sonuçları karşılaştırmak gerekir." },
+          { id: "turkey-L15-q5", prompt: "Konsensüs başarısızlığının en yaygın nedeni nedir?", options: ["Çok büyük kontrat boyutu", "LLM'den kararsız veri istemek; bu doğrulayıcılarda farklı yanıtlara yol açar", "Çok fazla doğrulayıcı kullanmak", "Python sözdizimi hataları"], correctOption: 1, explanation: "LLM'den kararsız veya değişken veri istemek, farklı doğrulayıcıların farklı yanıtlar almasına ve konsensüsün başarısız olmasına neden olur." },
+        ],
       },
       {
         slug: "web-data", title: "Web Verisi Erişimi", durationMinutes: 5,
@@ -2145,6 +2651,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["gl.nondet.web.get(url): ham metin içeriği", "gl.nondet.web.render(url): JS ile render edilen sayfalar", "Kararlı alanlar çıkar, dinamik içerikten kaçın"] },
           { type: "callout", title: "Güvenilirlik ipucu", text: "Dış web siteleri çökebilir veya yapısı değişebilir. Yalnızca güvenilir kaynaklardan veri çek ve kaydetmeden önce doğrula." },
         ],
+        questions: [
+          { id: "turkey-L16-q1", prompt: "Ham metin içeriği almak için kullanılan GenLayer metodu hangisidir?", options: ["gl.web.fetch(url)", "gl.nondet.web.get(url)", "gl.http.request(url)", "gl.oracle.get(url)"], correctOption: 1, explanation: "gl.nondet.web.get(url), bir URL'den ham metin içeriği çekmek için kullanılır." },
+          { id: "turkey-L16-q2", prompt: "gl.nondet.web.render(url) ile gl.nondet.web.get(url) arasındaki fark nedir?", options: ["render daha hızlıdır", "get sadece JSON çeker", "render JavaScript ile render edilen dinamik sayfaları yönetir; get ham metin alır", "Aralarında fark yoktur"], correctOption: 2, explanation: "web.render(), JavaScript çalıştıran dinamik web sayfalarını yönetirken web.get() statik ham metin içeriği alır." },
+          { id: "turkey-L16-q3", prompt: "Web verisi çekerken neden dinamik içerikten kaçınılmalıdır?", options: ["Dinamik içerik daha pahalıdır", "Doğrulayıcılar farklı anlık görüntüler alıp tutarsız sonuçlar üretebilir", "GenVM dinamik içeriği ayrıştıramaz", "Dinamik içerik şifrelenmiştir"], correctOption: 1, explanation: "Farklı doğrulayıcılar aynı dinamik sayfanın farklı anlık görüntülerine ulaşabilir; bu tutarsız sonuçlara ve konsensüs sorunlarına yol açar." },
+          { id: "turkey-L16-q4", prompt: "Web verisi erişiminde 'kararlı alanlar çıkarmak' ne anlama gelir?", options: ["Yalnızca şifreli veriler saklamak", "Zamanla değişmeyen ve tüm doğrulayıcılarda aynı olan alanları seçmek", "Veritabanındaki yeni kayıtları çekmek", "Yalnızca sayısal verileri almak"], correctOption: 1, explanation: "Kararlı alanlar zamanla değişmez; böylece tüm doğrulayıcılar aynı değerleri alarak konsensüse ulaşabilir." },
+          { id: "turkey-L16-q5", prompt: "Dış web kaynaklarından veri çekerken en iyi uygulama nedir?", options: ["Tüm dinamik sayfalardan veri al ve sakla", "Sadece güvenilir kaynaklardan veri çek ve kaydetmeden önce doğrula", "Olası çöküşleri görmezden gel", "Tüm veriyi her işlemde yeniden çek"], correctOption: 1, explanation: "Güvenilirlik için yalnızca güvenilir kaynaklardan veri çekmek ve saklamadan önce doğrulamak şarttır." },
+        ],
       },
       {
         slug: "deploy-dapp", title: "DApp Oluşturma ve Dağıtma", durationMinutes: 5,
@@ -2154,6 +2667,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenLayer DApp geliştirme 3 aşamada gerçekleşir: Studio'da yerel prototip, test çerçevesiyle kapsamlı test, ardından Testnet'e (Asimov/Bradbury) dağıtım ve GenLayerJS ile frontend oluşturma." },
           { type: "list", items: ["Aşama 1: GenLayer Studio'da yerel prototip", "Aşama 2: genlayer-test ile test", "Aşama 3: GenLayerJS frontend + Testnet dağıtımı"] },
           { type: "callout", title: "Yayın öncesi kontrol listesi", text: "Testnet'e dağıtmadan önce doğrudan mod ve Studio modunda testleri tamamla ve tüm konsensüs başarısızlıklarını ele al." },
+        ],
+        questions: [
+          { id: "turkey-L17-q1", prompt: "GenLayer DApp geliştirmesinin üç aşaması nedir?", options: ["Tasarla → Kodla → Dağıt", "Studio'da yerel prototip → test çerçevesiyle test → Testnet + frontend dağıtımı", "Testnet → mainnet → üretim", "Yalnızca kod yaz ve hemen dağıt"], correctOption: 1, explanation: "Üç aşama şunlardır: Studio'da yerel prototip, genlayer-test ile kapsamlı test, ardından Testnet dağıtımı ve GenLayerJS frontend." },
+          { id: "turkey-L17-q2", prompt: "GenLayer Testnet'lerinin adları nelerdir?", options: ["Turing ve Lovelace", "Alpha ve Beta", "Asimov ve Bradbury", "Devnet ve Stagenet"], correctOption: 2, explanation: "GenLayer'in Testnet ağları Asimov ve Bradbury olarak adlandırılmıştır." },
+          { id: "turkey-L17-q3", prompt: "Frontend'den Intelligent Contract'lara bağlanmak için hangi SDK kullanılır?", options: ["GenLayerPY", "genlayer CLI", "GenLayerJS", "web3.js"], correctOption: 2, explanation: "GenLayerJS, frontend DApp'lerini Intelligent Contracts'a bağlamak için kullanılan TypeScript SDK'dır." },
+          { id: "turkey-L17-q4", prompt: "Testnet'e dağıtmadan önce ne yapılmalıdır?", options: ["Doğrudan mainnet'e dağıt", "Doğrudan mod ve Studio modunda testleri tamamla ve konsensüs başarısızlıklarını ele al", "Yalnızca TypeScript'i kontrol et", "Başka birinin test etmesini bekle"], correctOption: 1, explanation: "Testnet'e geçmeden önce hem doğrudan hem de Studio modunda test yapılmalı ve tüm konsensüs başarısızlıkları çözülmelidir." },
+          { id: "turkey-L17-q5", prompt: "Kontrat testi için genlayer-test çerçevesinin kullanım amacı nedir?", options: ["Mainnet öncesi kontratları yok etmek", "Testnet dağıtımını gerçekleştirmek", "Kontrat fonksiyonelliğini ve konsensüs davranışını doğrulayan kapsamlı testler yazmak", "Sadece TypeScript tiplerini kontrol etmek"], correctOption: 2, explanation: "genlayer-test çerçevesi, kontrat fonksiyonelliğini ve konsensüs davranışını test etmek amacıyla otomatik test senaryoları yazmaya olanak tanır." },
         ],
       },
     ],
@@ -2201,6 +2721,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Позиція: рівень арбітражу для агентної економіки", "Довірена on-chain верифікація суб'єктивних питань", "AI-валідатори досягають консенсусу"] },
           { type: "callout", title: "Простими словами", text: "Коли відповідь — не просто так чи ні, а потребує судження — саме тут GenLayer і потрібен." },
         ],
+        questions: [
+          { id: "ukraine-L01-q1", prompt: "Яке визначення найкраще описує GenLayer?", options: ["Децентралізована система зберігання файлів", "AI-нативний рівень арбітражу для агентної економіки", "Рішення Layer 2 для Ethereum", "Централізована платіжна мережа"], correctOption: 1, explanation: "GenLayer — це AI-нативний рівень арбітражу, розроблений для обробки рішень, що потребують судження, в агентній економіці." },
+          { id: "ukraine-L01-q2", prompt: "Яка ключова відмінність між Bitcoin, Ethereum та GenLayer?", options: ["Всі три роблять одне й те саме", "Bitcoin обробляє транзакції, Ethereum виконує код, GenLayer розуміє сенс рішень", "GenLayer використовується лише для платежів", "Ethereum та GenLayer ідентичні"], correctOption: 1, explanation: "Bitcoin спеціалізується на транзакціях, Ethereum — на виконанні коду, GenLayer — на розумінні сенсу рішень." },
+          { id: "ukraine-L01-q3", prompt: "Коли потрібен GenLayer?", options: ["Лише для переказу числових значень", "Лише при виконанні фіксованого коду", "Коли відповідь потребує судження та AI-міркувань, а не просто так чи ні", "Лише для зберігання файлів"], correctOption: 2, explanation: "GenLayer потрібен тоді, коли відповідь — не проста та/ні, а вимагає судження та AI-міркувань." },
+        ],
       },
       {
         slug: "problem-genlayer-solves", title: "Яку проблему вирішує GenLayer?", durationMinutes: 5,
@@ -2210,6 +2735,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "Bitcoin та Ethereum добре справляються з детермінованими завданнями, але не можуть обробляти проблеми, що потребують судження або AI-міркувань. Оцінка контенту, суперечки, верифікація етапів — для цього потрібен GenLayer." },
           { type: "list", items: ["Традиційні контракти: лише фіксована логіка", "GenLayer: обробляє суб'єктивні та неоднозначні результати", "Заповнює критичну прогалину в технології блокчейн"] },
           { type: "callout", title: "Ключова відмінність", text: "Ethereum запитує: 'чи виконався код?' GenLayer запитує: 'чи правильний результат?'" },
+        ],
+        questions: [
+          { id: "ukraine-L02-q1", prompt: "Що традиційні блокчейни, такі як Bitcoin та Ethereum, не можуть робити?", options: ["Записувати фінансові транзакції", "Обробляти рішення, що потребують судження та AI-міркувань", "Виконувати код у смарт-контрактах", "Обробляти дані в P2P-мережі"], correctOption: 1, explanation: "Bitcoin та Ethereum є детермінованими — вони не можуть обробляти суб'єктивні рішення, що потребують AI-міркувань." },
+          { id: "ukraine-L02-q2", prompt: "У чому ключова різниця між Ethereum та GenLayer щодо результату контракту?", options: ["Ethereum швидший за GenLayer", "Ethereum запитує, чи виконався код; GenLayer запитує, чи правильний результат", "GenLayer використовує Solidity, Ethereum — Python", "Між ними немає різниці"], correctOption: 1, explanation: "Ethereum верифікує коректність виконання коду; GenLayer іде далі, запитуючи, чи є результат правильним по суті." },
+          { id: "ukraine-L02-q3", prompt: "Який сценарій найкраще підходить для GenLayer?", options: ["Простий переказ токенів між гаманцями", "Автоматична верифікація фріланс-завдань за суб'єктивними критеріями", "Зберігання файлів у блокчейні", "Майнінг Bitcoin"], correctOption: 1, explanation: "Ситуації, де потрібна суб'єктивна оцінка (чи добре виконана робота), ідеальні для GenLayer." },
         ],
       },
       {
@@ -2221,6 +2751,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Прямий доступ до інтернет-даних без Oracle", "Виклики LLM (наприклад, GPT-4) для AI-міркувань", "Написані на Python — знайомо та потужно"] },
           { type: "callout", title: "Аналогія", text: "Традиційний контракт — це калькулятор. Intelligent Contract — асистент, здатний міркувати." },
         ],
+        questions: [
+          { id: "ukraine-L03-q1", prompt: "Що Intelligent Contracts GenLayer вміє, чого не вміють традиційні смарт-контракти?", options: ["Виконувати лише заздалегідь визначену фіксовану логіку", "Звертатися до веб-даних у реальному часі та викликати AI-моделі (LLM)", "Працювати лише в Ethereum", "Обробляти лише цілі числа"], correctOption: 1, explanation: "Intelligent Contracts можуть звертатися до інтернету в реальному часі та викликати LLM — функції, яких немає у традиційних контрактів." },
+          { id: "ukraine-L03-q2", prompt: "Якою мовою програмування написані Intelligent Contracts GenLayer?", options: ["Solidity", "Rust", "JavaScript", "Python"], correctOption: 3, explanation: "Intelligent Contracts пишуться на Python — більш інтуїтивній та потужній мові." },
+          { id: "ukraine-L03-q3", prompt: "Яка аналогія найкраще порівнює традиційний смарт-контракт з Intelligent Contract?", options: ["Молоток та викрутка", "Калькулятор та асистент, здатний міркувати", "Автомобіль та велосипед", "Принтер та сканер"], correctOption: 1, explanation: "Калькулятор уособлює фіксовану логіку традиційних контрактів, а асистент, що міркує й адаптується, — Intelligent Contracts." },
+        ],
       },
       {
         slug: "blockchain-stack", title: "Місце GenLayer в архітектурі блокчейну", durationMinutes: 5,
@@ -2230,6 +2765,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenLayer — це блокчейн Layer 1, який буде інтегруватися з Ethereum через ролапи на кшталт ZKSync, керуючи власним AI-нативним консенсусом. Він не конкурує з Ethereum — це новий рівень, що спеціалізується на AI-арбітражі." },
           { type: "list", items: ["Bitcoin: консенсус щодо порядку транзакцій", "Ethereum: консенсус щодо виконання коду", "GenLayer: консенсус щодо сенсу рішень"] },
           { type: "callout", title: "Позиція", text: "GenLayer доповнює Ethereum, а не конкурує з ним." },
+        ],
+        questions: [
+          { id: "ukraine-L04-q1", prompt: "На якому рівні блокчейну знаходиться GenLayer?", options: ["Layer 0", "Layer 2", "Layer 1", "Layer 3"], correctOption: 2, explanation: "GenLayer — це блокчейн Layer 1 з власним AI-нативним механізмом консенсусу." },
+          { id: "ukraine-L04-q2", prompt: "У чому різниця між фокусами Ethereum та GenLayer?", options: ["Ethereum фокусується на фінансових транзакціях, GenLayer — на зберіганні", "Ethereum досягає консенсусу щодо виконання коду; GenLayer — щодо сенсу рішень", "Ethereum є Layer 2, GenLayer — Layer 0", "Обидва роблять абсолютно те саме"], correctOption: 1, explanation: "Ethereum фокусується на консенсусі щодо виконання коду; GenLayer іде далі, досягаючи консенсусу щодо сенсу результатів." },
+          { id: "ukraine-L04-q3", prompt: "Як GenLayer взаємодіє з Ethereum?", options: ["Повністю замінює Ethereum", "Доповнює Ethereum через інтеграцію з ролапами, як-от ZKSync", "Безпосередньо конкурує за той самий ринок", "Не має жодних відносин з Ethereum"], correctOption: 1, explanation: "GenLayer доповнює Ethereum через інтеграцію з ролапами, додаючи AI-нативний арбітраж." },
         ],
       },
       {
@@ -2241,6 +2781,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["4 фази: Запропонувати → Підтвердити → Розкрити → Прийняти", "Будь-хто може оскаржити результат", "Кінцевий результат незворотній"] },
           { type: "callout", title: "Ключова ідея", text: "Колективне незалежне судження надійніше за один вузол." },
         ],
+        questions: [
+          { id: "ukraine-L05-q1", prompt: "На якій теоремі ґрунтується Optimistic Democracy?", options: ["Теорема Піфагора", "Теорема Кондорсе про журі", "Закон великих чисел Бернуллі", "Парадокс Ерроу"], correctOption: 1, explanation: "Теорема Кондорсе про журі доводить, що група незалежних суддів з більшою ймовірністю досягне правильної відповіді." },
+          { id: "ukraine-L05-q2", prompt: "Які чотири фази консенсусу Optimistic Democracy?", options: ["Створити → Перевірити → Опублікувати → Оплатити", "Запропонувати → Підтвердити → Розкрити → Прийняти", "Надіслати → Обробити → Підтвердити → Завершити", "Ініціювати → Проголосувати → Підрахувати → Розподілити"], correctOption: 1, explanation: "Чотири фази: Запропонувати, Підтвердити, Розкрити та Прийняти." },
+          { id: "ukraine-L05-q3", prompt: "Що відбувається з кінцевим результатом у процесі Optimistic Democracy?", options: ["Можна змінити більшістю голосів у будь-який час", "Є незворотнім після фази Прийняти", "Розробник контракту може скасувати", "Закінчується через 24 години"], correctOption: 1, explanation: "Кінцевий результат Optimistic Democracy незворотній після проходження всіх фаз." },
+        ],
       },
       {
         slug: "validators-staking", title: "Валідатори та стейкінг", durationMinutes: 5,
@@ -2250,6 +2795,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "Валідатори стейкають GEN, запускають вузли та беруть участь в Optimistic Democracy, заробляючи винагороди. Немає 42 000 GEN? Беріть участь як делегатор." },
           { type: "list", items: ["Стати валідатором: застейкати 42 000 GEN", "Делегатор: мінімум 42 GEN для участі", "Валідатори отримують 10% операційну комісію + нагороди за стейкінг"] },
           { type: "callout", title: "Два способи участі", text: "Великий стейк — будьте валідатором. Малий стейк — делегуйте. Обидва приносять дохід." },
+        ],
+        questions: [
+          { id: "ukraine-L06-q1", prompt: "Скільки GEN потрібно застейкати, щоб стати валідатором GenLayer?", options: ["4 200 GEN", "420 GEN", "42 000 GEN", "420 000 GEN"], correctOption: 2, explanation: "Для повноцінної участі як валідатор потрібно застейкати 42 000 GEN." },
+          { id: "ukraine-L06-q2", prompt: "Який мінімальний обсяг GEN для участі як делегатор?", options: ["42 GEN", "420 GEN", "4 200 GEN", "42 000 GEN"], correctOption: 0, explanation: "Лише з 42 GEN можна брати участь як делегатор і отримувати пропорційні винагороди." },
+          { id: "ukraine-L06-q3", prompt: "Який відсоток операційної комісії отримують валідатори з винагород делегаторів?", options: ["5%", "10%", "20%", "50%"], correctOption: 1, explanation: "Валідатори отримують 10% операційної комісії з винагород своїх делегаторів, а також власні нагороди за стейкінг." },
+          { id: "ukraine-L06-q4", prompt: "Що таке делегатор у GenLayer?", options: ["Запускає повний вузол валідатора з 42 000 GEN", "Делегує свій стейк валідатору та отримує пропорційні винагороди", "Тримає токени без стейкінгу", "Голосує за пропозиції управління без стейкінгу"], correctOption: 1, explanation: "Делегатори передають свій GEN валідатору та отримують пропорційні нагороди без необхідності запускати власний вузол." },
         ],
       },
       {
@@ -2261,6 +2812,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["strict_eq(): всі валідатори мають отримати точно однаковий результат", "prompt_non_comparative(): валідатори оцінюють, чи виконано критерій", "Розробник визначає, що означає 'еквівалентно'"] },
           { type: "callout", title: "Ключовий висновок", text: "AI щоразу може давати трохи різні відповіді — принцип еквівалентності робить це безпечним у блокчейні." },
         ],
+        questions: [
+          { id: "ukraine-L07-q1", prompt: "Яка основна мета принципу еквівалентності?", options: ["Гарантувати однакові винагороди всім валідаторам", "Дозволити безпечну верифікацію недетермінованих AI-виводів у різних валідаторів", "Вимагати від усіх валідаторів точно однакових результатів", "Знизити комісію за газ"], correctOption: 1, explanation: "Принцип еквівалентності дозволяє безпечно верифікувати недетерміновані виводи AI у всіх валідаторів." },
+          { id: "ukraine-L07-q2", prompt: "Що робить strict_eq()?", options: ["Вимагає від усіх валідаторів бітово ідентичних результатів", "Оцінює, чи погоджуються валідатори, у вільній текстовій формі", "Порівнює лише цілі числа", "Пропускає перевірки консенсусу"], correctOption: 0, explanation: "strict_eq() використовується, коли всі валідатори повинні отримати абсолютно ідентичний результат." },
+          { id: "ukraine-L07-q3", prompt: "Коли використовується prompt_non_comparative()?", options: ["Коли валідатори порівнюють результати один одного, а не оцінюють самостійно", "Коли працюєте лише з числовими даними", "Для бітового зіставлення двох результатів", "Для відключення консенсусу"], correctOption: 0, explanation: "prompt_non_comparative() використовується, коли кожен валідатор незалежно оцінює, чи виконано критерій." },
+          { id: "ukraine-L07-q4", prompt: "Яка проблема виникає з AI-виводами без принципу еквівалентності?", options: ["Транзакції стають швидшими", "Різні валідатори можуть отримати трохи відмінні результати, блокуючи консенсус", "Збільшується вартість газу", "Токени губляться"], correctOption: 1, explanation: "Без принципу еквівалентності різні AI-відповіді у різних валідаторів можуть заважати досягненню консенсусу." },
+        ],
       },
       {
         slug: "genvm", title: "GenVM: середовище виконання", durationMinutes: 5,
@@ -2270,6 +2827,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenVM — це середовище виконання Intelligent Contracts. Побудоване на WebAssembly, нативно запускає Python та безпосередньо взаємодіє з LLM і веб-даними — те, чого EVM не вміє." },
           { type: "list", items: ["На основі WebAssembly, швидке виконання", "Нативно запускає Python (не Solidity)", "Вбудована підтримка викликів LLM та доступу до інтернету"] },
           { type: "callout", title: "Принципова відмінність", text: "EVM призначена для детермінованого коду. GenVM обробляє недетермінізм — фундаментальна архітектурна інновація." },
+        ],
+        questions: [
+          { id: "ukraine-L08-q1", prompt: "На якій технології побудований GenVM?", options: ["Java Virtual Machine (JVM)", "WebAssembly (WASM)", "Docker-контейнери", "Компілятор LLVM"], correctOption: 1, explanation: "GenVM побудований на WebAssembly для забезпечення швидкого та портативного виконання." },
+          { id: "ukraine-L08-q2", prompt: "Яку мову програмування GenVM виконує нативно?", options: ["Solidity", "Rust", "JavaScript", "Python"], correctOption: 3, explanation: "GenVM нативно запускає Python, роблячи розробку Intelligent Contracts більш інтуїтивною." },
+          { id: "ukraine-L08-q3", prompt: "Яка ключова архітектурна відмінність між EVM та GenVM?", options: ["EVM використовує Python, GenVM — Solidity", "EVM призначена для детермінованого коду; GenVM може обробляти недетерміновані AI-та веб-операції", "EVM є новішою технологією", "GenVM працює лише в тестових середовищах"], correctOption: 1, explanation: "EVM допускає лише детерміновані операції; GenVM може обробляти недетерміновані — виклики AI та доступ до веб-даних." },
+          { id: "ukraine-L08-q4", prompt: "Яка вбудована можливість є у GenVM, але відсутня в EVM?", options: ["Нижчі комісії за транзакції", "Сумісність зі старими Solidity-контрактами", "Вбудована підтримка LLM-викликів та доступу до інтернету", "Швидше підтвердження блоків"], correctOption: 2, explanation: "GenVM вбудовано підтримує виклики LLM та доступ до інтернету — функції, яких немає в EVM." },
         ],
       },
       {
@@ -2281,6 +2844,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Початковий APY 15%, поступово знижується до 4%", "75% нагород — всім стейкерам", "10% — валідаторам, 15% — розробникам"] },
           { type: "callout", title: "Механізм оскарження", text: "Не згодні з результатом? Застейкайте GEN для оскарження, і ширший набір валідаторів переоцінить його." },
         ],
+        questions: [
+          { id: "ukraine-L09-q1", prompt: "Які три основні призначення токена GEN?", options: ["Майнінг, зберігання та реклама", "Стейкінг, газ та управління", "Лише перекази та газ", "Лише управлінське голосування"], correctOption: 1, explanation: "Токен GEN використовується для стейкінгу, оплати газу та участі в управлінні мережею." },
+          { id: "ukraine-L09-q2", prompt: "Який довгостроковий цільовий APY для стейкінгу GEN?", options: ["4%", "15%", "50%", "100%"], correctOption: 0, explanation: "APY починається з 15% і поступово знижується до 4% для довгострокової стійкості." },
+          { id: "ukraine-L09-q3", prompt: "Яка частка нагород за стейкінг розподіляється між валідаторами?", options: ["75%", "15%", "10%", "5%"], correctOption: 2, explanation: "10% нагород отримують валідатори, 75% — всі стейкери, 15% — розробники." },
+          { id: "ukraine-L09-q4", prompt: "Як оскаржити результат консенсусу в GenLayer?", options: ["Повідомити в GitHub", "Застейкати GEN для оскарження; ширший набір валідаторів переоцінить результат", "Надіслати листа валідаторам", "Перевипустити контракт"], correctOption: 1, explanation: "Механізм оскарження вимагає стейкінгу GEN; після цього ширший набір валідаторів переглядає результат." },
+        ],
       },
       {
         slug: "genlayer-studio", title: "GenLayer Studio", durationMinutes: 5,
@@ -2290,6 +2859,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenLayer Studio — браузерний пісочниця без встановлення для тестування Intelligent Contracts. Симулює повну мережу валідаторів із логами в реальному часі та зворотним зв'язком щодо помилок." },
           { type: "list", items: ["Прямо в браузері, без встановлення", "Симуляція консенсусу з кількома валідаторами", "Детальні логи та підтримка відладки"] },
           { type: "callout", title: "Почніть зараз", text: "Відвідайте studio.genlayer.com або виконайте genlayer init, щоб запустити Studio локально." },
+        ],
+        questions: [
+          { id: "ukraine-L10-q1", prompt: "Які два способи отримати доступ до GenLayer Studio?", options: ["Через GitHub та npm", "studio.genlayer.com (браузер) або genlayer init (локально)", "Лише завантаживши додаток", "Лише через розширення VSCode"], correctOption: 1, explanation: "Studio доступна через браузер (studio.genlayer.com) або локально через genlayer init." },
+          { id: "ukraine-L10-q2", prompt: "Що GenLayer Studio дозволяє робити без встановлення?", options: ["Розгортати контракти в мейннеті", "Тестувати Intelligent Contracts у браузері", "Карбувати нові токени GEN", "Переглядати статистику стейкінгу в реальному часі"], correctOption: 1, explanation: "Studio — це браузерна пісочниця без встановлення для тестування Intelligent Contracts." },
+          { id: "ukraine-L10-q3", prompt: "Які функції розробки пропонує GenLayer Studio?", options: ["Лише статичний аналіз коду", "Симуляція консенсусу кількох валідаторів, логи в реальному часі та відлагодження", "Лише відстеження балансу токенів", "Лише перегляд документації"], correctOption: 1, explanation: "Studio пропонує повну симуляцію мережі валідаторів, логи в реальному часі та зворотний зв'язок щодо помилок." },
+          { id: "ukraine-L10-q4", prompt: "Яка ключова перевага GenLayer Studio?", options: ["Дає безкоштовні токени GEN у тестнеті", "Спрощує стейкінг токенів", "Дозволяє тестувати контракти локально без витрат у реальній мережі", "Перегляд проектів інших розробників"], correctOption: 2, explanation: "Studio дозволяє розробникам будувати та тестувати в пісочниці з симуляцією реальної мережі без витрат." },
         ],
       },
       {
@@ -2301,6 +2876,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["npm install -g genlayer, потім genlayer init", "GenLayerJS: TypeScript, для фронтенду", "GenLayerPY: Python 3.12+, для бекенду"] },
           { type: "callout", title: "Порада новачку", text: "Спочатку запустіть genlayer init, вивчіть приклади в Studio, потім починайте писати код." },
         ],
+        questions: [
+          { id: "ukraine-L11-q1", prompt: "Яка команда встановлює genlayer CLI?", options: ["pip install genlayer", "cargo install genlayer", "npm install -g genlayer", "brew install genlayer"], correctOption: 2, explanation: "genlayer CLI встановлюється через npm install -g genlayer." },
+          { id: "ukraine-L11-q2", prompt: "Що робить команда genlayer init?", options: ["Створює новий гаманець GEN", "Завантажує та запускає GenLayer Studio локально", "Розгортає контракт у мейннеті", "Ініціалізує новий проект TypeScript"], correctOption: 1, explanation: "genlayer init завантажує компоненти та запускає GenLayer Studio локально." },
+          { id: "ukraine-L11-q3", prompt: "Який SDK використовується для фронтенду DApp?", options: ["GenLayerPY", "GenLayerJS", "GenLayerRust", "GenLayerSolidity"], correctOption: 1, explanation: "GenLayerJS — TypeScript SDK, призначений для фронтенд-розробки DApp." },
+          { id: "ukraine-L11-q4", prompt: "Для якого сценарію підходить SDK GenLayerPY?", options: ["Браузерні DApp", "iOS-розробка", "Python 3.12+ бекенд-інтеграція", "Написання WebAssembly-модулів"], correctOption: 2, explanation: "GenLayerPY призначений для бекенд-розробки з Python 3.12 або новіших версій." },
+          { id: "ukraine-L11-q5", prompt: "Яка рекомендована послідовність для початківців?", options: ["Спочатку розгорніть у мейннеті, потім тестуйте", "Спочатку запустіть genlayer init, вивчіть приклади, потім починайте писати код", "Відразу вивчайте Solidity та переходьте", "Лише читайте документацію, не пишіть код"], correctOption: 1, explanation: "Рекомендована послідовність: запустіть genlayer init, вивчіть приклади в Studio, потім пишіть власні контракти." },
+        ],
       },
       {
         slug: "first-contract", title: "Ваш перший Intelligent Contract", durationMinutes: 5,
@@ -2310,6 +2892,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "Кожен Intelligent Contract — це Python-клас, успадкований від gl.Contract. Змінні стану оголошуються в тілі класу, методи позначаються декораторами для прав читання або запису." },
           { type: "code", language: "python", code: "import gl\n\nclass Counter(gl.Contract):\n    count: gl.u256\n\n    def __init__(self):\n        self.count = 0\n\n    @gl.public.view\n    def get(self) -> int:\n        return self.count\n\n    @gl.public.write\n    def increment(self):\n        self.count += 1" },
           { type: "callout", title: "Запам'ятайте", text: "Усі постійні поля мають бути оголошені в тілі класу з анотацією типу. Їх не можна створювати динамічно під час виконання." },
+        ],
+        questions: [
+          { id: "ukraine-L12-q1", prompt: "Від якого класу повинен успадковуватися Intelligent Contract?", options: ["gl.SmartContract", "gl.Contract", "gl.BaseApp", "gl.Chain"], correctOption: 1, explanation: "Кожен Intelligent Contract повинен успадковуватися від gl.Contract." },
+          { id: "ukraine-L12-q2", prompt: "Де оголошуються змінні стану в Intelligent Contract?", options: ["Всередині методу __init__", "Окремо в кожному методі", "В тілі класу з анотацією типу", "В окремому конфігураційному файлі"], correctOption: 2, explanation: "Змінні стану оголошуються в тілі класу з анотацією типу; їх не можна динамічно створювати в __init__." },
+          { id: "ukraine-L12-q3", prompt: "Який декоратор позначає метод тільки для читання?", options: ["@gl.public.write", "@gl.public.view", "@gl.readonly", "@gl.get"], correctOption: 1, explanation: "@gl.public.view позначає методи лише для читання, що не змінюють стан." },
+          { id: "ukraine-L12-q4", prompt: "Який декоратор дозволяє методу змінювати стан контракту?", options: ["@gl.public.view", "@gl.public.write", "@gl.state.modify", "@gl.mutable"], correctOption: 1, explanation: "@gl.public.write позначає методи, що змінюють стан контракту." },
+          { id: "ukraine-L12-q5", prompt: "Чому не слід динамічно створювати поля стану?", options: ["Це сповільнює код", "Конфліктує з іншими контрактами", "Динамічно створені поля не зберігаються в постійному сховищі", "Збільшує вартість газу"], correctOption: 2, explanation: "Лише поля, оголошені в тілі класу, зберігаються постійно; динамічно створені поля губляться." },
         ],
       },
       {
@@ -2321,6 +2910,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["dict → TreeMap[K, V]", "list → DynArray[T]", "int → u256, i32 та інші фіксовані типи"] },
           { type: "callout", title: "Поширена помилка", text: "Поля, створені динамічно під час виконання, не зберігаються. Оголошуйте всі постійні поля в тілі класу заздалегідь." },
         ],
+        questions: [
+          { id: "ukraine-L13-q1", prompt: "Який тип GenLayer замінює звичайний Python dict для постійного сховища?", options: ["HashMap[K, V]", "TreeMap[K, V]", "OrderedDict[K, V]", "PersistDict[K, V]"], correctOption: 1, explanation: "У GenLayer для постійного зберігання пар ключ-значення замість Python dict використовується TreeMap[K, V]." },
+          { id: "ukraine-L13-q2", prompt: "Який тип GenLayer замінює Python list для постійного сховища?", options: ["ArrayList[T]", "PersistList[T]", "DynArray[T]", "VecList[T]"], correctOption: 2, explanation: "DynArray[T] — тип GenLayer для постійних впорядкованих колекцій замість Python list." },
+          { id: "ukraine-L13-q3", prompt: "Як краще зберігати цілі числа в Intelligent Contract?", options: ["Стандартний Python int", "Зберігати як рядок", "Типи фіксованого розміру: gl.u256, gl.i32 тощо", "Використати float"], correctOption: 2, explanation: "Типи фіксованого розміру, як-от gl.u256 та gl.i32, узгоджуються з гарантіями сховища GenLayer." },
+          { id: "ukraine-L13-q4", prompt: "Яка проблема виникає при прямому використанні Python dict як змінної стану?", options: ["Словник працює нормально", "Значення не зберігаються між транзакціями", "Контракт не компілюється", "Збільшується вартість газу"], correctOption: 1, explanation: "Звичайні Python dict не працюють із постійним сховищем GenLayer; значення не зберігаються між транзакціями." },
+          { id: "ukraine-L13-q5", prompt: "Яка поширена помилка пов'язана з динамічно створеними полями?", options: ["Оголошення їх в тілі класу на початку", "Створення self.new_field = value в __init__", "Використання анотацій типів", "Вибір типів фіксованого розміру"], correctOption: 1, explanation: "Динамічно створені поля не зберігаються постійно; всі постійні поля мають бути оголошені в тілі класу з анотацією типу." },
+        ],
       },
       {
         slug: "read-write-methods", title: "Методи читання та запису", durationMinutes: 5,
@@ -2330,6 +2926,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "@gl.public.view позначає методи лише для читання, що не змінюють стан. @gl.public.write змінює стан. @gl.public.write.payable приймає переводи GEN." },
           { type: "list", items: ["@gl.public.view: лише читання, менше газу", "@gl.public.write: змінює on-chain стан", "@gl.public.write.payable: приймає токени GEN"] },
           { type: "callout", title: "Хороша практика", text: "Спочатку тестуйте логіку з методами лише для читання. Додавайте логіку запису лише після підтвердження." },
+        ],
+        questions: [
+          { id: "ukraine-L14-q1", prompt: "У чому принципова різниця між @gl.public.view та @gl.public.write?", options: ["view швидший, write повільніший", "view не змінює стан контракту; write змінює", "write має нижчу вартість газу", "Між ними немає різниці"], correctOption: 1, explanation: "@gl.public.view позначає методи лише для читання; @gl.public.write — методи, що змінюють стан." },
+          { id: "ukraine-L14-q2", prompt: "Коли використовується @gl.public.write.payable?", options: ["Коли метод лише читає дані", "Коли метод повинен приймати переводи токенів GEN", "Коли метод має бути приватним", "Для зниження вартості газу"], correctOption: 1, explanation: "@gl.public.write.payable використовується для методів, які приймають токени GEN під час транзакції." },
+          { id: "ukraine-L14-q3", prompt: "Чому методи лише для читання мають нижчу вартість газу?", options: ["Вони містять менше рядків коду", "Їм не потрібно писати нові дані в блокчейн", "Вони використовують менші типи даних", "Їх запускають лише в тестовому середовищі"], correctOption: 1, explanation: "Методи лише для читання не пишуть у блокчейн, тому витрати на газ менші." },
+          { id: "ukraine-L14-q4", prompt: "Навіщо спочатку тестувати методи через @gl.public.view?", options: ["Методи запису будуть видалені пізніше", "Це дозволяє перевірити логіку без постійних змін стану", "Методи view працюють лише в тестовому середовищі", "Методи write вимагають окремого середовища"], correctOption: 1, explanation: "Тестування через view-методи дозволяє перевірити логіку без внесення незворотних змін у стан." },
+          { id: "ukraine-L14-q5", prompt: "Який декоратор не існує?", options: ["@gl.public.view", "@gl.public.write", "@gl.public.write.payable", "@gl.public.delete"], correctOption: 3, explanation: "@gl.public.delete — неіснуючий декоратор GenLayer; доступні лише view, write та write.payable." },
         ],
       },
       {
@@ -2341,6 +2944,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Завжди запитуйте відповідь у JSON (response_format='json')", "Уникайте часових міток та динамічних даних", "Порівнюйте висновки AI, а не сирі дані"] },
           { type: "callout", title: "Головна причина збоїв консенсусу", text: "Запит нестабільних даних у LLM призводить до різних результатів у валідаторів. Завжди витягуйте стабільні поля." },
         ],
+        questions: [
+          { id: "ukraine-L15-q1", prompt: "Який метод використовується для виклику LLM в Intelligent Contract?", options: ["gl.ai.call()", "gl.llm.query()", "gl.nondet.exec_prompt()", "gl.contract.ask()"], correctOption: 2, explanation: "gl.nondet.exec_prompt() — стандартний спосіб виклику LLM в Intelligent Contracts." },
+          { id: "ukraine-L15-q2", prompt: "Чому при викликах LLM рекомендується запитувати відповідь у JSON?", options: ["JSON парситься швидше за звичайний текст", "LLM не може виводити звичайний текст", "Структуровані виводи легше парсити і дають більш узгоджені результати у валідаторів", "JSON запобігає всім суперечкам"], correctOption: 2, explanation: "Відповіді у форматі JSON дають узгоджені структуровані виводи, що полегшує парсинг та порівняння між валідаторами." },
+          { id: "ukraine-L15-q3", prompt: "Яка проблема виникає при використанні часових міток чи динамічних даних у LLM-промпті?", options: ["Просто витрачає більше газу", "Різні валідатори отримують різні відповіді; консенсус може не бути досягнутий", "LLM не може обробити часові мітки", "Уповільнює транзакцію"], correctOption: 1, explanation: "Змінні дані, як-от часові мітки, призводять до різних LLM-відповідей у різних валідаторів, порушуючи консенсус." },
+          { id: "ukraine-L15-q4", prompt: "Що є кращим підходом при запиті даних від LLM?", options: ["Зберігати сирі та змінні дані напряму", "Просити AI інтерпретувати сирі дані та порівнювати результати інтерпретації", "Витягувати стабільні висновки AI та порівнювати їх", "Зберігати сирі тексти з кількох LLM-викликів"], correctOption: 2, explanation: "Для узгодженості між валідаторами слід витягувати стабільні висновки AI, а не порівнювати сирі дані." },
+          { id: "ukraine-L15-q5", prompt: "Яка найпоширеніша причина збоїв консенсусу?", options: ["Занадто великий розмір контракту", "Запит нестабільних даних у LLM, що призводить до різних відповідей у валідаторів", "Використання надто великої кількості валідаторів", "Синтаксичні помилки Python"], correctOption: 1, explanation: "Запит нестабільних або змінних даних у LLM призводить до різних відповідей у різних валідаторів, що порушує консенсус." },
+        ],
       },
       {
         slug: "web-data", title: "Доступ до веб-даних", durationMinutes: 5,
@@ -2351,6 +2961,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["gl.nondet.web.get(url): сирий текстовий контент", "gl.nondet.web.render(url): JS-рендеровані сторінки", "Витягуйте стабільні поля, уникайте динамічного контенту"] },
           { type: "callout", title: "Порада щодо надійності", text: "Зовнішні сайти можуть бути недоступні або змінити структуру. Отримуйте дані лише з надійних джерел і валідуйте перед збереженням." },
         ],
+        questions: [
+          { id: "ukraine-L16-q1", prompt: "Який метод GenLayer використовується для отримання сирого текстового контенту?", options: ["gl.web.fetch(url)", "gl.nondet.web.get(url)", "gl.http.request(url)", "gl.oracle.get(url)"], correctOption: 1, explanation: "gl.nondet.web.get(url) використовується для отримання сирого текстового контенту з URL." },
+          { id: "ukraine-L16-q2", prompt: "Яка різниця між gl.nondet.web.render(url) і gl.nondet.web.get(url)?", options: ["render швидший", "get отримує лише JSON", "render обробляє JS-рендеровані динамічні сторінки; get отримує сирий текст", "Між ними немає різниці"], correctOption: 2, explanation: "web.render() обробляє динамічні сторінки з JavaScript; web.get() отримує статичний сирий текстовий контент." },
+          { id: "ukraine-L16-q3", prompt: "Чому слід уникати динамічного контенту при отриманні веб-даних?", options: ["Динамічний контент дорожчий", "Різні валідатори можуть отримати різні знімки, що призводить до неузгоджених результатів", "GenVM не може парсити динамічний контент", "Динамічний контент зашифрований"], correctOption: 1, explanation: "Різні валідатори можуть зробити знімок тієї самої динамічної сторінки у різний момент часу, що призводить до неузгоджених результатів і проблем з консенсусом." },
+          { id: "ukraine-L16-q4", prompt: "Що означає 'витягувати стабільні поля' при отриманні веб-даних?", options: ["Зберігати лише зашифровані дані", "Вибирати поля, що не змінюються з часом і будуть однаковими у всіх валідаторів", "Отримувати лише нові записи в базі даних", "Отримувати виключно числові дані"], correctOption: 1, explanation: "Стабільні поля не змінюються з часом, тому всі валідатори отримають однакові значення для досягнення консенсусу." },
+          { id: "ukraine-L16-q5", prompt: "Яка найкраща практика при отриманні даних з зовнішніх веб-джерел?", options: ["Отримувати дані з усіх динамічних сторінок і зберігати", "Ігнорувати можливі збої", "Використовувати лише надійні джерела та валідувати перед збереженням", "Перезавантажувати дані при кожній транзакції"], correctOption: 2, explanation: "Для надійності слід отримувати дані лише з надійних джерел і валідувати їх перед збереженням." },
+        ],
       },
       {
         slug: "deploy-dapp", title: "Збірка та розгортання DApp", durationMinutes: 5,
@@ -2360,6 +2977,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "Розробка DApp у GenLayer відбувається в 3 етапи: локальний прототип у Studio, ретельне тестування з тестовим фреймворком, потім розгортання в Testnet (Asimov/Bradbury) та фронтенд на GenLayerJS." },
           { type: "list", items: ["Етап 1: Локальний прототип у GenLayer Studio", "Етап 2: Тестування з genlayer-test", "Етап 3: Фронтенд GenLayerJS + розгортання в Testnet"] },
           { type: "callout", title: "Чекліст перед запуском", text: "Перед розгортанням у Testnet завершіть тести в прямому режимі та режимі Studio і усуньте всі збої консенсусу." },
+        ],
+        questions: [
+          { id: "ukraine-L17-q1", prompt: "Які три етапи розробки DApp у GenLayer?", options: ["Проектування → Кодування → Розгортання", "Локальний прототип у Studio → тестування → розгортання в Testnet + фронтенд", "Testnet → мейннет → продакшн", "Просто напишіть код і одразу розгортайте"], correctOption: 1, explanation: "Три етапи: локальний прототип у Studio, ретельне тестування з genlayer-test, потім розгортання в Testnet та GenLayerJS-фронтенд." },
+          { id: "ukraine-L17-q2", prompt: "Як називаються тестові мережі GenLayer?", options: ["Turing та Lovelace", "Alpha та Beta", "Asimov та Bradbury", "Devnet та Stagenet"], correctOption: 2, explanation: "Тестові мережі GenLayer називаються Asimov та Bradbury." },
+          { id: "ukraine-L17-q3", prompt: "Який SDK використовується для підключення фронтенду до Intelligent Contracts?", options: ["GenLayerPY", "genlayer CLI", "GenLayerJS", "web3.js"], correctOption: 2, explanation: "GenLayerJS — TypeScript SDK для підключення фронтенду DApp до Intelligent Contracts." },
+          { id: "ukraine-L17-q4", prompt: "Що потрібно зробити перед розгортанням у Testnet?", options: ["Розгорнути одразу в мейннеті", "Завершити тести в прямому режимі та режимі Studio і усунути збої консенсусу", "Лише перевірити TypeScript", "Чекати, доки хтось інший протестує"], correctOption: 1, explanation: "Перед розгортанням у Testnet потрібно завершити тести в обох режимах і усунути всі збої консенсусу." },
+          { id: "ukraine-L17-q5", prompt: "Для чого призначений фреймворк genlayer-test?", options: ["Видалення контрактів перед мейннетом", "Виконання розгортання в Testnet", "Написання автоматизованих тестів для перевірки функціональності контракту та поведінки консенсусу", "Лише перевірка TypeScript-типів"], correctOption: 2, explanation: "genlayer-test дозволяє писати автоматизовані тести для перевірки функціональності контракту та поведінки консенсусу." },
         ],
       },
     ],
@@ -2407,6 +3031,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Vị trí: lớp phân xử cho nền kinh tế tác nhân", "Xác minh on-chain đáng tin cậy cho các câu hỏi chủ quan", "Các validator AI đạt được sự đồng thuận"] },
           { type: "callout", title: "Nói đơn giản", text: "Khi câu trả lời không chỉ là có hay không mà cần phán đoán — đó là lúc GenLayer phát huy tác dụng." },
         ],
+        questions: [
+          { id: "vietnam-L01-q1", prompt: "Định nghĩa nào mô tả chính xác nhất GenLayer?", options: ["Hệ thống lưu trữ tệp phi tập trung", "Lớp phân xử AI-native cho nền kinh tế tác nhân", "Giải pháp Layer 2 cho Ethereum", "Mạng thanh toán tập trung"], correctOption: 1, explanation: "GenLayer là lớp phân xử AI-native được thiết kế để xử lý các quyết định đòi hỏi phán đoán trong nền kinh tế tác nhân." },
+          { id: "vietnam-L01-q2", prompt: "Điểm khác biệt cốt lõi giữa Bitcoin, Ethereum và GenLayer là gì?", options: ["Cả ba đều làm cùng một việc", "Bitcoin xử lý giao dịch, Ethereum thực thi code, GenLayer hiểu ý nghĩa quyết định", "GenLayer chỉ dùng cho thanh toán", "Ethereum và GenLayer giống hệt nhau"], correctOption: 1, explanation: "Bitcoin chuyên về giao dịch, Ethereum về thực thi code, còn GenLayer chuyên về việc hiểu ý nghĩa của các quyết định." },
+          { id: "vietnam-L01-q3", prompt: "Khi nào cần dùng GenLayer?", options: ["Chỉ để chuyển số", "Chỉ khi chạy code cố định", "Khi câu trả lời cần phán đoán và suy luận AI, không chỉ là có hay không", "Chỉ để lưu trữ tệp"], correctOption: 2, explanation: "GenLayer cần thiết khi câu trả lời không đơn giản là có/không mà đòi hỏi phán đoán và suy luận AI." },
+        ],
       },
       {
         slug: "problem-genlayer-solves", title: "GenLayer giải quyết vấn đề gì?", durationMinutes: 5,
@@ -2416,6 +3045,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "Bitcoin và Ethereum giỏi các tác vụ xác định, nhưng không thể xử lý các vấn đề cần phán đoán hay suy luận AI. Đánh giá nội dung, giải quyết tranh chấp, xác minh cột mốc — đó là những gì GenLayer làm được." },
           { type: "list", items: ["Hợp đồng truyền thống: chỉ logic cố định", "GenLayer: xử lý kết quả chủ quan và mơ hồ", "Lấp đầy khoảng trống quan trọng trong công nghệ blockchain"] },
           { type: "callout", title: "Điểm khác biệt then chốt", text: "Ethereum hỏi 'code có chạy không?' GenLayer hỏi 'kết quả có đúng không?'" },
+        ],
+        questions: [
+          { id: "vietnam-L02-q1", prompt: "Điều gì mà các blockchain truyền thống như Bitcoin và Ethereum không thể làm?", options: ["Ghi lại giao dịch tài chính", "Xử lý các quyết định cần phán đoán và suy luận AI", "Thực thi code trong smart contract", "Xử lý dữ liệu trên mạng P2P"], correctOption: 1, explanation: "Bitcoin và Ethereum là xác định — chúng không thể xử lý các quyết định chủ quan đòi hỏi suy luận AI." },
+          { id: "vietnam-L02-q2", prompt: "Sự khác biệt chính giữa Ethereum và GenLayer về kết quả hợp đồng là gì?", options: ["Ethereum nhanh hơn GenLayer", "Ethereum hỏi liệu code có chạy không; GenLayer hỏi liệu kết quả có đúng không", "GenLayer dùng Solidity, Ethereum dùng Python", "Không có sự khác biệt"], correctOption: 1, explanation: "Ethereum xác minh code chạy đúng; GenLayer tiến xa hơn bằng cách hỏi liệu kết quả có đúng về bản chất không." },
+          { id: "vietnam-L02-q3", prompt: "Tình huống nào phù hợp nhất với GenLayer?", options: ["Chuyển token đơn giản giữa ví", "Tự động xác minh cột mốc freelance theo tiêu chí chủ quan", "Lưu trữ tệp trên blockchain", "Đào Bitcoin"], correctOption: 1, explanation: "Các tình huống cần đánh giá chủ quan — như liệu công việc có được thực hiện tốt không — là trường hợp lý tưởng cho GenLayer." },
         ],
       },
       {
@@ -2427,6 +3061,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Truy cập dữ liệu internet trực tiếp không cần Oracle", "Gọi LLM (như GPT-4) để thực hiện suy luận AI", "Viết bằng Python — quen thuộc và mạnh mẽ"] },
           { type: "callout", title: "Ví dụ so sánh", text: "Hợp đồng truyền thống là máy tính. Intelligent Contract là trợ lý có khả năng suy luận." },
         ],
+        questions: [
+          { id: "vietnam-L03-q1", prompt: "Intelligent Contracts của GenLayer có thể làm gì mà hợp đồng thông minh truyền thống không thể?", options: ["Chỉ thực thi logic cố định đã định nghĩa trước", "Truy cập dữ liệu web thời gian thực và gọi các mô hình AI (LLM)", "Chỉ chạy trên Ethereum", "Chỉ xử lý số nguyên"], correctOption: 1, explanation: "Intelligent Contracts có thể truy cập internet thời gian thực và gọi LLM — điều hợp đồng truyền thống không làm được." },
+          { id: "vietnam-L03-q2", prompt: "Intelligent Contracts của GenLayer được viết bằng ngôn ngữ lập trình nào?", options: ["Solidity", "Rust", "JavaScript", "Python"], correctOption: 3, explanation: "Intelligent Contracts được viết bằng Python — ngôn ngữ trực quan và mạnh mẽ hơn." },
+          { id: "vietnam-L03-q3", prompt: "Ví dụ nào so sánh tốt nhất hợp đồng thông minh truyền thống với Intelligent Contract?", options: ["Búa và tua vít", "Máy tính và trợ lý có khả năng suy luận", "Xe hơi và xe đạp", "Máy in và máy quét"], correctOption: 1, explanation: "Máy tính đại diện cho logic cố định của hợp đồng truyền thống; trợ lý biết suy luận và thích nghi đại diện cho Intelligent Contracts." },
+        ],
       },
       {
         slug: "blockchain-stack", title: "Vị trí của GenLayer trong kiến trúc blockchain", durationMinutes: 5,
@@ -2436,6 +3075,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenLayer là blockchain Layer 1 sẽ tích hợp với Ethereum qua các rollup như ZKSync, đồng thời tự quản lý cơ chế đồng thuận AI-native. Nó không cạnh tranh với Ethereum mà là một lớp mới chuyên về phân xử AI." },
           { type: "list", items: ["Bitcoin: đồng thuận về thứ tự giao dịch", "Ethereum: đồng thuận về thực thi code", "GenLayer: đồng thuận về ý nghĩa quyết định"] },
           { type: "callout", title: "Vị thế", text: "GenLayer bổ sung cho Ethereum, không cạnh tranh với nó." },
+        ],
+        questions: [
+          { id: "vietnam-L04-q1", prompt: "GenLayer thuộc lớp nào trong kiến trúc blockchain?", options: ["Layer 0", "Layer 2", "Layer 1", "Layer 3"], correctOption: 2, explanation: "GenLayer là blockchain Layer 1 với cơ chế đồng thuận AI-native riêng." },
+          { id: "vietnam-L04-q2", prompt: "Sự khác biệt về trọng tâm giữa Ethereum và GenLayer là gì?", options: ["Ethereum tập trung vào giao dịch tài chính, GenLayer vào lưu trữ", "Ethereum đạt đồng thuận về thực thi code; GenLayer về ý nghĩa quyết định", "Ethereum là Layer 2, GenLayer là Layer 0", "Cả hai làm hoàn toàn giống nhau"], correctOption: 1, explanation: "Ethereum tập trung vào đồng thuận thực thi code; GenLayer đi xa hơn, đạt đồng thuận về ý nghĩa của kết quả." },
+          { id: "vietnam-L04-q3", prompt: "GenLayer liên quan thế nào đến Ethereum?", options: ["Thay thế hoàn toàn Ethereum", "Bổ sung cho Ethereum qua tích hợp rollup như ZKSync", "Cạnh tranh trực tiếp cùng thị trường", "Không có quan hệ gì với Ethereum"], correctOption: 1, explanation: "GenLayer bổ sung cho Ethereum qua tích hợp rollup, thêm khả năng phân xử AI-native mà Ethereum không có." },
         ],
       },
       {
@@ -2447,6 +3091,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["4 giai đoạn: Đề xuất → Cam kết → Tiết lộ → Chấp nhận", "Bất kỳ ai cũng có thể kháng cáo kết quả", "Kết quả cuối cùng không thể đảo ngược"] },
           { type: "callout", title: "Ý tưởng cốt lõi", text: "Phán đoán tập thể độc lập đáng tin cậy hơn một nút đơn lẻ." },
         ],
+        questions: [
+          { id: "vietnam-L05-q1", prompt: "Định lý nào là nền tảng toán học của Optimistic Democracy?", options: ["Định lý Pythagoras", "Định lý Bồi thẩm đoàn Condorcet", "Luật số lớn Bernoulli", "Nghịch lý Arrow"], correctOption: 1, explanation: "Định lý Bồi thẩm đoàn Condorcet chứng minh rằng một nhóm phán xét độc lập có xác suất đạt kết quả đúng cao hơn." },
+          { id: "vietnam-L05-q2", prompt: "Bốn giai đoạn của đồng thuận Optimistic Democracy là gì?", options: ["Tạo → Xác minh → Xuất bản → Thanh toán", "Đề xuất → Cam kết → Tiết lộ → Chấp nhận", "Gửi → Xử lý → Xác nhận → Hoàn thành", "Khởi tạo → Bỏ phiếu → Đếm → Phân phối"], correctOption: 1, explanation: "Bốn giai đoạn là: Đề xuất, Cam kết, Tiết lộ và Chấp nhận." },
+          { id: "vietnam-L05-q3", prompt: "Điều gì xảy ra với kết quả cuối cùng trong quá trình Optimistic Democracy?", options: ["Có thể thay đổi bằng đa số phiếu bất cứ lúc nào", "Không thể đảo ngược sau giai đoạn Chấp nhận", "Nhà phát triển hợp đồng có thể hủy bỏ", "Hết hạn sau 24 giờ"], correctOption: 1, explanation: "Kết quả cuối cùng của Optimistic Democracy không thể đảo ngược sau khi đi qua tất cả các giai đoạn." },
+        ],
       },
       {
         slug: "validators-staking", title: "Validator và Staking", durationMinutes: 5,
@@ -2456,6 +3105,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "Validator stake GEN, vận hành node và tham gia Optimistic Democracy để kiếm phần thưởng. Không có 42.000 GEN? Bạn có thể tham gia với tư cách delegator." },
           { type: "list", items: ["Trở thành validator: stake 42.000 GEN", "Delegator: tối thiểu 42 GEN để tham gia", "Validator nhận 10% phí vận hành + phần thưởng staking"] },
           { type: "callout", title: "Hai cách tham gia", text: "Stake lớn: trở thành validator. Stake nhỏ: ủy quyền. Cả hai đều sinh lời." },
+        ],
+        questions: [
+          { id: "vietnam-L06-q1", prompt: "Cần stake bao nhiêu GEN để trở thành validator GenLayer?", options: ["4.200 GEN", "420 GEN", "42.000 GEN", "420.000 GEN"], correctOption: 2, explanation: "Cần stake 42.000 GEN để tham gia đầy đủ với tư cách validator." },
+          { id: "vietnam-L06-q2", prompt: "Lượng GEN tối thiểu để tham gia với tư cách delegator là bao nhiêu?", options: ["42 GEN", "420 GEN", "4.200 GEN", "42.000 GEN"], correctOption: 0, explanation: "Chỉ cần 42 GEN để tham gia với tư cách delegator và nhận phần thưởng tỉ lệ." },
+          { id: "vietnam-L06-q3", prompt: "Tỉ lệ phí vận hành validator nhận từ phần thưởng của delegator là bao nhiêu?", options: ["5%", "10%", "20%", "50%"], correctOption: 1, explanation: "Validator nhận 10% phí vận hành từ phần thưởng của các delegator, cộng với phần thưởng staking của bản thân." },
+          { id: "vietnam-L06-q4", prompt: "Delegator trong GenLayer làm gì?", options: ["Chạy node validator đầy đủ với 42.000 GEN", "Ủy quyền stake cho validator và nhận phần thưởng tỉ lệ", "Giữ token không stake", "Bỏ phiếu quản trị mà không stake"], correctOption: 1, explanation: "Delegator giao GEN cho validator và nhận phần thưởng tỉ lệ mà không cần chạy node riêng." },
         ],
       },
       {
@@ -2467,6 +3122,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["strict_eq(): tất cả validator phải có kết quả giống hệt nhau", "prompt_non_comparative(): validator đánh giá xem tiêu chí có được đáp ứng không", "Nhà phát triển định nghĩa thế nào là 'tương đương'"] },
           { type: "callout", title: "Điểm mấu chốt", text: "AI có thể trả lời hơi khác nhau mỗi lần — Nguyên tắc Tương đương làm cho điều này an toàn trên blockchain." },
         ],
+        questions: [
+          { id: "vietnam-L07-q1", prompt: "Mục đích chính của Nguyên tắc Tương đương là gì?", options: ["Đảm bảo tất cả validator nhận phần thưởng bằng nhau", "Cho phép xác minh an toàn các đầu ra AI không xác định trên các validator", "Yêu cầu tất cả validator tạo ra kết quả giống hệt nhau", "Giảm phí gas"], correctOption: 1, explanation: "Nguyên tắc Tương đương cho phép xác minh an toàn các đầu ra không xác định của AI trên tất cả validator." },
+          { id: "vietnam-L07-q2", prompt: "strict_eq() làm gì?", options: ["Yêu cầu tất cả validator có kết quả bit-identical", "Đánh giá liệu validator có đồng ý theo dạng free-text không", "Chỉ so sánh số nguyên", "Bỏ qua kiểm tra đồng thuận"], correctOption: 0, explanation: "strict_eq() được dùng khi tất cả validator phải có kết quả hoàn toàn giống nhau." },
+          { id: "vietnam-L07-q3", prompt: "Khi nào dùng prompt_non_comparative()?", options: ["Khi validator so sánh kết quả của nhau thay vì đánh giá độc lập", "Khi chỉ làm việc với dữ liệu số", "Để khớp bit-for-bit hai kết quả", "Để tắt đồng thuận"], correctOption: 0, explanation: "prompt_non_comparative() được dùng khi mỗi validator độc lập đánh giá liệu tiêu chí có được đáp ứng không." },
+          { id: "vietnam-L07-q4", prompt: "Vấn đề gì xảy ra với đầu ra AI nếu không có Nguyên tắc Tương đương?", options: ["Giao dịch trở nên nhanh hơn", "Các validator khác nhau có thể nhận kết quả hơi khác, chặn đồng thuận", "Chi phí gas tăng", "Token bị mất"], correctOption: 1, explanation: "Không có Nguyên tắc Tương đương, các phản hồi AI khác nhau giữa các validator có thể ngăn đạt được đồng thuận." },
+        ],
       },
       {
         slug: "genvm", title: "GenVM: Môi trường thực thi", durationMinutes: 5,
@@ -2476,6 +3137,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenVM là môi trường thực thi của Intelligent Contracts. Được xây dựng trên WebAssembly, chạy Python theo cách gốc và có thể tương tác trực tiếp với LLM và dữ liệu web — điều EVM không làm được." },
           { type: "list", items: ["Dựa trên WebAssembly, thực thi nhanh", "Chạy Python theo cách gốc (không phải Solidity)", "Hỗ trợ sẵn có cho gọi LLM và truy cập internet"] },
           { type: "callout", title: "Sự khác biệt căn bản", text: "EVM được thiết kế cho code xác định. GenVM xử lý tính không xác định — đây là đổi mới kiến trúc cơ bản." },
+        ],
+        questions: [
+          { id: "vietnam-L08-q1", prompt: "GenVM được xây dựng trên công nghệ nào?", options: ["Java Virtual Machine (JVM)", "WebAssembly (WASM)", "Docker container", "Trình biên dịch LLVM"], correctOption: 1, explanation: "GenVM được xây dựng trên WebAssembly để đảm bảo thực thi nhanh và di động." },
+          { id: "vietnam-L08-q2", prompt: "GenVM chạy ngôn ngữ lập trình nào theo cách gốc?", options: ["Solidity", "Rust", "JavaScript", "Python"], correctOption: 3, explanation: "GenVM chạy Python theo cách gốc, làm cho việc phát triển Intelligent Contract trực quan hơn." },
+          { id: "vietnam-L08-q3", prompt: "Sự khác biệt kiến trúc chính giữa EVM và GenVM là gì?", options: ["EVM dùng Python, GenVM dùng Solidity", "EVM được thiết kế cho code xác định; GenVM có thể xử lý các thao tác không xác định như AI và web", "EVM là công nghệ mới hơn", "GenVM chỉ hoạt động trong môi trường test"], correctOption: 1, explanation: "EVM chỉ cho phép các thao tác xác định; GenVM có thể xử lý các thao tác không xác định — gọi AI và truy cập web." },
+          { id: "vietnam-L08-q4", prompt: "Khả năng tích hợp sẵn có nào GenVM có mà EVM không có?", options: ["Phí giao dịch thấp hơn", "Tương thích với hợp đồng Solidity cũ", "Hỗ trợ tích hợp cho gọi LLM và truy cập internet", "Xác nhận khối nhanh hơn"], correctOption: 2, explanation: "GenVM tích hợp sẵn hỗ trợ gọi LLM và truy cập internet — các tính năng không có trong EVM." },
         ],
       },
       {
@@ -2487,6 +3154,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["APY ban đầu 15%, giảm dần xuống 4%", "75% phần thưởng cho tất cả staker", "10% cho validator, 15% cho nhà phát triển"] },
           { type: "callout", title: "Cơ chế kháng cáo", text: "Không đồng ý với kết quả? Stake GEN để kháng cáo và một nhóm validator lớn hơn sẽ đánh giá lại." },
         ],
+        questions: [
+          { id: "vietnam-L09-q1", prompt: "Ba mục đích sử dụng chính của token GEN là gì?", options: ["Đào coin, lưu trữ và quảng cáo", "Staking, gas và quản trị", "Chỉ chuyển khoản và gas", "Chỉ bỏ phiếu quản trị"], correctOption: 1, explanation: "Token GEN được dùng để staking, thanh toán gas và tham gia quản trị mạng." },
+          { id: "vietnam-L09-q2", prompt: "APY staking GEN mục tiêu dài hạn là bao nhiêu?", options: ["4%", "15%", "50%", "100%"], correctOption: 0, explanation: "APY bắt đầu ở 15% và giảm dần xuống 4% để đảm bảo bền vững dài hạn." },
+          { id: "vietnam-L09-q3", prompt: "Tỉ lệ phần thưởng staking phân bổ cho validator là bao nhiêu?", options: ["75%", "15%", "10%", "5%"], correctOption: 2, explanation: "10% phần thưởng dành cho validator, 75% cho tất cả staker và 15% cho nhà phát triển." },
+          { id: "vietnam-L09-q4", prompt: "Làm thế nào để kháng cáo kết quả đồng thuận trong GenLayer?", options: ["Báo cáo dự án trên GitHub", "Stake GEN để kháng cáo; nhóm validator lớn hơn sẽ đánh giá lại", "Gửi email cho validator", "Triển khai lại hợp đồng"], correctOption: 1, explanation: "Cơ chế kháng cáo yêu cầu stake GEN; sau đó một nhóm validator lớn hơn sẽ xem xét lại kết quả." },
+        ],
       },
       {
         slug: "genlayer-studio", title: "GenLayer Studio", durationMinutes: 5,
@@ -2496,6 +3169,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenLayer Studio là sandbox trên trình duyệt không cần cài đặt để kiểm tra Intelligent Contracts. Mô phỏng toàn bộ mạng validator với log thời gian thực và phản hồi lỗi." },
           { type: "list", items: ["Trực tiếp trên trình duyệt, không cần cài đặt", "Mô phỏng đồng thuận đa validator", "Log chi tiết và hỗ trợ debug"] },
           { type: "callout", title: "Bắt đầu ngay", text: "Truy cập studio.genlayer.com hoặc chạy genlayer init để khởi động Studio trên máy tính của bạn." },
+        ],
+        questions: [
+          { id: "vietnam-L10-q1", prompt: "Hai cách truy cập GenLayer Studio là gì?", options: ["Qua GitHub và npm", "studio.genlayer.com (trình duyệt) hoặc genlayer init (cục bộ)", "Chỉ tải ứng dụng desktop", "Chỉ qua tiện ích mở rộng VSCode"], correctOption: 1, explanation: "Studio có thể truy cập qua trình duyệt tại studio.genlayer.com hoặc chạy cục bộ bằng genlayer init." },
+          { id: "vietnam-L10-q2", prompt: "GenLayer Studio cho phép làm gì mà không cần cài đặt?", options: ["Triển khai hợp đồng lên mainnet", "Kiểm tra Intelligent Contracts trên trình duyệt", "Mint token GEN mới", "Xem thống kê staking thời gian thực"], correctOption: 1, explanation: "Studio là sandbox trên trình duyệt không cần cài đặt, được thiết kế để kiểm tra Intelligent Contracts." },
+          { id: "vietnam-L10-q3", prompt: "GenLayer Studio cung cấp những tính năng phát triển nào?", options: ["Chỉ phân tích code tĩnh", "Mô phỏng đồng thuận đa validator, log thời gian thực và debug", "Chỉ theo dõi số dư token", "Chỉ xem tài liệu"], correctOption: 1, explanation: "Studio cung cấp mô phỏng mạng validator đầy đủ, log thời gian thực và phản hồi lỗi để hỗ trợ quy trình phát triển." },
+          { id: "vietnam-L10-q4", prompt: "Lợi ích chính của GenLayer Studio là gì?", options: ["Cung cấp token GEN miễn phí trên testnet", "Đơn giản hóa việc staking token", "Cho phép kiểm tra hợp đồng cục bộ mà không tốn tiền trên mạng thực", "Xem các dự án của nhà phát triển khác"], correctOption: 2, explanation: "Studio cho phép nhà phát triển xây dựng và kiểm tra trong sandbox mô phỏng mạng thực mà không tốn chi phí." },
         ],
       },
       {
@@ -2507,6 +3186,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["npm install -g genlayer, sau đó genlayer init", "GenLayerJS: TypeScript, dành cho phát triển frontend", "GenLayerPY: Python 3.12+, dành cho backend"] },
           { type: "callout", title: "Mẹo cho người mới", text: "Trước tiên chạy genlayer init, khám phá các hợp đồng mẫu trong Studio, sau đó bắt đầu viết code." },
         ],
+        questions: [
+          { id: "vietnam-L11-q1", prompt: "Lệnh nào cài đặt genlayer CLI?", options: ["pip install genlayer", "cargo install genlayer", "npm install -g genlayer", "brew install genlayer"], correctOption: 2, explanation: "genlayer CLI được cài đặt bằng npm install -g genlayer." },
+          { id: "vietnam-L11-q2", prompt: "Lệnh genlayer init làm gì?", options: ["Tạo ví GEN mới", "Tải xuống và khởi động GenLayer Studio cục bộ", "Triển khai hợp đồng lên mainnet", "Khởi tạo dự án TypeScript mới"], correctOption: 1, explanation: "genlayer init tải xuống các thành phần và khởi động GenLayer Studio cục bộ." },
+          { id: "vietnam-L11-q3", prompt: "SDK nào dùng để phát triển DApp frontend?", options: ["GenLayerPY", "GenLayerJS", "GenLayerRust", "GenLayerSolidity"], correctOption: 1, explanation: "GenLayerJS là SDK TypeScript được thiết kế để phát triển DApp frontend." },
+          { id: "vietnam-L11-q4", prompt: "SDK GenLayerPY phù hợp với trường hợp nào?", options: ["DApp trên trình duyệt", "Phát triển iOS", "Tích hợp backend Python 3.12+", "Viết module WebAssembly"], correctOption: 2, explanation: "GenLayerPY được thiết kế cho tích hợp backend với Python 3.12 trở lên." },
+          { id: "vietnam-L11-q5", prompt: "Trình tự phát triển được khuyến nghị cho người mới là gì?", options: ["Triển khai lên mainnet trước, sau đó test", "Chạy genlayer init, khám phá ví dụ, sau đó bắt đầu viết code", "Học Solidity ngay và chuyển đổi", "Chỉ đọc tài liệu, không viết code"], correctOption: 1, explanation: "Trình tự khuyến nghị: chạy genlayer init, khám phá ví dụ trong Studio, rồi viết hợp đồng của riêng bạn." },
+        ],
       },
       {
         slug: "first-contract", title: "Intelligent Contract đầu tiên của bạn", durationMinutes: 5,
@@ -2516,6 +3202,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "Mỗi Intelligent Contract là một class Python kế thừa từ gl.Contract. Biến trạng thái được khai báo trong thân class, các phương thức được gắn decorator để chỉ định quyền đọc hoặc ghi." },
           { type: "code", language: "python", code: "import gl\n\nclass Counter(gl.Contract):\n    count: gl.u256\n\n    def __init__(self):\n        self.count = 0\n\n    @gl.public.view\n    def get(self) -> int:\n        return self.count\n\n    @gl.public.write\n    def increment(self):\n        self.count += 1" },
           { type: "callout", title: "Ghi nhớ", text: "Tất cả các trường liên tục phải được khai báo trong thân class với chú thích kiểu. Không thể tạo động chúng trong thời gian chạy." },
+        ],
+        questions: [
+          { id: "vietnam-L12-q1", prompt: "Intelligent Contract phải kế thừa class nào?", options: ["gl.SmartContract", "gl.Contract", "gl.BaseApp", "gl.Chain"], correctOption: 1, explanation: "Mọi Intelligent Contract đều phải kế thừa từ gl.Contract." },
+          { id: "vietnam-L12-q2", prompt: "Biến trạng thái trong Intelligent Contract được khai báo ở đâu?", options: ["Bên trong phương thức __init__", "Trong từng phương thức riêng biệt", "Trong thân class với chú thích kiểu", "Trong file cấu hình riêng"], correctOption: 2, explanation: "Biến trạng thái phải được khai báo trong thân class với chú thích kiểu; không thể tạo động trong __init__." },
+          { id: "vietnam-L12-q3", prompt: "Decorator nào đánh dấu phương thức chỉ đọc?", options: ["@gl.public.write", "@gl.public.view", "@gl.readonly", "@gl.get"], correctOption: 1, explanation: "@gl.public.view đánh dấu các phương thức chỉ đọc không thay đổi trạng thái." },
+          { id: "vietnam-L12-q4", prompt: "Decorator nào cho phép phương thức thay đổi trạng thái hợp đồng?", options: ["@gl.public.view", "@gl.public.write", "@gl.state.modify", "@gl.mutable"], correctOption: 1, explanation: "@gl.public.write đánh dấu các phương thức có thể thay đổi trạng thái hợp đồng." },
+          { id: "vietnam-L12-q5", prompt: "Tại sao không nên tạo trường trạng thái một cách động?", options: ["Làm chậm code", "Xung đột với hợp đồng khác", "Các trường tạo động không được lưu vào bộ nhớ liên tục", "Tăng chi phí gas"], correctOption: 2, explanation: "Chỉ các trường được khai báo trong thân class mới được lưu liên tục; các trường tạo động sẽ bị mất." },
         ],
       },
       {
@@ -2527,6 +3220,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["dict → TreeMap[K, V]", "list → DynArray[T]", "int → u256, i32 và các kiểu cố định khác"] },
           { type: "callout", title: "Lỗi phổ biến", text: "Các trường tạo động trong thời gian chạy sẽ không được lưu. Hãy khai báo tất cả trường liên tục trong thân class từ đầu." },
         ],
+        questions: [
+          { id: "vietnam-L13-q1", prompt: "Kiểu GenLayer nào thay thế dict Python để lưu trữ liên tục?", options: ["HashMap[K, V]", "TreeMap[K, V]", "OrderedDict[K, V]", "PersistDict[K, V]"], correctOption: 1, explanation: "TreeMap[K, V] là kiểu GenLayer để lưu trữ cặp key-value liên tục, thay thế dict Python." },
+          { id: "vietnam-L13-q2", prompt: "Kiểu GenLayer nào thay thế list Python để lưu trữ liên tục?", options: ["ArrayList[T]", "PersistList[T]", "DynArray[T]", "VecList[T]"], correctOption: 2, explanation: "DynArray[T] là kiểu GenLayer để lưu trữ collection có thứ tự liên tục, thay thế list Python." },
+          { id: "vietnam-L13-q3", prompt: "Cách tốt nhất để lưu trữ số nguyên trong Intelligent Contract là gì?", options: ["Python int chuẩn", "Lưu dưới dạng chuỗi", "Kiểu số nguyên kích thước cố định như gl.u256, gl.i32", "Dùng float"], correctOption: 2, explanation: "Các kiểu kích thước cố định như gl.u256 và gl.i32 tương thích với đảm bảo lưu trữ của GenLayer." },
+          { id: "vietnam-L13-q4", prompt: "Vấn đề gì xảy ra khi dùng dict Python trực tiếp làm biến trạng thái?", options: ["Dictionary hoạt động bình thường", "Giá trị không được lưu liên tục giữa các giao dịch", "Hợp đồng không biên dịch được", "Chi phí gas tăng"], correctOption: 1, explanation: "Dict Python thông thường không hoạt động với lưu trữ liên tục của GenLayer; giá trị không được bảo toàn giữa các giao dịch." },
+          { id: "vietnam-L13-q5", prompt: "Lỗi phổ biến nào liên quan đến trường tạo động?", options: ["Khai báo chúng trong thân class từ đầu", "Tạo self.new_field = value trong __init__", "Sử dụng chú thích kiểu", "Ưu tiên kiểu kích thước cố định"], correctOption: 1, explanation: "Các trường tạo động không được lưu liên tục; tất cả trường liên tục phải được khai báo trong thân class với chú thích kiểu." },
+        ],
       },
       {
         slug: "read-write-methods", title: "Phương thức Đọc và Ghi", durationMinutes: 5,
@@ -2536,6 +3236,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "@gl.public.view đánh dấu các phương thức chỉ đọc không thay đổi trạng thái. @gl.public.write thay đổi trạng thái. @gl.public.write.payable nhận chuyển khoản GEN." },
           { type: "list", items: ["@gl.public.view: chỉ đọc, chi phí gas thấp hơn", "@gl.public.write: thay đổi trạng thái on-chain", "@gl.public.write.payable: nhận token GEN"] },
           { type: "callout", title: "Thực hành tốt", text: "Trước tiên kiểm tra logic với các phương thức chỉ đọc. Chỉ thêm logic ghi sau khi đã xác nhận đúng." },
+        ],
+        questions: [
+          { id: "vietnam-L14-q1", prompt: "Sự khác biệt cơ bản giữa @gl.public.view và @gl.public.write là gì?", options: ["view nhanh hơn, write chậm hơn", "view không thay đổi trạng thái hợp đồng; write thay đổi", "write có chi phí gas thấp hơn", "Không có sự khác biệt"], correctOption: 1, explanation: "@gl.public.view đánh dấu phương thức chỉ đọc; @gl.public.write đánh dấu phương thức thay đổi trạng thái." },
+          { id: "vietnam-L14-q2", prompt: "Khi nào dùng @gl.public.write.payable?", options: ["Khi phương thức chỉ cần đọc dữ liệu", "Khi phương thức cần nhận chuyển khoản token GEN", "Khi phương thức phải là private", "Để giảm chi phí gas"], correctOption: 1, explanation: "@gl.public.write.payable dùng cho các phương thức cần nhận token GEN trong quá trình giao dịch." },
+          { id: "vietnam-L14-q3", prompt: "Tại sao phương thức chỉ đọc có chi phí gas thấp hơn?", options: ["Chúng chứa ít dòng code hơn", "Chúng không cần ghi dữ liệu mới lên blockchain", "Chúng dùng kiểu dữ liệu nhỏ hơn", "Chúng chỉ chạy trong môi trường test"], correctOption: 1, explanation: "Phương thức chỉ đọc không ghi lên blockchain, nên chi phí gas thấp hơn." },
+          { id: "vietnam-L14-q4", prompt: "Tại sao nên bắt đầu kiểm tra phương thức bằng @gl.public.view?", options: ["Các phương thức write sẽ bị xóa sau", "Cho phép xác minh logic mà không cần thay đổi trạng thái vĩnh viễn", "Phương thức view chỉ hoạt động trong môi trường test", "Phương thức write cần môi trường riêng"], correctOption: 1, explanation: "Kiểm tra với phương thức view cho phép xác minh logic mà không thực hiện thay đổi không thể đảo ngược." },
+          { id: "vietnam-L14-q5", prompt: "Decorator nào không tồn tại?", options: ["@gl.public.view", "@gl.public.write", "@gl.public.write.payable", "@gl.public.delete"], correctOption: 3, explanation: "@gl.public.delete không phải decorator hợp lệ trong GenLayer; chỉ có view, write và write.payable." },
         ],
       },
       {
@@ -2547,6 +3254,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Luôn yêu cầu phản hồi JSON (response_format='json')", "Tránh timestamp hoặc dữ liệu động", "So sánh kết luận do AI rút ra, không phải dữ liệu thô"] },
           { type: "callout", title: "Nguyên nhân chính gây thất bại đồng thuận", text: "Yêu cầu LLM trả về dữ liệu không ổn định khiến các validator nhận kết quả khác nhau. Luôn trích xuất các trường ổn định." },
         ],
+        questions: [
+          { id: "vietnam-L15-q1", prompt: "Phương thức nào dùng để gọi LLM trong Intelligent Contract?", options: ["gl.ai.call()", "gl.llm.query()", "gl.nondet.exec_prompt()", "gl.contract.ask()"], correctOption: 2, explanation: "gl.nondet.exec_prompt() là cách chuẩn để gọi LLM trong Intelligent Contracts." },
+          { id: "vietnam-L15-q2", prompt: "Tại sao nên yêu cầu phản hồi JSON khi gọi LLM?", options: ["JSON phân tích nhanh hơn văn bản thường", "LLM không thể xuất văn bản thường", "Đầu ra có cấu trúc dễ phân tích và nhất quán hơn giữa các validator", "JSON ngăn mọi tranh chấp"], correctOption: 2, explanation: "Yêu cầu JSON tạo ra đầu ra có cấu trúc nhất quán, giúp phân tích dễ hơn và so sánh giữa các validator tốt hơn." },
+          { id: "vietnam-L15-q3", prompt: "Vấn đề gì xảy ra khi dùng timestamp hoặc dữ liệu động trong prompt LLM?", options: ["Chỉ tốn thêm gas", "Các validator khác nhau nhận phản hồi khác nhau; đồng thuận có thể thất bại", "LLM không thể xử lý timestamp", "Làm chậm giao dịch"], correctOption: 1, explanation: "Dữ liệu thay đổi như timestamp dẫn đến các phản hồi LLM khác nhau ở các validator khác nhau, phá vỡ đồng thuận." },
+          { id: "vietnam-L15-q4", prompt: "Cách tiếp cận tốt nhất khi yêu cầu dữ liệu từ LLM là gì?", options: ["Lưu dữ liệu thô và biến đổi trực tiếp", "Yêu cầu AI diễn giải dữ liệu thô và so sánh kết quả diễn giải", "Trích xuất kết luận ổn định do AI rút ra và so sánh chúng", "Lưu văn bản thô từ nhiều lần gọi LLM"], correctOption: 2, explanation: "Để đảm bảo nhất quán giữa các validator, cần trích xuất kết luận ổn định do AI rút ra, không so sánh dữ liệu thô." },
+          { id: "vietnam-L15-q5", prompt: "Nguyên nhân phổ biến nhất gây thất bại đồng thuận là gì?", options: ["Kích thước hợp đồng quá lớn", "Yêu cầu LLM dữ liệu không ổn định khiến validator nhận kết quả khác nhau", "Dùng quá nhiều validator", "Lỗi cú pháp Python"], correctOption: 1, explanation: "Yêu cầu LLM dữ liệu không ổn định hoặc biến đổi dẫn đến các phản hồi khác nhau ở các validator, gây thất bại đồng thuận." },
+        ],
       },
       {
         slug: "web-data", title: "Truy cập Dữ liệu Web", durationMinutes: 5,
@@ -2557,6 +3271,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["gl.nondet.web.get(url): nội dung văn bản thô", "gl.nondet.web.render(url): trang được render bằng JS", "Trích xuất các trường ổn định, tránh nội dung động"] },
           { type: "callout", title: "Mẹo về độ tin cậy", text: "Các trang web bên ngoài có thể bị down hoặc thay đổi cấu trúc. Chỉ lấy dữ liệu từ các nguồn đáng tin cậy và xác thực trước khi lưu." },
         ],
+        questions: [
+          { id: "vietnam-L16-q1", prompt: "Phương thức GenLayer nào dùng để lấy nội dung văn bản thô?", options: ["gl.web.fetch(url)", "gl.nondet.web.get(url)", "gl.http.request(url)", "gl.oracle.get(url)"], correctOption: 1, explanation: "gl.nondet.web.get(url) được dùng để lấy nội dung văn bản thô từ URL." },
+          { id: "vietnam-L16-q2", prompt: "Sự khác biệt giữa gl.nondet.web.render(url) và gl.nondet.web.get(url) là gì?", options: ["render nhanh hơn", "get chỉ lấy JSON", "render xử lý các trang động render bằng JS; get lấy văn bản thô", "Không có sự khác biệt"], correctOption: 2, explanation: "web.render() xử lý các trang web động có JavaScript; web.get() lấy nội dung văn bản thô tĩnh." },
+          { id: "vietnam-L16-q3", prompt: "Tại sao nên tránh nội dung động khi lấy dữ liệu web?", options: ["Nội dung động đắt hơn", "Các validator khác nhau có thể lấy được snapshot khác nhau dẫn đến kết quả không nhất quán", "GenVM không thể phân tích nội dung động", "Nội dung động bị mã hóa"], correctOption: 1, explanation: "Các validator khác nhau có thể chụp snapshot của cùng một trang động ở thời điểm khác nhau, dẫn đến kết quả không nhất quán và vấn đề đồng thuận." },
+          { id: "vietnam-L16-q4", prompt: "'Trích xuất các trường ổn định' khi lấy dữ liệu web có nghĩa là gì?", options: ["Chỉ lưu dữ liệu đã mã hóa", "Chọn các trường không thay đổi theo thời gian và sẽ giống nhau trên tất cả validator", "Lấy các bản ghi mới nhất trong database", "Chỉ lấy dữ liệu số"], correctOption: 1, explanation: "Các trường ổn định không thay đổi theo thời gian, đảm bảo tất cả validator nhận cùng giá trị để đạt đồng thuận." },
+          { id: "vietnam-L16-q5", prompt: "Thực hành tốt nhất khi lấy dữ liệu từ nguồn web bên ngoài là gì?", options: ["Lấy tất cả từ các trang động và lưu", "Bỏ qua các sự cố có thể xảy ra", "Chỉ lấy từ nguồn đáng tin cậy và xác thực trước khi lưu", "Tải lại dữ liệu trong mỗi giao dịch"], correctOption: 2, explanation: "Để đảm bảo độ tin cậy, chỉ lấy dữ liệu từ nguồn đáng tin cậy và xác thực trước khi lưu." },
+        ],
       },
       {
         slug: "deploy-dapp", title: "Xây dựng và Triển khai DApp", durationMinutes: 5,
@@ -2566,6 +3287,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "Phát triển DApp trên GenLayer qua 3 giai đoạn: tạo nguyên mẫu cục bộ trong Studio, kiểm tra kỹ lưỡng với framework testing, sau đó triển khai lên Testnet (Asimov/Bradbury) và xây dựng frontend với GenLayerJS." },
           { type: "list", items: ["Giai đoạn 1: Nguyên mẫu cục bộ trong GenLayer Studio", "Giai đoạn 2: Kiểm tra với genlayer-test", "Giai đoạn 3: Frontend GenLayerJS + triển khai Testnet"] },
           { type: "callout", title: "Danh sách kiểm tra trước khi ra mắt", text: "Trước khi triển khai lên Testnet, hoàn thành kiểm tra ở chế độ trực tiếp và Studio, xử lý tất cả các lỗi đồng thuận." },
+        ],
+        questions: [
+          { id: "vietnam-L17-q1", prompt: "Ba giai đoạn phát triển DApp trên GenLayer là gì?", options: ["Thiết kế → Code → Triển khai", "Nguyên mẫu cục bộ trong Studio → kiểm tra → triển khai Testnet + frontend", "Testnet → mainnet → production", "Chỉ viết code và triển khai ngay"], correctOption: 1, explanation: "Ba giai đoạn: nguyên mẫu cục bộ trong Studio, kiểm tra kỹ với genlayer-test, rồi triển khai Testnet và frontend GenLayerJS." },
+          { id: "vietnam-L17-q2", prompt: "Các mạng Testnet của GenLayer có tên gì?", options: ["Turing và Lovelace", "Alpha và Beta", "Asimov và Bradbury", "Devnet và Stagenet"], correctOption: 2, explanation: "Các mạng Testnet của GenLayer có tên là Asimov và Bradbury." },
+          { id: "vietnam-L17-q3", prompt: "SDK nào dùng để kết nối frontend với Intelligent Contracts?", options: ["GenLayerPY", "genlayer CLI", "GenLayerJS", "web3.js"], correctOption: 2, explanation: "GenLayerJS là SDK TypeScript để kết nối DApp frontend với Intelligent Contracts." },
+          { id: "vietnam-L17-q4", prompt: "Cần làm gì trước khi triển khai lên Testnet?", options: ["Triển khai thẳng lên mainnet", "Hoàn thành kiểm tra ở chế độ trực tiếp và Studio, xử lý các lỗi đồng thuận", "Chỉ kiểm tra TypeScript", "Chờ người khác kiểm tra"], correctOption: 1, explanation: "Trước khi lên Testnet, cần hoàn thành kiểm tra ở cả hai chế độ và xử lý tất cả lỗi đồng thuận." },
+          { id: "vietnam-L17-q5", prompt: "Framework genlayer-test dùng để làm gì?", options: ["Xóa hợp đồng trước mainnet", "Thực hiện triển khai Testnet", "Viết test tự động để xác minh chức năng hợp đồng và hành vi đồng thuận", "Chỉ kiểm tra kiểu TypeScript"], correctOption: 2, explanation: "genlayer-test cho phép viết test tự động để xác minh chức năng hợp đồng và hành vi đồng thuận." },
         ],
       },
     ],

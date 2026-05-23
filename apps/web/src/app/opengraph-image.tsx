@@ -7,7 +7,7 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function OGImage() {
-  const logoData = await readFile(join(process.cwd(), "public", "genlayer.jpg"));
+  const logoData = await readFile(join(process.cwd(), "public", "genlayer-logo.png"));
   const base64 = logoData.toString("base64");
   const dataUrl = `data:image/jpeg;base64,${base64}`;
 
@@ -31,9 +31,8 @@ export default async function OGImage() {
         <div style={{ position: "absolute", bottom: -80, right: -80, width: 300, height: 300, borderRadius: "50%", background: "rgba(124,58,237,0.12)" }} />
 
         {/* Logo */}
-        <div style={{ position: "relative", width: 80, height: 80, marginBottom: 32, display: "flex" }}>
-          <div style={{ position: "absolute", top: 0, left: 0, width: 80, height: 80, background: "#7c3aed", borderRadius: 20 }} />
-          <img src={dataUrl} width={80} height={80} style={{ position: "absolute", top: 0, left: 0, objectFit: "contain", mixBlendMode: "screen", borderRadius: 20 }} />
+        <div style={{ width: 80, height: 80, marginBottom: 32, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <img src={dataUrl} width={80} height={80} style={{ objectFit: "contain" }} />
         </div>
 
         {/* Title */}
