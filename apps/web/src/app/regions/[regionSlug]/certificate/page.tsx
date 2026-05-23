@@ -165,7 +165,7 @@ export default function CertificatePage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
-          className="flex justify-center mb-10"
+          className="flex flex-col items-center gap-3 mb-10"
         >
           <button
             onClick={eligible ? downloadCertificate : undefined}
@@ -178,6 +178,12 @@ export default function CertificatePage() {
           >
             <Download className="w-6 h-6" />
             Download Certificate
+          </button>
+          <button
+            onClick={downloadCertificate}
+            className="text-sm text-purple-500 hover:text-purple-700 underline underline-offset-2 transition-colors"
+          >
+            Preview download (test)
           </button>
         </motion.div>
 
