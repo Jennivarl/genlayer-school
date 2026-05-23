@@ -861,6 +861,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Posición: capa de adjudicación para la economía agéntica", "Verificación confiable on-chain de preguntas subjetivas", "Validadores de IA llegan a consenso"] },
           { type: "callout", title: "En pocas palabras", text: "Cuando la respuesta no es solo sí o no, sino que requiere criterio, GenLayer entra en acción." },
         ],
+        questions: [
+          { id: "latam-es-L01-q1", prompt: "¿Cómo se describe mejor GenLayer?", options: ["Sistema de almacenamiento descentralizado", "Capa de adjudicación AI-native para la economía agéntica", "Solución Layer 2 para Ethereum", "Red de pagos centralizada"], correctOption: 1, explanation: "GenLayer es la capa de adjudicación AI-native diseñada para la economía agéntica, donde se necesita juicio y razonamiento." },
+          { id: "latam-es-L01-q2", prompt: "¿Cuál es la diferencia fundamental entre Bitcoin, Ethereum y GenLayer?", options: ["Los tres hacen lo mismo", "Bitcoin maneja transacciones, Ethereum ejecuta código, GenLayer entiende el significado de las decisiones", "GenLayer solo sirve para pagos", "Ethereum y GenLayer son idénticos"], correctOption: 1, explanation: "Bitcoin maneja transacciones, Ethereum ejecuta código y GenLayer entiende el significado de las decisiones." },
+          { id: "latam-es-L01-q3", prompt: "¿Cuándo se necesita GenLayer?", options: ["Solo para transferir números", "Solo para ejecutar código", "Cuando la respuesta requiere criterio y juicio, no solo sí o no", "Solo para almacenar archivos"], correctOption: 2, explanation: "GenLayer es necesario cuando la respuesta no es simplemente sí o no, sino que requiere criterio y razonamiento." },
+        ],
       },
       {
         slug: "problem-genlayer-solves", title: "¿Qué problema resuelve GenLayer?", durationMinutes: 5,
@@ -870,6 +875,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "Bitcoin y Ethereum son buenos en tareas deterministas, pero no pueden manejar problemas que requieren juicio o razonamiento AI. Evaluación de contenido, disputas, verificación de hitos — para eso está GenLayer." },
           { type: "list", items: ["Contratos tradicionales: solo lógica fija", "GenLayer: maneja resultados subjetivos y ambiguos", "Llena un vacío crítico en la tecnología blockchain"] },
           { type: "callout", title: "Diferencia clave", text: "Ethereum pregunta '¿se ejecutó el código?' GenLayer pregunta '¿es correcto el resultado?'" },
+        ],
+        questions: [
+          { id: "latam-es-L02-q1", prompt: "¿Qué no puede manejar un blockchain tradicional?", options: ["Transferencias de tokens", "Ejecución de código", "Decisiones subjetivas que requieren juicio", "Cálculos de hash"], correctOption: 2, explanation: "Bitcoin y Ethereum son buenos para tareas deterministas pero no pueden manejar problemas que requieren juicio o razonamiento de IA." },
+          { id: "latam-es-L02-q2", prompt: "¿Cuál es la pregunta clave de Ethereum vs GenLayer?", options: ["Ethereum: ¿cuánto cuesta? GenLayer: ¿qué tan rápido?", "Ethereum: ¿se ejecutó el código? GenLayer: ¿es correcto el resultado?", "Ambos hacen la misma pregunta", "GenLayer no hace preguntas"], correctOption: 1, explanation: "Ethereum pregunta si el código se ejecutó, GenLayer pregunta si el resultado es correcto — esa es la diferencia esencial." },
+          { id: "latam-es-L02-q3", prompt: "¿Qué vacío crítico llena GenLayer en la tecnología blockchain?", options: ["Almacenamiento de archivos", "Manejar resultados subjetivos y ambiguos", "Velocidad de pago", "Seguridad de red"], correctOption: 1, explanation: "GenLayer llena la capacidad de manejar resultados subjetivos y ambiguos on-chain, algo que los blockchains tradicionales no tienen." },
         ],
       },
       {
@@ -881,6 +891,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Acceso directo a datos de internet sin Oracle", "Llamadas a LLMs (como GPT-4) para razonamiento AI", "Escritos en Python — familiar y potente"] },
           { type: "callout", title: "Analogía", text: "Un contrato tradicional es una calculadora. Un Intelligent Contract es un asistente que puede razonar." },
         ],
+        questions: [
+          { id: "latam-es-L03-q1", prompt: "¿Qué pueden hacer los Intelligent Contracts que los contratos inteligentes tradicionales no pueden?", options: ["Solo ejecutar lógica fija", "Acceder a datos web en tiempo real y llamar LLMs", "Procesar transacciones más rápido", "Cobrar menos comisiones"], correctOption: 1, explanation: "Los Intelligent Contracts pueden acceder a datos web en tiempo real y llamar LLMs — algo que los contratos tradicionales no pueden hacer." },
+          { id: "latam-es-L03-q2", prompt: "¿En qué lenguaje se escriben los Intelligent Contracts?", options: ["Solidity", "Rust", "JavaScript", "Python"], correctOption: 3, explanation: "Los Intelligent Contracts se escriben en Python, que es más intuitivo y familiar para muchos desarrolladores." },
+          { id: "latam-es-L03-q3", prompt: "¿Cuál es la analogía correcta entre contrato tradicional e Intelligent Contract?", options: ["El tradicional es una calculadora, el Intelligent Contract es un asistente que razona", "El tradicional es más poderoso", "Ambos son como calculadoras", "No hay diferencia fundamental"], correctOption: 0, explanation: "El contrato tradicional ejecuta lógica fija como una calculadora; el Intelligent Contract puede razonar como un asistente inteligente." },
+        ],
       },
       {
         slug: "blockchain-stack", title: "GenLayer en la Arquitectura Blockchain", durationMinutes: 5,
@@ -890,6 +905,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenLayer es un blockchain Layer 1 que se integrará con Ethereum a través de rollups como ZKSync, mientras gestiona su propio consenso AI-native. No compite con Ethereum — es una nueva capa especializada en adjudicación AI." },
           { type: "list", items: ["Bitcoin: consenso sobre el orden de transacciones", "Ethereum: consenso sobre la ejecución de código", "GenLayer: consenso sobre el significado de decisiones"] },
           { type: "callout", title: "Posición", text: "GenLayer complementa a Ethereum, no compite con él." },
+        ],
+        questions: [
+          { id: "latam-es-L04-q1", prompt: "¿En qué capa del blockchain se encuentra GenLayer?", options: ["Layer 0", "Layer 2", "Layer 1", "Layer 3"], correctOption: 2, explanation: "GenLayer es un blockchain Layer 1 con su propio mecanismo de consenso independiente." },
+          { id: "latam-es-L04-q2", prompt: "¿Cómo se integrará GenLayer con Ethereum?", options: ["Reemplazando a Ethereum", "A través de rollups como ZKSync", "Como una Layer 2 sobre Ethereum", "Compitiendo directamente con Ethereum"], correctOption: 1, explanation: "GenLayer se integrará con Ethereum a través de rollups como ZKSync, complementándolo, no compitiendo." },
+          { id: "latam-es-L04-q3", prompt: "En las tres capas de consenso, ¿qué maneja GenLayer?", options: ["El orden de las transacciones", "La ejecución del código", "El significado de las decisiones", "La velocidad de la red"], correctOption: 2, explanation: "Bitcoin maneja el orden de transacciones, Ethereum la ejecución de código, GenLayer el significado de las decisiones." },
         ],
       },
       {
@@ -901,6 +921,11 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["4 fases: Proponer → Confirmar → Revelar → Aceptar", "Cualquiera puede apelar un resultado", "El resultado final es irreversible"] },
           { type: "callout", title: "Idea central", text: "El juicio colectivo e independiente es más confiable que un solo nodo." },
         ],
+        questions: [
+          { id: "latam-es-L05-q1", prompt: "¿Cuál es el mecanismo central de Optimistic Democracy?", options: ["Solo un nodo verifica el resultado", "Múltiples validadores ejecutan el contrato independientemente y votan", "Un algoritmo determina el resultado automáticamente", "El equipo aprueba los resultados manualmente"], correctOption: 1, explanation: "Optimistic Democracy hace que múltiples validadores ejecuten el contrato independientemente y voten." },
+          { id: "latam-es-L05-q2", prompt: "¿Cuántas fases tiene Optimistic Democracy?", options: ["2 fases", "3 fases", "4 fases", "5 fases"], correctOption: 2, explanation: "Tiene 4 fases: Proponer → Confirmar → Revelar → Aceptar." },
+          { id: "latam-es-L05-q3", prompt: "¿Qué establece el Teorema del Jurado de Condorcet?", options: ["Un experto es más confiable que muchas personas", "Un grupo de jueces independientes tiene más probabilidad de llegar a la respuesta correcta que un individuo", "Solo la IA puede tomar decisiones correctas", "Más validadores hacen el sistema más lento"], correctOption: 1, explanation: "El Teorema del Jurado de Condorcet establece que un grupo de jueces independientes tiene más probabilidad de alcanzar la respuesta correcta." },
+        ],
       },
       {
         slug: "validators-staking", title: "Validadores y Staking", durationMinutes: 5,
@@ -910,6 +935,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "Los validadores hacen staking de GEN, ejecutan nodos y participan en Optimistic Democracy para ganar recompensas. ¿No tienes 42.000 GEN? Puedes participar como delegador." },
           { type: "list", items: ["Ser validador: hacer staking de 42.000 GEN", "Delegador: mínimo 42 GEN para participar", "Validadores reciben 10% de comisión + recompensas de staking"] },
           { type: "callout", title: "Dos formas de participar", text: "Staking grande: sé validador. Staking pequeño: delega. Ambos generan ganancias." },
+        ],
+        questions: [
+          { id: "latam-es-L06-q1", prompt: "¿Cuánto GEN se necesita en staking para ser validador?", options: ["4.200 GEN", "42.000 GEN", "420 GEN", "420.000 GEN"], correctOption: 1, explanation: "Se necesita hacer staking de 42.000 GEN para convertirse en validador." },
+          { id: "latam-es-L06-q2", prompt: "¿Cuál es el mínimo de GEN para participar como delegador?", options: ["42 GEN", "4.200 GEN", "420 GEN", "1.000 GEN"], correctOption: 0, explanation: "Un delegador solo necesita un mínimo de 42 GEN para participar." },
+          { id: "latam-es-L06-q3", prompt: "¿Qué porcentaje de comisión operativa recibe un validador?", options: ["5%", "15%", "10%", "20%"], correctOption: 2, explanation: "Los validadores reciben un 10% de comisión operativa más las recompensas de staking." },
+          { id: "latam-es-L06-q4", prompt: "Si no tienes 42.000 GEN, ¿cómo puedes participar?", options: ["No puedes participar", "Como delegador con mínimo 42 GEN", "Registrarte gratis como validador", "Pedir prestado y luego hacer staking"], correctOption: 1, explanation: "Sin 42.000 GEN, puedes ser delegador con solo 42 GEN y seguir ganando recompensas." },
         ],
       },
       {
@@ -921,6 +952,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["strict_eq(): todos los validadores deben tener exactamente el mismo resultado", "prompt_non_comparative(): los validadores juzgan si se cumple el criterio", "El desarrollador define qué significa 'equivalente'"] },
           { type: "callout", title: "Clave", text: "La AI puede dar respuestas levemente distintas cada vez — el Principio de Equivalencia lo hace seguro en blockchain." },
         ],
+        questions: [
+          { id: "latam-es-L07-q1", prompt: "¿Qué problema resuelve el Principio de Equivalencia?", options: ["Garantizar igualdad de recompensas entre validadores", "Manejar resultados levemente distintos de validadores diferentes para la misma query AI", "Acelerar la confirmación de transacciones", "Reducir el costo de gas"], correctOption: 1, explanation: "El Principio de Equivalencia define cuándo los resultados de distintos validadores son suficientemente iguales, haciendo manejable el no determinismo." },
+          { id: "latam-es-L07-q2", prompt: "¿Qué hace el método strict_eq()?", options: ["Permite cierta diferencia en los resultados", "Exige que todos los validadores tengan exactamente el mismo resultado", "Solo compara tipos numéricos", "Usa IA para juzgar la equivalencia"], correctOption: 1, explanation: "strict_eq() exige que todos los validadores obtengan exactamente el mismo resultado, para escenarios que requieren coincidencia exacta." },
+          { id: "latam-es-L07-q3", prompt: "¿Cuál es la función de prompt_non_comparative()?", options: ["Los validadores juzgan si se cumple el criterio", "Compara outputs de dos contratos distintos", "Guarda en caché las respuestas previas del LLM", "Comprime datos de transmisión de red"], correctOption: 0, explanation: "prompt_non_comparative() hace que los validadores evalúen si el resultado cumple un criterio, sin exigir resultados idénticos." },
+          { id: "latam-es-L07-q4", prompt: "¿Quién define el significado de 'equivalente'?", options: ["El protocolo GenLayer automáticamente", "El LLM lo decide por sí solo", "El desarrollador según la lógica de negocio", "Los validadores con una votación"], correctOption: 2, explanation: "El desarrollador define qué significa equivalente según los requisitos específicos del negocio de su contrato." },
+        ],
       },
       {
         slug: "genvm", title: "GenVM: El Entorno de Ejecución", durationMinutes: 5,
@@ -930,6 +967,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenVM es el entorno de ejecución de los Intelligent Contracts. Está construido sobre WebAssembly, ejecuta Python de forma nativa e interactúa directamente con LLMs y datos web — algo que EVM no puede hacer." },
           { type: "list", items: ["Basado en WebAssembly, ejecución rápida", "Ejecuta Python de forma nativa (no Solidity)", "Soporte integrado para llamadas LLM y acceso a internet"] },
           { type: "callout", title: "Diferencia fundamental", text: "EVM está diseñado para código determinista. GenVM maneja no determinismo — es una innovación arquitectónica profunda." },
+        ],
+        questions: [
+          { id: "latam-es-L08-q1", prompt: "¿Sobre qué tecnología está construido GenVM?", options: ["Java Virtual Machine (JVM)", "WebAssembly", "Contenedores Docker", "Compilador LLVM"], correctOption: 1, explanation: "GenVM está construido sobre WebAssembly, lo que le permite ejecutar código de forma eficiente." },
+          { id: "latam-es-L08-q2", prompt: "¿Cuál es la diferencia fundamental entre GenVM y EVM?", options: ["GenVM es más lento", "GenVM solo soporta Solidity", "GenVM puede manejar no determinismo; EVM solo maneja código determinista", "GenVM necesita más memoria"], correctOption: 2, explanation: "EVM está diseñado para código determinista; GenVM maneja no determinismo — es una innovación arquitectónica profunda." },
+          { id: "latam-es-L08-q3", prompt: "¿Qué lenguaje ejecuta GenVM de forma nativa?", options: ["Solidity", "Rust", "JavaScript", "Python"], correctOption: 3, explanation: "GenVM ejecuta Python de forma nativa, facilitando el desarrollo de Intelligent Contracts." },
+          { id: "latam-es-L08-q4", prompt: "¿Qué capacidades nativas tiene GenVM que EVM no tiene?", options: ["Solo ejecutar código", "Soporte integrado para llamadas LLM y acceso a internet", "Solo gestión de almacenamiento", "Solo verificación de transacciones"], correctOption: 1, explanation: "GenVM tiene soporte integrado para llamadas LLM y acceso a datos de internet — algo que EVM no puede hacer." },
         ],
       },
       {
@@ -941,6 +984,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["APY inicial 15%, baja progresivamente al 4%", "75% de recompensas para todos los stakers", "10% para validadores, 15% para desarrolladores"] },
           { type: "callout", title: "Mecanismo de apelación", text: "¿No estás de acuerdo con un resultado? Haz staking de GEN para apelar y un grupo mayor de validadores lo reevaluará." },
         ],
+        questions: [
+          { id: "latam-es-L09-q1", prompt: "¿Cuál es el APY inicial del staking de GEN?", options: ["4%", "15%", "50%", "100%"], correctOption: 1, explanation: "El APY inicial es del 15%, bajando gradualmente al 4% para garantizar la sostenibilidad a largo plazo." },
+          { id: "latam-es-L09-q2", prompt: "¿Qué porcentaje de recompensas reciben todos los stakers?", options: ["50%", "75%", "90%", "100%"], correctOption: 1, explanation: "El 75% de las recompensas se distribuye entre todos los stakers." },
+          { id: "latam-es-L09-q3", prompt: "¿Qué porcentaje de recompensas reciben los desarrolladores?", options: ["5%", "10%", "15%", "25%"], correctOption: 2, explanation: "Los desarrolladores reciben el 15%, los validadores el 10%, y todos los stakers el 75%." },
+          { id: "latam-es-L09-q4", prompt: "¿Cómo funciona el mecanismo de apelación?", options: ["Las apelaciones no tienen costo", "Haz staking de GEN para apelar y un grupo mayor de validadores reevaluará", "Solo el equipo puede apelar", "Todas las apelaciones se rechazan automáticamente"], correctOption: 1, explanation: "Si no estás de acuerdo con un resultado, puedes hacer staking de GEN para apelar y un grupo mayor de validadores lo reevaluará." },
+        ],
       },
       {
         slug: "genlayer-studio", title: "GenLayer Studio", durationMinutes: 5,
@@ -950,6 +999,12 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "GenLayer Studio es un sandbox en el navegador sin instalación para probar Intelligent Contracts. Simula una red completa de validadores con logs en tiempo real y retroalimentación de errores." },
           { type: "list", items: ["Directo en el navegador, sin instalación", "Simula consenso con múltiples validadores", "Logs detallados y soporte de depuración"] },
           { type: "callout", title: "Empieza ya", text: "Visita studio.genlayer.com o ejecuta genlayer init para iniciar Studio de forma local." },
+        ],
+        questions: [
+          { id: "latam-es-L10-q1", prompt: "¿Qué es GenLayer Studio?", options: ["Sandbox en el navegador para probar Intelligent Contracts", "Aplicación móvil de trading de tokens", "Red social para desarrolladores", "Interfaz de hardware wallet"], correctOption: 0, explanation: "GenLayer Studio es un sandbox en el navegador que simula una red completa de validadores sin necesidad de instalación." },
+          { id: "latam-es-L10-q2", prompt: "¿Qué simula Studio?", options: ["Solo un nodo", "Consenso con múltiples validadores", "Solo almacenamiento", "Solo cálculo de gas"], correctOption: 1, explanation: "Studio simula una red completa de validadores con logs en tiempo real y retroalimentación de errores." },
+          { id: "latam-es-L10-q3", prompt: "¿Cómo se inicia GenLayer Studio?", options: ["Descargando desde la app store", "Visitando studio.genlayer.com o ejecutando genlayer init", "Clonando desde GitHub", "Solicitándolo por email"], correctOption: 1, explanation: "Puedes acceder directamente en studio.genlayer.com o ejecutar genlayer init para iniciarlo de forma local." },
+          { id: "latam-es-L10-q4", prompt: "¿Cuál es la mayor ventaja de Studio?", options: ["Requiere instalación", "Directo en el navegador, sin instalación", "Solo para usuarios de pago", "Solo funciona en Mainnet"], correctOption: 1, explanation: "La principal ventaja de Studio es que funciona directamente en el navegador sin ninguna instalación." },
         ],
       },
       {
@@ -961,6 +1016,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["npm install -g genlayer, luego genlayer init", "GenLayerJS: TypeScript, para desarrollo frontend", "GenLayerPY: Python 3.12+, para backend"] },
           { type: "callout", title: "Consejo para principiantes", text: "Primero ejecuta genlayer init, explora los contratos de ejemplo en Studio y luego empieza a escribir código." },
         ],
+        questions: [
+          { id: "latam-es-L11-q1", prompt: "¿Cuál es el comando para instalar el CLI de GenLayer?", options: ["pip install genlayer", "npm install -g genlayer", "brew install genlayer", "apt-get install genlayer"], correctOption: 1, explanation: "El comando npm install -g genlayer instala el CLI de forma global." },
+          { id: "latam-es-L11-q2", prompt: "¿Qué hace el comando genlayer init?", options: ["Crea una nueva wallet de GEN", "Descarga y lanza GenLayer Studio localmente", "Despliega un contrato al testnet", "Elimina todos los contratos locales"], correctOption: 1, explanation: "genlayer init descarga los componentes necesarios y lanza GenLayer Studio de forma local." },
+          { id: "latam-es-L11-q3", prompt: "¿Para qué se usa el SDK GenLayerJS?", options: ["Desarrollo backend en Python", "Desarrollo frontend de DApps en TypeScript/JavaScript", "Escritura de contratos en Solidity", "Gestión de bases de datos"], correctOption: 1, explanation: "GenLayerJS es un SDK basado en TypeScript para el desarrollo de DApps frontend." },
+          { id: "latam-es-L11-q4", prompt: "¿Para qué se usa el SDK GenLayerPY?", options: ["Desarrollo de UI frontend", "Desarrollo de aplicaciones móviles", "Integración de backend en Python 3.12+", "Auditoría de smart contracts"], correctOption: 2, explanation: "GenLayerPY está diseñado para la integración de backend en Python 3.12+." },
+          { id: "latam-es-L11-q5", prompt: "¿Cuál es el punto de partida recomendado para principiantes?", options: ["Desplegar directamente en Mainnet", "Ejecutar genlayer init, explorar ejemplos en Studio y luego escribir código", "Aprender Solidity primero", "Configurar un hardware wallet primero"], correctOption: 1, explanation: "Para principiantes: ejecuta genlayer init, explora los contratos de ejemplo en Studio y luego comienza a escribir tu propio código." },
+        ],
       },
       {
         slug: "first-contract", title: "Tu Primer Intelligent Contract", durationMinutes: 5,
@@ -970,6 +1032,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "Cada Intelligent Contract es una clase Python que hereda de gl.Contract. Las variables de estado se declaran en el cuerpo de la clase y los métodos se etiquetan con decoradores para indicar permisos de lectura o escritura." },
           { type: "code", language: "python", code: "import gl\n\nclass Counter(gl.Contract):\n    count: gl.u256\n\n    def __init__(self):\n        self.count = 0\n\n    @gl.public.view\n    def get(self) -> int:\n        return self.count\n\n    @gl.public.write\n    def increment(self):\n        self.count += 1" },
           { type: "callout", title: "Recuerda", text: "Todos los campos persistentes deben declararse en el cuerpo de la clase con anotación de tipo. No pueden crearse dinámicamente en tiempo de ejecución." },
+        ],
+        questions: [
+          { id: "latam-es-L12-q1", prompt: "¿De qué clase debe heredar un Intelligent Contract?", options: ["gl.Contract", "SmartContract", "BaseChain", "BlockchainApp"], correctOption: 0, explanation: "Todos los Intelligent Contracts deben heredar de la clase gl.Contract." },
+          { id: "latam-es-L12-q2", prompt: "¿Dónde se declaran las variables de estado?", options: ["Dentro del constructor", "Dentro de los métodos", "En el cuerpo de la clase con anotación de tipo", "En la sección de importaciones"], correctOption: 2, explanation: "Las variables de estado se declaran en el cuerpo de la clase con anotación de tipo, no se pueden crear dinámicamente en tiempo de ejecución." },
+          { id: "latam-es-L12-q3", prompt: "¿Qué método actúa como constructor del contrato?", options: ["Método @gl.public.write", "Método __init__", "Función static_init()", "Método deploy()"], correctOption: 1, explanation: "El método __init__ es el constructor que se ejecuta una vez cuando se despliega el contrato." },
+          { id: "latam-es-L12-q4", prompt: "¿Para qué se usa el decorador @gl.public.view?", options: ["Para modificar el estado", "Para recibir tokens GEN", "Para métodos de solo lectura", "Para eliminar el contrato"], correctOption: 2, explanation: "@gl.public.view se usa para métodos de solo lectura que no modifican el estado." },
+          { id: "latam-es-L12-q5", prompt: "¿Para qué se usa el decorador @gl.public.write?", options: ["Para acceso de solo lectura", "Para modificar el estado on-chain", "Para métodos internos", "Para debug logging"], correctOption: 1, explanation: "@gl.public.write se usa para métodos que modifican el estado on-chain." },
         ],
       },
       {
@@ -981,6 +1050,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["dict → TreeMap[K, V]", "list → DynArray[T]", "int → u256, i32 y otros tipos fijos"] },
           { type: "callout", title: "Error común", text: "Los campos creados dinámicamente en tiempo de ejecución no se guardan. Declara todos los campos persistentes en el cuerpo de la clase desde el inicio." },
         ],
+        questions: [
+          { id: "latam-es-L13-q1", prompt: "¿Qué reemplaza al dict de Python en el almacenamiento de GenLayer?", options: ["HashMap", "OrderedDict", "TreeMap[K, V]", "ArrayList"], correctOption: 2, explanation: "Debes usar TreeMap[K, V] en lugar del dict de Python para almacenamiento persistente." },
+          { id: "latam-es-L13-q2", prompt: "¿Qué reemplaza a la list de Python en GenLayer?", options: ["Array[T]", "DynArray[T]", "LinkedList[T]", "Vector[T]"], correctOption: 1, explanation: "Debes usar DynArray[T] en lugar de list de Python para almacenamiento persistente." },
+          { id: "latam-es-L13-q3", prompt: "¿Qué tipo fijo reemplaza al int de Python en GenLayer?", options: ["bigint", "number", "Tipos fijos como u256 o i32", "float64"], correctOption: 2, explanation: "GenLayer usa tipos enteros de tamaño fijo como u256 e i32, no el int normal de Python." },
+          { id: "latam-es-L13-q4", prompt: "¿Qué pasa con los campos creados dinámicamente en tiempo de ejecución?", options: ["Se guardan automáticamente", "Se almacenan temporalmente", "No se guardan", "Se encriptan"], correctOption: 2, explanation: "Los campos creados dinámicamente en tiempo de ejecución no se persisten. Todos los campos persistentes deben declararse en el cuerpo de la clase." },
+          { id: "latam-es-L13-q5", prompt: "¿Por qué GenLayer tiene reglas de almacenamiento estrictas?", options: ["Para hacer el código más complejo", "Para garantizar la gestión determinista del estado on-chain", "Para confundir a los desarrolladores", "Para reducir la velocidad"], correctOption: 1, explanation: "Las reglas estrictas de almacenamiento garantizan una gestión determinista del estado on-chain, esencial para la confiabilidad." },
+        ],
       },
       {
         slug: "read-write-methods", title: "Métodos de Lectura y Escritura", durationMinutes: 5,
@@ -990,6 +1066,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "@gl.public.view marca métodos de solo lectura que no cambian el estado. @gl.public.write modifica el estado. @gl.public.write.payable acepta transferencias de GEN." },
           { type: "list", items: ["@gl.public.view: solo lectura, menor costo de gas", "@gl.public.write: modifica el estado on-chain", "@gl.public.write.payable: acepta tokens GEN"] },
           { type: "callout", title: "Buena práctica", text: "Prueba la lógica con métodos de solo lectura primero. Agrega la lógica de escritura solo cuando estés seguro." },
+        ],
+        questions: [
+          { id: "latam-es-L14-q1", prompt: "¿Qué decorador marca un método de solo lectura?", options: ["@gl.public.write", "@gl.public.view", "@gl.private.read", "@gl.readonly.method"], correctOption: 1, explanation: "@gl.public.view marca métodos de solo lectura que no modifican el estado." },
+          { id: "latam-es-L14-q2", prompt: "¿Qué decorador se usa para modificar el estado on-chain?", options: ["@gl.public.view", "@gl.public.write", "@gl.state.modify", "@gl.chain.update"], correctOption: 1, explanation: "@gl.public.write se usa para métodos que modifican el estado on-chain." },
+          { id: "latam-es-L14-q3", prompt: "¿Qué decorador se usa para aceptar transferencias de token GEN?", options: ["@gl.public.view", "@gl.public.write", "@gl.public.write.payable", "@gl.token.receive"], correctOption: 2, explanation: "@gl.public.write.payable se usa para métodos que aceptan transferencias de token GEN." },
+          { id: "latam-es-L14-q4", prompt: "¿Cómo es el costo de gas de @gl.public.view comparado con write?", options: ["Más caro que write", "Igual que write", "Más barato que write", "Sin costo de gas"], correctOption: 2, explanation: "Los métodos @gl.public.view (solo lectura) tienen un costo de gas menor que los métodos write." },
+          { id: "latam-es-L14-q5", prompt: "¿Cuál es la buena práctica para métodos de lectura y escritura?", options: ["Escribe la lógica write primero", "Prueba la lógica con métodos de solo lectura primero, luego agrega la lógica write", "Escribe ambos al mismo tiempo", "Despliega los métodos write primero"], correctOption: 1, explanation: "Buena práctica: prueba primero la lógica con métodos de solo lectura y agrega la lógica write solo cuando estés seguro." },
         ],
       },
       {
@@ -1001,6 +1084,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["Siempre pide respuesta en JSON (response_format='json')", "Evita timestamps o datos dinámicos", "Compara conclusiones derivadas por AI, no datos crudos"] },
           { type: "callout", title: "Causa #1 de fallo de consenso", text: "Pedir al LLM datos inestables hace que los validadores obtengan resultados distintos. Extrae siempre campos estables." },
         ],
+        questions: [
+          { id: "latam-es-L15-q1", prompt: "¿Qué método se usa para ejecutar un prompt LLM en un contrato?", options: ["gl.web.fetch()", "gl.contract.ask()", "gl.ai.run()", "gl.nondet.exec_prompt()"], correctOption: 3, explanation: "gl.nondet.exec_prompt() es el método estándar para llamar un LLM en un Intelligent Contract." },
+          { id: "latam-es-L15-q2", prompt: "¿Cómo se solicita una respuesta en JSON al LLM?", options: ["Parámetro json=True", "Especificar response_format='json'", "JSON se recibe automáticamente", "Parsear JSON manualmente"], correctOption: 1, explanation: "Debes especificar response_format='json' para que el LLM devuelva JSON estructurado." },
+          { id: "latam-es-L15-q3", prompt: "¿Cuál es la causa principal de fallos de consenso?", options: ["Red lenta", "Pedir al LLM datos inestables que hacen divergir los resultados de los validadores", "Demasiados validadores", "Bugs en Python"], correctOption: 1, explanation: "Pedir al LLM datos inestables como el precio actual hace que los validadores obtengan resultados distintos y el consenso falle." },
+          { id: "latam-es-L15-q4", prompt: "¿Qué se debe evitar en los prompts?", options: ["Instrucciones claras", "Timestamps o datos dinámicos", "Solicitar formato JSON", "Criterios específicos"], correctOption: 1, explanation: "Evita timestamps o datos dinámicos porque provocan resultados inconsistentes entre validadores." },
+          { id: "latam-es-L15-q5", prompt: "¿Qué se debe comparar entre validadores?", options: ["El output crudo del LLM directamente", "Valores de timestamp", "Conclusiones derivadas por IA y campos estables", "Latencia de red"], correctOption: 2, explanation: "Compara conclusiones derivadas por IA y campos estables, no datos crudos — esto hace el consenso más confiable." },
+        ],
       },
       {
         slug: "web-data", title: "Acceso a Datos Web", durationMinutes: 5,
@@ -1011,6 +1101,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "list", items: ["gl.nondet.web.get(url): contenido de texto sin procesar", "gl.nondet.web.render(url): páginas renderizadas con JS", "Extrae campos estables, evita contenido dinámico"] },
           { type: "callout", title: "Consejo de confiabilidad", text: "Los sitios externos pueden caerse o cambiar su estructura. Obtén datos solo de fuentes confiables y valídalos antes de guardar." },
         ],
+        questions: [
+          { id: "latam-es-L16-q1", prompt: "¿Qué método obtiene contenido de texto crudo de la web?", options: ["gl.llm.browse()", "gl.http.get()", "gl.nondet.web.get()", "gl.fetch.url()"], correctOption: 2, explanation: "gl.nondet.web.get() se usa para obtener contenido de texto crudo de la web directamente en el contrato." },
+          { id: "latam-es-L16-q2", prompt: "¿Qué método maneja páginas renderizadas con JavaScript?", options: ["gl.nondet.web.get()", "gl.nondet.web.render()", "gl.js.execute()", "gl.page.load()"], correctOption: 1, explanation: "gl.nondet.web.render() maneja páginas dinámicas renderizadas con JavaScript." },
+          { id: "latam-es-L16-q3", prompt: "¿Qué se debe evitar al acceder a datos web?", options: ["Campos de datos estables", "Fuentes confiables", "Contenido dinámico que cambia frecuentemente", "Formato JSON"], correctOption: 2, explanation: "Evita el contenido dinámico porque puede causar resultados distintos entre validadores." },
+          { id: "latam-es-L16-q4", prompt: "¿Cómo se verifica la equivalencia de datos web?", options: ["Solo un validador lo verifica", "El equipo lo revisa manualmente", "Se verifica con el principio de equivalencia en todos los validadores", "Corre un script automático"], correctOption: 2, explanation: "Los datos web se verifican con el principio de equivalencia en todos los validadores." },
+          { id: "latam-es-L16-q5", prompt: "¿Qué pasa si el sitio externo está caído?", options: ["El contrato se recupera automáticamente", "La ejecución del contrato puede fallar; usa fuentes confiables", "GenLayer provee datos de respaldo", "Los validadores lo ignoran"], correctOption: 1, explanation: "Los sitios externos pueden caerse o cambiar su estructura, por eso obtén datos solo de fuentes confiables y valídalos." },
+        ],
       },
       {
         slug: "deploy-dapp", title: "Construir y Desplegar una DApp", durationMinutes: 5,
@@ -1020,6 +1117,13 @@ export const regionalTracks: RegionalTrack[] = [
           { type: "paragraph", text: "El desarrollo de DApps en GenLayer tiene 3 fases: prototipo local en Studio, pruebas exhaustivas con el framework de testing y luego despliegue en Testnet (Asimov/Bradbury) con frontend en GenLayerJS." },
           { type: "list", items: ["Fase 1: Prototipo local en GenLayer Studio", "Fase 2: Testing con genlayer-test", "Fase 3: Frontend GenLayerJS + despliegue en Testnet"] },
           { type: "callout", title: "Checklist antes de lanzar", text: "Antes de desplegar en Testnet, completa pruebas en modo directo y modo Studio, y maneja todos los fallos de consenso." },
+        ],
+        questions: [
+          { id: "latam-es-L17-q1", prompt: "¿Qué se hace en la Fase 1 del desarrollo de una DApp?", options: ["Despliegue en Testnet", "Crear un prototipo local en GenLayer Studio", "Construir el frontend con GenLayerJS", "Auditoría del smart contract"], correctOption: 1, explanation: "La Fase 1 es crear un prototipo local en GenLayer Studio." },
+          { id: "latam-es-L17-q2", prompt: "¿Qué se hace en la Fase 2 del desarrollo de una DApp?", options: ["Despliegue en Mainnet", "Community testing", "Pruebas exhaustivas con el framework genlayer-test", "Lanzamiento del token"], correctOption: 2, explanation: "La Fase 2 es realizar pruebas exhaustivas con el framework genlayer-test." },
+          { id: "latam-es-L17-q3", prompt: "¿Qué se hace en la Fase 3 del desarrollo de una DApp?", options: ["Diseño en papel", "Testing local en Studio", "Frontend con GenLayerJS + despliegue en Testnet", "Escribir el white paper"], correctOption: 2, explanation: "La Fase 3 es construir el frontend con GenLayerJS y desplegar en Testnet." },
+          { id: "latam-es-L17-q4", prompt: "¿Cuáles son los nombres de las redes Testnet de GenLayer?", options: ["Ropsten y Rinkeby", "Asimov y Bradbury", "Mumbai y Goerli", "Devnet y Stagenet"], correctOption: 1, explanation: "Las redes Testnet de GenLayer se llaman Asimov y Bradbury." },
+          { id: "latam-es-L17-q5", prompt: "¿Qué debe completarse antes de desplegar en Testnet?", options: ["Solo pruebas en modo directo", "Pruebas en modo directo y modo Studio, manejando todos los fallos de consenso", "Solo pruebas de UI", "Nada, se puede desplegar directamente"], correctOption: 1, explanation: "Antes de desplegar en Testnet, completa pruebas en modo directo y modo Studio y maneja todos los fallos de consenso." },
         ],
       },
     ],
