@@ -33,21 +33,38 @@ export function Navigation() {
   const pathname = usePathname();
   const auth = useAuth();
 
+  const [displayLabel, setDisplayLabel] = useState<string | null>(null);
   const [pfpUrl, setPfpUrl] = useState<string | null>(null);
 
   useEffect(() => {
     if (!auth.authenticated) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
+      setDisplayLabel(null);
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setPfpUrl(null);
       return;
     }
+
+    // Load pfp from localStorage
     try {
       const stored = localStorage.getItem(`genlayer_pfp_${auth.learnerId}`);
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       if (stored) setPfpUrl(stored);
     } catch {}
+
+    // Fetch profile for username/displayName
+    auth.authFetch("/api/profile")
+      .then((r) => r.json())
+      .then((d) => {
+        const p = d.profile;
+        if (p?.displayName) setDisplayLabel(p.displayName);
+        else if (p?.username) setDisplayLabel(`@${p.username}`);
+      })
+      .catch(() => {});
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [auth.authenticated, auth.learnerId]);
 
-  const label = auth.displayName ?? auth.label;
+  const label = displayLabel ?? auth.label;
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
@@ -59,7 +76,7 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="flex items-center gap-2">
-            <GenLayerLogo size={32} />
+            <GenLayerLogo size={32} color="#7c3aed" />
             <span className="font-semibold text-lg hidden sm:inline">GenLayer Regional School</span>
           </Link>
 
