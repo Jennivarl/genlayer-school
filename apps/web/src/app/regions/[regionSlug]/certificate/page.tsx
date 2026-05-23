@@ -130,8 +130,8 @@ export default function CertificatePage() {
           <div className="w-full">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/certificates/collage-certificates.png.jpg"
-              alt="GenLayer Certificates"
+              src={regionCertMap[regionSlug] ?? regionCertMap.nigeria}
+              alt="GenLayer Certificate"
               className="w-full rounded-2xl shadow-2xl border border-purple-100"
               draggable={false}
             />
