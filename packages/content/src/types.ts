@@ -12,6 +12,7 @@ export type Lesson = {
   summary: string;
   objectives: string[];
   content: ContentBlock[];
+  questions?: QuizQuestion[];
 };
 
 export type QuizQuestion = {
