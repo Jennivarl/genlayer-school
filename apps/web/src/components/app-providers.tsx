@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, type ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, type ReactNode } from "react";
 import { PrivyProvider, usePrivy } from "@privy-io/react-auth";
 
 type PrivyLoginMethod = "email" | "wallet" | "google" | "github";
@@ -11,6 +11,7 @@ type AuthContextValue = {
   authenticated: boolean;
   learnerId: string;
   label: string;
+  displayName: string | null;
   email: string | null;
   walletAddress: string | null;
   login: () => void;
@@ -39,6 +40,7 @@ const DevAuthContext: AuthContextValue = {
   authenticated: false,
   learnerId: DEFAULT_LEARNER_ID,
   label: "Demo learner",
+  displayName: null,
   email: null,
   walletAddress: null,
   login: () => undefined,
@@ -57,6 +59,25 @@ function PrivyAuthBridge({ children }: { children: ReactNode }) {
   const learnerId = user?.id ? `privy:${user.id}` : DEFAULT_LEARNER_ID;
   const email = user?.email?.address ?? null;
   const walletAddress = user?.wallet?.address ?? null;
+  const [displayName, setDisplayName] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!authenticated) { setDisplayName(null); return; }
+    const run = async () => {
+      try {
+        const headers = new Headers();
+        const token = await getAccessToken();
+        if (token) headers.set("Authorization", `Bearer ${token}`);
+        const r = await fetch("/api/profile", { headers });
+        const d = await r.json();
+        const p = d.profile;
+        if (p?.displayName) setDisplayName(p.displayName);
+        else if (p?.username) setDisplayName(p.username);
+      } catch {}
+    };
+    void run();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [authenticated, learnerId]);
 
   const value: AuthContextValue = {
     configured: true,
@@ -64,6 +85,7 @@ function PrivyAuthBridge({ children }: { children: ReactNode }) {
     authenticated,
     learnerId,
     label: authenticated ? getUserLabel(user) : "Sign in",
+    displayName,
     email,
     walletAddress,
     login: () => { void login(); },

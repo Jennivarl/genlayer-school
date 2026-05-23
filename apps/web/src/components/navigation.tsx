@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X, User } from "lucide-react";
 import { GenLayerLogo } from "@/components/genlayer-logo";
 import { useAuth } from "@/components/app-providers";
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"; // useState kept for pfpUrl + isOpen
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -19,35 +19,17 @@ export function Navigation() {
   const pathname = usePathname();
   const auth = useAuth();
 
-  const [displayLabel, setDisplayLabel] = useState<string | null>(null);
   const [pfpUrl, setPfpUrl] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!auth.authenticated) {
-      setDisplayLabel(null);
-      setPfpUrl(null);
-      return;
-    }
-
-    // Load pfp from localStorage
+    if (!auth.authenticated) { setPfpUrl(null); return; }
     try {
       const stored = localStorage.getItem(`genlayer_pfp_${auth.learnerId}`);
       if (stored) setPfpUrl(stored);
     } catch {}
-
-    // Fetch profile for username/displayName
-    auth.authFetch("/api/profile")
-      .then((r) => r.json())
-      .then((d) => {
-        const p = d.profile;
-        if (p?.displayName) setDisplayLabel(p.displayName);
-        else if (p?.username) setDisplayLabel(`@${p.username}`);
-      })
-      .catch(() => {});
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [auth.authenticated, auth.learnerId]);
 
-  const label = displayLabel ?? auth.label;
+  const label = auth.displayName ?? auth.label;
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
