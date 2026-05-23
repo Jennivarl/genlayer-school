@@ -127,33 +127,38 @@ export default function CertificatePage() {
           transition={{ delay: 0.2 }}
           className="relative mb-8"
         >
-          <div className="relative w-full">
+          <div className="w-full">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/certificates/collage-certificates.png.jpg"
               alt="GenLayer Certificates"
-              className={`w-full rounded-2xl shadow-2xl border border-purple-100 ${!eligible && !loading ? "opacity-60 blur-[1px]" : ""}`}
+              className="w-full rounded-2xl shadow-2xl border border-purple-100"
               draggable={false}
             />
-
-            {/* Not eligible overlay */}
-            {!eligible && !loading && (
-              <div className="absolute inset-0 flex items-center justify-center rounded-2xl">
-                <div className="bg-white rounded-xl shadow-lg border border-amber-200 p-6 text-center max-w-xs">
-                  <AlertCircle className="w-10 h-10 text-amber-500 mx-auto mb-3" />
-                  <p className="font-semibold text-amber-700 mb-1">Not yet eligible</p>
-                  <p className="text-sm text-muted-foreground mb-4">Complete all lessons to unlock your certificate</p>
-                  <Link
-                    href={`/regions/${regionSlug}`}
-                    className="px-4 py-2 rounded-lg bg-purple-600 text-white text-sm font-semibold hover:bg-purple-700 transition-all"
-                  >
-                    Continue Learning
-                  </Link>
-                </div>
-              </div>
-            )}
           </div>
         </motion.div>
+
+        {/* Not eligible notice — shown below the collage, not over it */}
+        {!eligible && !loading && (
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3 }}
+            className="mb-6 flex items-start gap-4 p-5 rounded-xl bg-amber-50 border border-amber-200"
+          >
+            <AlertCircle className="w-6 h-6 text-amber-500 flex-shrink-0 mt-0.5" />
+            <div className="flex-1">
+              <p className="font-semibold text-amber-700 mb-1">Not yet eligible</p>
+              <p className="text-sm text-muted-foreground">Complete all lessons for this region to unlock and download your certificate.</p>
+            </div>
+            <Link
+              href={`/regions/${regionSlug}`}
+              className="flex-shrink-0 px-4 py-2 rounded-lg bg-purple-600 text-white text-sm font-semibold hover:bg-purple-700 transition-all"
+            >
+              Continue Learning
+            </Link>
+          </motion.div>
+        )}
 
         {/* Download */}
         <motion.div
