@@ -835,11 +835,11 @@ export const regionalTracks: RegionalTrack[] = [
     lessons: [
       {
         slug: "what-is-genlayer", title: "Wetin Be GenLayer?", durationMinutes: 5,
-        summary: "Know wetin GenLayer be — di AI-native adjudication layer for di agentic economy.",
+        summary: "Know wetin GenLayer be — di AI-native judge layer for di agentic economy.",
         objectives: ["Understand wetin GenLayer be", "Know how e different from Bitcoin and Ethereum"],
         content: [
           { type: "paragraph", text: "GenLayer na AI-native blockchain wey dey handle situations wey need judgment and reasoning. Bitcoin dey handle transactions, Ethereum dey run code, but GenLayer dey understand di meaning of decisions." },
-          { type: "list", items: ["Position: adjudication layer for di agentic economy", "On-chain trusted verification for subjective questions", "AI validators dey reach consensus"] },
+          { type: "list", items: ["Position: judge layer for di agentic economy", "On-chain trusted verification for subjective questions", "AI validators dey reach consensus"] },
           { type: "callout", title: "Simple explanation", text: "When di answer no be just yes or no, but e need real judgment — na there GenLayer dey enter." },
         ],
       },
@@ -868,7 +868,7 @@ export const regionalTracks: RegionalTrack[] = [
         summary: "Understand say GenLayer na Layer 1 and how e dey work with Ethereum.",
         objectives: ["Understand blockchain layers", "Know which layer GenLayer dey"],
         content: [
-          { type: "paragraph", text: "GenLayer na Layer 1 blockchain wey go integrate with Ethereum through rollups like ZKSync, while e dey handle im own AI-native consensus. E no dey compete with Ethereum — na new layer wey dey specialize for AI adjudication." },
+          { type: "paragraph", text: "GenLayer na Layer 1 blockchain wey go integrate with Ethereum through rollups like ZKSync, while e dey handle im own AI-native consensus. E no dey compete with Ethereum — na new layer wey dey specialize for AI judging." },
           { type: "list", items: ["Bitcoin: consensus on transaction order", "Ethereum: consensus on code execution", "GenLayer: consensus on decision meaning"] },
           { type: "callout", title: "Position", text: "GenLayer dey complement Ethereum, e no dey compete with am." },
         ],
@@ -1005,7 +1005,7 @@ export const regionalTracks: RegionalTrack[] = [
       },
     ],
     questions: [
-      { id: "nigeria-q01", prompt: "How we fit best describe GenLayer?", options: ["Decentralized file storage system", "AI-native adjudication layer for di agentic economy", "Layer 2 solution for Ethereum", "Centralized payment network"], correctOption: 1, explanation: "GenLayer na AI-native adjudication layer wey dey serve di agentic economy." },
+      { id: "nigeria-q01", prompt: "How we fit best describe GenLayer?", options: ["Decentralized file storage system", "AI-native judge layer for di agentic economy", "Layer 2 solution for Ethereum", "Centralized payment network"], correctOption: 1, explanation: "GenLayer na AI-native judge layer wey dey serve di agentic economy." },
       { id: "nigeria-q02", prompt: "Wetin be di main problem wey GenLayer dey tackle?", options: ["Make blockchain handle subjective judgment-based decisions", "Make Bitcoin transactions faster", "Replace all smart contract platforms", "Create new programming language"], correctOption: 0, explanation: "Di core value of GenLayer na to enable on-chain decisions wey need judgment and reasoning." },
       { id: "nigeria-q03", prompt: "Wetin Intelligent Contracts fit do wey traditional smart contracts no fit do?", options: ["Store static files on-chain", "Only deterministic calculations", "Only run on Ethereum", "Access live web data and process AI outputs"], correctOption: 3, explanation: "Intelligent Contracts fit access internet and call LLMs — something traditional contracts no fit do." },
       { id: "nigeria-q04", prompt: "Which layer of blockchain GenLayer dey operate for?", options: ["Layer 0", "Layer 2", "Layer 1", "Layer 3"], correctOption: 2, explanation: "GenLayer na Layer 1 blockchain." },
