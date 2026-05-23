@@ -179,12 +179,6 @@ export default function CertificatePage() {
             <Download className="w-6 h-6" />
             Download Certificate
           </button>
-          <button
-            onClick={downloadCertificate}
-            className="text-sm text-purple-500 hover:text-purple-700 underline underline-offset-2 transition-colors"
-          >
-            Preview download (test)
-          </button>
         </motion.div>
 
         {/* What's next */}
