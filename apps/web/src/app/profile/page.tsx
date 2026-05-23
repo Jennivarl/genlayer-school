@@ -24,6 +24,7 @@ export default function ProfilePage() {
     if (!auth.learnerId) return;
     try {
       const stored = localStorage.getItem(`genlayer_pfp_${auth.learnerId}`);
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       if (stored) setPfpUrl(stored);
     } catch {}
   }, [auth.learnerId]);

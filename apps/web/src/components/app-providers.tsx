@@ -62,6 +62,7 @@ function PrivyAuthBridge({ children }: { children: ReactNode }) {
   const [displayName, setDisplayName] = useState<string | null>(null);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (!authenticated) { setDisplayName(null); return; }
     const run = async () => {
       try {

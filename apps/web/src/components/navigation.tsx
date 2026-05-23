@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X, User } from "lucide-react";
 import { GenLayerLogo } from "@/components/genlayer-logo";
 import { useAuth } from "@/components/app-providers";
-import { useState, useEffect } from "react"; // useState kept for pfpUrl + isOpen
+import { useState, useEffect } from "react";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -13,6 +13,20 @@ const navLinks = [
   { href: "/regions", label: "Regions" },
   { href: "/community-spotlight", label: "Spotlight" },
 ];
+
+function Avatar({ size = "sm", pfpUrl }: { size?: "sm" | "md"; pfpUrl: string | null }) {
+  const dim = size === "sm" ? "w-5 h-5" : "w-6 h-6";
+  if (pfpUrl) {
+    return (
+      <img
+        src={pfpUrl}
+        alt="Profile"
+        className={`${dim} rounded-full object-cover flex-shrink-0 ring-1 ring-white/40`}
+      />
+    );
+  }
+  return <User className={`${size === "sm" ? "w-4 h-4" : "w-5 h-5"} shrink-0`} />;
+}
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,7 +36,11 @@ export function Navigation() {
   const [pfpUrl, setPfpUrl] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!auth.authenticated) { setPfpUrl(null); return; }
+    if (!auth.authenticated) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setPfpUrl(null);
+      return;
+    }
     try {
       const stored = localStorage.getItem(`genlayer_pfp_${auth.learnerId}`);
       if (stored) setPfpUrl(stored);
@@ -35,20 +53,6 @@ export function Navigation() {
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   };
-
-  function Avatar({ size = "sm" }: { size?: "sm" | "md" }) {
-    const dim = size === "sm" ? "w-5 h-5" : "w-6 h-6";
-    if (pfpUrl) {
-      return (
-        <img
-          src={pfpUrl}
-          alt="Profile"
-          className={`${dim} rounded-full object-cover flex-shrink-0 ring-1 ring-white/40`}
-        />
-      );
-    }
-    return <User className={`${size === "sm" ? "w-4 h-4" : "w-5 h-5"} shrink-0`} />;
-  }
 
   return (
     <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-border">
@@ -81,7 +85,7 @@ export function Navigation() {
                 href="/profile"
                 className="hidden md:flex items-center gap-2 px-3 py-2 rounded-full bg-gradient-to-r from-purple-600 to-purple-500 text-white hover:from-purple-700 hover:to-purple-600 transition-all text-sm max-w-[180px]"
               >
-                <Avatar size="sm" />
+                <Avatar size="sm" pfpUrl={pfpUrl} />
                 <span className="truncate">{label}</span>
               </Link>
             ) : (
@@ -127,7 +131,7 @@ export function Navigation() {
                 onClick={() => setIsOpen(false)}
                 className="flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-purple-600 to-purple-500 text-white justify-center"
               >
-                <Avatar size="md" />
+                <Avatar size="md" pfpUrl={pfpUrl} />
                 <span className="truncate">{label}</span>
               </Link>
             ) : (
