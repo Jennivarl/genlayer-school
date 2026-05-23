@@ -46,20 +46,24 @@ export function Navigation() {
       return;
     }
 
-    // Load pfp from localStorage
+    // Load pfp from localStorage immediately for instant display
     try {
       const stored = localStorage.getItem(`genlayer_pfp_${auth.learnerId}`);
       // eslint-disable-next-line react-hooks/set-state-in-effect
       if (stored) setPfpUrl(stored);
     } catch {}
 
-    // Fetch profile for username/displayName
+    // Fetch profile for displayName + server-stored pfp
     auth.authFetch("/api/profile")
       .then((r) => r.json())
       .then((d) => {
         const p = d.profile;
         if (p?.displayName) setDisplayLabel(p.displayName);
         else if (p?.username) setDisplayLabel(`@${p.username}`);
+        if (p?.pfpUrl) {
+          setPfpUrl(p.pfpUrl);
+          try { localStorage.setItem(`genlayer_pfp_${auth.learnerId}`, p.pfpUrl); } catch {}
+        }
       })
       .catch(() => {});
     // eslint-disable-next-line react-hooks/exhaustive-deps

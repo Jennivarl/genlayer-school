@@ -28,6 +28,7 @@ export type ProfileUpdateInput = {
   displayName?: string | null;
   walletAddress?: string | null;
   email?: string | null;
+  pfpUrl?: string | null;
 };
 
 export type LearningAnalytics = {

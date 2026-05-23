@@ -26,6 +26,7 @@ function createProfile(learnerId = DEFAULT_LEARNER_ID): LearnerProfile {
     displayName: null,
     walletAddress: null,
     email: null,
+    pfpUrl: null,
     updatedAt: nowIso(),
   };
 }
@@ -104,6 +105,7 @@ export async function updateProfile(input: ProfileUpdateInput): Promise<LearnerP
       displayName: input.displayName === undefined ? current.displayName : input.displayName?.trim() || null,
       walletAddress: input.walletAddress === undefined ? current.walletAddress : input.walletAddress?.trim() || null,
       email: input.email === undefined ? current.email : input.email?.trim() || null,
+      pfpUrl: input.pfpUrl === undefined ? (current.pfpUrl ?? null) : input.pfpUrl ?? null,
       updatedAt: nowIso(),
     };
 

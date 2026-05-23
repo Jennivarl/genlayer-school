@@ -14,6 +14,7 @@ type ProfileRow = {
   display_name: string | null;
   wallet_address: string | null;
   email: string | null;
+  pfp_url: string | null;
   updated_at: string;
 };
 
@@ -79,6 +80,7 @@ function toProfile(row: ProfileRow): LearnerProfile {
     displayName: row.display_name,
     walletAddress: row.wallet_address,
     email: row.email,
+    pfpUrl: row.pfp_url,
     updatedAt: row.updated_at,
   };
 }
@@ -129,7 +131,7 @@ export function createSupabaseProgressStore(config: SupabaseConfig): ProgressSto
 
     const { data, error } = await supabase
       .from("learner_profiles")
-      .select("learner_id, username, display_name, wallet_address, email, updated_at")
+      .select("learner_id, username, display_name, wallet_address, email, pfp_url, updated_at")
       .eq("learner_id", id)
       .single();
 
@@ -146,6 +148,7 @@ export function createSupabaseProgressStore(config: SupabaseConfig): ProgressSto
     if (input.displayName !== undefined) update.display_name = input.displayName?.trim() || null;
     if (input.walletAddress !== undefined) update.wallet_address = input.walletAddress?.trim() || null;
     if (input.email !== undefined) update.email = input.email?.trim() || null;
+    if (input.pfpUrl !== undefined) update.pfp_url = input.pfpUrl ?? null;
 
     const { error } = await supabase
       .from("learner_profiles")

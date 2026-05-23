@@ -19,7 +19,7 @@ export default function ProfilePage() {
   const [saving, setSaving] = useState(false);
   const [saveStatus, setSaveStatus] = useState<"idle" | "saved" | "error">("idle");
 
-  // Load pfp from localStorage
+  // Load pfp: API first, localStorage as fallback
   useEffect(() => {
     if (!auth.learnerId) return;
     try {
@@ -43,6 +43,10 @@ export default function ProfilePage() {
         if (d.profile.displayName) {
           setEditingIdentity(false);
         }
+        if (d.profile.pfpUrl) {
+          setPfpUrl(d.profile.pfpUrl);
+          try { localStorage.setItem(`genlayer_pfp_${auth.learnerId}`, d.profile.pfpUrl); } catch {}
+        }
       });
 
     return () => { cancelled = true; };
@@ -56,9 +60,12 @@ export default function ProfilePage() {
     reader.onload = (ev) => {
       const dataUrl = ev.target?.result as string;
       setPfpUrl(dataUrl);
-      try {
-        localStorage.setItem(`genlayer_pfp_${auth.learnerId}`, dataUrl);
-      } catch {}
+      try { localStorage.setItem(`genlayer_pfp_${auth.learnerId}`, dataUrl); } catch {}
+      auth.authFetch("/api/profile", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ pfpUrl: dataUrl }),
+      }).catch(() => {});
     };
     reader.readAsDataURL(file);
   }

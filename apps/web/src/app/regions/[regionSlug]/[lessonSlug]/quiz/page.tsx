@@ -5,6 +5,7 @@ import { useParams } from "next/navigation";
 import { motion } from "motion/react";
 import { CheckCircle, XCircle, ArrowRight, RotateCcw } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useAuth } from "@/components/app-providers";
 
 type QuizQuestion = {
   id: string;
@@ -40,6 +41,7 @@ export default function LessonQuizPage() {
   const params = useParams<{ regionSlug: string; lessonSlug: string }>();
   const regionSlug = params.regionSlug ?? "";
   const lessonSlug = params.lessonSlug ?? "";
+  const auth = useAuth();
 
   const [track, setTrack] = useState<RegionalTrack | null>(null);
   const [lesson, setLesson] = useState<Lesson | null>(null);
@@ -122,6 +124,20 @@ export default function LessonQuizPage() {
         try {
           localStorage.setItem(`genlayer_quiz_passed_${regionSlug}_${lessonSlug}`, "1");
         } catch {}
+        const answersRecord: Record<string, number> = {};
+        questions.forEach((q, i) => { answersRecord[q.id] = newAnswers[i]; });
+        auth.authFetch("/api/progress/lesson-quiz", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            regionSlug,
+            lessonSlug,
+            score,
+            total: questions.length,
+            passed,
+            answers: answersRecord,
+          }),
+        }).catch(() => {});
       }
       setAnswers(newAnswers);
       setDone(true);

@@ -8,6 +8,7 @@ type ProfilePayload = {
   displayName?: string | null;
   walletAddress?: string | null;
   email?: string | null;
+  pfpUrl?: string | null;
 };
 
 function toErrorResponse(error: unknown) {
@@ -36,6 +37,7 @@ export async function PATCH(request: NextRequest) {
       displayName: payload.displayName,
       walletAddress: payload.walletAddress,
       email: payload.email,
+      pfpUrl: payload.pfpUrl,
     });
 
     return NextResponse.json({ auth, profile });

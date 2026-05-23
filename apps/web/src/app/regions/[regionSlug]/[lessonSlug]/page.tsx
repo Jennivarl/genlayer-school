@@ -64,6 +64,12 @@ export default function LessonPage() {
         const done: string[] = progressData.progress?.completedLessons ?? [];
         setCompletedLessons(done);
         setCompleted(done.includes(`${regionSlug}/${lessonSlug}`));
+        const attempts: Array<{ quizKind: string; quizSlug: string; passed: boolean }> =
+          progressData.progress?.quizAttempts ?? [];
+        const serverPassed = attempts.some(
+          (a) => a.quizKind === "lesson" && a.quizSlug === `${regionSlug}/${lessonSlug}` && a.passed,
+        );
+        if (serverPassed) setQuizPassed(true);
       })
       .finally(() => setLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps

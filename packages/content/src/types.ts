@@ -30,7 +30,7 @@ export type Quiz = {
   questions: QuizQuestion[];
 };
 
-export type QuizKind = "course" | "weekly" | "regional";
+export type QuizKind = "course" | "weekly" | "regional" | "lesson";
 
 export type Course = {
   slug: string;
@@ -116,6 +116,7 @@ export type LearnerProfile = {
   displayName: string | null;
   walletAddress: string | null;
   email: string | null;
+  pfpUrl: string | null;
   updatedAt: string;
 };
 
