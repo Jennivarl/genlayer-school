@@ -116,6 +116,13 @@ export default function LessonQuizPage() {
       setSelectedAnswer(null);
       setRevealed(false);
     } else {
+      const score = newAnswers.filter((a, i) => a === questions[i].correctOption).length;
+      const passed = score >= Math.ceil(questions.length * 0.5);
+      if (passed) {
+        try {
+          localStorage.setItem(`genlayer_quiz_passed_${regionSlug}_${lessonSlug}`, "1");
+        } catch {}
+      }
       setAnswers(newAnswers);
       setDone(true);
     }
@@ -123,7 +130,7 @@ export default function LessonQuizPage() {
 
   if (done) {
     const score = answers.filter((a, i) => a === questions[i].correctOption).length;
-    const passed = score >= Math.ceil(questions.length * 0.6);
+    const passed = score >= Math.ceil(questions.length * 0.5);
 
     return (
       <div className="min-h-screen bg-gradient-to-br from-white via-purple-50 to-white py-12 px-4">
@@ -213,7 +220,7 @@ export default function LessonQuizPage() {
                 href={`/regions/${regionSlug}/${lessonSlug}`}
                 className="block w-full px-6 py-3 rounded-lg bg-purple-100 text-purple-600 text-center font-semibold hover:bg-purple-200 transition-all"
               >
-                Back to Lesson
+                {passed ? "Back to Lesson & Mark Complete" : "Back to Lesson"}
               </Link>
             </div>
           </motion.div>

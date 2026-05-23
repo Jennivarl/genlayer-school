@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { motion } from "motion/react";
-import { BookOpen, CheckCircle, ArrowRight, ArrowLeft, Clock, Target } from "lucide-react";
+import { BookOpen, CheckCircle, ArrowRight, ArrowLeft, Clock, Target, Lock } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/components/app-providers";
 import { ContentRenderer } from "@/components/content-renderer";
@@ -46,6 +46,7 @@ export default function LessonPage() {
   const [completed, setCompleted] = useState(false);
   const [marking, setMarking] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [quizPassed, setQuizPassed] = useState(false);
 
   useEffect(() => {
     if (!regionSlug || !lessonSlug) return;
@@ -88,6 +89,14 @@ export default function LessonPage() {
       setMarking(false);
     }
   }
+
+  useEffect(() => {
+    if (!regionSlug || !lessonSlug) return;
+    try {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      if (localStorage.getItem(`genlayer_quiz_passed_${regionSlug}_${lessonSlug}`) === "1") setQuizPassed(true);
+    } catch {}
+  }, [regionSlug, lessonSlug]);
 
   const lessonIndex = track?.lessons.findIndex((l) => l.slug === lessonSlug) ?? -1;
   const prevLesson = lessonIndex > 0 ? track?.lessons[lessonIndex - 1] : null;
@@ -158,43 +167,66 @@ export default function LessonPage() {
               </div>
 
               <div className="mt-8 pt-6 border-t border-purple-100">
-                <div className="flex items-center justify-between gap-4 flex-wrap">
-                  <button
-                    onClick={handleMarkComplete}
-                    disabled={completed || marking}
-                    className={`px-6 py-3 rounded-lg font-semibold flex items-center gap-2 transition-all ${
-                      completed
-                        ? "bg-green-100 text-green-700 cursor-default"
-                        : marking
-                        ? "bg-purple-100 text-purple-400 cursor-wait"
-                        : "bg-gradient-to-r from-purple-600 to-purple-500 text-white hover:from-purple-700 hover:to-purple-600"
-                    }`}
-                  >
-                    {completed
-                      ? <><CheckCircle className="w-5 h-5" /> Completed</>
-                      : marking
-                      ? "Saving…"
-                      : <>Mark Complete <CheckCircle className="w-5 h-5" /></>}
-                  </button>
+                {(() => {
+                  const hasQuiz = (lesson.questions?.length ?? 0) > 0;
+                  const quizRequired = hasQuiz && !quizPassed && !completed;
+                  return (
+                    <div className="space-y-3">
+                      <div className="flex items-center justify-between gap-4 flex-wrap">
+                        <div className="flex flex-col gap-1">
+                          <button
+                            onClick={handleMarkComplete}
+                            disabled={completed || marking || quizRequired}
+                            className={`px-6 py-3 rounded-lg font-semibold flex items-center gap-2 transition-all ${
+                              completed
+                                ? "bg-green-100 text-green-700 cursor-default"
+                                : marking
+                                ? "bg-purple-100 text-purple-400 cursor-wait"
+                                : quizRequired
+                                ? "bg-gray-100 text-gray-400 cursor-not-allowed"
+                                : "bg-gradient-to-r from-purple-600 to-purple-500 text-white hover:from-purple-700 hover:to-purple-600"
+                            }`}
+                          >
+                            {completed
+                              ? <><CheckCircle className="w-5 h-5" /> Completed</>
+                              : marking
+                              ? "Saving…"
+                              : quizRequired
+                              ? <><Lock className="w-4 h-4" /> Pass Quiz to Unlock</>
+                              : <>Mark Complete <CheckCircle className="w-5 h-5" /></>}
+                          </button>
+                          {quizRequired && (
+                            <p className="text-xs text-muted-foreground">Score 50%+ on the quiz to unlock</p>
+                          )}
+                        </div>
 
-                  {lesson.questions?.length ? (
-                    <Link
-                      href={`/regions/${regionSlug}/${lessonSlug}/quiz`}
-                      className="px-6 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-purple-500 text-white font-semibold hover:from-purple-700 hover:to-purple-600 transition-all flex items-center gap-2"
-                    >
-                      Take Lesson Quiz
-                      <ArrowRight className="w-5 h-5" />
-                    </Link>
-                  ) : nextLesson ? (
-                    <Link
-                      href={`/regions/${regionSlug}/${nextLesson.slug}`}
-                      className="px-6 py-3 rounded-lg bg-purple-100 text-purple-600 font-semibold hover:bg-purple-200 transition-all flex items-center gap-2"
-                    >
-                      Next Lesson
-                      <ArrowRight className="w-5 h-5" />
-                    </Link>
-                  ) : null}
-                </div>
+                        {hasQuiz && !completed && (
+                          <Link
+                            href={`/regions/${regionSlug}/${lessonSlug}/quiz`}
+                            className={`px-6 py-3 rounded-lg font-semibold flex items-center gap-2 transition-all ${
+                              quizRequired
+                                ? "bg-gradient-to-r from-green-600 to-green-500 text-white hover:from-green-700 hover:to-green-600"
+                                : "bg-purple-100 text-purple-600 hover:bg-purple-200"
+                            }`}
+                          >
+                            {quizPassed ? "Review Quiz" : "Take Lesson Quiz"}
+                            <ArrowRight className="w-5 h-5" />
+                          </Link>
+                        )}
+
+                        {completed && nextLesson && (
+                          <Link
+                            href={`/regions/${regionSlug}/${nextLesson.slug}`}
+                            className="px-6 py-3 rounded-lg bg-purple-100 text-purple-600 font-semibold hover:bg-purple-200 transition-all flex items-center gap-2"
+                          >
+                            Next Lesson
+                            <ArrowRight className="w-5 h-5" />
+                          </Link>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })()}
               </div>
             </motion.div>
 
