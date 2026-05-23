@@ -92,12 +92,8 @@ export default function CoursePage() {
   const isLessonCompleted = (lessonSlug: string) =>
     progress.completedLessons.includes(`${regionSlug}/${lessonSlug}`);
 
-  const quizPassed = track
-    ? progress.quizAttempts.some((a) => a.quizSlug === track.quiz.slug && a.passed)
-    : false;
-
-  const totalItems = (track?.lessons.length ?? 0) + 1;
-  const doneItems = (track?.lessons.filter((l) => isLessonCompleted(l.slug)).length ?? 0) + (quizPassed ? 1 : 0);
+  const totalItems = track?.lessons.length ?? 0;
+  const doneItems = track?.lessons.filter((l) => isLessonCompleted(l.slug)).length ?? 0;
   const progressPct = totalItems > 0 ? Math.round((doneItems / totalItems) * 100) : 0;
 
   if (loading) {
@@ -221,10 +217,6 @@ export default function CoursePage() {
                   ))}
                   <li className="flex items-start gap-2">
                     <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-purple-500 flex-shrink-0" />
-                    {track.quiz.title} ({track.quiz.passPercent}%+)
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-purple-500 flex-shrink-0" />
                     {track.certificateTitle}
                   </li>
                 </ul>
@@ -298,23 +290,13 @@ export default function CoursePage() {
                     </p>
                   </div>
                 </div>
-                {eligible ? (
-                  <Link
-                    href={`/regions/${regionSlug}/certificate`}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-white text-purple-600 rounded-lg font-semibold hover:bg-purple-50 transition-all"
-                  >
-                    {t.download}
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                ) : (
-                  <Link
-                    href={`/regions/${regionSlug}/quiz`}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-white text-purple-600 rounded-lg font-semibold hover:bg-purple-50 transition-all"
-                  >
-                    {quizPassed ? t.viewReq : t.takeQuiz}
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                )}
+                <Link
+                  href={`/regions/${regionSlug}/certificate`}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-purple-600 rounded-lg font-semibold hover:bg-purple-50 transition-all"
+                >
+                  {eligible ? t.download : t.viewReq}
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
               </>
             );
           })()}

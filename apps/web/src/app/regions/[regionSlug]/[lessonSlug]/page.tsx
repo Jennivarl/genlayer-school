@@ -9,6 +9,14 @@ import { useAuth } from "@/components/app-providers";
 import { ContentRenderer } from "@/components/content-renderer";
 import type { ContentBlock } from "@genlayer-school/content";
 
+type QuizQuestion = {
+  id: string;
+  prompt: string;
+  options: string[];
+  correctOption: number;
+  explanation: string;
+};
+
 type Lesson = {
   slug: string;
   title: string;
@@ -16,6 +24,7 @@ type Lesson = {
   summary: string;
   objectives: string[];
   content: ContentBlock[];
+  questions?: QuizQuestion[];
 };
 
 type RegionalTrack = {
@@ -85,7 +94,6 @@ export default function LessonPage() {
   const nextLesson = lessonIndex >= 0 && lessonIndex < (track?.lessons.length ?? 0) - 1
     ? track?.lessons[lessonIndex + 1]
     : null;
-  const isLastLesson = !nextLesson && lessonIndex === (track?.lessons.length ?? 0) - 1;
 
   if (loading) {
     return (
@@ -169,12 +177,12 @@ export default function LessonPage() {
                       : <>Mark Complete <CheckCircle className="w-5 h-5" /></>}
                   </button>
 
-                  {isLastLesson ? (
+                  {lesson.questions?.length ? (
                     <Link
-                      href={`/regions/${regionSlug}/quiz`}
-                      className="px-6 py-3 rounded-lg bg-gradient-to-r from-green-600 to-green-500 text-white font-semibold hover:from-green-700 hover:to-green-600 transition-all flex items-center gap-2"
+                      href={`/regions/${regionSlug}/${lessonSlug}/quiz`}
+                      className="px-6 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-purple-500 text-white font-semibold hover:from-purple-700 hover:to-purple-600 transition-all flex items-center gap-2"
                     >
-                      Take Quiz
+                      Take Lesson Quiz
                       <ArrowRight className="w-5 h-5" />
                     </Link>
                   ) : nextLesson ? (
@@ -289,12 +297,6 @@ export default function LessonPage() {
               </div>
             </motion.div>
 
-            <Link
-              href={`/regions/${regionSlug}/quiz`}
-              className="block w-full px-6 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-purple-500 text-white text-center font-semibold hover:from-purple-700 hover:to-purple-600 transition-all"
-            >
-              Take Quiz
-            </Link>
           </div>
         </div>
       </div>

@@ -89,15 +89,10 @@ export function getCertificateEligibility(progress: LearnerProgress, tracks: Reg
   });
 
   const regionalCertificates = tracks.map((track) => {
-    const lessonRequirements = track.lessons.map((lesson) => ({
+    const requirements = track.lessons.map((lesson) => ({
       label: `Complete ${lesson.title}`,
       complete: progress.completedLessons.includes(`${track.slug}/${lesson.slug}`),
     }));
-    const quizPassed = progress.quizAttempts.some((attempt) => attempt.quizSlug === track.quiz.slug && attempt.passed);
-    const requirements = [
-      ...lessonRequirements,
-      { label: `Pass ${track.quiz.title}`, complete: quizPassed },
-    ];
 
     return {
       certificateSlug: `${track.slug}-regional-certificate`,
