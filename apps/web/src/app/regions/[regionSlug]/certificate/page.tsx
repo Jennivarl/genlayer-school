@@ -22,6 +22,10 @@ const regionCertMap: Record<string, string> = {
   turkey:     "/certificates/turkey.png.jpg",
   ukraine:    "/certificates/ukraine.png.jpg",
   vietnam:    "/certificates/vietnam.png.jpg",
+  germany:    "/certificates/germany.png.jpg",
+  japan:      "/certificates/japan.png.jpg",
+  arabic:     "/certificates/arabic.png.jpg",
+  persian:    "/certificates/persian.png.jpg",
 };
 
 export default function CertificatePage() {
