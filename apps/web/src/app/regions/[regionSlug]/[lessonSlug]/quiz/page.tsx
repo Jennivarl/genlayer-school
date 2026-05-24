@@ -138,6 +138,16 @@ export default function LessonQuizPage() {
             answers: answersRecord,
           }),
         }).catch(() => {});
+        auth.authFetch("/api/progress/lesson", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            learnerId: auth.learnerId,
+            courseSlug: regionSlug,
+            lessonSlug,
+            completed: true,
+          }),
+        }).catch(() => {});
       }
       setAnswers(newAnswers);
       setDone(true);
@@ -200,23 +210,33 @@ export default function LessonQuizPage() {
             </div>
 
             <div className="space-y-3">
-              {isLastLesson ? (
-                <Link
-                  href={`/regions/${regionSlug}`}
-                  className="flex w-full px-6 py-3 rounded-lg bg-gradient-to-r from-green-600 to-green-500 text-white text-center font-semibold hover:from-green-700 hover:to-green-600 transition-all items-center justify-center gap-2"
-                >
-                  View Certificate
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              ) : nextLesson ? (
-                <Link
-                  href={`/regions/${regionSlug}/${nextLesson.slug}`}
-                  className="flex w-full px-6 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-purple-500 text-white text-center font-semibold hover:from-purple-700 hover:to-purple-600 transition-all items-center justify-center gap-2"
-                >
-                  Next Lesson
-                  <ArrowRight className="w-5 h-5" />
-                </Link>
-              ) : null}
+              {passed && (
+                <>
+                  {passed && (
+                    <div className="flex items-center justify-center gap-2 text-green-600 text-sm font-medium mb-1">
+                      <CheckCircle className="w-4 h-4" />
+                      Lesson marked complete
+                    </div>
+                  )}
+                  {isLastLesson ? (
+                    <Link
+                      href={`/regions/${regionSlug}`}
+                      className="flex w-full px-6 py-3 rounded-lg bg-gradient-to-r from-green-600 to-green-500 text-white text-center font-semibold hover:from-green-700 hover:to-green-600 transition-all items-center justify-center gap-2"
+                    >
+                      View Certificate
+                      <ArrowRight className="w-5 h-5" />
+                    </Link>
+                  ) : nextLesson ? (
+                    <Link
+                      href={`/regions/${regionSlug}/${nextLesson.slug}`}
+                      className="flex w-full px-6 py-3 rounded-lg bg-gradient-to-r from-purple-600 to-purple-500 text-white text-center font-semibold hover:from-purple-700 hover:to-purple-600 transition-all items-center justify-center gap-2"
+                    >
+                      Next Lesson
+                      <ArrowRight className="w-5 h-5" />
+                    </Link>
+                  ) : null}
+                </>
+              )}
               {!passed && (
                 <button
                   onClick={() => {
@@ -236,7 +256,7 @@ export default function LessonQuizPage() {
                 href={`/regions/${regionSlug}/${lessonSlug}`}
                 className="block w-full px-6 py-3 rounded-lg bg-purple-100 text-purple-600 text-center font-semibold hover:bg-purple-200 transition-all"
               >
-                {passed ? "Back to Lesson & Mark Complete" : "Back to Lesson"}
+                Back to Lesson
               </Link>
             </div>
           </motion.div>
