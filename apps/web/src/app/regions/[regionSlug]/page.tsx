@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -42,21 +42,43 @@ const regionMeta: Record<string, { code: string; color: string }> = {
   turkey:     { code: "tr",    color: "#8b5cf6" },
   ukraine:    { code: "ua",    color: "#a855f7" },
   vietnam:    { code: "vn",    color: "#ec4899" },
+  germany:    { code: "de",    color: "#4f46e5" },
+  japan:      { code: "jp",    color: "#f43f5e" },
+  arabic:     { code: "sa",    color: "#0d9488" },
+  persian:    { code: "ir",    color: "#0369a1" },
 };
 
-const certI18n: Record<string, { preview: string; complete: string; earned: string; download: string; takeQuiz: string; viewReq: string }> = {
-  china:      { preview: "证书预览", complete: "完成课程以获得证书", earned: "已获得证书！", download: "下载证书", takeQuiz: "参加测验", viewReq: "查看证书要求" },
-  india:      { preview: "Pramanpatra Preview", complete: "Pramanpatra paane ke liye course poora karein", earned: "Pramanpatra mil gaya!", download: "Pramanpatra dekhein", takeQuiz: "Quiz lo", viewReq: "Pramanpatra ki zaroorat" },
-  indonesia:  { preview: "Pratinjau Sertifikat", complete: "Selesaikan kursus untuk mendapatkan sertifikat", earned: "Sertifikat Diraih!", download: "Lihat Sertifikat", takeQuiz: "Ikuti Kuis", viewReq: "Lihat Persyaratan" },
-  latam:      { preview: "Vista previa del certificado", complete: "Completa el curso para obtener tu certificado", earned: "¡Certificado obtenido!", download: "Ver Certificado", takeQuiz: "Tomar Quiz", viewReq: "Ver requisitos" },
-  "latam-es": { preview: "Vista previa del certificado", complete: "Completa el curso para obtener tu certificado", earned: "¡Certificado obtenido!", download: "Ver Certificado", takeQuiz: "Tomar Quiz", viewReq: "Ver requisitos" },
-  "latam-pt": { preview: "Pré-visualização do Certificado", complete: "Complete o curso para obter seu certificado", earned: "Certificado Conquistado!", download: "Ver Certificado", takeQuiz: "Fazer Quiz", viewReq: "Ver requisitos" },
-  nigeria:    { preview: "Certificate Preview", complete: "Finish di course to get your certificate", earned: "Certificate Don Land!", download: "See Certificate", takeQuiz: "Take Quiz", viewReq: "See Requirements" },
-  russia:     { preview: "Просмотр сертификата", complete: "Завершите курс, чтобы получить сертификат", earned: "Сертификат получен!", download: "Посмотреть сертификат", takeQuiz: "Пройти тест", viewReq: "Требования" },
-  korea:      { preview: "수료증 미리보기", complete: "수료증을 받으려면 코스를 완료하세요", earned: "수료증 획득!", download: "수료증 보기", takeQuiz: "퀴즈 보기", viewReq: "요건 확인" },
-  turkey:     { preview: "Sertifika Önizlemesi", complete: "Sertifikanı kazanmak için kursu tamamla", earned: "Sertifika Kazanıldı!", download: "Sertifikayı Gör", takeQuiz: "Quiz'e Gir", viewReq: "Gereksinimleri Gör" },
-  ukraine:    { preview: "Перегляд сертифіката", complete: "Завершіть курс, щоб отримати сертифікат", earned: "Сертифікат отримано!", download: "Переглянути сертифікат", takeQuiz: "Пройти тест", viewReq: "Перегляд вимог" },
-  vietnam:    { preview: "Xem trước chứng chỉ", complete: "Hoàn thành khóa học để nhận chứng chỉ", earned: "Đã nhận chứng chỉ!", download: "Xem chứng chỉ", takeQuiz: "Làm bài kiểm tra", viewReq: "Xem yêu cầu" },
+type TrackUI = {
+  preview: string; complete: string; earned: string; download: string; viewReq: string;
+  objectives: string; requirements: string; lessons: string; lessonPrefix: string;
+  completed: string; readyToStart: string; back: string; courseProgress: string;
+};
+
+const defaultUI: TrackUI = {
+  preview: "Certificate Preview", complete: "Complete the course to earn your certificate",
+  earned: "Certificate Earned!", download: "View Certificate", viewReq: "See Requirements",
+  objectives: "Learning Objectives", requirements: "Requirements", lessons: "Lessons",
+  lessonPrefix: "Lesson", completed: "Completed", readyToStart: "min · Ready to start",
+  back: "← Back to Regions", courseProgress: "Course Progress",
+};
+
+const ui18n: Record<string, TrackUI> = {
+  china:      { preview: "证书预览", complete: "完成课程以获得证书", earned: "已获得证书！", download: "下载证书", viewReq: "查看证书要求", objectives: "学习目标", requirements: "要求", lessons: "课程", lessonPrefix: "课程", completed: "已完成", readyToStart: "分钟 · 准备开始", back: "← 返回地区", courseProgress: "课程进度" },
+  india:      { preview: "Pramanpatra Preview", complete: "Course poora karein pramanpatra paane ke liye", earned: "Pramanpatra mil gaya!", download: "Pramanpatra dekhein", viewReq: "Zarooriyaat dekhein", objectives: "Seekhne ke Lakshya", requirements: "Zarooriyaat", lessons: "Sabaq", lessonPrefix: "Sabaq", completed: "Poora hua", readyToStart: "min · Shuru karne ke liye taiyaar", back: "← Regions par wapas", courseProgress: "Course ki pragati" },
+  indonesia:  { preview: "Pratinjau Sertifikat", complete: "Selesaikan kursus untuk mendapatkan sertifikat", earned: "Sertifikat Diraih!", download: "Lihat Sertifikat", viewReq: "Lihat Persyaratan", objectives: "Tujuan Belajar", requirements: "Persyaratan", lessons: "Pelajaran", lessonPrefix: "Pelajaran", completed: "Selesai", readyToStart: "mnt · Siap dimulai", back: "← Kembali ke Wilayah", courseProgress: "Kemajuan Kursus" },
+  latam:      { preview: "Vista previa del certificado", complete: "Completa el curso para obtener tu certificado", earned: "¡Certificado obtenido!", download: "Ver Certificado", viewReq: "Ver requisitos", objectives: "Objetivos", requirements: "Requisitos", lessons: "Lecciones", lessonPrefix: "Lección", completed: "Completado", readyToStart: "min · Listo para comenzar", back: "← Volver a Regiones", courseProgress: "Progreso del curso" },
+  "latam-es": { preview: "Vista previa del certificado", complete: "Completa el curso para obtener tu certificado", earned: "¡Certificado obtenido!", download: "Ver Certificado", viewReq: "Ver requisitos", objectives: "Objetivos", requirements: "Requisitos", lessons: "Lecciones", lessonPrefix: "Lección", completed: "Completado", readyToStart: "min · Listo para comenzar", back: "← Volver a Regiones", courseProgress: "Progreso del curso" },
+  "latam-pt": { preview: "Pré-visualização do Certificado", complete: "Complete o curso para obter seu certificado", earned: "Certificado Conquistado!", download: "Ver Certificado", viewReq: "Ver requisitos", objectives: "Objetivos", requirements: "Requisitos", lessons: "Lições", lessonPrefix: "Lição", completed: "Concluído", readyToStart: "min · Pronto para começar", back: "← Voltar às Regiões", courseProgress: "Progresso do curso" },
+  nigeria:    { preview: "Certificate Preview", complete: "Finish di course to get your certificate", earned: "Certificate Don Land!", download: "See Certificate", viewReq: "See Requirements", objectives: "Wetin You Go Learn", requirements: "Wetin You Need", lessons: "Lessons", lessonPrefix: "Lesson", completed: "Done", readyToStart: "min · Ready to go", back: "← Back to Regions", courseProgress: "How far for course" },
+  russia:     { preview: "Просмотр сертификата", complete: "Завершите курс, чтобы получить сертификат", earned: "Сертификат получен!", download: "Посмотреть сертификат", viewReq: "Требования", objectives: "Цели обучения", requirements: "Требования", lessons: "Уроки", lessonPrefix: "Урок", completed: "Завершено", readyToStart: "мин · Готово к началу", back: "← Назад к регионам", courseProgress: "Прогресс курса" },
+  korea:      { preview: "수료증 미리보기", complete: "수료증을 받으려면 코스를 완료하세요", earned: "수료증 획득!", download: "수료증 보기", viewReq: "요건 확인", objectives: "학습 목표", requirements: "수료 조건", lessons: "수업", lessonPrefix: "수업", completed: "완료", readyToStart: "분 · 시작 준비 완료", back: "← 지역으로 돌아가기", courseProgress: "강좌 진행도" },
+  turkey:     { preview: "Sertifika Önizlemesi", complete: "Sertifikanı kazanmak için kursu tamamla", earned: "Sertifika Kazanıldı!", download: "Sertifikayı Gör", viewReq: "Gereksinimleri Gör", objectives: "Öğrenme Hedefleri", requirements: "Gereksinimler", lessons: "Dersler", lessonPrefix: "Ders", completed: "Tamamlandı", readyToStart: "dk · Başlamaya hazır", back: "← Bölgelere Dön", courseProgress: "Kurs İlerlemesi" },
+  ukraine:    { preview: "Перегляд сертифіката", complete: "Завершіть курс, щоб отримати сертифікат", earned: "Сертифікат отримано!", download: "Переглянути сертифікат", viewReq: "Перегляд вимог", objectives: "Цілі навчання", requirements: "Вимоги", lessons: "Уроки", lessonPrefix: "Урок", completed: "Завершено", readyToStart: "хв · Готово до початку", back: "← Назад до регіонів", courseProgress: "Прогрес курсу" },
+  vietnam:    { preview: "Xem trước chứng chỉ", complete: "Hoàn thành khóa học để nhận chứng chỉ", earned: "Đã nhận chứng chỉ!", download: "Xem chứng chỉ", viewReq: "Xem yêu cầu", objectives: "Mục tiêu học tập", requirements: "Yêu cầu", lessons: "Bài học", lessonPrefix: "Bài học", completed: "Đã hoàn thành", readyToStart: "phút · Sẵn sàng bắt đầu", back: "← Trở về Khu vực", courseProgress: "Tiến độ khóa học" },
+  germany:    { preview: "Zertifikat-Vorschau", complete: "Schließe den Kurs ab, um dein Zertifikat zu erhalten", earned: "Zertifikat erhalten!", download: "Zertifikat ansehen", viewReq: "Anforderungen ansehen", objectives: "Lernziele", requirements: "Anforderungen", lessons: "Lektionen", lessonPrefix: "Lektion", completed: "Abgeschlossen", readyToStart: "Min · Bereit zum Start", back: "← Zurück zu den Regionen", courseProgress: "Kursfortschritt" },
+  japan:      { preview: "証明書プレビュー", complete: "コースを修了して証明書を取得しましょう", earned: "証明書取得！", download: "証明書を見る", viewReq: "要件を確認", objectives: "学習目標", requirements: "要件", lessons: "レッスン", lessonPrefix: "レッスン", completed: "完了", readyToStart: "分 · 開始準備完了", back: "← 地域に戻る", courseProgress: "コース進捗" },
+  arabic:     { preview: "معاينة الشهادة", complete: "أكمل الدورة للحصول على شهادتك", earned: "تم الحصول على الشهادة!", download: "عرض الشهادة", viewReq: "عرض المتطلبات", objectives: "أهداف التعلم", requirements: "المتطلبات", lessons: "الدروس", lessonPrefix: "الدرس", completed: "مكتمل", readyToStart: "دقيقة · جاهز للبدء", back: "→ العودة إلى المناطق", courseProgress: "تقدم الدورة" },
+  persian:    { preview: "پیش‌نمایش گواهینامه", complete: "دوره را تکمیل کنید تا گواهینامه دریافت کنید", earned: "گواهینامه دریافت شد!", download: "مشاهده گواهینامه", viewReq: "مشاهده الزامات", objectives: "اهداف یادگیری", requirements: "الزامات", lessons: "درس‌ها", lessonPrefix: "درس", completed: "تکمیل شد", readyToStart: "دقیقه · آماده شروع", back: "→ بازگشت به مناطق", courseProgress: "پیشرفت دوره" },
 };
 
 export default function CoursePage() {
@@ -88,6 +110,7 @@ export default function CoursePage() {
   }, [auth.learnerId, regionSlug]);
 
   const meta = regionMeta[regionSlug] ?? { code: "", color: "#7c3aed" };
+  const t = ui18n[regionSlug] ?? defaultUI;
 
   const isLessonCompleted = (lessonSlug: string) =>
     progress.completedLessons.includes(`${regionSlug}/${lessonSlug}`);
@@ -130,7 +153,7 @@ export default function CoursePage() {
             href="/regions"
             className="inline-flex items-center text-purple-600 hover:text-purple-700 mb-6"
           >
-            ← Back to Regions
+            {t.back}
           </Link>
 
           <div className="bg-white rounded-2xl p-8 shadow-lg border border-purple-100">
@@ -166,7 +189,7 @@ export default function CoursePage() {
 
             <div className="space-y-2 mb-6">
               <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">Course Progress</span>
+                <span className="text-muted-foreground">{t.courseProgress}</span>
                 <span className="font-semibold" style={{ color: meta.color }}>{progressPct}%</span>
               </div>
               <div className="h-3 bg-gray-100 rounded-full overflow-hidden">
@@ -183,19 +206,7 @@ export default function CoursePage() {
             <div className="grid md:grid-cols-2 gap-6 mb-6">
               {track.lessons[0]?.objectives && track.lessons[0].objectives.length > 0 && (
                 <div className="p-4 rounded-xl bg-purple-50 border border-purple-100">
-                  <h3 className="font-semibold mb-3">
-                    {track.languageName === "Chinese" ? "学习目标"
-                      : track.languageName === "Hindi" ? "Seekhne ke Lakshya"
-                      : track.languageName === "Indonesian" ? "Tujuan belajar"
-                      : track.languageName.startsWith("Spanish") ? "Objetivos"
-                      : track.languageName === "Pidgin" ? "Wetin You Go Learn"
-                      : track.languageName === "Russian" ? "Цели обучения"
-                      : track.languageName === "Korean" ? "학습 목표"
-                      : track.languageName === "Turkish" ? "Öğrenme Hedefleri"
-                      : track.languageName === "Ukrainian" ? "Цілі навчання"
-                      : track.languageName === "Vietnamese" ? "Mục tiêu học tập"
-                      : "Learning Objectives"}
-                  </h3>
+                  <h3 className="font-semibold mb-3">{t.objectives}</h3>
                   <ul className="space-y-1.5 text-sm text-muted-foreground">
                     {track.lessons[0].objectives.map((obj, i) => (
                       <li key={i} className="flex items-start gap-2">
@@ -207,7 +218,7 @@ export default function CoursePage() {
                 </div>
               )}
               <div className="p-4 rounded-xl bg-purple-50 border border-purple-100">
-                <h3 className="font-semibold mb-3">Requirements</h3>
+                <h3 className="font-semibold mb-3">{t.requirements}</h3>
                 <ul className="space-y-1.5 text-sm text-muted-foreground">
                   {track.lessons.map((l) => (
                     <li key={l.slug} className="flex items-start gap-2">
@@ -232,7 +243,7 @@ export default function CoursePage() {
         </motion.div>
 
         <div className="space-y-4">
-          <h2 className="text-2xl font-bold mb-4">Lessons</h2>
+          <h2 className="text-2xl font-bold mb-4">{t.lessons}</h2>
           {track.lessons.map((lesson, index) => {
             const completed = isLessonCompleted(lesson.slug);
             return (
@@ -254,10 +265,10 @@ export default function CoursePage() {
                       </div>
                       <div className="flex-1">
                         <h3 className="font-semibold mb-1">
-                          Lesson {index + 1}: {lesson.title}
+                          {t.lessonPrefix} {index + 1}: {lesson.title}
                         </h3>
                         <p className="text-sm text-muted-foreground">
-                          {completed ? "Completed" : `${lesson.durationMinutes} min · Ready to start`}
+                          {completed ? t.completed : `${lesson.durationMinutes} ${t.readyToStart}`}
                         </p>
                       </div>
                       <ArrowRight className="w-5 h-5 text-purple-600" />
@@ -275,31 +286,24 @@ export default function CoursePage() {
           transition={{ delay: 0.6 }}
           className="mt-8 p-6 rounded-2xl bg-gradient-to-br from-purple-600 to-purple-500 text-white"
         >
-          {(() => {
-            const t = certI18n[regionSlug] ?? certI18n["nigeria"];
-            return (
-              <>
-                <div className="flex items-center gap-4 mb-4">
-                  <Award className="w-12 h-12" />
-                  <div>
-                    <h3 className="text-xl font-semibold mb-1">
-                      {eligible ? t.earned : t.preview}
-                    </h3>
-                    <p className="text-purple-100">
-                      {eligible ? t.download : t.complete}
-                    </p>
-                  </div>
-                </div>
-                <Link
-                  href={`/regions/${regionSlug}/certificate`}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-purple-600 rounded-lg font-semibold hover:bg-purple-50 transition-all"
-                >
-                  {eligible ? t.download : t.viewReq}
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </>
-            );
-          })()}
+          <div className="flex items-center gap-4 mb-4">
+            <Award className="w-12 h-12" />
+            <div>
+              <h3 className="text-xl font-semibold mb-1">
+                {eligible ? t.earned : t.preview}
+              </h3>
+              <p className="text-purple-100">
+                {eligible ? t.download : t.complete}
+              </p>
+            </div>
+          </div>
+          <Link
+            href={`/regions/${regionSlug}/certificate`}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-purple-600 rounded-lg font-semibold hover:bg-purple-50 transition-all"
+          >
+            {eligible ? t.download : t.viewReq}
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </motion.div>
       </div>
     </div>
