@@ -61,7 +61,8 @@ export default function CertificatePage() {
   const nameToShow = displayName || auth.label || "Your Name";
 
   async function downloadCertificate() {
-    const src = regionCertMap[regionSlug] ?? regionCertMap.nigeria;
+    const src = regionCertMap[regionSlug];
+    if (!src) return;
     const canvas = document.createElement("canvas");
     const img = new Image();
     await new Promise<void>((resolve, reject) => {
@@ -120,7 +121,7 @@ export default function CertificatePage() {
           </p>
         </motion.div>
 
-        {/* Certificate preview — collage image */}
+        {/* Certificate preview */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -128,13 +129,21 @@ export default function CertificatePage() {
           className="relative mb-8"
         >
           <div className="w-full">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={regionCertMap[regionSlug] ?? regionCertMap.nigeria}
-              alt="GenLayer Certificate"
-              className="w-full rounded-2xl shadow-2xl border border-purple-100"
-              draggable={false}
-            />
+            {regionCertMap[regionSlug] ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={regionCertMap[regionSlug]}
+                alt="GenLayer Certificate"
+                className="w-full rounded-2xl shadow-2xl border border-purple-100"
+                draggable={false}
+              />
+            ) : (
+              <div className="w-full aspect-[1.41/1] rounded-2xl shadow-2xl border-2 border-dashed border-purple-200 bg-purple-50 flex flex-col items-center justify-center gap-4 text-center px-8">
+                <div className="text-6xl">🏆</div>
+                <p className="text-xl font-bold text-purple-700">Certificate Coming Soon</p>
+                <p className="text-muted-foreground text-sm">The certificate design for this region is being prepared.</p>
+              </div>
+            )}
           </div>
         </motion.div>
 
