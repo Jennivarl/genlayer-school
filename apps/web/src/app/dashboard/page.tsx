@@ -50,7 +50,22 @@ const regionMeta: Record<string, { code: string; color: string }> = {
   turkey:     { code: "tr",    color: "#8b5cf6" },
   ukraine:    { code: "ua",    color: "#a855f7" },
   vietnam:    { code: "vn",    color: "#ec4899" },
+  germany:    { code: "de",    color: "#4f46e5" },
+  japan:      { code: "jp",    color: "#f43f5e" },
+  arabic:     { code: "sa",    color: "#0d9488" },
+  persian:    { code: "ir",    color: "#0369a1" },
 };
+
+async function fetchCatalog() {
+  const CACHE_KEY = "genlayer_catalog_v1";
+  try {
+    const cached = sessionStorage.getItem(CACHE_KEY);
+    if (cached) return JSON.parse(cached);
+  } catch {}
+  const data = await fetch("/api/catalog").then((r) => r.json());
+  try { sessionStorage.setItem(CACHE_KEY, JSON.stringify(data)); } catch {}
+  return data;
+}
 
 function getTrackProgress(track: RegionalTrack, progress: LearnerProgress): number {
   const totalItems = track.lessons.length + 1;
@@ -69,9 +84,10 @@ export default function DashboardPage() {
   const [displayName, setDisplayName] = useState<string | null>(null);
 
   useEffect(() => {
+    if (!auth.ready) return;
     const params = new URLSearchParams({ learnerId: auth.learnerId });
     Promise.all([
-      fetch("/api/catalog").then((r) => r.json()),
+      fetchCatalog(),
       auth.authFetch(`/api/progress?${params}`).then((r) => r.json()),
       auth.authFetch("/api/profile").then((r) => r.json()),
     ])
@@ -83,7 +99,7 @@ export default function DashboardPage() {
       })
       .finally(() => setLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [auth.learnerId]);
+  }, [auth.ready, auth.learnerId]);
 
   const progress = data?.progress;
   const certificates = data?.certificates ?? [];
