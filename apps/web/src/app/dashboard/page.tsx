@@ -81,7 +81,9 @@ export default function DashboardPage() {
   const [tracks, setTracks] = useState<RegionalTrack[]>([]);
   const [data, setData] = useState<ProgressData | null>(null);
   const [loading, setLoading] = useState(true);
-  const [displayName, setDisplayName] = useState<string | null>(null);
+  const [displayName, setDisplayName] = useState<string | null>(() => {
+    try { return localStorage.getItem(`genlayer_displayname_${auth.learnerId}`); } catch { return null; }
+  });
 
   useEffect(() => {
     if (!auth.ready) return;
@@ -95,7 +97,11 @@ export default function DashboardPage() {
         setTracks(catalog.regionalTracks ?? []);
         setData(progressData);
         const p = profileData.profile;
-        if (p?.displayName) setDisplayName(p.displayName);
+        const name = p?.displayName || (p?.username ? `@${p.username}` : null);
+        if (name) {
+          setDisplayName(name);
+          try { localStorage.setItem(`genlayer_displayname_${auth.learnerId}`, name); } catch {}
+        }
       })
       .finally(() => setLoading(false));
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -46,20 +46,26 @@ export function Navigation() {
       return;
     }
 
-    // Load pfp from localStorage immediately for instant display
+    // Load displayName + pfp from localStorage immediately for instant display
     try {
-      const stored = localStorage.getItem(`genlayer_pfp_${auth.learnerId}`);
+      const storedName = localStorage.getItem(`genlayer_displayname_${auth.learnerId}`);
       // eslint-disable-next-line react-hooks/set-state-in-effect
-      if (stored) setPfpUrl(stored);
+      if (storedName) setDisplayLabel(storedName);
+      const storedPfp = localStorage.getItem(`genlayer_pfp_${auth.learnerId}`);
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      if (storedPfp) setPfpUrl(storedPfp);
     } catch {}
 
-    // Fetch profile for displayName + server-stored pfp
+    // Fetch profile for fresh displayName + pfp
     auth.authFetch("/api/profile")
       .then((r) => r.json())
       .then((d) => {
         const p = d.profile;
-        if (p?.displayName) setDisplayLabel(p.displayName);
-        else if (p?.username) setDisplayLabel(`@${p.username}`);
+        const name = p?.displayName || (p?.username ? `@${p.username}` : null);
+        if (name) {
+          setDisplayLabel(name);
+          try { localStorage.setItem(`genlayer_displayname_${auth.learnerId}`, name); } catch {}
+        }
         if (p?.pfpUrl) {
           setPfpUrl(p.pfpUrl);
           try { localStorage.setItem(`genlayer_pfp_${auth.learnerId}`, p.pfpUrl); } catch {}
