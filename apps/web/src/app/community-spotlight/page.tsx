@@ -1,233 +1,184 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "motion/react";
-import { Globe, BookOpen, ArrowRight, User } from "lucide-react";
-import { useEffect, useState } from "react";
+import { ArrowUpRight, Rss } from "lucide-react";
+import { useState } from "react";
 
-type CommunityMember = {
-  displayName: string | null;
-  regions: string[];
-  lessonCount: number;
-  quizzesPassed: number;
+type LinkKind = "Blog" | "GitHub" | "Discord" | "X" | "Docs";
+
+type NewsItem = {
+  kind: LinkKind;
+  title: string;
+  description: string;
+  date: string;
+  url: string;
 };
 
-const regionMeta: Record<string, { code: string; label: string }> = {
-  china:      { code: "cn",    label: "China" },
-  india:      { code: "in",    label: "India" },
-  indonesia:  { code: "id",    label: "Indonesia" },
-  latam:      { code: "latam", label: "LATAM" },
-  "latam-es": { code: "mx",    label: "LATAM (ES)" },
-  "latam-pt": { code: "br",    label: "LATAM (PT)" },
-  nigeria:    { code: "ng",    label: "Nigeria" },
-  russia:     { code: "ru",    label: "Russia" },
-  korea:      { code: "kr",    label: "Korea" },
-  turkey:     { code: "tr",    label: "Turkey" },
-  ukraine:    { code: "ua",    label: "Ukraine" },
-  vietnam:    { code: "vn",    label: "Vietnam" },
+// ── Edit this array to update the page ──────────────────────────────────────
+const newsItems: NewsItem[] = [
+  {
+    kind: "Blog",
+    title: "Introducing GenLayer: The First AI-Native Blockchain",
+    description: "An overview of what GenLayer is, how Intelligent Contracts work, and why AI belongs on-chain.",
+    date: "May 2026",
+    url: "https://genlayer.com/blog",
+  },
+  {
+    kind: "GitHub",
+    title: "GenLayer Studio v0.x Released",
+    description: "New release of the GenLayer Studio IDE with improved contract debugging and one-click deploy.",
+    date: "May 2026",
+    url: "https://github.com/genlayer",
+  },
+  {
+    kind: "Discord",
+    title: "Community AMA — Ask the Core Team Anything",
+    description: "Monthly open Q&A session with the GenLayer core team. Drop your questions in #ama.",
+    date: "May 2026",
+    url: "https://discord.gg/genlayer",
+  },
+  {
+    kind: "X",
+    title: "GenLayer Testnet Milestone: 10k Transactions",
+    description: "The testnet just crossed 10,000 transactions. Here's what that means for mainnet readiness.",
+    date: "May 2026",
+    url: "https://x.com/GenLayerHQ",
+  },
+  {
+    kind: "Docs",
+    title: "New Guide: Writing Your First Intelligent Contract",
+    description: "Step-by-step tutorial covering storage types, LLM calls, and deploying to the studio.",
+    date: "Apr 2026",
+    url: "https://docs.genlayer.com",
+  },
+  {
+    kind: "Blog",
+    title: "Optimistic Democracy Explained",
+    description: "A deep dive into how GenLayer's validator consensus mechanism works and why it matters.",
+    date: "Apr 2026",
+    url: "https://genlayer.com/blog",
+  },
+];
+
+// ── Community channels ───────────────────────────────────────────────────────
+const channels = [
+  { label: "Discord",  url: "https://discord.gg/genlayer",         emoji: "💬" },
+  { label: "X",        url: "https://x.com/GenLayerHQ",            emoji: "𝕏"  },
+  { label: "GitHub",   url: "https://github.com/genlayer",         emoji: "🐙" },
+  { label: "Docs",     url: "https://docs.genlayer.com",           emoji: "📚" },
+];
+// ────────────────────────────────────────────────────────────────────────────
+
+const kindColor: Record<LinkKind, string> = {
+  Blog:    "bg-purple-100 text-purple-700",
+  GitHub:  "bg-gray-100   text-gray-700",
+  Discord: "bg-indigo-100 text-indigo-700",
+  X:       "bg-sky-100    text-sky-700",
+  Docs:    "bg-emerald-100 text-emerald-700",
 };
 
-function RegionFlag({ code, size = "sm" }: { code: string; size?: "sm" | "xs" }) {
-  const dim = size === "sm" ? "w-12 h-8" : "w-8 h-5";
-  if (code === "latam") {
-    return (
-      <div className={`${dim} rounded-md overflow-hidden grid grid-cols-3 grid-rows-2 flex-shrink-0`}>
-        {["br","mx","ar","co","ve","cl"].map((c) => (
-          <img key={c} src={`https://flagcdn.com/w40/${c}.png`} alt={c} className="w-full h-full object-cover" />
-        ))}
-      </div>
-    );
-  }
-  return (
-    <img
-      src={`https://flagcdn.com/w40/${code}.png`}
-      alt={code}
-      className={`${dim} rounded-md object-cover flex-shrink-0`}
-    />
-  );
-}
-
-function medalColor(index: number) {
-  if (index === 0) return "from-yellow-400 to-yellow-500";
-  if (index === 1) return "from-gray-300 to-gray-400";
-  if (index === 2) return "from-amber-600 to-amber-700";
-  return "from-purple-500 to-purple-600";
-}
-
-function Spinner() {
-  return (
-    <div className="min-h-screen flex items-center justify-center">
-      <svg className="w-8 h-8 animate-spin text-purple-600" fill="none" viewBox="0 0 24 24">
-        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
-      </svg>
-    </div>
-  );
-}
+const ALL = "All" as const;
+type Filter = LinkKind | typeof ALL;
+const filters: Filter[] = [ALL, "Blog", "GitHub", "Discord", "X", "Docs"];
 
 export default function CommunitySpotlightPage() {
-  const [members, setMembers] = useState<CommunityMember[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [active, setActive] = useState<Filter>(ALL);
 
-  useEffect(() => {
-    fetch("/api/community/members")
-      .then((r) => r.json())
-      .then((d) => setMembers(d.members ?? []))
-      .finally(() => setLoading(false));
-  }, []);
-
-  if (loading) return <Spinner />;
-
-  const multiRegion = members.filter((m) => m.regions.length > 1);
-  const singleRegion = members.filter((m) => m.regions.length === 1);
+  const visible = active === ALL ? newsItems : newsItems.filter((n) => n.kind === active);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-purple-50 to-white py-12 px-4">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-4xl mx-auto">
 
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-black mb-4">
-            Community Spotlight
-          </h1>
+        {/* Header */}
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-10">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 text-purple-700 text-sm font-medium mb-4">
+            <Rss className="w-4 h-4" />
+            GenLayer Ecosystem
+          </div>
+          <h1 className="text-5xl font-bold text-black mb-4">Community Spotlight</h1>
           <p className="text-xl text-muted-foreground">
-            Members learning GenLayer across regions of the world
+            Latest news, releases, and updates from the GenLayer ecosystem
           </p>
         </motion.div>
 
-        {/* Stats bar */}
+        {/* Filter tabs */}
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="grid grid-cols-2 gap-4 mb-10"
+          className="flex flex-wrap gap-2 mb-8 justify-center"
         >
-          {[
-            { icon: <User className="w-5 h-5" />, value: members.length, label: "Learners" },
-            { icon: <BookOpen className="w-5 h-5" />, value: members.reduce((s, m) => s + m.lessonCount, 0), label: "Lessons Done" },
-          ].map((stat, i) => (
-            <div key={i} className="bg-white rounded-2xl p-5 shadow-sm border border-purple-100 text-center">
-              <div className="flex justify-center text-purple-600 mb-2">{stat.icon}</div>
-              <div className="text-3xl font-bold text-purple-600">{stat.value}</div>
-              <div className="text-sm text-muted-foreground mt-1">{stat.label}</div>
-            </div>
+          {filters.map((f) => (
+            <button
+              key={f}
+              onClick={() => setActive(f)}
+              className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all ${
+                active === f
+                  ? "bg-purple-600 text-white shadow"
+                  : "bg-white border border-purple-100 text-muted-foreground hover:border-purple-300 hover:text-foreground"
+              }`}
+            >
+              {f}
+            </button>
           ))}
         </motion.div>
 
-        {/* Multi-region learners */}
-        {multiRegion.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="mb-8"
-          >
-            <div className="flex items-center gap-2 mb-4">
-              <Globe className="w-5 h-5 text-purple-600" />
-              <h2 className="text-2xl font-bold">Multi-Region Learners</h2>
-            </div>
-            <div className="space-y-3">
-              {multiRegion.map((member, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.2 + index * 0.06 }}
-                  className="bg-white rounded-2xl p-5 shadow-sm border border-purple-100 flex items-center gap-4"
-                >
-                  <div className={`w-10 h-10 rounded-full bg-gradient-to-br ${medalColor(index)} flex items-center justify-center text-white font-bold flex-shrink-0`}>
-                    {index + 1}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <div className="font-semibold mb-1 truncate">
-                      {member.displayName ?? "Anonymous Learner"}
-                    </div>
-                    <div className="flex flex-wrap gap-1.5">
-                      {member.regions.map((slug) => {
-                        const meta = regionMeta[slug];
-                        return meta ? (
-                          <span key={slug} className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-purple-50 border border-purple-100 text-xs text-purple-700">
-                            <RegionFlag code={meta.code} size="xs" />
-                            {meta.label}
-                          </span>
-                        ) : null;
-                      })}
-                    </div>
-                  </div>
-                  <div className="text-right flex-shrink-0">
-                    <div className="flex items-center gap-1.5 text-sm text-muted-foreground justify-end">
-                      <BookOpen className="w-3.5 h-3.5" />
-                      {member.lessonCount} lesson{member.lessonCount !== 1 ? "s" : ""}
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        )}
+        {/* News cards */}
+        <div className="space-y-4 mb-12">
+          {visible.map((item, i) => (
+            <motion.a
+              key={`${item.kind}-${i}`}
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15 + i * 0.06 }}
+              className="group flex items-start gap-5 p-5 bg-white rounded-2xl border border-purple-100 hover:border-purple-300 hover:shadow-lg transition-all block"
+            >
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 mb-2 flex-wrap">
+                  <span className={`text-xs font-semibold px-2.5 py-0.5 rounded-full ${kindColor[item.kind]}`}>
+                    {item.kind}
+                  </span>
+                  <span className="text-xs text-muted-foreground">{item.date}</span>
+                </div>
+                <h3 className="font-semibold text-base mb-1 group-hover:text-purple-700 transition-colors">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+              </div>
+              <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-purple-600 flex-shrink-0 mt-1 transition-colors" />
+            </motion.a>
+          ))}
+        </div>
 
-        {/* Single-region learners */}
-        {singleRegion.length > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="mb-10"
-          >
-            <div className="flex items-center gap-2 mb-4">
-              <BookOpen className="w-5 h-5 text-purple-600" />
-              <h2 className="text-2xl font-bold">Active Learners</h2>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
-              {singleRegion.map((member, index) => {
-                const meta = regionMeta[member.regions[0]];
-                return (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.3 + index * 0.04 }}
-                    className="bg-white rounded-xl p-4 shadow-sm border border-purple-100"
-                  >
-                    <div className="flex items-center gap-3 mb-2">
-                      {meta ? <RegionFlag code={meta.code} size="sm" /> : <div className="w-8 h-8 rounded-md bg-purple-100 flex-shrink-0" />}
-                      <div className="font-semibold text-sm truncate">
-                        {member.displayName ?? "Anonymous Learner"}
-                      </div>
-                    </div>
-                    <div className="text-xs text-muted-foreground">
-                      {meta?.label} · {member.lessonCount} lesson{member.lessonCount !== 1 ? "s" : ""}
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </motion.div>
-        )}
-
-        {members.length === 0 && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16 text-muted-foreground">
-            <Globe className="w-12 h-12 mx-auto mb-4 text-purple-200" />
-            <p className="text-lg">No learners yet — be the first to complete a lesson!</p>
-          </motion.div>
-        )}
-
+        {/* Community channels */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: 0.4 }}
           className="bg-gradient-to-br from-purple-600 to-purple-500 rounded-2xl p-8 text-white text-center"
         >
-          <h2 className="text-3xl font-bold mb-4">Join the Community</h2>
-          <p className="text-purple-100 mb-6 max-w-2xl mx-auto">
-            Complete lessons across regions and climb the leaderboard. Every region you learn in is a flag on your profile.
+          <h2 className="text-3xl font-bold mb-2">Join the Conversation</h2>
+          <p className="text-purple-100 mb-8 max-w-xl mx-auto">
+            Connect with the GenLayer community, ask questions, and stay up to date.
           </p>
-          <Link
-            href="/regions"
-            className="px-8 py-4 rounded-lg bg-white text-purple-600 font-semibold hover:bg-purple-50 transition-all inline-flex items-center justify-center gap-2"
-          >
-            Explore Regions
-            <ArrowRight className="w-5 h-5" />
-          </Link>
+          <div className="flex flex-wrap gap-3 justify-center">
+            {channels.map((ch) => (
+              <a
+                key={ch.label}
+                href={ch.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 px-5 py-2.5 rounded-lg bg-white text-purple-700 font-semibold hover:bg-purple-50 transition-all text-sm"
+              >
+                <span>{ch.emoji}</span>
+                {ch.label}
+              </a>
+            ))}
+          </div>
         </motion.div>
 
       </div>
