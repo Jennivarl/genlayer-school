@@ -132,20 +132,24 @@ export default function HomePage() {
 
 /* ── Floating Flags ── */
 const flagLayout = [
-  { top: "4%",  left: "18%", rotate: -7, amp: 10, dur: 3.8, delay: 0    },
-  { top: "3%",  left: "60%", rotate:  5, amp:  8, dur: 4.2, delay: 0.5  },
-  { top: "22%", left: "40%", rotate: -3, amp: 12, dur: 3.5, delay: 1.0  },
-  { top: "18%", left: "74%", rotate:  8, amp:  9, dur: 4.6, delay: 0.3  },
-  { top: "44%", left: "14%", rotate: -5, amp: 11, dur: 4.0, delay: 0.8  },
-  { top: "46%", left: "64%", rotate:  4, amp:  8, dur: 3.7, delay: 1.3  },
-  { top: "60%", left: "42%", rotate: -6, amp: 10, dur: 4.3, delay: 0.2  },
-  { top: "62%", left: "75%", rotate:  7, amp:  9, dur: 3.9, delay: 0.9  },
-  { top: "78%", left: "24%", rotate: -4, amp: 11, dur: 4.1, delay: 1.1  },
-  { top: "76%", left: "58%", rotate:  6, amp:  8, dur: 3.6, delay: 0.6  },
-  { top: "8%",  left: "2%",  rotate:  4, amp:  9, dur: 4.4, delay: 1.2  },
-  { top: "34%", left: "74%", rotate: -5, amp: 10, dur: 4.0, delay: 0.4  },
-  { top: "55%", left: "48%", rotate:  5, amp:  8, dur: 4.5, delay: 1.4  },
-  { top: "86%", left: "8%",  rotate: -3, amp:  9, dur: 4.1, delay: 0.7  },
+  // Row 1 — 4 flags across
+  { top: "3%",  left: "2%",  rotate: -7, amp:  9, dur: 3.8, delay: 0.0 },
+  { top: "5%",  left: "26%", rotate:  5, amp:  8, dur: 4.2, delay: 0.5 },
+  { top: "2%",  left: "51%", rotate: -3, amp: 10, dur: 3.5, delay: 1.0 },
+  { top: "4%",  left: "74%", rotate:  8, amp:  9, dur: 4.6, delay: 0.3 },
+  // Row 2 — 3 flags staggered
+  { top: "27%", left: "14%", rotate: -5, amp: 10, dur: 4.0, delay: 0.8 },
+  { top: "25%", left: "40%", rotate:  4, amp:  8, dur: 3.7, delay: 1.3 },
+  { top: "28%", left: "66%", rotate: -6, amp: 10, dur: 4.3, delay: 0.2 },
+  // Row 3 — 4 flags across
+  { top: "50%", left: "2%",  rotate:  7, amp:  9, dur: 3.9, delay: 0.9 },
+  { top: "52%", left: "26%", rotate: -4, amp: 10, dur: 4.1, delay: 1.1 },
+  { top: "50%", left: "51%", rotate:  6, amp:  8, dur: 3.6, delay: 0.6 },
+  { top: "53%", left: "74%", rotate:  4, amp:  9, dur: 4.4, delay: 1.2 },
+  // Row 4 — 3 flags staggered
+  { top: "75%", left: "14%", rotate: -5, amp: 10, dur: 4.0, delay: 0.4 },
+  { top: "76%", left: "42%", rotate:  5, amp:  8, dur: 4.5, delay: 1.4 },
+  { top: "75%", left: "68%", rotate: -3, amp:  9, dur: 4.1, delay: 0.7 },
 ];
 
 function FloatingFlags({ regions }: { regions: Region[] }) {
