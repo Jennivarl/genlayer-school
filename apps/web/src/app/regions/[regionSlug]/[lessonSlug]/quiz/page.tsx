@@ -37,6 +37,18 @@ function Spinner() {
   );
 }
 
+function shuffleQuestions(qs: QuizQuestion[]): QuizQuestion[] {
+  return qs.map((q) => {
+    const indices = Array.from({ length: q.options.length }, (_, i) => i)
+      .sort(() => Math.random() - 0.5);
+    return {
+      ...q,
+      options: indices.map((i) => q.options[i]),
+      correctOption: indices.indexOf(q.correctOption),
+    };
+  });
+}
+
 export default function LessonQuizPage() {
   const params = useParams<{ regionSlug: string; lessonSlug: string }>();
   const regionSlug = params.regionSlug ?? "";
@@ -45,6 +57,7 @@ export default function LessonQuizPage() {
 
   const [track, setTrack] = useState<RegionalTrack | null>(null);
   const [lesson, setLesson] = useState<Lesson | null>(null);
+  const [shuffledQuestions, setShuffledQuestions] = useState<QuizQuestion[]>([]);
   const [loading, setLoading] = useState(true);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
@@ -62,6 +75,7 @@ export default function LessonQuizPage() {
         const foundLesson = foundTrack?.lessons.find((l) => l.slug === lessonSlug) ?? null;
         setTrack(foundTrack);
         setLesson(foundLesson);
+        setShuffledQuestions(shuffleQuestions(foundLesson?.questions ?? []));
       })
       .finally(() => setLoading(false));
   }, [regionSlug, lessonSlug]);
@@ -79,7 +93,7 @@ export default function LessonQuizPage() {
     );
   }
 
-  const questions = lesson.questions ?? [];
+  const questions = shuffledQuestions;
   if (questions.length === 0) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -240,6 +254,7 @@ export default function LessonQuizPage() {
               {!passed && (
                 <button
                   onClick={() => {
+                    setShuffledQuestions(shuffleQuestions(lesson.questions ?? []));
                     setCurrentQuestion(0);
                     setSelectedAnswer(null);
                     setRevealed(false);
