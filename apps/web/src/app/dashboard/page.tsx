@@ -269,16 +269,16 @@ export default function DashboardPage() {
             >
               <div className="flex items-center gap-3 mb-4">
                 <Star className="w-8 h-8 text-amber-500" />
-                <h3 className="text-xl font-semibold">Community Spotlight</h3>
+                <h3 className="text-xl font-semibold">Explore Regions</h3>
               </div>
               <p className="text-muted-foreground mb-4">
-                See who is learning GenLayer across multiple regions
+                14 regional tracks available — pick a new language and keep learning
               </p>
               <Link
-                href="/community-spotlight"
+                href="/regions"
                 className="inline-block w-full py-3 px-4 bg-purple-100 text-purple-600 rounded-lg font-semibold hover:bg-purple-200 transition-all text-center"
               >
-                View Leaderboard
+                View All Regions
               </Link>
             </motion.div>
           </div>

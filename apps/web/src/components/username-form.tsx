@@ -85,7 +85,7 @@ export function UsernameForm() {
     <article className="card">
       <p className="meta">Learner identity</p>
       <h2>Username</h2>
-      <p>Choose a public handle for leaderboards, certificates, and community activity.</p>
+      <p>Choose a public handle for your certificates and community activity.</p>
       <div className="form-grid">
         <label>
           <span>Username</span>
