@@ -12,7 +12,6 @@ const navLinks = [
   { href: "/dashboard", label: "Dashboard" },
   { href: "/regions", label: "Regions" },
   { href: "/certificates", label: "Certificates" },
-  { href: "/community-spotlight", label: "Spotlight" },
 ];
 
 function Avatar({ size = "sm", pfpUrl }: { size?: "sm" | "md"; pfpUrl: string | null }) {
