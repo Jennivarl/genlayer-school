@@ -19,6 +19,10 @@ const regions = [
   { slug: "turkey",    name: "Turkey",    language: "Turkish",             flag: "tr",    color: "#8b5cf6" },
   { slug: "ukraine",   name: "Ukraine",   language: "Ukrainian",           flag: "ua",    color: "#a855f7" },
   { slug: "vietnam",   name: "Vietnam",   language: "Vietnamese",          flag: "vn",    color: "#ec4899" },
+  { slug: "germany",   name: "Germany",   language: "German",              flag: "de",    color: "#4f46e5" },
+  { slug: "japan",     name: "Japan",     language: "Japanese",            flag: "jp",    color: "#f43f5e" },
+  { slug: "arabic",    name: "Arabic",    language: "Arabic (MSA)",        flag: "sa",    color: "#0d9488" },
+  { slug: "persian",   name: "Persian",   language: "Persian (Farsi)",     flag: "ir",    color: "#0369a1" },
 ];
 
 export default function CertificatesPage() {

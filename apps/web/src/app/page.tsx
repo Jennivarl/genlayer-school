@@ -17,6 +17,10 @@ const regions: Region[] = [
   { name: "Turkey",    code: "tr",    color: "#8b5cf6", labelColor: "#ffffff" },
   { name: "Ukraine",   code: "ua",    color: "#a855f7", labelColor: "#fde047" },
   { name: "Vietnam",   code: "vn",    color: "#ec4899", labelColor: "#b91c1c" },
+  { name: "Germany",   code: "de",    color: "#4f46e5" },
+  { name: "Japan",     code: "jp",    color: "#f43f5e" },
+  { name: "Arabic",    code: "sa",    color: "#0d9488" },
+  { name: "Persian",   code: "ir",    color: "#0369a1" },
 ];
 
 export default function HomePage() {
@@ -68,7 +72,7 @@ export default function HomePage() {
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-12 text-white">
-            10 Regional Tracks
+            14 Regional Tracks
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-4xl mx-auto">
             {regions.map((region, index) => (
@@ -138,6 +142,10 @@ const flagLayout = [
   { top: "62%", left: "75%", rotate:  7, amp:  9, dur: 3.9, delay: 0.9  },
   { top: "78%", left: "24%", rotate: -4, amp: 11, dur: 4.1, delay: 1.1  },
   { top: "76%", left: "58%", rotate:  6, amp:  8, dur: 3.6, delay: 0.6  },
+  { top: "8%",  left: "2%",  rotate:  4, amp:  9, dur: 4.4, delay: 1.2  },
+  { top: "34%", left: "74%", rotate: -5, amp: 10, dur: 4.0, delay: 0.4  },
+  { top: "55%", left: "48%", rotate:  5, amp:  8, dur: 4.5, delay: 1.4  },
+  { top: "86%", left: "8%",  rotate: -3, amp:  9, dur: 4.1, delay: 0.7  },
 ];
 
 function FloatingFlags({ regions }: { regions: Region[] }) {

@@ -54,7 +54,11 @@ export type RegionSlug =
   | "korea"
   | "turkey"
   | "ukraine"
-  | "vietnam";
+  | "vietnam"
+  | "germany"
+  | "japan"
+  | "arabic"
+  | "persian";
 
 export type RegionalTrack = {
   slug: RegionSlug;
