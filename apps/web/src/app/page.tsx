@@ -21,6 +21,7 @@ const regions: Region[] = [
   { name: "Japan",     code: "jp",    color: "#f43f5e" },
   { name: "Arabic",    code: "sa",    color: "#0d9488" },
   { name: "Persian",   code: "ir",    color: "#0369a1" },
+  { name: "Bengal",    code: "bd",    color: "#10b981" },
 ];
 
 export default function HomePage() {
@@ -72,7 +73,7 @@ export default function HomePage() {
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-12 text-white">
-            14 Regional Tracks
+            15 Regional Tracks
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4 max-w-4xl mx-auto">
             {regions.map((region, index) => (
