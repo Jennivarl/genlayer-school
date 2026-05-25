@@ -46,6 +46,7 @@ const regionMeta: Record<string, { code: string; color: string }> = {
   japan:      { code: "jp",    color: "#f43f5e" },
   arabic:     { code: "sa",    color: "#0d9488" },
   persian:    { code: "ir",    color: "#0369a1" },
+  bengali:    { code: "bd",    color: "#10b981" },
 };
 
 type TrackUI = {

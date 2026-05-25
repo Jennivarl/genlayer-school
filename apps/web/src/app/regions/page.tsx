@@ -36,6 +36,7 @@ const regionMeta: Record<string, { code: string; color: string }> = {
   japan:      { code: "jp",    color: "#f43f5e" },
   arabic:     { code: "sa",    color: "#0d9488" },
   persian:    { code: "ir",    color: "#0369a1" },
+  bengali:    { code: "bd",    color: "#10b981" },
 };
 
 function getTrackProgress(track: RegionalTrack, progress: LearnerProgress): number {
@@ -85,7 +86,7 @@ export default function RegionsPage() {
 
         {loading ? (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {Array.from({ length: 14 }).map((_, i) => (
+            {Array.from({ length: 15 }).map((_, i) => (
               <div key={i} className="h-48 rounded-2xl bg-purple-50 animate-pulse border border-purple-100" />
             ))}
           </div>

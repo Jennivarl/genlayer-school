@@ -255,6 +255,7 @@ export async function requestCertificateMint(input: {
 const REGIONAL_SLUGS = new Set([
   "china", "india", "indonesia", "latam", "latam-es", "latam-pt",
   "nigeria", "russia", "korea", "turkey", "ukraine", "vietnam",
+  "germany", "japan", "arabic", "persian", "bengali",
 ]);
 
 export async function getCommunityMembers(): Promise<CommunityMember[]> {

@@ -382,6 +382,7 @@ export function createSupabaseProgressStore(config: SupabaseConfig): ProgressSto
   const REGIONAL_SLUGS = new Set([
     "china", "india", "indonesia", "latam", "latam-es", "latam-pt",
     "nigeria", "russia", "korea", "turkey", "ukraine", "vietnam",
+    "germany", "japan", "arabic", "persian", "bengali",
   ]);
 
   async function getCommunityMembers(): Promise<CommunityMember[]> {

@@ -58,7 +58,8 @@ export type RegionSlug =
   | "germany"
   | "japan"
   | "arabic"
-  | "persian";
+  | "persian"
+  | "bengali";
 
 export type RegionalTrack = {
   slug: RegionSlug;

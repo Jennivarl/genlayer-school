@@ -23,6 +23,7 @@ const regions = [
   { slug: "japan",     name: "Japan",     language: "Japanese",            flag: "jp",    color: "#f43f5e" },
   { slug: "arabic",    name: "Arabic",    language: "Arabic (MSA)",        flag: "sa",    color: "#0d9488" },
   { slug: "persian",   name: "Persian",   language: "Persian (Farsi)",     flag: "ir",    color: "#0369a1" },
+  { slug: "bengali",   name: "Bengal",    language: "Bengali",             flag: "bd",    color: "#10b981" },
 ];
 
 export default function CertificatesPage() {
