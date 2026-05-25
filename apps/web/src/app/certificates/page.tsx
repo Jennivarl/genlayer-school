@@ -9,11 +9,11 @@ import { useAuth } from "@/components/app-providers";
 type CertificateEligibility = { certificateSlug: string; eligible: boolean };
 
 const regions = [
-  { slug: "nigeria",   name: "Nigeria",   language: "Pidgin",              flag: "ng",    color: "#22c55e" },
   { slug: "china",     name: "China",     language: "Chinese",             flag: "cn",    color: "#ef4444" },
   { slug: "india",     name: "India",     language: "Hindi",               flag: "in",    color: "#f97316" },
   { slug: "indonesia", name: "Indonesia", language: "Indonesian",          flag: "id",    color: "#f59e0b" },
   { slug: "latam",     name: "LATAM",     language: "Español + Português", flag: "latam", color: "#84cc16" },
+  { slug: "nigeria",   name: "Nigeria",   language: "Pidgin",              flag: "ng",    color: "#22c55e" },
   { slug: "russia",    name: "Russia",    language: "Russian",             flag: "ru",    color: "#06b6d4" },
   { slug: "korea",     name: "Korea",     language: "Korean",              flag: "kr",    color: "#3b82f6" },
   { slug: "turkey",    name: "Turkey",    language: "Turkish",             flag: "tr",    color: "#8b5cf6" },
