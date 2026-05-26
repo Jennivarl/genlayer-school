@@ -3,8 +3,7 @@
 Community education platform for learning GenLayer, Intelligent Contracts, and the GenLayer ecosystem.
 
 - Regional lessons and quizzes in 15 native languages
-- Monthly community spotlights and weekly summaries
-- Progress tracking and downloadable certificates
+- Progress tracking and certificates (downloadable, on-chain coming)
 
 **Live:** [gen-school.fun](https://gen-school.fun)
 
