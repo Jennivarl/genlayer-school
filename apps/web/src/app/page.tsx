@@ -133,24 +133,26 @@ export default function HomePage() {
 
 /* ── Floating Flags ── */
 const flagLayout = [
-  // Row 1 — 4 flags across
-  { top: "3%",  left: "2%",  rotate: -7, amp:  9, dur: 3.8, delay: 0.0 },
-  { top: "5%",  left: "26%", rotate:  5, amp:  8, dur: 4.2, delay: 0.5 },
-  { top: "2%",  left: "51%", rotate: -3, amp: 10, dur: 3.5, delay: 1.0 },
-  { top: "4%",  left: "74%", rotate:  8, amp:  9, dur: 4.6, delay: 0.3 },
-  // Row 2 — 3 flags staggered
-  { top: "27%", left: "14%", rotate: -5, amp: 10, dur: 4.0, delay: 0.8 },
-  { top: "25%", left: "40%", rotate:  4, amp:  8, dur: 3.7, delay: 1.3 },
-  { top: "28%", left: "66%", rotate: -6, amp: 10, dur: 4.3, delay: 0.2 },
-  // Row 3 — 4 flags across
-  { top: "50%", left: "2%",  rotate:  7, amp:  9, dur: 3.9, delay: 0.9 },
-  { top: "52%", left: "26%", rotate: -4, amp: 10, dur: 4.1, delay: 1.1 },
-  { top: "50%", left: "51%", rotate:  6, amp:  8, dur: 3.6, delay: 0.6 },
-  { top: "53%", left: "74%", rotate:  4, amp:  9, dur: 4.4, delay: 1.2 },
-  // Row 4 — 3 flags staggered
-  { top: "75%", left: "14%", rotate: -5, amp: 10, dur: 4.0, delay: 0.4 },
-  { top: "76%", left: "42%", rotate:  5, amp:  8, dur: 4.5, delay: 1.4 },
-  { top: "75%", left: "68%", rotate: -3, amp:  9, dur: 4.1, delay: 0.7 },
+  // Row 1
+  { top: "2%",  left: "5%",  rotate: -7, amp:  9, dur: 3.8, delay: 0.0 },
+  { top: "4%",  left: "38%", rotate:  5, amp:  8, dur: 4.2, delay: 0.5 },
+  { top: "2%",  left: "71%", rotate: -3, amp: 10, dur: 3.5, delay: 1.0 },
+  // Row 2
+  { top: "22%", left: "5%",  rotate: -5, amp: 10, dur: 4.0, delay: 0.8 },
+  { top: "23%", left: "38%", rotate:  4, amp:  8, dur: 3.7, delay: 1.3 },
+  { top: "21%", left: "71%", rotate: -6, amp: 10, dur: 4.3, delay: 0.2 },
+  // Row 3
+  { top: "43%", left: "5%",  rotate:  7, amp:  9, dur: 3.9, delay: 0.9 },
+  { top: "44%", left: "38%", rotate: -4, amp: 10, dur: 4.1, delay: 1.1 },
+  { top: "43%", left: "71%", rotate:  6, amp:  8, dur: 3.6, delay: 0.6 },
+  // Row 4
+  { top: "63%", left: "5%",  rotate: -5, amp: 10, dur: 4.4, delay: 1.2 },
+  { top: "64%", left: "38%", rotate:  5, amp:  8, dur: 4.5, delay: 0.4 },
+  { top: "63%", left: "71%", rotate: -3, amp:  9, dur: 4.1, delay: 0.7 },
+  // Row 5
+  { top: "82%", left: "5%",  rotate:  4, amp:  9, dur: 4.0, delay: 1.4 },
+  { top: "83%", left: "38%", rotate: -6, amp:  8, dur: 3.8, delay: 0.3 },
+  { top: "82%", left: "71%", rotate:  3, amp: 10, dur: 4.6, delay: 1.0 },
 ];
 
 function FloatingFlags({ regions }: { regions: Region[] }) {
@@ -179,7 +181,7 @@ function FloatingFlags({ regions }: { regions: Region[] }) {
                 style={{ border: `2px solid ${region.color}60` }}
               >
                 {region.code === "latam" ? (
-                  <div className="w-24 h-16 grid grid-cols-3 grid-rows-2 overflow-hidden">
+                  <div className="w-20 h-14 grid grid-cols-3 grid-rows-2 overflow-hidden">
                     {["br", "mx", "ar", "co", "pe", "cl"].map((c) => (
                       <img key={c} src={`https://flagcdn.com/w80/${c}.png`} alt={c} className="w-full h-full object-cover" />
                     ))}
@@ -188,7 +190,7 @@ function FloatingFlags({ regions }: { regions: Region[] }) {
                   <img
                     src={`https://flagcdn.com/w160/${region.code}.png`}
                     alt={region.name}
-                    className="w-24 h-16 object-cover block"
+                    className="w-20 h-14 object-cover block"
                   />
                 )}
               </div>
