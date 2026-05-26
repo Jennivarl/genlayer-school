@@ -69,7 +69,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 10 REGIONAL TRACKS ── */}
+      {/* ── 15 REGIONAL TRACKS ── */}
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-center mb-12 text-white">
