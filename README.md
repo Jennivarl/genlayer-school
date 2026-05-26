@@ -1,61 +1,35 @@
 # GenLayer School
 
-GenLayer School is a community education platform for learning GenLayer, Intelligent Contracts, and the GenLayer ecosystem.
+Community education platform for learning GenLayer, Intelligent Contracts, and the GenLayer ecosystem.
 
-The product is designed as a durable community resource, not a hackathon prototype:
+- Regional lessons and quizzes in 15 native languages
+- Monthly community spotlights and weekly summaries
+- Progress tracking and downloadable certificates
 
-- Learn GenLayer through courses, lessons, labs, and quizzes.
-- Learn GenLayer basics through regional tracks in native languages.
-- Follow monthly GenLayer community spotlights.
-- Read weekly Gen-Fren summaries and prep for community quizzes.
-- Track progress and prepare for on-chain certifications.
-- Integrate with GenLayer contracts and GenLayerJS as the product matures.
+**Live:** [gen-school.fun](https://gen-school.fun)
+
+## Regions
+
+China, India, Indonesia, LATAM (Spanish + Portuguese), Nigeria, Russia, Korea, Turkey, Ukraine, Vietnam, Germany, Japan, Arabic, Persian, Bengal.
 
 ## Workspace
 
-```text
-apps/web              Next.js community learning app
-packages/content      Typed seed content and content contracts
-packages/contracts    GenLayer Intelligent Contract templates
-packages/sdk          GenLayer client wrappers
-packages/ui           Shared UI primitives
-docs                  Product, architecture, and operating notes
 ```
-
-Regional GenLayer School currently includes China (Chinese), India (Hindi), Indonesia (Indonesian), LATAM (Spanish + Portuguese), Nigeria (Pidgin), Russia (Russian), Korea (Korean), Turkey (Turkish), Ukraine (Ukrainian), and Vietnam (Vietnamese).
+apps/web          Next.js app
+packages/content  Typed content and seed data
+packages/ui       Shared UI components
+```
 
 ## Quickstart
 
-```powershell
+```bash
 npm install
-Copy-Item .env.example apps/web/.env.local
-npm.cmd run dev
+cp .env.example apps/web/.env.local
+npm run dev
 ```
 
-The web app runs at `http://localhost:3100` when started with the existing local workflow.
-
-## Checks
-
-```powershell
-npm.cmd run typecheck
-npm.cmd run lint
-npm.cmd run build
-npm.cmd run smoke -- --base-url=http://localhost:3100
-```
-
-GitHub Actions runs typecheck, lint, Vercel config validation, and production build on pushes to `main` and pull requests.
-
-## Auth
-
-Privy is the planned auth provider for wallet-first learner identity. See docs/privy-auth.md.
-
-## Backend Diagnostics
-
-Use `/backend` while setting up deployments. It reports the active storage driver, Supabase readiness, Privy readiness, and production-required environment keys without exposing secret values.
+App runs at `http://localhost:3100`.
 
 ## Deployment
 
-See docs/deployment.md for the Vercel, Supabase, Privy, admin token, and production checklist flow.
-
-The repo includes `vercel.json` for root-based Vercel deployments. Use docs/release-checklist.md before sharing a deployment publicly.
-
+Hosted on Vercel. See `docs/deployment.md`.
