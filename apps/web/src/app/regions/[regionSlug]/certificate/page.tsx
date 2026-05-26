@@ -133,15 +133,26 @@ export default function CertificatePage() {
           transition={{ delay: 0.2 }}
           className="relative mb-8"
         >
-          <div className="w-full">
+          <div className="w-full relative">
             {regionCertMap[regionSlug] ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={regionCertMap[regionSlug]}
-                alt="GenLayer Certificate"
-                className="w-full rounded-2xl shadow-2xl border border-purple-100"
-                draggable={false}
-              />
+              <div className="relative">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={regionCertMap[regionSlug]}
+                  alt="GenLayer Certificate"
+                  className="w-full rounded-2xl shadow-2xl border border-purple-100"
+                  draggable={false}
+                />
+                {/* Name overlay — mirrors the canvas position used on download */}
+                <div
+                  className="absolute pointer-events-none"
+                  style={{ left: "41%", top: "53%", transform: "translate(-50%, -50%)" }}
+                >
+                  <span className="font-bold text-[#0f172a] text-sm sm:text-base md:text-lg lg:text-xl" style={{ fontFamily: 'Georgia, "Times New Roman", serif' }}>
+                    {nameToShow}
+                  </span>
+                </div>
+              </div>
             ) : (
               <div className="w-full aspect-[1.41/1] rounded-2xl shadow-2xl border-2 border-dashed border-purple-200 bg-purple-50 flex flex-col items-center justify-center gap-4 text-center px-8">
                 <div className="text-6xl">🏆</div>
